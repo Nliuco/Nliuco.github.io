@@ -2,5 +2,9 @@
     "title":"Nliuco",
     "subTitle":"Free, frolic, flipped and then fade, that is the fate I forge.",
     "avatarUrl":"https://avatars.githubusercontent.com/u/56815403?v=4",
-    "GMEEK_VERSION":"last"
+    "GMEEK_VERSION":"last",
+    "startSite":"07/01/2024",
+    "email":"jkurn@qq.com",
+    "exlink":{"music":"https://music.meekdai.com","about":"https://www.pianone.site", "link":"https://www.pianone.site", "pylearn":"https://www.lanqiao.cn/courses/3584/learning"},
+    "iconList":{"music":"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Z","pylearn":"M9.25 12a.75.75 0 0 1-.22.53l-2.75 2.75a.75.75 0 0 1-1.06-1.06L7.44 12 5.22 9.78a.75.75 0 1 1 1.06-1.06l2.75 2.75c.141.14.22.331.22.53Zm2 2a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5h-5Z"}
 }
