@@ -9,9 +9,15 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="hello vim。">
+<meta name="description" content="# 文章标题
+
+## 简介
+简要介绍文章的主题和内容概要。">
 <meta property="og:title" content="掌控Vim：快捷键与光标操作的终极指南">
-<meta property="og:description" content="hello vim。">
+<meta property="og:description" content="# 文章标题
+
+## 简介
+简要介绍文章的主题和内容概要。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://Nliuco.github.io/post/zhang-kong-Vim%EF%BC%9A-kuai-jie-jian-yu-guang-biao-cao-zuo-de-zhong-ji-zhi-nan.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
@@ -70,7 +76,36 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>hello vim</p></div>
+<div class="markdown-body" id="postBody"><h1>文章标题</h1>
+<h2>简介</h2>
+<p>简要介绍文章的主题和内容概要。</p>
+<h2>正文</h2>
+<h3>第一部分：入门Vim</h3>
+<p>介绍Vim的基本概念和安装方法。</p>
+<h3>第二部分：快捷键操作</h3>
+<h4>移动光标和编辑</h4>
+<ul>
+<li><code class="notranslate">h</code>, <code class="notranslate">j</code>, <code class="notranslate">k</code>, <code class="notranslate">l</code>：左、下、上、右移动光标。</li>
+<li><code class="notranslate">i</code>, <code class="notranslate">a</code>, <code class="notranslate">o</code>：在当前光标处插入、追加、打开新行。</li>
+<li><code class="notranslate">yy</code>, <code class="notranslate">dd</code>, <code class="notranslate">p</code>：复制、剪切、粘贴。</li>
+</ul>
+<h4>特殊指令命令</h4>
+<ul>
+<li><code class="notranslate">%</code>：在Vim中代表当前文件名。</li>
+<li><code class="notranslate">:w</code>, <code class="notranslate">:q</code>：保存、退出。</li>
+</ul>
+<h3>第三部分：高级技巧</h3>
+<h4>多行编辑</h4>
+<ul>
+<li>使用 <code class="notranslate">Ctrl+v</code> 进入可视块模式，对多行进行编辑。</li>
+<li><code class="notranslate">:s/foo/bar/g</code>：在全文中替换 <code class="notranslate">foo</code> 为 <code class="notranslate">bar</code>。</li>
+</ul>
+<h4>运行Python</h4>
+<ul>
+<li>使用 <code class="notranslate">:!python %</code> 在Vim中运行当前文件的Python代码。</li>
+</ul>
+<h2>结论</h2>
+<p>总结文章的要点和读者可以获得的收获。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
