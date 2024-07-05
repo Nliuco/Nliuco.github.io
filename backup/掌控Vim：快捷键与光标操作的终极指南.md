@@ -1,7 +1,9 @@
 # 掌控Vim：快捷键与光标操作的终极指南
 
-## [简介](https://nliuco.github.io/init)
-[介绍文章的主题和目的，为读者提供预览。](https://nliuco.github.io/draft.md)
+[vim](https://nliuco.github.io/1.vim.png)
+
+## 简介
+介绍文章的主题和目的，为读者提供预览。
 
 ## 第一部分：入门Vim
 
