@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Nliuco</title><link>https://Nliuco.github.io</link><description>Free, frolic, flipped and then fade, that is the fate I forge.</description><copyright>Nliuco</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>https://Nliuco.github.io</link></image><lastBuildDate>Fri, 05 Jul 2024 08:17:16 +0000</lastBuildDate><managingEditor>Nliuco</managingEditor><ttl>60</ttl><webMaster>Nliuco</webMaster><item><title>掌控Vim：快捷键与光标操作的终极指南</title><link>https://Nliuco.github.io/post/zhang-kong-Vim%EF%BC%9A-kuai-jie-jian-yu-guang-biao-cao-zuo-de-zhong-ji-zhi-nan.html</link><description>&lt;!-- 这里显示vimlogo --&gt;&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Nliuco</title><link>https://Nliuco.github.io</link><description>Free, frolic, flipped and then fade, that is the fate I forge.</description><copyright>Nliuco</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>https://Nliuco.github.io</link></image><lastBuildDate>Tue, 09 Jul 2024 06:50:38 +0000</lastBuildDate><managingEditor>Nliuco</managingEditor><ttl>60</ttl><webMaster>Nliuco</webMaster><item><title>掌控Vim：快捷键与光标操作的终极指南</title><link>https://Nliuco.github.io/post/zhang-kong-Vim%EF%BC%9A-kuai-jie-jian-yu-guang-biao-cao-zuo-de-zhong-ji-zhi-nan.html</link><description># 掌控Vim：光标操作与快捷键的终极指南&#13;
+&#13;
+&lt;!-- 这里显示vimlogo --&gt;&#13;
+&#13;
 `Gmeek-html&lt;img src='https://nliuco.github.io/1.vim.png'&gt;`&#13;
 &#13;
 ## 写在前面&#13;
-&#13;
-最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦.&#13;
-&#13;
-每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 [采访Snipaste开发者](https://sspai.com/post/35097) 的文章, 其中有句话我很认同:&#13;
-&#13;
-```txt&#13;
-如果想要学会一个高级工具，那学习成本自然也是要的，世界上并不存在不需要学习成本但却很强大的工具。</description><guid isPermaLink="true">https://Nliuco.github.io/post/zhang-kong-Vim%EF%BC%9A-kuai-jie-jian-yu-guang-biao-cao-zuo-de-zhong-ji-zhi-nan.html</guid><pubDate>Mon, 01 Jul 2024 09:37:44 +0000</pubDate></item></channel></rss>
+&gt; 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. &#13;
+&gt;&#13;
+&gt; 每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 [采访Snipaste开发者](https://sspai.com/post/35097) 的文章, 其中有句话我很认同:&#13;
+&gt; &gt;如果想要学会一个高级工具，那学习成本自然也是要的，世界上并不存在不需要学习成本但却很强大的工具。</description><guid isPermaLink="true">https://Nliuco.github.io/post/zhang-kong-Vim%EF%BC%9A-kuai-jie-jian-yu-guang-biao-cao-zuo-de-zhong-ji-zhi-nan.html</guid><pubDate>Mon, 01 Jul 2024 09:37:44 +0000</pubDate></item></channel></rss>
