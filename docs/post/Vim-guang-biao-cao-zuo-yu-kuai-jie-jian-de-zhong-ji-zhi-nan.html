@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/56815403?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="`Gmeek-html<img src='https://nliuco.github.io/1.vim.png'>`
+
+## 写在前面
+> 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. 
+>
+> 每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 [采访Snipaste开发者](https://sspai.com/post/35097) 的文章, 其中有句话我很认同:
+> >如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.
+> >强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.
+
+`Gmeek-html<img src='https://nliuco.github.io/2.WhyVim.png'>`
+
+> 首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, ~~(用了很久的Sublime text也是出于这个原因)~~, 
+>
+> 其次是普及广, 除了windows系统, 几乎所有主流系统都预装, 甚至安卓也能用, 加上主流编辑器也支持vim, 完美做到一次学习, 到处使用!. 
+>
+> 最后就是最重要的生态, Vim的生态极其丰富,拥有大量的插件和社区支持,可以满足各种不同的编辑需求.无论是编程开发、文本处理、还是系统运维,Vim都能提供强大的工具和高效的编辑体验.
+>
+> 唯一的成本, 就是学习vim需要一些时间, 而且使用习惯需要适应, 毕竟可能程序员都会提出 “如何退出vim?” 这种世纪难题......
+
+
+## 一、快捷键操作
+### 1.1 使用键盘移动光标
+
+<!-- 这里显示vim上下左右的图片 -->
+
+`Gmeek-html<img src='https://nliuco.github.io/1.jhkl.png'>`
+
+在Windows中, 常用快捷键对光标快速定位的人都应该离不开 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键/组合键.  但在vim中会发现**移动光标(左,下,上,右)**的按键分别是**`h` `j` `k` `l`**. 
+
+有人说是因为 `Bill Joy`  在创建 `vi` 文本编辑器时, 用的机器机器是 [`ADM-3A`](http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/)  终端机,这台机器就是把 `h` `j` `k` `l` 键作为方向键. ( `vim`编辑器就是后来`Bram Moolenaar`基于`vi`开发的). 对于一个没有方向键的终端, 把手从键盘拿开去够鼠标, 当然没有直接按下键盘移动更加高效. 
+
+也有人说, `vim`编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )
+总之, `vim`的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 **`h` `j` `k` `l`** 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.
+
+`Gmeek-html<img src='https://nliuco.github.io/1.jhkl.gif'>`
+
+上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换. 
+
+|       操作       |           Vim 快捷键           | Windows 普通文本编辑器 快捷键 |
+| :--------------: | :----------------------------: | :---------------------------: |
+| 移动到上一个单词 |              `b`               |         `Ctrl` + `←`          |
+| 移动到下一个单词 |              `w`               |         `Ctrl` + `→`          |
+|    移动到行首    | `0`/`^`/`Home(插入模式亦生效)` |            `Home`             |
+|    移动到行尾    | `$`/`g_`/`End(插入模式亦生效)` |             `End`             |
+|  移动到文件顶部  |              `gg`              |        `Ctrl` + `Home`        |
+|  移动到文件底部  |              `G`               |        `Ctrl` + `End`         |
+
+值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
+
+> 将光标移到当前行`第一个`/`最后一个`**非空白字符**上:  在一行文本中,光标会移动到这一行中`行首`/`行尾`不是空格、制表符或其他空白字符的地方.
+> 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
+>
+> > 相比于`Home`/`End`+ `ctrl + →`/``ctrl + ←`的组合操作,  短而快的`^`/`g_`的优势就体现出来了🐶.
+
+`Gmeek-html<img src='https://nliuco.github.io/1.^/g_&&0/$.gif'>`
+
+接下来是一些快速翻页、转跳行的操作
+
+|          操作          |  Vim 快捷键  | Windows 普通文本编辑器 快捷键  |
+| :--------------------: | :----------: | :----------------------------: |
+|        向前一页        | `Ctrl` + `b` |           `Page Up`            |
+|        向后一页        | `Ctrl` + `f` |          `Page Down`           |
+|        向前半页        | `Ctrl` + `u` |        通常无对应快捷键        |
+|        向后半页        | `Ctrl` + `d` |        通常无对应快捷键        |
+|      跳转到任意行      |  `:[行号]`   | `Ctrl` + `G`（在一些编辑器中） |
+|     跳转到下一段落     |     `}`      |        通常无对应快捷键        |
+|     跳转到上一段落     |     `{`      |        通常无对应快捷键        |
+|     跳转到文件顶部     |     `gg`     |        `Ctrl` + `Home`         |
+|     跳转到文件底部     |     `G`      |         `Ctrl` + `End`         |
+| 跳转到上一次编辑的位置 |     ```      |        通常无对应快捷键        |
+。">
+<meta property="og:title" content="Vim光标操作与快捷键的终极指南">
+<meta property="og:description" content="`Gmeek-html<img src='https://nliuco.github.io/1.vim.png'>`
+
+## 写在前面
+> 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. 
+>
+> 每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 [采访Snipaste开发者](https://sspai.com/post/35097) 的文章, 其中有句话我很认同:
+> >如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.
+> >强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.
+
+`Gmeek-html<img src='https://nliuco.github.io/2.WhyVim.png'>`
+
+> 首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, ~~(用了很久的Sublime text也是出于这个原因)~~, 
+>
+> 其次是普及广, 除了windows系统, 几乎所有主流系统都预装, 甚至安卓也能用, 加上主流编辑器也支持vim, 完美做到一次学习, 到处使用!. 
+>
+> 最后就是最重要的生态, Vim的生态极其丰富,拥有大量的插件和社区支持,可以满足各种不同的编辑需求.无论是编程开发、文本处理、还是系统运维,Vim都能提供强大的工具和高效的编辑体验.
+>
+> 唯一的成本, 就是学习vim需要一些时间, 而且使用习惯需要适应, 毕竟可能程序员都会提出 “如何退出vim?” 这种世纪难题......
+
+
+## 一、快捷键操作
+### 1.1 使用键盘移动光标
+
+<!-- 这里显示vim上下左右的图片 -->
+
+`Gmeek-html<img src='https://nliuco.github.io/1.jhkl.png'>`
+
+在Windows中, 常用快捷键对光标快速定位的人都应该离不开 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键/组合键.  但在vim中会发现**移动光标(左,下,上,右)**的按键分别是**`h` `j` `k` `l`**. 
+
+有人说是因为 `Bill Joy`  在创建 `vi` 文本编辑器时, 用的机器机器是 [`ADM-3A`](http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/)  终端机,这台机器就是把 `h` `j` `k` `l` 键作为方向键. ( `vim`编辑器就是后来`Bram Moolenaar`基于`vi`开发的). 对于一个没有方向键的终端, 把手从键盘拿开去够鼠标, 当然没有直接按下键盘移动更加高效. 
+
+也有人说, `vim`编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )
+总之, `vim`的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 **`h` `j` `k` `l`** 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.
+
+`Gmeek-html<img src='https://nliuco.github.io/1.jhkl.gif'>`
+
+上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换. 
+
+|       操作       |           Vim 快捷键           | Windows 普通文本编辑器 快捷键 |
+| :--------------: | :----------------------------: | :---------------------------: |
+| 移动到上一个单词 |              `b`               |         `Ctrl` + `←`          |
+| 移动到下一个单词 |              `w`               |         `Ctrl` + `→`          |
+|    移动到行首    | `0`/`^`/`Home(插入模式亦生效)` |            `Home`             |
+|    移动到行尾    | `$`/`g_`/`End(插入模式亦生效)` |             `End`             |
+|  移动到文件顶部  |              `gg`              |        `Ctrl` + `Home`        |
+|  移动到文件底部  |              `G`               |        `Ctrl` + `End`         |
+
+值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
+
+> 将光标移到当前行`第一个`/`最后一个`**非空白字符**上:  在一行文本中,光标会移动到这一行中`行首`/`行尾`不是空格、制表符或其他空白字符的地方.
+> 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
+>
+> > 相比于`Home`/`End`+ `ctrl + →`/``ctrl + ←`的组合操作,  短而快的`^`/`g_`的优势就体现出来了🐶.
+
+`Gmeek-html<img src='https://nliuco.github.io/1.^/g_&&0/$.gif'>`
+
+接下来是一些快速翻页、转跳行的操作
+
+|          操作          |  Vim 快捷键  | Windows 普通文本编辑器 快捷键  |
+| :--------------------: | :----------: | :----------------------------: |
+|        向前一页        | `Ctrl` + `b` |           `Page Up`            |
+|        向后一页        | `Ctrl` + `f` |          `Page Down`           |
+|        向前半页        | `Ctrl` + `u` |        通常无对应快捷键        |
+|        向后半页        | `Ctrl` + `d` |        通常无对应快捷键        |
+|      跳转到任意行      |  `:[行号]`   | `Ctrl` + `G`（在一些编辑器中） |
+|     跳转到下一段落     |     `}`      |        通常无对应快捷键        |
+|     跳转到上一段落     |     `{`      |        通常无对应快捷键        |
+|     跳转到文件顶部     |     `gg`     |        `Ctrl` + `Home`         |
+|     跳转到文件底部     |     `G`      |         `Ctrl` + `End`         |
+| 跳转到上一次编辑的位置 |     ```      |        通常无对应快捷键        |
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Nliuco.github.io/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
+<title>Vim光标操作与快捷键的终极指南</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Vim光标操作与快捷键的终极指南</h1>
+<div class="title-right">
+    <a href="https://Nliuco.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Nliuco/Nliuco.github.io/issues/2" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><img src="https://nliuco.github.io/1.vim.png"></p>
+<h2>写在前面</h2>
+<blockquote>
+<p>最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会<code class="notranslate">:q</code>的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 <code class="notranslate">ctrl</code> <code class="notranslate">shift</code> <code class="notranslate">home/end</code> <code class="notranslate">↑/↓/←/→</code> 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦.</p>
+<p>每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 <a href="https://sspai.com/post/35097" rel="nofollow">采访Snipaste开发者</a> 的文章, 其中有句话我很认同:</p>
+<blockquote>
+<p>如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.<br>
+强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.</p>
+</blockquote>
+</blockquote>
+<p><img src="https://nliuco.github.io/2.WhyVim.png"></p>
+<blockquote>
+<p>首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, <del>(用了很久的Sublime text也是出于这个原因)</del>,</p>
+<p>其次是普及广, 除了windows系统, 几乎所有主流系统都预装, 甚至安卓也能用, 加上主流编辑器也支持vim, 完美做到一次学习, 到处使用!.</p>
+<p>最后就是最重要的生态, Vim的生态极其丰富,拥有大量的插件和社区支持,可以满足各种不同的编辑需求.无论是编程开发、文本处理、还是系统运维,Vim都能提供强大的工具和高效的编辑体验.</p>
+<p>唯一的成本, 就是学习vim需要一些时间, 而且使用习惯需要适应, 毕竟可能程序员都会提出 “如何退出vim?” 这种世纪难题......</p>
+</blockquote>
+<h2>一、快捷键操作</h2>
+<h3>1.1 使用键盘移动光标</h3>
+
+<p><img src="https://nliuco.github.io/1.jhkl.png"></p>
+<p>在Windows中, 常用快捷键对光标快速定位的人都应该离不开 <code class="notranslate">ctrl</code> <code class="notranslate">shift</code> <code class="notranslate">home/end</code> <code class="notranslate">↑/↓/←/→</code> 这些按键/组合键.  但在vim中会发现<strong>移动光标(左,下,上,右)的按键分别是<code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code></strong>.</p>
+<p>有人说是因为 <code class="notranslate">Bill Joy</code>  在创建 <code class="notranslate">vi</code> 文本编辑器时, 用的机器机器是 <a href="http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/" rel="nofollow"><code class="notranslate">ADM-3A</code></a>  终端机,这台机器就是把 <code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code> 键作为方向键. ( <code class="notranslate">vim</code>编辑器就是后来<code class="notranslate">Bram Moolenaar</code>基于<code class="notranslate">vi</code>开发的). 对于一个没有方向键的终端, 把手从键盘拿开去够鼠标, 当然没有直接按下键盘移动更加高效.</p>
+<p>也有人说, <code class="notranslate">vim</code>编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )<br>
+总之, <code class="notranslate">vim</code>的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 <strong><code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code></strong> 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.</p>
+<p><img src="https://nliuco.github.io/1.jhkl.gif"></p>
+<p>上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换.</p>
+<table role="table">
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Vim 快捷键</th>
+<th align="center">Windows 普通文本编辑器 快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">移动到上一个单词</td>
+<td align="center"><code class="notranslate">b</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">←</code></td>
+</tr>
+<tr>
+<td align="center">移动到下一个单词</td>
+<td align="center"><code class="notranslate">w</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">→</code></td>
+</tr>
+<tr>
+<td align="center">移动到行首</td>
+<td align="center"><code class="notranslate">0</code>/<code class="notranslate">^</code>/<code class="notranslate">Home(插入模式亦生效)</code></td>
+<td align="center"><code class="notranslate">Home</code></td>
+</tr>
+<tr>
+<td align="center">移动到行尾</td>
+<td align="center"><code class="notranslate">$</code>/<code class="notranslate">g_</code>/<code class="notranslate">End(插入模式亦生效)</code></td>
+<td align="center"><code class="notranslate">End</code></td>
+</tr>
+<tr>
+<td align="center">移动到文件顶部</td>
+<td align="center"><code class="notranslate">gg</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">Home</code></td>
+</tr>
+<tr>
+<td align="center">移动到文件底部</td>
+<td align="center"><code class="notranslate">G</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">End</code></td>
+</tr>
+</tbody>
+</table>
+<p>值得注意的是光标移动到<strong>行首尾</strong>的快捷键有很多, <code class="notranslate">Home</code>/<code class="notranslate">End</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>效果是一样的, 不多赘述, 具体说一下<code class="notranslate">^</code>/<code class="notranslate">g_</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>的区别:</p>
+<blockquote>
+<p>将光标移到当前行<code class="notranslate">第一个</code>/<code class="notranslate">最后一个</code><strong>非空白字符</strong>上:  在一行文本中,光标会移动到这一行中<code class="notranslate">行首</code>/<code class="notranslate">行尾</code>不是空格、制表符或其他空白字符的地方.<br>
+举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用<code class="notranslate">^</code>/ <code class="notranslate">g_</code> 会将光标移动到<code class="notranslate">H</code>/<code class="notranslate">!</code><strong>非空白字符</strong>上, 使用<code class="notranslate">0</code>/<code class="notranslate">$</code>会将光标移动<code class="notranslate">第一个</code>/<code class="notranslate">最后一个</code><strong>空格</strong>上.</p>
+<blockquote>
+<p>相比于<code class="notranslate">Home</code>/<code class="notranslate">End</code>+ <code class="notranslate">ctrl + →</code>/``ctrl + ←<code class="notranslate">的组合操作,  短而快的</code>^`/`g_`的优势就体现出来了🐶.</p>
+</blockquote>
+</blockquote>
+<p><img src="https://nliuco.github.io/1.^/g_&&0/$.gif"></p>
+<p>接下来是一些快速翻页、转跳行的操作</p>
+<table role="table">
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">Vim 快捷键</th>
+<th align="center">Windows 普通文本编辑器 快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">向前一页</td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">b</code></td>
+<td align="center"><code class="notranslate">Page Up</code></td>
+</tr>
+<tr>
+<td align="center">向后一页</td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">f</code></td>
+<td align="center"><code class="notranslate">Page Down</code></td>
+</tr>
+<tr>
+<td align="center">向前半页</td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">u</code></td>
+<td align="center">通常无对应快捷键</td>
+</tr>
+<tr>
+<td align="center">向后半页</td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">d</code></td>
+<td align="center">通常无对应快捷键</td>
+</tr>
+<tr>
+<td align="center">跳转到任意行</td>
+<td align="center"><code class="notranslate">:[行号]</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">G</code>（在一些编辑器中）</td>
+</tr>
+<tr>
+<td align="center">跳转到下一段落</td>
+<td align="center"><code class="notranslate">}</code></td>
+<td align="center">通常无对应快捷键</td>
+</tr>
+<tr>
+<td align="center">跳转到上一段落</td>
+<td align="center"><code class="notranslate">{</code></td>
+<td align="center">通常无对应快捷键</td>
+</tr>
+<tr>
+<td align="center">跳转到文件顶部</td>
+<td align="center"><code class="notranslate">gg</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">Home</code></td>
+</tr>
+<tr>
+<td align="center">跳转到文件底部</td>
+<td align="center"><code class="notranslate">G</code></td>
+<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">End</code></td>
+</tr>
+<tr>
+<td align="center">跳转到上一次编辑的位置</td>
+<td align="center">```</td>
+<td align="center">通常无对应快捷键</td>
+</tr>
+</tbody>
+</table></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://Nliuco.github.io"> Nliuco </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if("07/01/2024"!=""){
+    var now=new Date();
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+cmButton=document.getElementById("cmButton");
+    span=document.createElement("span");
+    span.setAttribute("class","Counter");
+    span.innerHTML="1";
+    cmButton.appendChild(span);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Nliuco/Nliuco.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
