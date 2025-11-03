@@ -31,6 +31,7 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 #### KDE 默认用的是 SDDM，虽然可以直接用它启动 Niri，但我们建议更轻、更干净的方案：
 ```sh
 # tuigreet 属于 AUR 软件包（社区维护），需要使用yay来安装。EndevourOS默认支持.
+pacman -S greetd-tuigreet # 或
 yay -S greetd-tuigreet
 ```
 #### 先禁用SDDM

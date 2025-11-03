@@ -195,6 +195,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>###（推荐）安装一个轻量显示管理器（DM）</p>
 <h4>KDE 默认用的是 SDDM，虽然可以直接用它启动 Niri，但我们建议更轻、更干净的方案：</h4>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> tuigreet 属于 AUR 软件包（社区维护），需要使用yay来安装。EndevourOS默认支持.</span>
+pacman -S greetd-tuigreet <span class="pl-c"><span class="pl-c">#</span> 或</span>
 yay -S greetd-tuigreet</pre></div>
 <h4>先禁用SDDM</h4>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl disable sddm</pre></div>
