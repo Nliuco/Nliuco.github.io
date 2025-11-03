@@ -27,4 +27,18 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 | **brightnessctl** | 屏幕亮度控制 | 调整笔记本或显示器亮度的命令行工具。 |
 | **playerctl** | 媒体控制 | 控制音乐播放器（播放、暂停、下一首等），Waybar 常用插件依赖。 |
 
-### 提示
+###（推荐）安装一个轻量显示管理器（DM）
+#### KDE 默认用的是 SDDM，虽然可以直接用它启动 Niri，但我们建议更轻、更干净的方案：
+```sh
+# tuigreet 属于 AUR 软件包（社区维护），需要使用yay来安装。EndevourOS默认支持.
+yay -S greetd-tuigreet
+```
+#### 先禁用SDDM
+```sh
+sudo systemctl disable sddm
+```
+#### 启用 greetd：
+```sh
+sudo systemctl enable greetd
+sudo systemctl start greetd # [可选] - 立即启动（不用重启）
+```
