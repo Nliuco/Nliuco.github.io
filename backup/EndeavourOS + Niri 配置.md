@@ -42,7 +42,6 @@ warning: foot: Noto Sans CJK JP: font does not appear to be monospace; check you
 ```bash
 yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji
 ```
->>  - 
 >> - 编辑 `~/.config/foot/foot.ini` 以更换字体 (如果没有这个文件, 可以使用官方的模版`/etc/xdg/foot/foot.ini`快速进行修改)
 ```ini
 [main]
