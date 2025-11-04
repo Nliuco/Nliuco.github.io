@@ -25,7 +25,7 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 
 > 安装`alacritty`是为了使用`niri`默认配置的快捷键`super+T`来打开其预配置的终端(`alacritty`), 可以根据个人需求替换成其他终端。通过修改`~/.config/niri/config.kdl`文件中的`binds{...}`块内部进行替换。
 >
-> 例入, 本文尝试使用`foot`作为默认终端
+> 例入, 本文尝试使用`foot`作为默认终端 - TODO_后续单独开一个页面笔记记录`foot`配置
 >> - 编辑上述文件内容
 ```kdl
 binds {
@@ -42,12 +42,16 @@ warning: foot: Noto Sans CJK JP: font does not appear to be monospace; check you
 ```bash
 yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji
 ```
->> - 编辑 `~/.config/foot/foot.ini` 以更换字体
+>>  - 
+>> - 编辑 `~/.config/foot/foot.ini` 以更换字体 (如果没有这个文件, 可以使用官方的模版`/etc/xdg/foot/foot.ini`快速进行修改)
 ```ini
 [main]
+include=/usr/share/foot/themes/ # 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot
 font=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:size=24
 pad=8x8 # 内边距=水平x垂直
-include=/usr/share/foot/themes/ # 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot
+dpi-aware=yes
+[csd]
+perferred=none # 隐藏窗口装饰烂
 ```
 > 这里个人偏好打开终端就执行`fastfetch`一下, 编辑`~/.zshrc` 或 `~/.bashrc`
 ```bashrc
