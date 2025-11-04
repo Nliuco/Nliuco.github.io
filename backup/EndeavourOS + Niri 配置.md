@@ -24,4 +24,7 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 | **otf-font-awesome** | 字体图标库 | 提供 Font Awesome OpenType 图标字体，可在 Waybar、应用或自定义界面中显示图标。 |
 
 > 安装`alacritty`是为了使用`niri`默认配置的快捷键`super+T`来打开其预配置的终端(`alacritty`), 可以根据个人需求替换成其他终端。通过修改`~/.config/niri/config.kdl`文件中的`binds{...}`块内部进行替换。
-> 例入, 本文尝试使用`foot`作为默认终端
+> 例入, 本文尝试使用`foot`作为默认终端, 编辑上述文件内容
+```kdl
+
+```
