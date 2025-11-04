@@ -48,4 +48,5 @@ yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji
 font=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:size=11
 dpi-aware=yes
 pad=5x5
+include=/usr/share/foot/themes/ # 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot
 ```
