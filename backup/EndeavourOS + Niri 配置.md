@@ -38,7 +38,7 @@ binds {
 ```bash
 warning: foot: Noto Sans CJK JP: font does not appear to be monospace; check your config, or disable this warning by setting [tweak].font-monospace-warn=no
 ```
->> - 尝试安装等宽字体解决
+>> - 安装等宽字体解决警告提示和字体显示
 ```bash
 yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji
 ```
