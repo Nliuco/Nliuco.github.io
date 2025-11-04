@@ -49,3 +49,10 @@ font=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:size=24
 pad=8x8 # 内边距=水平x垂直
 include=/usr/share/foot/themes/ # 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot
 ```
+> 这里个人偏好打开终端就执行`fastfetch`一下, 编辑`~/.zshrc` 或 `~/.bashrc`
+```bashrc
+# Exe fastfetch after open bash
+if command -v fastfetch >/dev/null 2>&1 && [[ $- == *i* ]]; then
+  fastfetch
+fi
+```

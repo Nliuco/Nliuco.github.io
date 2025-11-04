@@ -212,7 +212,15 @@ niri --version <span class="pl-c"><span class="pl-c">#</span> 本文编写时, �
 <div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[main]</span>
 <span class="pl-k">font</span>=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:<span class="pl-k">size</span>=24
 <span class="pl-k">pad</span>=8x8 <span class="pl-c"><span class="pl-c">#</span> 内边距=水平x垂直</span>
-<span class="pl-k">include</span>=/usr/share/foot/themes/ <span class="pl-c"><span class="pl-c">#</span> 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot</span></pre></div></div>
+<span class="pl-k">include</span>=/usr/share/foot/themes/ <span class="pl-c"><span class="pl-c">#</span> 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot</span></pre></div>
+<blockquote>
+<p>这里个人偏好打开终端就执行<code class="notranslate">fastfetch</code>一下, 编辑<code class="notranslate">~/.zshrc</code> 或 <code class="notranslate">~/.bashrc</code></p>
+</blockquote>
+<pre lang="bashrc" class="notranslate"><code class="notranslate"># Exe fastfetch after open bash
+if command -v fastfetch &gt;/dev/null 2&gt;&amp;1 &amp;&amp; [[ $- == *i* ]]; then
+  fastfetch
+fi
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
