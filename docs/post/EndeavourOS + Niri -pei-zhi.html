@@ -19,6 +19,7 @@
 ## niri本体
 ```sh
 yay -S niri
+niri --version # 本文编写时, 安装的niri版本为 `niri 25.08 (01be0e6)`, 不同版本的niri配置文件可能略有不同
 ```
 ## 安装其他组件
 ```sh
@@ -38,6 +39,7 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 ## niri本体
 ```sh
 yay -S niri
+niri --version # 本文编写时, 安装的niri版本为 `niri 25.08 (01be0e6)`, 不同版本的niri配置文件可能略有不同
 ```
 ## 安装其他组件
 ```sh
@@ -124,7 +126,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <h1>安装niri</h1>
 <h2>niri本体</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">yay -S niri</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">yay -S niri
+niri --version <span class="pl-c"><span class="pl-c">#</span> 本文编写时, 安装的niri版本为 `niri 25.08 (01be0e6)`, 不同版本的niri配置文件可能略有不同</span></pre></div>
 <h2>安装其他组件</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome</pre></div>
 <h3>软件包功能说明</h3>
@@ -168,7 +171,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td>提供 Font Awesome OpenType 图标字体，可在 Waybar、应用或自定义界面中显示图标。</td>
 </tr>
 </tbody>
-</table></markdown-accessiblity-table></div>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>安装alacritty是为了使用niri默认配置的快捷键<code class="notranslate">super+T</code>来打开其预配置的终端(就是alacritty), 可以根据个人需求替换成其他终端。通过修改<code class="notranslate">~/.config/niri/config/kdl</code>文件中的<code class="notranslate">binds{...}</code>块内部进行替换。</p>
+</blockquote></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

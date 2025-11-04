@@ -7,6 +7,7 @@
 ## niri本体
 ```sh
 yay -S niri
+niri --version # 本文编写时, 安装的niri版本为 `niri 25.08 (01be0e6)`, 不同版本的niri配置文件可能略有不同
 ```
 ## 安装其他组件
 ```sh
@@ -22,3 +23,4 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 | **swaylock** | 锁屏工具 | Wayland 下的屏幕锁定程序，支持图像背景、屏幕模糊和自定义锁屏界面。 |
 | **otf-font-awesome** | 字体图标库 | 提供 Font Awesome OpenType 图标字体，可在 Waybar、应用或自定义界面中显示图标。 |
 
+> 安装alacritty是为了使用niri默认配置的快捷键`super+T`来打开其预配置的终端(就是alacritty), 可以根据个人需求替换成其他终端。通过修改`~/.config/niri/config/kdl`文件中的`binds{...}`块内部进行替换。
