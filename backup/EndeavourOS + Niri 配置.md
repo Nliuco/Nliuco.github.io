@@ -38,15 +38,14 @@ binds {
 ```bash
 warning: foot: Noto Sans CJK JP: font does not appear to be monospace; check your config, or disable this warning by setting [tweak].font-monospace-warn=no
 ```
->> - 安装等宽字体解决警告提示和字体显示
+>> - 根据个人偏好, 安装喜欢的等宽字体解决
 ```bash
 yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji
 ```
 >> - 编辑 `~/.config/foot/foot.ini` 以更换字体
 ```ini
 [main]
-font=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:size=11
-dpi-aware=yes
-pad=5x5
+font=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:size=24
+pad=8x8 # 内边距=水平x垂直
 include=/usr/share/foot/themes/ # 可选, 可配置自定义主题色, 这里使用https://github.com/catppuccin/foot
 ```
