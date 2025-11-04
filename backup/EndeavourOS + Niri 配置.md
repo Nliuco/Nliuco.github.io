@@ -24,13 +24,27 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 | **otf-font-awesome** | 字体图标库 | 提供 Font Awesome OpenType 图标字体，可在 Waybar、应用或自定义界面中显示图标。 |
 
 > 安装`alacritty`是为了使用`niri`默认配置的快捷键`super+T`来打开其预配置的终端(`alacritty`), 可以根据个人需求替换成其他终端。通过修改`~/.config/niri/config.kdl`文件中的`binds{...}`块内部进行替换。
-> 例入, 本文尝试使用`foot`作为默认终端, 编辑上述文件内容
+>
+> 例入, 本文尝试使用`foot`作为默认终端
+> - 编辑上述文件内容
 ```kdl
 binds {
     // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "foot"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
 }
-> mention warning
+> - 然后使用快捷键`super+T`打开的就是`foot`终端了, 但可能字体展示有些异常, 且终端会提示警告。
+> - foot 会检查字体是否为等宽字体（monospace）Noto Sans CJK JP 并不是等宽字体（monospace）
 ```bash
 warning: foot: Noto Sans CJK JP: font does not appear to be monospace; check your config, or disable this warning by setting [tweak].font-monospace-warn=no
+```
+> - 尝试安装等宽字体解决
+```bash
+yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji
+```
+> - 编辑 `~/.config/foot/foot.ini` 以更换字体
+```ini
+[main]
+font=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:size=11
+dpi-aware=yes
+pad=5x5
 ```
