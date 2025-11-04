@@ -30,4 +30,7 @@ binds {
     // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "foot"; }
 }
+> mention warning
+```bash
+warning: foot: Noto Sans CJK JP: font does not appear to be monospace; check your config, or disable this warning by setting [tweak].font-monospace-warn=no
 ```
