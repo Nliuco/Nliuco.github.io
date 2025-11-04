@@ -25,7 +25,7 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 
 > 安装`alacritty`是为了使用`niri`默认配置的快捷键`super+T`来打开其预配置的终端(`alacritty`), 可以根据个人需求替换成其他终端。通过修改`~/.config/niri/config.kdl`文件中的`binds{...}`块内部进行替换。
 > 例入, 本文尝试使用`foot`作为默认终端, 编辑上述文件内容
-```kdl
-    // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "foot"; }
+```kdl-binds
+// Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "foot"; }
 ```
