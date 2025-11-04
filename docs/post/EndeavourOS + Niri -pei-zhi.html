@@ -175,28 +175,39 @@ niri --version <span class="pl-c"><span class="pl-c">#</span> 本文编写时, �
 <blockquote>
 <p>安装<code class="notranslate">alacritty</code>是为了使用<code class="notranslate">niri</code>默认配置的快捷键<code class="notranslate">super+T</code>来打开其预配置的终端(<code class="notranslate">alacritty</code>), 可以根据个人需求替换成其他终端。通过修改<code class="notranslate">~/.config/niri/config.kdl</code>文件中的<code class="notranslate">binds{...}</code>块内部进行替换。</p>
 <p>例入, 本文尝试使用<code class="notranslate">foot</code>作为默认终端</p>
+<blockquote>
 <ul>
 <li>编辑上述文件内容</li>
 </ul>
 </blockquote>
+</blockquote>
 <div class="highlight highlight-source-kdl"><pre class="notranslate"><span class="pl-ent">binds</span> {
     <span class="pl-c">// Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }</span>
 <span class="pl-ent">    Mod+T</span> <span class="pl-e">hotkey-overlay-title=</span><span class="pl-s">"Open a Terminal: foot"</span> {<span class="pl-ent"> spawn</span> <span class="pl-s">"foot"</span>; }
-}
-<span class="pl-ent">&gt;</span> <span class="pl-s">-</span> 然后使用快捷键<span class="pl-s">`super+T`</span>打开的就是<span class="pl-s">`foot`</span>终端了<span class="pl-s">,</span> 但可能字体展示有些异常<span class="pl-s">,</span> 且终端会提示警告。
-<span class="pl-ent">&gt;</span> <span class="pl-s">-</span> <span class="pl-s">foot</span> 会检查字体是否为等宽字体（<span class="pl-s">monospace</span>）<span class="pl-s">Noto</span> <span class="pl-s">Sans</span> <span class="pl-s">CJK</span> <span class="pl-s">JP</span> 并不是等宽字体（<span class="pl-s">monospace</span>）
-<span class="pl-ent">```bash</span>
-<span class="pl-ent">warning:</span> <span class="pl-s">foot:</span> <span class="pl-s">Noto</span> <span class="pl-s">Sans</span> <span class="pl-s">CJK</span> <span class="pl-s">JP:</span> <span class="pl-s">font</span> <span class="pl-s">does</span> <span class="pl-s">not</span> <span class="pl-s">appear</span> <span class="pl-s">to</span> <span class="pl-s">be</span> <span class="pl-s">monospace</span>;<span class="pl-ent"> check</span> <span class="pl-s">your</span> <span class="pl-s">config,</span> <span class="pl-s">or</span> <span class="pl-s">disable</span> <span class="pl-s">this</span> <span class="pl-s">warning</span> <span class="pl-s">by</span> <span class="pl-s">setting</span> [<span class="pl-s">tweak</span>]<span class="pl-e">.font-monospace-warn=</span><span class="pl-s">no</span></pre></div>
+}</pre></div>
+<blockquote>
+<blockquote>
+<ul>
+<li>然后使用快捷键<code class="notranslate">super+T</code>打开的就是<code class="notranslate">foot</code>终端了, 但可能字体展示有些异常, 且终端会提示警告。</li>
+<li>foot 会检查字体是否为等宽字体（monospace）Noto Sans CJK JP 并不是等宽字体（monospace）</li>
+</ul>
+</blockquote>
+</blockquote>
+<div class="highlight highlight-source-shell"><pre class="notranslate">warning: foot: Noto Sans CJK JP: font does not appear to be monospace<span class="pl-k">;</span> check your config, or disable this warning by setting [tweak].font-monospace-warn=no</pre></div>
+<blockquote>
 <blockquote>
 <ul>
 <li>尝试安装等宽字体解决</li>
 </ul>
 </blockquote>
+</blockquote>
 <div class="highlight highlight-source-shell"><pre class="notranslate">yay -S ttf-sarasa-gothic ttf-jetbrains-mono noto-fonts-emoji</pre></div>
+<blockquote>
 <blockquote>
 <ul>
 <li>编辑 <code class="notranslate">~/.config/foot/foot.ini</code> 以更换字体</li>
 </ul>
+</blockquote>
 </blockquote>
 <div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[main]</span>
 <span class="pl-k">font</span>=JetBrains Mono, Sarasa Mono SC, Noto Sans Mono CJK SC:<span class="pl-k">size</span>=11
