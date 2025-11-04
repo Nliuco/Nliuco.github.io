@@ -7,7 +7,7 @@
 ## niri本体
 ```sh
 yay -S niri
-niri --version # 本文编写时, 安装的niri版本为 `niri 25.08 (01be0e6)`, 不同版本的niri配置文件可能略有不同
+niri --version # 本文编写时, 安装的niri版本为 "niri 25.08 (01be0e6)" , 不同版本的niri配置文件可能略有不同
 ```
 ## 安装其他组件
 ```sh
