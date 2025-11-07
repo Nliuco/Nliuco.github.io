@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Nliuco</title><link>https://Nliuco.github.io</link><description>Free, frolic, flipped and then fade, that is the fate I forge.</description><copyright>Nliuco</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>https://Nliuco.github.io</link></image><lastBuildDate>Tue, 04 Nov 2025 10:28:52 +0000</lastBuildDate><managingEditor>Nliuco</managingEditor><ttl>60</ttl><webMaster>Nliuco</webMaster><item><title>EndeavourOS + Niri 配置</title><link>https://Nliuco.github.io/post/EndeavourOS%20%2B%20Niri%20-pei-zhi.html</link><description># 安装EndeavourOS 
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Nliuco</title><link>https://Nliuco.github.io</link><description>Free, frolic, flipped and then fade, that is the fate I forge.</description><copyright>Nliuco</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>https://Nliuco.github.io</link></image><lastBuildDate>Fri, 07 Nov 2025 02:14:36 +0000</lastBuildDate><managingEditor>Nliuco</managingEditor><ttl>60</ttl><webMaster>Nliuco</webMaster><item><title>IntelliJ IDEA Community vs IntelliJ IDEA Ultimate 真实体验报告</title><link>https://Nliuco.github.io/post/IntelliJ%20IDEA%20Community%20vs%20IntelliJ%20IDEA%20Ultimate%20-zhen-shi-ti-yan-bao-gao.html</link><description># [官方文档差异](https://www.jetbrains.com/zh-cn/products/compare/?product=idea-ce&amp;product=idea)
+
+# 安装直接导入无限版设置，插件
+
+# 无法使用JPA Buddy
+
+# springboot 相关功能支持不同
+
+# 无法连接数据库 k8s
+
+。</description><guid isPermaLink="true">https://Nliuco.github.io/post/IntelliJ%20IDEA%20Community%20vs%20IntelliJ%20IDEA%20Ultimate%20-zhen-shi-ti-yan-bao-gao.html</guid><pubDate>Fri, 07 Nov 2025 02:14:04 +0000</pubDate></item><item><title>EndeavourOS + Niri 配置</title><link>https://Nliuco.github.io/post/EndeavourOS%20%2B%20Niri%20-pei-zhi.html</link><description># 安装EndeavourOS 
 
 - 安装前要记得更改镜像源, 且确认yay已配置可用, EndevourOS一般默认支持.
 - 安装后记得 `sudo pacman -S timeshift` 备份系统, 无脑下一步就好, 然后cteate一下
