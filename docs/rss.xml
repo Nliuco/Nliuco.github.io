@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdng.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdng.org</link></image><lastBuildDate>Tue, 11 Nov 2025 15:49:00 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>IntelliJ IDEA Community vs IntelliJ IDEA Ultimate 真实体验报告</title><link>http://blog.pianone.dpdng.org/post/IntelliJ%20IDEA%20Community%20vs%20IntelliJ%20IDEA%20Ultimate%20-zhen-shi-ti-yan-bao-gao.html</link><description># [官方文档差异](https://www.jetbrains.com/zh-cn/products/compare/?product=idea-ce&amp;product=idea)
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 11 Nov 2025 16:05:25 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>IntelliJ IDEA Community vs IntelliJ IDEA Ultimate 真实体验报告</title><link>http://blog.pianone.dpdns.org/post/IntelliJ%20IDEA%20Community%20vs%20IntelliJ%20IDEA%20Ultimate%20-zhen-shi-ti-yan-bao-gao.html</link><description># [官方文档差异](https://www.jetbrains.com/zh-cn/products/compare/?product=idea-ce&amp;product=idea)
 
 # 安装直接导入无限版设置，插件
 
@@ -9,7 +9,7 @@
 
 # 无法连接数据库 k8s
 
-。</description><guid isPermaLink="true">http://blog.pianone.dpdng.org/post/IntelliJ%20IDEA%20Community%20vs%20IntelliJ%20IDEA%20Ultimate%20-zhen-shi-ti-yan-bao-gao.html</guid><pubDate>Fri, 07 Nov 2025 02:14:04 +0000</pubDate></item><item><title>EndeavourOS + Niri 配置</title><link>http://blog.pianone.dpdng.org/post/EndeavourOS%20%2B%20Niri%20-pei-zhi.html</link><description># 安装EndeavourOS 
+。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/IntelliJ%20IDEA%20Community%20vs%20IntelliJ%20IDEA%20Ultimate%20-zhen-shi-ti-yan-bao-gao.html</guid><pubDate>Fri, 07 Nov 2025 02:14:04 +0000</pubDate></item><item><title>EndeavourOS + Niri 配置</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20%2B%20Niri%20-pei-zhi.html</link><description># 安装EndeavourOS 
 
 - 安装前要记得更改镜像源, 且确认yay已配置可用, EndevourOS一般默认支持.
 - 安装后记得 `sudo pacman -S timeshift` 备份系统, 无脑下一步就好, 然后cteate一下
@@ -27,7 +27,7 @@ sudo pacman -S alacritty fuzzel waybar swaybg swaylock otf-font-awesome
 ### 软件包功能说明
 | 包名 | 主要功能 | 说明 |
 |------|-----------|------|
-| **alacritty** | 终端模拟器 | 高性能 GPU 加速的跨平台终端，启动快、渲染流畅，适合日常开发和 Wayland 桌面环境使用。</description><guid isPermaLink="true">http://blog.pianone.dpdng.org/post/EndeavourOS%20%2B%20Niri%20-pei-zhi.html</guid><pubDate>Mon, 03 Nov 2025 06:23:51 +0000</pubDate></item><item><title>EndeavourOS + Niri - 更换SDDM</title><link>http://blog.pianone.dpdng.org/post/EndeavourOS%20%2B%20Niri%20-%20-geng-huan-SDDM.html</link><description># 安装EndeavourOS 
+| **alacritty** | 终端模拟器 | 高性能 GPU 加速的跨平台终端，启动快、渲染流畅，适合日常开发和 Wayland 桌面环境使用。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS%20%2B%20Niri%20-pei-zhi.html</guid><pubDate>Mon, 03 Nov 2025 06:23:51 +0000</pubDate></item><item><title>EndeavourOS + Niri - 更换SDDM</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20%2B%20Niri%20-%20-geng-huan-SDDM.html</link><description># 安装EndeavourOS 
 
 - 安装前要记得更改镜像源
 - 安装后记得 `sudo pacman -S timeshift` 备份系统, 无脑下一步就好, 然后cteate一下
@@ -45,10 +45,10 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 ### 软件包功能说明
 | 包名 | 主要功能 | 说明 |
 |------|-----------|------|
-| **waybar** | 状态栏 | 显示时间、电量、音量、网络状态等，类似于 Polybar 的 Wayland 版。</description><guid isPermaLink="true">http://blog.pianone.dpdng.org/post/EndeavourOS%20%2B%20Niri%20-%20-geng-huan-SDDM.html</guid><pubDate>Mon, 03 Nov 2025 03:02:42 +0000</pubDate></item><item><title>Scoop 工具使用技巧</title><link>http://blog.pianone.dpdng.org/post/Scoop%20-gong-ju-shi-yong-ji-qiao.html</link><description>转载跳转
+| **waybar** | 状态栏 | 显示时间、电量、音量、网络状态等，类似于 Polybar 的 Wayland 版。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS%20%2B%20Niri%20-%20-geng-huan-SDDM.html</guid><pubDate>Mon, 03 Nov 2025 03:02:42 +0000</pubDate></item><item><title>Scoop 工具使用技巧</title><link>http://blog.pianone.dpdns.org/post/Scoop%20-gong-ju-shi-yong-ji-qiao.html</link><description>转载跳转
 ```url
 https://blog.cikaros.top/doc/b459711d.html#Buckets-json
-```。</description><guid isPermaLink="true">http://blog.pianone.dpdng.org/post/Scoop%20-gong-ju-shi-yong-ji-qiao.html</guid><pubDate>Thu, 02 Oct 2025 14:32:06 +0000</pubDate></item><item><title>Vim光标操作与快捷键的终极指南</title><link>http://blog.pianone.dpdng.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</link><description>`Gmeek-html&lt;img src='https://nliuco.github.io/1.vim.png'&gt;`
+```。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Scoop%20-gong-ju-shi-yong-ji-qiao.html</guid><pubDate>Thu, 02 Oct 2025 14:32:06 +0000</pubDate></item><item><title>Vim光标操作与快捷键的终极指南</title><link>http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</link><description>`Gmeek-html&lt;img src='https://nliuco.github.io/1.vim.png'&gt;`
 
 ## 写在前面
 &gt; 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. 
@@ -119,4 +119,4 @@ https://blog.cikaros.top/doc/b459711d.html#Buckets-json
 |     跳转到文件底部     |     `G`      |         `Ctrl` + `End`         |
 | 跳转到上一次编辑的位置 |     ```      |        通常无对应快捷键        |
 
-。</description><guid isPermaLink="true">http://blog.pianone.dpdng.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</guid><pubDate>Mon, 01 Jul 2024 09:37:44 +0000</pubDate></item></channel></rss>
+。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</guid><pubDate>Mon, 01 Jul 2024 09:37:44 +0000</pubDate></item></channel></rss>
