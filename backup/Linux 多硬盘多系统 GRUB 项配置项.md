@@ -31,47 +31,52 @@ GRUB_TIMEOUT_STYLE=menu # 显示菜单 - 一般情况EndeavourOS为menu, 无需�
 ```vim
 
 ```
-> [!NOTE]
-> 若配置完`记住上一次启动的系统`且 `更新 GRUB` 后 依旧不生效
-> - 解决办法-1、启用`os-prober` (个人配置推荐, 官方文档中不推荐)
->> 确保`os-prober`已安装
->> ```bash
->> # 输出非`error: package 'os-prober' was not found`字样, 而是软件包信息则表示已安装
->> pacman -Qi os-prober
->> ```
->> 在`/etc/default/grub`保证以下行启用(没有被注释)
->> ```vim
->> GRUB_DISABLE_OS_PROBER=false
->> ```
-> - 解决办法-2、自定义用户启动项
->> 尝试编辑`40_custom`, 文件末尾添加
->> ```bash
->> menuentry <你的系统在GRUB显示的名字, 例如Windows Boot Manager (Custom)> --class windows --class os {
->>     savedefault
->>     insmod part_gpt
->>     insmod fat
->>     search --no-floppy --fs-uuid --set=root <你的Windows分区UUID>
->>     chainloader /EFI/Microsoft/Boot/bootmgfw.efi
->> }
->> ```
->> 可以通过以下命令查询Windows分区UUID, 例如
->> ```bash
->> lsblk -f
->>```
->> 输出以下内容, 其中`nvme1n1p1`是我安装Windows的硬盘, 对应的分区UUID为`BC83-5841`
->> ```bash
->> NAME        FSTYPE FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
->> nvme0n1                                                                                  
->> ├─nvme0n1p1 vfat   FAT32             BFE4-72E8                                 2G     0% /boot/efi
->> └─nvme0n1p2 ext4   1.0   endeavouros 881aa179-db4f-4240-b151-ac67f02dbb47  413.7G     4% /
->> nvme1n1                                                                                  
->> ├─nvme1n1p1 vfat   FAT32             BC83-5841                                           
->> ├─nvme1n1p2                                                                              
->> ├─nvme1n1p3 ntfs                     C05884BF5884B5A6                                    
->> └─nvme1n1p4 ntfs                     F29CA6EF9CA6AD93           
-
-
 ### 2.3 更新 GRUB
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+reboot # 可选, 立即重启生效
 ```
+
+### 3.常见问题
+> [!NOTE]
+> 若`更新 GRUB`后无问题, 下文可选择性阅读
+#### 若配置完`记住上一次启动的系统`且 `更新 GRUB` 后 依旧不生效
+- 解决办法-1、启用`os-prober` (个人配置推荐, 官方文档中不推荐)
+> 确保`os-prober`已安装
+> ```bash
+> # 输出非`error: package 'os-prober' was not found`字样, 而是软件包信息则表示已安装
+> pacman -Qi os-prober
+> ```
+> 在`/etc/default/grub`保证以下行启用(没有被注释)
+> ```vim
+> GRUB_DISABLE_OS_PROBER=false
+> ```
+- 解决办法-2、自定义用户启动项
+> 尝试编辑`40_custom`, 文件末尾添加
+> ```bash
+> menuentry <你的系统在GRUB显示的名字, 例如Windows Boot Manager (Custom)> --class windows --class os {
+>     savedefault
+>     insmod part_gpt
+>     insmod fat
+>     search --no-floppy --fs-uuid --set=root <你的Windows分区UUID>
+>     chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+> }
+> ```
+> 可以通过以下命令查询Windows分区UUID, 例如
+> ```bash
+> lsblk -f
+>```
+> 输出以下内容, 其中`nvme1n1p1`是我安装Windows的硬盘, 对应的分区UUID为`BC83-5841`
+> ```bash
+> NAME        FSTYPE FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+> nvme0n1                                                                                  
+> ├─nvme0n1p1 vfat   FAT32             BFE4-72E8                                 2G     0% /boot/efi
+> └─nvme0n1p2 ext4   1.0   endeavouros 881aa179-db4f-4240-b151-ac67f02dbb47  413.7G     4% /
+> nvme1n1                                                                                  
+> ├─nvme1n1p1 vfat   FAT32             BC83-5841                                           
+> ├─nvme1n1p2                                                                              
+> ├─nvme1n1p3 ntfs                     C05884BF5884B5A6                                    
+> └─nvme1n1p4 ntfs                     F29CA6EF9CA6AD93           
+
+
+
