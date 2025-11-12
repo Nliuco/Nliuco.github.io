@@ -1,6 +1,6 @@
 # GRUB启动项个人配置记录
 
-本文基于[GRUB配置文档](https://wiki.archlinux.org.cn/title/GRUB)、[GRUB/技巧与提示](https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks). 提取出个人需要的部分做配置记录
+本文基于arch社区文档[GRUB配置文档](https://wiki.archlinux.org.cn/title/GRUB)、[GRUB/技巧与提示](https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks). 提取出个人需要的部分做配置记录
 
 ## 1. 系统硬盘情况
 - 硬盘 1：500GB，Linux 安装( EndeavourOS )
@@ -24,13 +24,11 @@
 GRUB_DEFAULT=saved      # 上一次启动的系统
 GRUB_SAVEDEFAULT=true   # 自动保存最后一次启动项
 GRUB_TIMEOUT=3         # 等待 3 秒
-GRUB_TIMEOUT_STYLE=menu # 显示菜单 - 一般情况EndeavourOS为menu, 无需修改
+GRUB_TIMEOUT_STYLE=menu # 显示菜单
 ```
 #### 可选配置
-设置主题
-```vim
+设置主题, 可以去[Gnome-look](https://www.gnome-look.org/browse?cat=109&ord=latest)获取GRUB主题, 根据主题项目说明, 一般会写明安装流程, 以下以 `某主题为例`
 
-```
 ### 2.3 更新 GRUB
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
