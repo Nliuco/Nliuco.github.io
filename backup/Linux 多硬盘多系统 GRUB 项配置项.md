@@ -40,7 +40,22 @@ reboot # 可选, 立即重启生效
 ## 3.常见问题
 > [!NOTE]
 > 若`更新 GRUB`后无问题, 下文可选择性阅读
-### 配置完不生效
+
+### 3.1 配置后发现多个相同/类似启动项
+- 由于`EndeavourOS`内置了脚本`45_eos_windows`, 导致 'os-prober' 与该脚本冲突添加了系统启动项(本例为windows), 只需要将脚本执行权限禁用即可
+```bash
+ls -ll /etc/grub.d/ # 查看这个目录下有没有什么eos前缀的脚本
+....
+-rw-r--r-x 1 root root   286 11月 3日 10:11 45_eos_windows # 可以发现这个脚本可执行, 禁用之
+```
+```bash
+sudo chmod -x /etc/grub.d/45_eos_windows
+ls -ll /etc/grub.d/
+....
+-rw-r--r-- 1 root root   286 11月 3日 10:11 45_eos_windows # 再次查看, 确保已禁用
+```
+
+### 3.2配置完不生效
 - 解决办法-1、启用`os-prober` (个人配置推荐, 官方文档中不推荐)
 > 确保`os-prober`已安装
 > ```bash
@@ -51,7 +66,7 @@ reboot # 可选, 立即重启生效
 > ```vim
 > GRUB_DISABLE_OS_PROBER=false
 > ```
-- 解决办法-2、自定义用户启动项
+- 解决办法-2、自定义用户启动项 (不建议, 需要手动管理)
 > 尝试编辑`40_custom`, 文件末尾添加
 > ```bash
 > menuentry <你的系统在GRUB显示的名字, 例如Windows Boot Manager (Custom)> --class windows --class os {
