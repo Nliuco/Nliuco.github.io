@@ -37,10 +37,10 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 reboot # 可选, 立即重启生效
 ```
 
-### 3.常见问题
+## 3.常见问题
 > [!NOTE]
 > 若`更新 GRUB`后无问题, 下文可选择性阅读
-#### 配置完不生效
+### 配置完不生效
 - 解决办法-1、启用`os-prober` (个人配置推荐, 官方文档中不推荐)
 > 确保`os-prober`已安装
 > ```bash
