@@ -126,7 +126,12 @@ GRUB_SAVEDEFAULT<span class="pl-k">=</span>true   # 自动保存最后一次启�
 GRUB_TIMEOUT<span class="pl-k">=</span><span class="pl-c1">3</span>         # 等待 <span class="pl-c1">3</span> 秒
 GRUB_TIMEOUT_STYLE<span class="pl-k">=</span><span class="pl-c1">menu</span> # 显示菜单</pre></div>
 <h4>可选配置</h4>
-<p>设置主题, 可以去<a href="https://www.gnome-look.org/browse?cat=109&amp;ord=latest" rel="nofollow">Gnome-look</a>获取GRUB主题, 根据主题项目说明, 一般会写明安装流程, 以下以 <code class="notranslate">某主题为例</code></p>
+<p>设置主题, 可以去<a href="https://www.gnome-look.org/browse?cat=109&amp;ord=latest" rel="nofollow">Gnome-look</a>获取GRUB主题, 根据主题项目说明, 一般会写明安装流程, 以下以 <code class="notranslate">Elegant-forest</code> 主题为例</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 解压下载好的主题文件</span>
+tar -xvf Elegant-forest-window-grub-themes.tar.xz</pre></div>
+<p>选择一个喜欢的主题, 进入目录会有 <code class="notranslate">install.sh</code> 安装文件, 执行安装即可</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo sh ./install.sh</pre></div>
+<p>一般带安装脚本的主题会自动<code class="notranslate">更新 GRUB</code>, 只需要重启就能生效, 就不需要进行手动更新了</p>
 <h3>2.3 更新 GRUB</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo grub-mkconfig -o /boot/grub/grub.cfg
 reboot <span class="pl-c"><span class="pl-c">#</span> 可选, 立即重启生效</span></pre></div>

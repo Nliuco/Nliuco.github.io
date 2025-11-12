@@ -27,7 +27,16 @@ GRUB_TIMEOUT=3         # 等待 3 秒
 GRUB_TIMEOUT_STYLE=menu # 显示菜单
 ```
 #### 可选配置
-设置主题, 可以去[Gnome-look](https://www.gnome-look.org/browse?cat=109&ord=latest)获取GRUB主题, 根据主题项目说明, 一般会写明安装流程, 以下以 `某主题为例`
+设置主题, 可以去[Gnome-look](https://www.gnome-look.org/browse?cat=109&ord=latest)获取GRUB主题, 根据主题项目说明, 一般会写明安装流程, 以下以 `Elegant-forest` 主题为例
+```bash
+# 解压下载好的主题文件
+tar -xvf Elegant-forest-window-grub-themes.tar.xz
+```
+选择一个喜欢的主题, 进入目录会有 `install.sh` 安装文件, 执行安装即可
+```bash
+sudo sh ./install.sh
+```
+一般带安装脚本的主题会自动`更新 GRUB`, 只需要重启就能生效, 就不需要进行手动更新了
 
 ### 2.3 更新 GRUB
 ```bash
