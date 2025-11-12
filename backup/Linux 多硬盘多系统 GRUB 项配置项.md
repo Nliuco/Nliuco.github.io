@@ -41,7 +41,7 @@ reboot # 可选, 立即重启生效
 > [!NOTE]
 > 若`更新 GRUB`后无问题, 下文可选择性阅读
 #### 配置完不生效
-##### - 解决办法-1、启用`os-prober` (个人配置推荐, 官方文档中不推荐)
+- 解决办法-1、启用`os-prober` (个人配置推荐, 官方文档中不推荐)
 > 确保`os-prober`已安装
 > ```bash
 > # 输出非`error: package 'os-prober' was not found`字样, 而是软件包信息则表示已安装
@@ -51,7 +51,7 @@ reboot # 可选, 立即重启生效
 > ```vim
 > GRUB_DISABLE_OS_PROBER=false
 > ```
-##### - 解决办法-2、自定义用户启动项
+- 解决办法-2、自定义用户启动项
 > 尝试编辑`40_custom`, 文件末尾添加
 > ```bash
 > menuentry <你的系统在GRUB显示的名字, 例如Windows Boot Manager (Custom)> --class windows --class os {
