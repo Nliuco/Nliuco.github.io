@@ -46,7 +46,7 @@ GRUB_TIMEOUT_STYLE=menu # 显示菜单 - 一般情况EndeavourOS为menu, 无需�
 > ```bash
 > lsblk -f
 >```
-> 输出以下内容, 其中nvme1n1p1是我安装Windows的硬盘, 对应的分区UUID为BC83-5841
+> 输出以下内容, 其中nvme1n1p1是我安装Windows的硬盘, 对应的分区UUID为`BC83-5841`
 > ```bash
 > NAME        FSTYPE FSVER LABEL       UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
 > nvme0n1                                                                                  
