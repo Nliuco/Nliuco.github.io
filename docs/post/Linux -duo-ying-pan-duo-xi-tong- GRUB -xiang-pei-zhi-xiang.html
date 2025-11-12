@@ -12,22 +12,22 @@
     </script>
 <meta name="description" content="# GRUB启动项个人配置记录
 
-本文基于[GRUB官方文档](https://wiki.archlinux.org.cn/title/GRUB)、[GRUB/技巧与提示](https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks). 提取出个人需要的部分做配置记录
+本文基于[GRUB配置文档](https://wiki.archlinux.org.cn/title/GRUB)、[GRUB/技巧与提示](https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks). 提取出个人需要的部分做配置记录
 
 ## 1. 系统硬盘情况
-- 硬盘 1：500GB，Linux 安装
-- 硬盘 2：256GB，Windows 安装
+- 硬盘 1：500GB，Linux 安装( EndeavourOS )
+- 硬盘 2：256GB，Windows 安装( Windows 10 )
 
 > [!TIP]
 > 说明：在多硬盘多系统环境下，GRUB 推荐安装在 Linux 系统所在硬盘的 EFI 分区或者 MBR 上，以便管理所有系统启动项。">
 <meta property="og:title" content="Linux 多硬盘多系统 GRUB 项配置项">
 <meta property="og:description" content="# GRUB启动项个人配置记录
 
-本文基于[GRUB官方文档](https://wiki.archlinux.org.cn/title/GRUB)、[GRUB/技巧与提示](https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks). 提取出个人需要的部分做配置记录
+本文基于[GRUB配置文档](https://wiki.archlinux.org.cn/title/GRUB)、[GRUB/技巧与提示](https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks). 提取出个人需要的部分做配置记录
 
 ## 1. 系统硬盘情况
-- 硬盘 1：500GB，Linux 安装
-- 硬盘 2：256GB，Windows 安装
+- 硬盘 1：500GB，Linux 安装( EndeavourOS )
+- 硬盘 2：256GB，Windows 安装( Windows 10 )
 
 > [!TIP]
 > 说明：在多硬盘多系统环境下，GRUB 推荐安装在 Linux 系统所在硬盘的 EFI 分区或者 MBR 上，以便管理所有系统启动项。">
@@ -102,11 +102,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>GRUB启动项个人配置记录</h1>
-<p>本文基于<a href="https://wiki.archlinux.org.cn/title/GRUB" rel="nofollow">GRUB官方文档</a>、<a href="https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks" rel="nofollow">GRUB/技巧与提示</a>. 提取出个人需要的部分做配置记录</p>
+<p>本文基于<a href="https://wiki.archlinux.org.cn/title/GRUB" rel="nofollow">GRUB配置文档</a>、<a href="https://wiki.archlinux.org.cn/title/GRUB/Tips_and_tricks" rel="nofollow">GRUB/技巧与提示</a>. 提取出个人需要的部分做配置记录</p>
 <h2>1. 系统硬盘情况</h2>
 <ul>
-<li>硬盘 1：500GB，Linux 安装</li>
-<li>硬盘 2：256GB，Windows 安装</li>
+<li>硬盘 1：500GB，Linux 安装( EndeavourOS )</li>
+<li>硬盘 2：256GB，Windows 安装( Windows 10 )</li>
 </ul>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>说明：在多硬盘多系统环境下，GRUB 推荐安装在 Linux 系统所在硬盘的 EFI 分区或者 MBR 上，以便管理所有系统启动项。</p>
 </div>
@@ -117,9 +117,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li><code class="notranslate">/etc/grub.d/</code>：各个启动项脚本（Linux 内核、其他操作系统）</li>
 <li><code class="notranslate">/boot/grub/grub.cfg</code>：最终生成的 GRUB 配置文件，不建议手动修改，由 <code class="notranslate">update-grub</code> 自动生成</li>
 </ul>
-<h3>2.2 更新 GRUB</h3>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo update-grub      <span class="pl-c"><span class="pl-c">#</span> Ubuntu/Debian 系列</span>
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg  <span class="pl-c"><span class="pl-c">#</span> CentOS/Fedora</span></pre></div></div>
+<h3>2.3 编辑配置文件</h3>
+<h4>基本配置</h4>
+<p>在 /etc/default/grub 中设置默认启动选项, 等待时间：</p>
+<div class="highlight highlight-source-viml"><pre class="notranslate">GRUB_DEFAULT<span class="pl-k">=</span>saved      # 上一次启动的系统
+GRUB_SAVEDEFAULT<span class="pl-k">=</span>true   # 自动保存最后一次启动项
+GRUB_TIMEOUT<span class="pl-k">=</span><span class="pl-c1">3</span>         # 等待 <span class="pl-c1">3</span> 秒
+GRUB_TIMEOUT_STYLE<span class="pl-k">=</span><span class="pl-c1">menu</span> # 显示菜单 <span class="pl-k">-</span> 一般情况EndeavourOS为<span class="pl-c1">menu</span>, 无需修改</pre></div>
+<h4>可选配置</h4>
+<p>设置主题</p>
+<div class="highlight highlight-source-viml"><pre class="notranslate"></pre></div>
+<h3>2.3 更新 GRUB</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo grub-mkconfig -o /boot/grub/grub.cfg</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
