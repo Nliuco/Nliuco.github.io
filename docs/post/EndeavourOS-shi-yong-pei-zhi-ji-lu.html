@@ -160,11 +160,10 @@ systemctl status bluetooth</pre></div>
 <div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>采用<a href="https://github.com/kchen0x/rime-crane">凇鹤拼音</a> —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。</p>
 </div>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-skin-ori-git
-paru -S rime-ice-git
 <span class="pl-c"><span class="pl-c">#</span> 创建统一保存 git 仓库的目录, 后续可以将不变动位置的项目都放到这里面</span>
 mkdir -p <span class="pl-k">~</span>/.local/share/repos
 git clone https://github.com/kchen0x/rime-crane.git <span class="pl-k">~</span>/.local/share/repos/rime-crane
-rm -rf <span class="pl-k">~</span>/Library/Rime <span class="pl-k">&amp;&amp;</span> ln -sif <span class="pl-k">~</span>/.local/share/repos/rime-crane <span class="pl-k">~</span>/Library/Rime</pre></div></div>
+rm -rf <span class="pl-k">~</span>/.local/share/fcitx5/rime <span class="pl-k">&amp;&amp;</span> ln -sif <span class="pl-k">~</span>/.local/share/repos/rime-crane <span class="pl-k">~</span>/.local/share/fcitx5/rime</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
