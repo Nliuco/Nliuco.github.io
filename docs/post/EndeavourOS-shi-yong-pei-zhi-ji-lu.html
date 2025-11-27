@@ -163,7 +163,9 @@ systemctl status bluetooth</pre></div>
 <span class="pl-c"><span class="pl-c">#</span> 创建统一保存 git 仓库的目录, 后续可以将不变动位置的项目都放到这里面</span>
 mkdir -p <span class="pl-k">~</span>/.local/share/repos
 git clone https://github.com/kchen0x/rime-crane.git <span class="pl-k">~</span>/.local/share/repos/rime-crane
-rm -rf <span class="pl-k">~</span>/.local/share/fcitx5/rime <span class="pl-k">&amp;&amp;</span> ln -sif <span class="pl-k">~</span>/.local/share/repos/rime-crane <span class="pl-k">~</span>/.local/share/fcitx5/rime</pre></div></div>
+rm -rf <span class="pl-k">~</span>/.local/share/fcitx5/rime <span class="pl-k">&amp;&amp;</span> ln -sif <span class="pl-k">~</span>/.local/share/repos/rime-crane <span class="pl-k">~</span>/.local/share/fcitx5/rime
+<span class="pl-c"><span class="pl-c">#</span> 编辑配置文件, 是其他应用内程序可识别Fcitx5中文输入</span>
+sudo vim .pam_environment</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

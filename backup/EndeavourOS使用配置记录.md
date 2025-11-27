@@ -31,4 +31,6 @@ sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-skin-ori-git
 mkdir -p ~/.local/share/repos
 git clone https://github.com/kchen0x/rime-crane.git ~/.local/share/repos/rime-crane
 rm -rf ~/.local/share/fcitx5/rime && ln -sif ~/.local/share/repos/rime-crane ~/.local/share/fcitx5/rime
+# 编辑配置文件, 是其他应用内程序可识别Fcitx5中文输入
+sudo vim .pam_environment
 ```
