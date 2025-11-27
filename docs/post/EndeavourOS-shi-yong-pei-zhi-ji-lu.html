@@ -12,25 +12,33 @@
     </script>
 <meta name="description" content="# EndeavourOS使用过程中遇到的问题
 ## 服务不可用
-### 1. 蓝牙无法正常打开, 需要安装额外包
-- 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用
+### 1. 蓝牙无法正常打开
+- 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用, 亦或是需要安装额外包
 ```bash
 systemctl status bluetooth.service # 状态
 sudo pacman -S bluez bluez-utils
 sudo systemctl enable --now bluetooth.service
 systemctl status bluetooth
-```。">
+```
+### 2. 输入法不自带中文输入
+- 安装rime, 根据个人使用习惯,  配置小鹤双拼输入
+> [!NOTE]
+> 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。">
 <meta property="og:title" content="EndeavourOS使用配置记录">
 <meta property="og:description" content="# EndeavourOS使用过程中遇到的问题
 ## 服务不可用
-### 1. 蓝牙无法正常打开, 需要安装额外包
-- 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用
+### 1. 蓝牙无法正常打开
+- 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用, 亦或是需要安装额外包
 ```bash
 systemctl status bluetooth.service # 状态
 sudo pacman -S bluez bluez-utils
 sudo systemctl enable --now bluetooth.service
 systemctl status bluetooth
-```。">
+```
+### 2. 输入法不自带中文输入
+- 安装rime, 根据个人使用习惯,  配置小鹤双拼输入
+> [!NOTE]
+> 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
@@ -71,7 +79,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     font-size: 12px;
 }
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style>
 
 
 
@@ -103,14 +111,20 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>EndeavourOS使用过程中遇到的问题</h1>
 <h2>服务不可用</h2>
-<h3>1. 蓝牙无法正常打开, 需要安装额外包</h3>
+<h3>1. 蓝牙无法正常打开</h3>
 <ul>
-<li>先查看蓝牙服务是否正常启用, 尝试使用<code class="notranslate">systemctl</code>重新启用</li>
+<li>先查看蓝牙服务是否正常启用, 尝试使用<code class="notranslate">systemctl</code>重新启用, 亦或是需要安装额外包</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">systemctl status bluetooth.service <span class="pl-c"><span class="pl-c">#</span> 状态</span>
 sudo pacman -S bluez bluez-utils
 sudo systemctl <span class="pl-c1">enable</span> --now bluetooth.service
-systemctl status bluetooth</pre></div></div>
+systemctl status bluetooth</pre></div>
+<h3>2. 输入法不自带中文输入</h3>
+<ul>
+<li>安装rime, 根据个人使用习惯,  配置小鹤双拼输入</li>
+</ul>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>采用<a href="https://github.com/kchen0x/rime-crane">凇鹤拼音</a> —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。</p>
+</div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
