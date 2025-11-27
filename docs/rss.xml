@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Thu, 27 Nov 2025 03:31:33 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description># EndeavourOS使用过程中遇到的问题
-## git拉取慢
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Thu, 27 Nov 2025 03:33:07 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description># EndeavourOS使用过程中遇到的问题
+## 0. git拉取慢
 - 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
 ```bash
 git config --global http.proxy http://127.0.0.1:7897

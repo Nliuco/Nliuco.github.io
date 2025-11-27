@@ -1,5 +1,5 @@
 # EndeavourOS使用过程中遇到的问题
-## git拉取慢
+## 0. git拉取慢
 - 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
 ```bash
 git config --global http.proxy http://127.0.0.1:7897
@@ -26,6 +26,5 @@ yay -S paru
 > [!NOTE]
 > 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。
 ```bash
-sudo pacman -S fcitx5-im fcitx5-chinese-addons
-paru -S fcitx5-skin-ori-git # 输入法主题-可选
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-skin-ori-git
 ```
