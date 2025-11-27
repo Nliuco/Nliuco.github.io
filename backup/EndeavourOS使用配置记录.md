@@ -27,4 +27,9 @@ yay -S paru
 > 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。
 ```bash
 sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-skin-ori-git
+paru -S rime-ice-git
+# 创建统一保存 git 仓库的目录, 后续可以将不变动位置的项目都放到这里面
+mkdir -p ~/.local/share/repos
+git clone https://github.com/kchen0x/rime-crane.git ~/.local/share/repos/rime-crane
+rm -rf ~/Library/Rime && ln -sif ~/.local/share/repos/rime-crane ~/Library/Rime
 ```
