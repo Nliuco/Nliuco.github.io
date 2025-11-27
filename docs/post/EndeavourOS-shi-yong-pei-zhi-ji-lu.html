@@ -11,6 +11,13 @@
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
 <meta name="description" content="# EndeavourOS使用过程中遇到的问题
+## git拉取慢
+- 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
+```bash
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
+```
+
 ## 服务不可用
 ### 1. 蓝牙无法正常打开
 - 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用, 亦或是需要安装额外包
@@ -32,6 +39,13 @@ yay -S paru
 > 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。">
 <meta property="og:title" content="EndeavourOS使用配置记录">
 <meta property="og:description" content="# EndeavourOS使用过程中遇到的问题
+## git拉取慢
+- 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
+```bash
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
+```
+
 ## 服务不可用
 ### 1. 蓝牙无法正常打开
 - 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用, 亦或是需要安装额外包
@@ -122,6 +136,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>EndeavourOS使用过程中遇到的问题</h1>
+<h2>git拉取慢</h2>
+<ul>
+<li>配置本地代理服务器, 我这里使用的clash-verge-rev-bin</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897</pre></div>
 <h2>服务不可用</h2>
 <h3>1. 蓝牙无法正常打开</h3>
 <ul>
