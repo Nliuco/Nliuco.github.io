@@ -1,5 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Sat, 15 Nov 2025 17:58:08 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>Niri 配置 踩坑记录</title><link>http://blog.pianone.dpdns.org/post/Niri%20-pei-zhi-%20-cai-keng-ji-lu.html</link><description>chrome 默认情况下无法走系统代理, 需要编辑 `启动chrome应用参数` , `添加代理服务器`
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Thu, 27 Nov 2025 03:09:31 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description># EndeavourOS使用过程中遇到的问题
+## 服务不可用
+### 1. 蓝牙无法正常打开, 需要安装额外包
+- 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用
+```bash
+systemctl status bluetooth.service # 状态
+sudo pacman -S bluez bluez-utils
+sudo systemctl enable --now bluetooth.service
+systemctl status bluetooth
+```。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</guid><pubDate>Thu, 27 Nov 2025 03:09:02 +0000</pubDate></item><item><title>Niri 配置 踩坑记录</title><link>http://blog.pianone.dpdns.org/post/Niri%20-pei-zhi-%20-cai-keng-ji-lu.html</link><description>chrome 默认情况下无法走系统代理, 需要编辑 `启动chrome应用参数` , `添加代理服务器`
 
 ```bash
 sudo vim /usr/share/applications/google-chrome.desktop
