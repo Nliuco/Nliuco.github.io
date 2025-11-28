@@ -7,7 +7,7 @@
 yay -S paru
 ```
 
-### 2 蓝牙无法正常打开
+### 2. 蓝牙无法正常打开
 - 先查看蓝牙服务是否正常启用, 尝试使用`systemctl`重新启用, 亦或是需要安装额外包
 ```bash
 systemctl status bluetooth.service # 状态
