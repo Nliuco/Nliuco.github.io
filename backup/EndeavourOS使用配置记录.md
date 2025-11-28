@@ -74,9 +74,8 @@ paru -S bibata-cursor-theme-bin # 光标主题
 
 ## 其他
 ### 1. git拉取慢
-- 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
+- 配置本地代理服务器, 我这里使用的[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 ```bash
-paru -S clash-verge-rev-bin
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
