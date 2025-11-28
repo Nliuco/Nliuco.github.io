@@ -42,6 +42,10 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
+```bash
+cd ~/.local/share/fcitx5/rime/
+nano default.custom.yaml
+```
 进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```yaml
 patch:
@@ -54,6 +58,10 @@ patch:
       # 开启逗号句号翻页
       - { when: paging, accept: comma, send: Page_Up }
       - { when: has_menu, accept: period, send: Page_Down }
+```
+重启rime加载刷新配置
+```bash
+
 ```
 ## 常用软件包
 ```bash
