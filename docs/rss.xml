@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 28 Nov 2025 07:30:09 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description>下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 28 Nov 2025 07:33:30 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description>下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 
 ## 服务不可用
 
@@ -35,7 +35,7 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 ```
 &gt; [!NOTE]
-&gt; 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入
+&gt; 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入. 此处给出方案不做赘述.
 &gt; 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</guid><pubDate>Thu, 27 Nov 2025 03:09:02 +0000</pubDate></item><item><title>Niri 配置 踩坑记录</title><link>http://blog.pianone.dpdns.org/post/Niri%20-pei-zhi-%20-cai-keng-ji-lu.html</link><description>chrome 默认情况下无法走系统代理, 需要编辑 `启动chrome应用参数` , `添加代理服务器`
 
 ```bash

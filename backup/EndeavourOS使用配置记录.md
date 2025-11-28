@@ -34,7 +34,7 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 ```
 > [!NOTE]
-> 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入
+> 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入. 此处给出方案不做赘述.
 > 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。
 
 ## 其他
