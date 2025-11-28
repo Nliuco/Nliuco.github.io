@@ -23,11 +23,11 @@ sudo pacman -S fcitx5-im fcitx5-chinese-addons
 paru -S fcitx5-skin-ori-git # 安装皮肤-可选
 
 ```
-为了使其他应用内部正确使用`Fcitx5`, 需要配置一下`/etc/environment`
+- 为了使其他应用内部正确使用`Fcitx5`, 需要配置一下`/etc/environment`
 ```bash
 sudo nano /etc/environment
 ```
-添加以下内容
+- 添加以下内容
 ```
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
