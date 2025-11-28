@@ -239,7 +239,7 @@ nano default.custom.yaml</pre></div>
       - <span class="pl-s">{ when: paging, accept: comma, send: Page_Up }</span>
       - <span class="pl-s">{ when: has_menu, accept: period, send: Page_Down }</span></pre></div>
 <ul>
-<li>重启rime加载刷新配置</li>
+<li>重启后刷新配置</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">fcitx5-remote -r
 reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.</span></pre></div>
@@ -248,14 +248,20 @@ reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下�
 sudo pacman -S clash-verge-rev
 sudo pacman -S wl-clipboard
 sudo pacman -S fuse2 <span class="pl-c"><span class="pl-c">#</span> 正常运行AppImage软件所需库</span>
+yay -S localsend-bin
 paru -S bibata-cursor-theme-bin <span class="pl-c"><span class="pl-c">#</span> 光标主题</span></pre></div>
 <h2>其他</h2>
-<h3>1. git拉取慢</h3>
+<h3>1. <code class="notranslate">git</code>拉取慢</h3>
 <ul>
 <li>配置本地代理服务器, 我这里使用的<a href="https://www.clashverge.dev/install.html#__tabbed_2_3" rel="nofollow">clash-verge-rev</a></li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">git config --global http.proxy http://127.0.0.1:7897
-git config --global https.proxy http://127.0.0.1:7897</pre></div></div>
+git config --global https.proxy http://127.0.0.1:7897</pre></div>
+<h3>2. <code class="notranslate">localsend</code>无法被其他设备发现</h3>
+<p>需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 53317/tcp
+sudo ufw allow 53317/udp
+sudo ufw reload</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

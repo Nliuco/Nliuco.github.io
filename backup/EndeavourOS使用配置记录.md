@@ -58,7 +58,7 @@ patch:
       - { when: paging, accept: comma, send: Page_Up }
       - { when: has_menu, accept: period, send: Page_Down }
 ```
-- 重启rime加载刷新配置
+- 重启后刷新配置
 ```bash
 fcitx5-remote -r
 reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.
@@ -69,14 +69,21 @@ sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
 sudo pacman -S wl-clipboard
 sudo pacman -S fuse2 # 正常运行AppImage软件所需库
+yay -S localsend-bin
 paru -S bibata-cursor-theme-bin # 光标主题
 ```
 
 ## 其他
-### 1. git拉取慢
+### 1. `git`拉取慢
 - 配置本地代理服务器, 我这里使用的[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 ```bash
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
-
+### 2. `localsend`无法被其他设备发现
+需要配置本地防火墙，开放`TCP/UDP`端口
+```bash
+sudo ufw allow 53317/tcp
+sudo ufw allow 53317/udp
+sudo ufw reload
+```
