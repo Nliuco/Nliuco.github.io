@@ -1,4 +1,6 @@
 # EndeavourOS使用过程中遇到的问题
+下文中涉及到的部分文档[Arch Fcitx5](https://wiki.archlinux.org/title/Fcitx5)
+
 ## 0. git拉取慢
 - 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
 ```bash
@@ -27,11 +29,8 @@ yay -S paru
 > 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。
 ```bash
 sudo pacman -S fcitx5-im fcitx5-chinese-addons
-paru -S fcitx5-skin-ori-git # 皮肤可选
-# 创建统一保存 git 仓库的目录, 后续可以将不变动位置的项目都放到这里面
-mkdir -p ~/.local/share/repos
-git clone https://github.com/kchen0x/rime-crane.git ~/.local/share/repos/rime-crane
-rm -rf ~/.local/share/fcitx5/rime && ln -sif ~/.local/share/repos/rime-crane ~/.local/share/fcitx5/rime
+paru -S fcitx5-skin-ori-git # 安装皮肤-可选
+
 ```
 为了使其他应用内部正确使用`Fcitx5`, 需要配置一下`/etc/environment`
 ```bash
