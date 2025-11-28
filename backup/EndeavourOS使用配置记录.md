@@ -42,7 +42,7 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
-进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
+- 进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```bash
 cd ~/.local/share/fcitx5/rime/
 nano default.custom.yaml
@@ -59,7 +59,7 @@ patch:
       - { when: paging, accept: comma, send: Page_Up }
       - { when: has_menu, accept: period, send: Page_Down }
 ```
-重启rime加载刷新配置
+- 重启rime加载刷新配置
 ```bash
 fcitx5-remote -r
 reboot # 没生效就重启一下系统

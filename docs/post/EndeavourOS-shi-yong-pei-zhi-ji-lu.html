@@ -54,7 +54,7 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
-进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
+- 进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```bash
 cd ~/.local/share/fcitx5/rime/
 nano default.custom.yaml
@@ -109,7 +109,7 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
-进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
+- 进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```bash
 cd ~/.local/share/fcitx5/rime/
 nano default.custom.yaml
@@ -226,7 +226,9 @@ XMODIFIERS=@im=fcitx
 sudo pacman -S fcitx5-rime
 <span class="pl-c"><span class="pl-c">#</span> 雾凇拼音方案</span>
 paru -S rime-ice-git</pre></div>
-<p>进入<code class="notranslate">~/.local/share/fcitx5/rime/</code>目录，创建配置<code class="notranslate">default.custom.yaml</code>，配置输入方案</p>
+<ul>
+<li>进入<code class="notranslate">~/.local/share/fcitx5/rime/</code>目录，创建配置<code class="notranslate">default.custom.yaml</code>，配置输入方案</li>
+</ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-k">~</span>/.local/share/fcitx5/rime/
 nano default.custom.yaml</pre></div>
 <div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">patch</span>:
@@ -239,7 +241,9 @@ nano default.custom.yaml</pre></div>
       <span class="pl-c"><span class="pl-c">#</span> 开启逗号句号翻页</span>
       - <span class="pl-s">{ when: paging, accept: comma, send: Page_Up }</span>
       - <span class="pl-s">{ when: has_menu, accept: period, send: Page_Down }</span></pre></div>
-<p>重启rime加载刷新配置</p>
+<ul>
+<li>重启rime加载刷新配置</li>
+</ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">fcitx5-remote -r
 reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下系统</span></pre></div>
 <h2>常用软件包</h2>
