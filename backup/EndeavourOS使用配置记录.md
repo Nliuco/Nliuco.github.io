@@ -41,6 +41,7 @@ XMODIFIERS=@im=fcitx
 ```bash
 sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
+sudo pacman -S wl-clipboard
 ```
 
 ## 其他
