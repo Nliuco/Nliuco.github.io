@@ -1,4 +1,4 @@
-下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
+下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[Arch Wiki Rime](https://wiki.archlinux.org/title/Rime)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 
 ## 服务不可用
 
@@ -61,7 +61,7 @@ patch:
 ```
 重启rime加载刷新配置
 ```bash
-
+rm ~/.local/share/fcitx5/rime/default.yaml && fcitx5-remote -r
 ```
 ## 常用软件包
 ```bash
