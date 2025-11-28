@@ -41,6 +41,7 @@ XMODIFIERS=@im=fcitx
 ### 1. git拉取慢
 - 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
 ```bash
+paru -S clash-verge-rev-bin
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
