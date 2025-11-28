@@ -42,6 +42,7 @@ XMODIFIERS=@im=fcitx
 sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
 sudo pacman -S wl-clipboard
+paru -S bibata-cursor-theme-bin # 光标主题
 ```
 
 ## 其他
