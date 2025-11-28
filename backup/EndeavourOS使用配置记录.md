@@ -68,6 +68,7 @@ reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新
 sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
 sudo pacman -S wl-clipboard
+sudo pacman -S fuse2 # 正常运行AppImage软件所需库
 paru -S bibata-cursor-theme-bin # 光标主题
 ```
 
