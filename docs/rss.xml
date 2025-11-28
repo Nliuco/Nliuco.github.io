@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 28 Nov 2025 20:02:19 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description>下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[Arch Wiki Rime](https://wiki.archlinux.org/title/Rime)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 28 Nov 2025 20:05:03 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description>下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[Arch Wiki Rime](https://wiki.archlinux.org/title/Rime)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 
 ## 服务不可用
 
@@ -43,11 +43,11 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
+进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```bash
 cd ~/.local/share/fcitx5/rime/
 nano default.custom.yaml
 ```
-进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```yaml
 patch:
   # 仅使用「雾凇拼音」的默认配置，配置此行即可

@@ -42,11 +42,11 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
+进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```bash
 cd ~/.local/share/fcitx5/rime/
 nano default.custom.yaml
 ```
-进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
 ```yaml
 patch:
   # 仅使用「雾凇拼音」的默认配置，配置此行即可
@@ -61,7 +61,8 @@ patch:
 ```
 重启rime加载刷新配置
 ```bash
-rm ~/.local/share/fcitx5/rime/default.yaml && fcitx5-remote -r
+fcitx5-remote -r
+reboot # 没生效就重启一下系统
 ```
 ## 常用软件包
 ```bash
