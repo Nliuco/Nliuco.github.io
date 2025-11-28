@@ -54,25 +54,12 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
-
-## 常用软件包
-```bash
-sudo pacman -S timeshift
-sudo pacman -S clash-verge-rev
-sudo pacman -S wl-clipboard
-paru -S bibata-cursor-theme-bin # 光标主题
-```
-
-## 其他
-### 1. git拉取慢
-- 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
-```bash
-paru -S clash-verge-rev-bin
-git config --global http.proxy http://127.0.0.1:7897
-git config --global https.proxy http://127.0.0.1:7897
-```
-
-。">
+进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
+```yaml
+patch:
+  # 仅使用「雾凇拼音」的默认配置，配置此行即可
+  __include: rime_ice_suggestion:/
+  # 以下根据自己所需自行定义，仅做参考。">
 <meta property="og:title" content="EndeavourOS使用配置记录">
 <meta property="og:description" content="下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 
@@ -118,25 +105,12 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
-
-## 常用软件包
-```bash
-sudo pacman -S timeshift
-sudo pacman -S clash-verge-rev
-sudo pacman -S wl-clipboard
-paru -S bibata-cursor-theme-bin # 光标主题
-```
-
-## 其他
-### 1. git拉取慢
-- 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
-```bash
-paru -S clash-verge-rev-bin
-git config --global http.proxy http://127.0.0.1:7897
-git config --global https.proxy http://127.0.0.1:7897
-```
-
-。">
+进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
+```yaml
+patch:
+  # 仅使用「雾凇拼音」的默认配置，配置此行即可
+  __include: rime_ice_suggestion:/
+  # 以下根据自己所需自行定义，仅做参考。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
@@ -244,6 +218,17 @@ XMODIFIERS=@im=fcitx
 sudo pacman -S fcitx5-rime
 <span class="pl-c"><span class="pl-c">#</span> 雾凇拼音方案</span>
 paru -S rime-ice-git</pre></div>
+<p>进入<code class="notranslate">~/.local/share/fcitx5/rime/</code>目录，创建配置<code class="notranslate">default.custom.yaml</code>，配置输入方案</p>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">patch</span>:
+  <span class="pl-c"><span class="pl-c">#</span> 仅使用「雾凇拼音」的默认配置，配置此行即可</span>
+  <span class="pl-ent">__include</span>: <span class="pl-s">rime_ice_suggestion:/</span>
+  <span class="pl-c"><span class="pl-c">#</span> 以下根据自己所需自行定义，仅做参考。</span>
+  <span class="pl-c"><span class="pl-c">#</span> 针对对应处方的定制条目，请使用 &lt;recipe&gt;.custom.yaml 中配置，例如 rime_ice.custom.yaml</span>
+  <span class="pl-ent">__patch</span>:
+    <span class="pl-ent">key_binder/bindings/+</span>:
+      <span class="pl-c"><span class="pl-c">#</span> 开启逗号句号翻页</span>
+      - <span class="pl-s">{ when: paging, accept: comma, send: Page_Up }</span>
+      - <span class="pl-s">{ when: has_menu, accept: period, send: Page_Down }</span></pre></div>
 <h2>常用软件包</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev

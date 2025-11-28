@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 28 Nov 2025 19:25:33 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description>下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 28 Nov 2025 19:58:56 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS使用配置记录</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</link><description>下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)、[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 
 ## 服务不可用
 
@@ -43,25 +43,12 @@ sudo pacman -S fcitx5-rime
 # 雾凇拼音方案
 paru -S rime-ice-git
 ```
-
-## 常用软件包
-```bash
-sudo pacman -S timeshift
-sudo pacman -S clash-verge-rev
-sudo pacman -S wl-clipboard
-paru -S bibata-cursor-theme-bin # 光标主题
-```
-
-## 其他
-### 1. git拉取慢
-- 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
-```bash
-paru -S clash-verge-rev-bin
-git config --global http.proxy http://127.0.0.1:7897
-git config --global https.proxy http://127.0.0.1:7897
-```
-
-。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</guid><pubDate>Thu, 27 Nov 2025 03:09:02 +0000</pubDate></item><item><title>Niri 配置 踩坑记录</title><link>http://blog.pianone.dpdns.org/post/Niri%20-pei-zhi-%20-cai-keng-ji-lu.html</link><description>chrome 默认情况下无法走系统代理, 需要编辑 `启动chrome应用参数` , `添加代理服务器`
+进入`~/.local/share/fcitx5/rime/`目录，创建配置`default.custom.yaml`，配置输入方案
+```yaml
+patch:
+  # 仅使用「雾凇拼音」的默认配置，配置此行即可
+  __include: rime_ice_suggestion:/
+  # 以下根据自己所需自行定义，仅做参考。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS-shi-yong-pei-zhi-ji-lu.html</guid><pubDate>Thu, 27 Nov 2025 03:09:02 +0000</pubDate></item><item><title>Niri 配置 踩坑记录</title><link>http://blog.pianone.dpdns.org/post/Niri%20-pei-zhi-%20-cai-keng-ji-lu.html</link><description>chrome 默认情况下无法走系统代理, 需要编辑 `启动chrome应用参数` , `添加代理服务器`
 
 ```bash
 sudo vim /usr/share/applications/google-chrome.desktop
