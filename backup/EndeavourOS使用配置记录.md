@@ -1,5 +1,4 @@
-# EndeavourOS使用过程中遇到的问题
-下文中涉及到的部分文档[Arch Fcitx5](https://wiki.archlinux.org/title/Fcitx5)
+下文中涉及到的部分文档: [Arch Wiki Fcitx5](https://wiki.archlinux.org/title/Fcitx5)
 
 ## 0. git拉取慢
 - 配置本地代理服务器, 我这里使用的clash-verge-rev-bin
