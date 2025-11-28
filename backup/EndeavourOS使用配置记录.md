@@ -34,8 +34,7 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 ```
 > [!NOTE]
-> 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入. 
-> 采用[雾凇拼音](https://github.com/iDvel/rime-ice) 
+> 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入. 这里采用[雾凇拼音](https://github.com/iDvel/rime-ice) 
 ```bash
 # 安装rime
 sudo pacman -S fcitx5-rime
@@ -62,7 +61,7 @@ patch:
 - 重启rime加载刷新配置
 ```bash
 fcitx5-remote -r
-reboot # 没生效就重启一下系统
+reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.
 ```
 ## 常用软件包
 ```bash
