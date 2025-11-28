@@ -23,7 +23,7 @@ yay -S paru
 ```
 
 ### 3. 输入法不自带中文输入
-- 使用`Fcitx5`输入框架, 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入
+- 使用`Fcitx5`输入框架
 ```bash
 sudo pacman -S fcitx5-im fcitx5-chinese-addons
 paru -S fcitx5-skin-ori-git # 安装皮肤-可选
@@ -40,4 +40,5 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 ```
 > [!NOTE]
-> 可选: 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。
+> 可选: 安装`Rime`, 根据个人使用习惯,  配置`小鹤双拼`输入
+> 采用[凇鹤拼音](https://github.com/kchen0x/rime-crane) —— Rime 简体中文输入法方案，整合了雾凇拼音和小鹤双拼/音形方案的拼音输入法。
