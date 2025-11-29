@@ -71,6 +71,7 @@ sudo pacman -S wl-clipboard
 sudo pacman -S fuse2 # 正常运行AppImage软件所需库
 yay -S localsend-bin
 paru -S bibata-cursor-theme-bin # 光标主题
+paru -S wemeet-bin # 腾讯会议
 ```
 
 ## 其他
