@@ -259,7 +259,9 @@ paru -S wemeet-bin <span class="pl-c"><span class="pl-c">#</span> 腾讯会议</
 <div class="highlight highlight-source-shell"><pre class="notranslate">git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897</pre></div>
 <h3>2. <code class="notranslate">localsend</code>无法被其他设备发现</h3>
-<p>需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口</p>
+<ul>
+<li>需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口</li>
+</ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
 sudo ufw reload</pre></div></div>

@@ -82,7 +82,7 @@ git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
 ### 2. `localsend`无法被其他设备发现
-需要配置本地防火墙，开放`TCP/UDP`端口
+- 需要配置本地防火墙，开放`TCP/UDP`端口
 ```bash
 sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
