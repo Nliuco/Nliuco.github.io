@@ -77,6 +77,21 @@ sudo pacman -Syu steam # 游戏
 ```
 
 ## 其他
+### 0. 启用`ufw`防火墙
+```bash
+# 查看 UFW 当前状态（是否启用、默认策略、已开放端口等详细信息）
+sudo ufw status verbose
+# 没有安装的话就去安装 UFW
+sudo pacman -S ufw
+# 启用 UFW，并加载默认规则（防火墙开始生效）
+sudo ufw enable
+# 启动 ufw systemd 服务，并设置开机自动启动
+sudo systemctl enable ufw --now
+# 将默认入站策略设置为 "拒绝所有外部进入连接"，提高安全性
+sudo ufw default deny incoming
+# 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用
+sudo ufw default allow outgoing
+```
 ### 1. `git`拉取慢
 - 配置本地代理服务器, 我这里使用的[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 ```bash

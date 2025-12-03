@@ -254,6 +254,19 @@ yay -S wemeet-bin <span class="pl-c"><span class="pl-c">#</span> 腾讯会议</s
 sudo pacman -Rns wemeet-bin <span class="pl-c"><span class="pl-c">#</span> 卸载腾讯会议</span>
 sudo pacman -Syu steam <span class="pl-c"><span class="pl-c">#</span> 游戏</span></pre></div>
 <h2>其他</h2>
+<h3>0. 启用<code class="notranslate">ufw</code>防火墙</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看 UFW 当前状态（是否启用、默认策略、已开放端口等详细信息）</span>
+sudo ufw status verbose
+<span class="pl-c"><span class="pl-c">#</span> 没有安装的话就去安装 UFW</span>
+sudo pacman -S ufw
+<span class="pl-c"><span class="pl-c">#</span> 启用 UFW，并加载默认规则（防火墙开始生效）</span>
+sudo ufw <span class="pl-c1">enable</span>
+<span class="pl-c"><span class="pl-c">#</span> 启动 ufw systemd 服务，并设置开机自动启动</span>
+sudo systemctl <span class="pl-c1">enable</span> ufw --now
+<span class="pl-c"><span class="pl-c">#</span> 将默认入站策略设置为 "拒绝所有外部进入连接"，提高安全性</span>
+sudo ufw default deny incoming
+<span class="pl-c"><span class="pl-c">#</span> 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用</span>
+sudo ufw default allow outgoing</pre></div>
 <h3>1. <code class="notranslate">git</code>拉取慢</h3>
 <ul>
 <li>配置本地代理服务器, 我这里使用的<a href="https://www.clashverge.dev/install.html#__tabbed_2_3" rel="nofollow">clash-verge-rev</a></li>
