@@ -326,7 +326,18 @@ sudo systemctl <span class="pl-c1">enable</span> fstrim.timer --now</pre></div>
 <li>Zram 是把内存的一部分压缩起来，当作“压缩内存交换区”来使用，提高系统的流畅性。</li>
 <li>比传统 Swap 快很多, 也能减少 SSD 磨损 -&gt; 因为少写入硬盘了。</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -Sy zram-generator</pre></div></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -Sy zram-generator</pre></div>
+<ul>
+<li>进行适当配置</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nano /etc/systemd/zram-generator.conf</pre></div>
+<ul>
+<li>添加以下内容, 见<a href="https://github.com/systemd/zram-generator/blob/main/man/zram-generator.conf.md">文档</a></li>
+</ul>
+<pre lang="conf" class="notranslate"><code class="notranslate">[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

@@ -149,6 +149,16 @@ sudo systemctl enable fstrim.timer --now
 ```bash
 sudo pacman -Sy zram-generator
 ```
+- 进行适当配置
+```bash
+sudo nano /etc/systemd/zram-generator.conf
+```
+- 添加以下内容, 见[文档](https://github.com/systemd/zram-generator/blob/main/man/zram-generator.conf.md)
+```conf
+[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd
+```
 
 
 
