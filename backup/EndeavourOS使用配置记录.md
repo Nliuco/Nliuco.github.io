@@ -21,7 +21,6 @@ systemctl status bluetooth
 ```bash
 sudo pacman -S fcitx5-im fcitx5-chinese-addons
 paru -S fcitx5-skin-ori-git # 安装皮肤-可选
-
 ```
 - 为了使其他应用内部正确使用`Fcitx5`, 需要配置一下`/etc/environment`
 ```bash
@@ -63,6 +62,21 @@ patch:
 fcitx5-remote -r
 reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.
 ```
+### 4. 检查`NVIDIA`显卡驱动
+- 查看是否检测到 NVIDIA 显卡
+```bash
+lspci -k | grep -A 3 -E "VGA|3D"
+```
+输出中如果看到：
+Kernel driver in use: nvidia
+说明驱动 已加载成功。
+如果显示：
+Kernel driver in use: nouveau
+那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。
+```bash
+
+```
+
 ## 常用软件包
 ```bash
 sudo pacman -S timeshift

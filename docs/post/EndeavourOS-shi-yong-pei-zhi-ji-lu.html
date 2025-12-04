@@ -33,7 +33,6 @@ systemctl status bluetooth
 ```bash
 sudo pacman -S fcitx5-im fcitx5-chinese-addons
 paru -S fcitx5-skin-ori-git # 安装皮肤-可选
-
 ```
 - 为了使其他应用内部正确使用`Fcitx5`, 需要配置一下`/etc/environment`
 ```bash
@@ -87,7 +86,6 @@ systemctl status bluetooth
 ```bash
 sudo pacman -S fcitx5-im fcitx5-chinese-addons
 paru -S fcitx5-skin-ori-git # 安装皮肤-可选
-
 ```
 - 为了使其他应用内部正确使用`Fcitx5`, 需要配置一下`/etc/environment`
 ```bash
@@ -204,8 +202,7 @@ systemctl status bluetooth</pre></div>
 <li>使用<code class="notranslate">Fcitx5</code>输入框架</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S fcitx5-im fcitx5-chinese-addons
-paru -S fcitx5-skin-ori-git <span class="pl-c"><span class="pl-c">#</span> 安装皮肤-可选</span>
-</pre></div>
+paru -S fcitx5-skin-ori-git <span class="pl-c"><span class="pl-c">#</span> 安装皮肤-可选</span></pre></div>
 <ul>
 <li>为了使其他应用内部正确使用<code class="notranslate">Fcitx5</code>, 需要配置一下<code class="notranslate">/etc/environment</code></li>
 </ul>
@@ -243,6 +240,18 @@ nano default.custom.yaml</pre></div>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">fcitx5-remote -r
 reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.</span></pre></div>
+<h3>4. 检查<code class="notranslate">NVIDIA</code>显卡驱动</h3>
+<ul>
+<li>查看是否检测到 NVIDIA 显卡</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span></pre></div>
+<p>输出中如果看到：<br>
+Kernel driver in use: nvidia<br>
+说明驱动 已加载成功。<br>
+如果显示：<br>
+Kernel driver in use: nouveau<br>
+那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"></pre></div>
 <h2>常用软件包</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
