@@ -79,7 +79,10 @@ Kernel driver in use: nouveau
 ```bash
 sudo pacman -S nvidia nvidia-utils nvidia-settings 
 sudo pacman -S nvidia-prime # 混合显卡, 即cpu集显 + gpu独集显需要
-
+# 再次验证
+lspci -k | grep -A 3 -E "VGA|3D"
+nvidia-smi
+prime-run glxinfo | grep "OpenGL renderer" 
 ```
 
 ## 常用软件包

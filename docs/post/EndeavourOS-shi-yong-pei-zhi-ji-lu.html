@@ -258,7 +258,10 @@ reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下�
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S nvidia nvidia-utils nvidia-settings 
 sudo pacman -S nvidia-prime <span class="pl-c"><span class="pl-c">#</span> 混合显卡, 即cpu集显 + gpu独集显需要</span>
-</pre></div>
+<span class="pl-c"><span class="pl-c">#</span> 再次验证</span>
+lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span>
+nvidia-smi
+prime-run glxinfo <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>OpenGL renderer<span class="pl-pds">"</span></span> </pre></div>
 <h2>常用软件包</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
