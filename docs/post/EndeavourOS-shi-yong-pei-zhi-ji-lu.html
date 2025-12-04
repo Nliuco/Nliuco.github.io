@@ -245,13 +245,20 @@ reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下�
 <li>查看是否检测到 NVIDIA 显卡</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span></pre></div>
-<p>输出中如果看到：<br>
-Kernel driver in use: nvidia<br>
-说明驱动 已加载成功。<br>
-如果显示：<br>
-Kernel driver in use: nouveau<br>
-那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate"></pre></div>
+<ul>
+<li>输出中如果看到：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">Kernel driver <span class="pl-k">in</span> use: nvidia</pre></div>
+<ul>
+<li>说明驱动 已加载成功。如果显示：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">Kernel driver <span class="pl-k">in</span> use: nouveau</pre></div>
+<ul>
+<li>那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。需要按照下面的步骤安装、配置</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S nvidia nvidia-utils nvidia-settings 
+sudo pacman -S nvidia-prime <span class="pl-c"><span class="pl-c">#</span> 混合显卡, 即cpu集显 + gpu独集显需要</span>
+</pre></div>
 <h2>常用软件包</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev

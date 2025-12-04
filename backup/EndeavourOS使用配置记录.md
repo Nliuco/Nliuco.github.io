@@ -67,13 +67,18 @@ reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新
 ```bash
 lspci -k | grep -A 3 -E "VGA|3D"
 ```
-输出中如果看到：
-Kernel driver in use: nvidia
-说明驱动 已加载成功。
-如果显示：
-Kernel driver in use: nouveau
-那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。
+- 输出中如果看到：
 ```bash
+Kernel driver in use: nvidia
+```
+- 说明驱动 已加载成功。如果显示：
+```bash
+Kernel driver in use: nouveau
+```
+- 那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。需要按照下面的步骤安装、配置
+```bash
+sudo pacman -S nvidia nvidia-utils nvidia-settings 
+sudo pacman -S nvidia-prime # 混合显卡, 即cpu集显 + gpu独集显需要
 
 ```
 
