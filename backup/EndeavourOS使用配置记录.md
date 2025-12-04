@@ -175,11 +175,11 @@ swapon --show # 输出类似 /dev/zram0 partition 12G    0B  100
 sudo swapoff /swapfile
 sudo nano /etc/fstab
 ```
-- 注释掉以下行
+- 7. 注释掉以下行
 ```
 /swapfile none swap defaults 0 0
 ```
-- 6.1 再次验证
+- 8. 再次验证
 ```bash
 swapon --show
 ```
