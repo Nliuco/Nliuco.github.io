@@ -325,29 +325,68 @@ sudo systemctl <span class="pl-c1">enable</span> fstrim.timer --now</pre></div>
 <ul>
 <li>Zram 是把内存的一部分压缩起来，当作“压缩内存交换区”来使用，提高系统的流畅性。</li>
 <li>比传统 Swap 快很多, 也能减少 SSD 磨损 -&gt; 因为少写入硬盘了。</li>
+<li>
+<ol>
+<li>安装</li>
+</ol>
+</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -Sy zram-generator</pre></div>
 <ul>
+<li>
+<ol start="2">
 <li>进行适当配置</li>
+</ol>
+</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo nano /etc/systemd/zram-generator.conf</pre></div>
 <ul>
+<li>
+<ol start="3">
 <li>添加以下内容, 见<a href="https://github.com/systemd/zram-generator/blob/main/man/zram-generator.conf.md">文档</a></li>
+</ol>
+</li>
 </ul>
 <pre lang="conf" class="notranslate"><code class="notranslate">[zram0]
 zram-size = ram / 2
 compression-algorithm = zstd
 </code></pre>
 <ul>
+<li>
+<ol start="4">
 <li>重启生效</li>
+</ol>
+</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl daemon-reload
 sudo reboot</pre></div>
 <ul>
+<li>
+<ol start="5">
 <li>验证</li>
+</ol>
+</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">lsblk <span class="pl-c"><span class="pl-c">#</span> 输出类似zram0   253:0   0   12G   0 disk [SWAP]</span>
-swapon --show <span class="pl-c"><span class="pl-c">#</span> 输出类似 /dev/zram0 partition 12G    0B  100</span></pre></div></div>
+swapon --show <span class="pl-c"><span class="pl-c">#</span> 输出类似 /dev/zram0 partition 12G    0B  100</span></pre></div>
+<ul>
+<li>
+<ol start="6">
+<li>若<code class="notranslate">swapon --show</code>后系统还是在使用<code class="notranslate">swap</code>交换文件, 可以考虑禁用掉, 只使用zram</li>
+</ol>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo swapoff /swapfile
+sudo nano /etc/fstab</pre></div>
+<ul>
+<li>注释掉以下行</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">/swapfile none swap defaults 0 0
+</code></pre>
+<ul>
+<li>6.1 再次验证</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">swapon --show</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

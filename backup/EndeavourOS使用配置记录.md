@@ -146,27 +146,40 @@ sudo systemctl enable fstrim.timer --now
 ### 4. 使用 Zram
 - Zram 是把内存的一部分压缩起来，当作“压缩内存交换区”来使用，提高系统的流畅性。
 - 比传统 Swap 快很多, 也能减少 SSD 磨损 -> 因为少写入硬盘了。
+- 1. 安装
 ```bash
 sudo pacman -Sy zram-generator
 ```
-- 进行适当配置
+- 2. 进行适当配置
 ```bash
 sudo nano /etc/systemd/zram-generator.conf
 ```
-- 添加以下内容, 见[文档](https://github.com/systemd/zram-generator/blob/main/man/zram-generator.conf.md)
+- 3. 添加以下内容, 见[文档](https://github.com/systemd/zram-generator/blob/main/man/zram-generator.conf.md)
 ```conf
 [zram0]
 zram-size = ram / 2
 compression-algorithm = zstd
 ```
-- 重启生效
+- 4. 重启生效
 ```bash
 sudo systemctl daemon-reload
 sudo reboot
 ```
-- 验证
+- 5. 验证
 ```bash
 lsblk # 输出类似zram0   253:0   0   12G   0 disk [SWAP]
 swapon --show # 输出类似 /dev/zram0 partition 12G    0B  100
 ```
-
+- 6. 若`swapon --show`后系统还是在使用`swap`交换文件, 可以考虑禁用掉, 只使用zram
+```bash
+sudo swapoff /swapfile
+sudo nano /etc/fstab
+```
+- 注释掉以下行
+```
+/swapfile none swap defaults 0 0
+```
+- 6.1 再次验证
+```bash
+swapon --show
+```
