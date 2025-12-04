@@ -337,7 +337,17 @@ sudo systemctl <span class="pl-c1">enable</span> fstrim.timer --now</pre></div>
 <pre lang="conf" class="notranslate"><code class="notranslate">[zram0]
 zram-size = ram / 2
 compression-algorithm = zstd
-</code></pre></div>
+</code></pre>
+<ul>
+<li>重启生效</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl daemon-reload
+sudo reboot</pre></div>
+<ul>
+<li>验证</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lsblk <span class="pl-c"><span class="pl-c">#</span> 输出类似zram0   253:0   0   12G   0 disk [SWAP]</span>
+swapon --show <span class="pl-c"><span class="pl-c">#</span> 输出类似 /dev/zram0 partition 12G    0B  100</span></pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

@@ -159,6 +159,14 @@ sudo nano /etc/systemd/zram-generator.conf
 zram-size = ram / 2
 compression-algorithm = zstd
 ```
-
-
+- 重启生效
+```bash
+sudo systemctl daemon-reload
+sudo reboot
+```
+- 验证
+```bash
+lsblk # 输出类似zram0   253:0   0   12G   0 disk [SWAP]
+swapon --show # 输出类似 /dev/zram0 partition 12G    0B  100
+```
 
