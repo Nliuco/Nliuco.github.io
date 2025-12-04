@@ -304,17 +304,17 @@ sudo ufw allow 53317/udp
 sudo ufw reload</pre></div>
 <h3>3. SSD 启用定期 TRIM</h3>
 <ul>
+<li>这会告诉 SSD：
+<ul>
+<li>哪些数据块已经被删除</li>
+<li>可以回收、擦除、重新整理</li>
+</ul>
+</li>
 <li>这能让 SSD:
 <ul>
 <li>保持最高写入速度</li>
 <li>延长使用寿命</li>
 <li>减少随机写放大</li>
-</ul>
-</li>
-<li>这会告诉 SSD：
-<ul>
-<li>哪些数据块已经被删除</li>
-<li>可以回收、擦除、重新整理</li>
 </ul>
 </li>
 <li>每周自动执行一次 TRIM（对 SSD 清理无效块）</li>
