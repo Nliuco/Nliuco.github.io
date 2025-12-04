@@ -66,6 +66,7 @@ reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新
 - 查看是否检测到 NVIDIA 显卡
 ```bash
 lspci -k | grep -A 3 -E "VGA|3D"
+lspci | grep "NVIDIA"
 ```
 - 输出中如果看到：
 ```bash

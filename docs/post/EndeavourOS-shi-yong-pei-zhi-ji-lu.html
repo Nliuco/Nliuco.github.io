@@ -244,7 +244,8 @@ reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下�
 <ul>
 <li>查看是否检测到 NVIDIA 显卡</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span>
+lspci <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>NVIDIA<span class="pl-pds">"</span></span></pre></div>
 <ul>
 <li>输出中如果看到：</li>
 </ul>
