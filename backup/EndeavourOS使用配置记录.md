@@ -105,3 +105,20 @@ sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
 sudo ufw reload
 ```
+### 3. 对现代 SSD，启用定期 TRIM
+- 这能让 SSD:
+  - 保持最高写入速度
+  - 延长使用寿命
+  - 减少随机写放大
+- 这会告诉 SSD：
+  - 哪些数据块已经被删除
+  - 可以回收、擦除、重新整理
+- 每周自动执行一次 TRIM（对 SSD 清理无效块）
+```bash
+systemctl status fstrim.timer
+sudo systemctl enable fstrim.timer --now
+```
+
+
+
+
