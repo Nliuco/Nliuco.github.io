@@ -117,20 +117,20 @@ sudo ufw default deny incoming
 # 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用
 sudo ufw default allow outgoing
 ```
-### 1. `git`拉取慢
+### 1. git拉取慢
 - 配置本地代理服务器, 我这里使用的[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 ```bash
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
-### 2. `localsend`无法被其他设备发现
-- 需要配置本地防火墙，开放`TCP/UDP`端口
+### 2. localsend 无法被发现
+- 其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放`TCP/UDP`端口
 ```bash
 sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
 sudo ufw reload
 ```
-### 3. 对现代 SSD，启用定期 TRIM
+### 3. SSD 启用定期 TRIM
 - 这能让 SSD:
   - 保持最高写入速度
   - 延长使用寿命
@@ -143,7 +143,12 @@ sudo ufw reload
 systemctl status fstrim.timer
 sudo systemctl enable fstrim.timer --now
 ```
-
+### 4. 使用 Zram
+- Zram 是把内存的一部分压缩起来，当作“压缩内存交换区”来使用，提高系统的流畅性。
+- 比传统 Swap 快很多, 也能减少 SSD 磨损 -> 因为少写入硬盘了。
+```bash
+sudo pacman -Sy zram-generator
+```
 
 
 

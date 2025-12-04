@@ -289,20 +289,20 @@ sudo systemctl <span class="pl-c1">enable</span> ufw --now
 sudo ufw default deny incoming
 <span class="pl-c"><span class="pl-c">#</span> 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用</span>
 sudo ufw default allow outgoing</pre></div>
-<h3>1. <code class="notranslate">git</code>拉取慢</h3>
+<h3>1. git拉取慢</h3>
 <ul>
 <li>配置本地代理服务器, 我这里使用的<a href="https://www.clashverge.dev/install.html#__tabbed_2_3" rel="nofollow">clash-verge-rev</a></li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897</pre></div>
-<h3>2. <code class="notranslate">localsend</code>无法被其他设备发现</h3>
+<h3>2. localsend 无法被发现</h3>
 <ul>
-<li>需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口</li>
+<li>其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
 sudo ufw reload</pre></div>
-<h3>3. 对现代 SSD，启用定期 TRIM</h3>
+<h3>3. SSD 启用定期 TRIM</h3>
 <ul>
 <li>这能让 SSD:
 <ul>
@@ -320,7 +320,13 @@ sudo ufw reload</pre></div>
 <li>每周自动执行一次 TRIM（对 SSD 清理无效块）</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">systemctl status fstrim.timer
-sudo systemctl <span class="pl-c1">enable</span> fstrim.timer --now</pre></div></div>
+sudo systemctl <span class="pl-c1">enable</span> fstrim.timer --now</pre></div>
+<h3>4. 使用 Zram</h3>
+<ul>
+<li>Zram 是把内存的一部分压缩起来，当作“压缩内存交换区”来使用，提高系统的流畅性。</li>
+<li>比传统 Swap 快很多, 也能减少 SSD 磨损 -&gt; 因为少写入硬盘了。</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -Sy zram-generator</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
