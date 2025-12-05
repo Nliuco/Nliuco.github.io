@@ -177,7 +177,7 @@ sudo nano /etc/fstab
 ```
 - 7. 注释掉以下行
 ```
-/swapfile none swap defaults 0 0
+# /swapfile none swap defaults 0 0
 ```
 - 8. 再次验证
 ```bash
