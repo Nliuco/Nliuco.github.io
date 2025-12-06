@@ -12,3 +12,5 @@
 - 支持多种天气数据来源 (如 Open-Meteo, OpenWeather, Norwegian Meteorological Institute 等) —— 这意味着在很多地区都能拿到天气数据。
 - 它是基于一个较老 widget 的分支 (fork)——即 “weather-widget-2”（原作者 blackadderkate），因此继承了一些稳定代码，同时继续由当前维护者 (tully-t) 更新 / 修正。
 - 在使用 KDE Plasma 且希望在桌面或任务栏上方便地看到天气 (包括未来预报 + 图形 meteogram)，Weather Widget Plus 是一个不错、轻量而且灵活的选择 —— 特别适合经常关注天气 (比如通勤、出门、户外活动) 的用户。
+## 4. [Netspeed Widget](https://store.kde.org/p/2136505)
+- Netspeed Widget 的功能是“显示当前网络带宽 (bandwidth)／网络速度 (upload/download)”，也就是在桌面或面板 (panel) 上直观地显示你当前网络的上下行速度／带宽使用情况。
