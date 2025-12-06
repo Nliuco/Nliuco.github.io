@@ -408,7 +408,17 @@ sudo nano /etc/fstab</pre></div>
 </ol>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">swapon --show</pre></div></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">swapon --show</pre></div>
+<h3>5. Deskflow防火墙放行</h3>
+<ul>
+<li>服务器端（作为控制端/键鼠共享源头的那台机器）执行：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 24800/tcp</pre></div>
+<ul>
+<li>客户端</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 24800/udp
+sudo ufw allow 24801/udp</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

@@ -195,3 +195,13 @@ sudo nano /etc/fstab
 ```bash
 swapon --show
 ```
+### 5. Deskflow防火墙放行
+- 服务器端（作为控制端/键鼠共享源头的那台机器）执行：
+```bash
+sudo ufw allow 24800/tcp
+```
+- 客户端
+```bash
+sudo ufw allow 24800/udp
+sudo ufw allow 24801/udp
+```
