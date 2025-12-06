@@ -7,3 +7,8 @@
 - Minimal Chaac Weather 显示当前天气和未来几天的天气预报。
 - 它使用 Open‑Meteo API 来获取天气数据，然后通过 Bash 脚本处理并在 KDE 上展示。
 - 插件“几乎不需要任何设置 (with no setup required)”，有用户表示安装后直接可用 — 很适合希望在桌面/面板上快速添加天气功能的人。
+## 3. [Weather Widget Plus](https://store.kde.org/p/2281196)
+- Weather Widget Plus 会在桌面或面板上显示天气信息，包括 “meteogram”（湿度 / 气温 / 气压 / 风向等图形化天气预报图表）和天气预报。
+- 支持多种天气数据来源 (如 Open-Meteo, OpenWeather, Norwegian Meteorological Institute 等) —— 这意味着在很多地区都能拿到天气数据。
+- 它是基于一个较老 widget 的分支 (fork)——即 “weather-widget-2”（原作者 blackadderkate），因此继承了一些稳定代码，同时继续由当前维护者 (tully-t) 更新 / 修正。
+- 在使用 KDE Plasma 且希望在桌面或任务栏上方便地看到天气 (包括未来预报 + 图形 meteogram)，Weather Widget Plus 是一个不错、轻量而且灵活的选择 —— 特别适合经常关注天气 (比如通勤、出门、户外活动) 的用户。
