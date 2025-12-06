@@ -87,6 +87,8 @@ prime-run glxinfo | grep "OpenGL renderer"
 prime-run firefox # 这里用firefox浏览器测试一下独显是否使用正常
 nvidia-smi # 再打开一个终端, 查看`Processes`下是否有firefox,  GPU现存占用情况等信息
 ```
+### 5. kde wallet service 频繁弹出
+
 
 ## 常用软件包
 ```bash
