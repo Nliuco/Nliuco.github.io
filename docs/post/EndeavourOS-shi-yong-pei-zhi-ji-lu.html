@@ -266,6 +266,12 @@ prime-run glxinfo <span class="pl-k">|</span> grep <span class="pl-s"><span clas
 prime-run firefox <span class="pl-c"><span class="pl-c">#</span> 这里用firefox浏览器测试一下独显是否使用正常</span>
 nvidia-smi <span class="pl-c"><span class="pl-c">#</span> 再打开一个终端, 查看`Processes`下是否有firefox,  GPU现存占用情况等信息</span></pre></div>
 <h3>5. kde wallet service 频繁弹出</h3>
+<ul>
+<li>编辑<code class="notranslate">~/.config/kwalletrc</code>文件</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">[Wallet]
+Enabled=false
+</code></pre>
 <h2>常用软件包</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev

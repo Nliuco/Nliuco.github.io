@@ -88,7 +88,11 @@ prime-run firefox # 这里用firefox浏览器测试一下独显是否使用正�
 nvidia-smi # 再打开一个终端, 查看`Processes`下是否有firefox,  GPU现存占用情况等信息
 ```
 ### 5. kde wallet service 频繁弹出
-
+- 编辑`~/.config/kwalletrc`文件
+```
+[Wallet]
+Enabled=false
+```
 
 ## 常用软件包
 ```bash
