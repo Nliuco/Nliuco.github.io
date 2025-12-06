@@ -100,6 +100,7 @@ Enabled=false
 sudo pacman -Sy fastfetch
 sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
+sudo pacman -S deskflow
 sudo pacman -S wl-clipboard
 sudo pacman -S fuse2 # 正常运行AppImage软件所需库
 yay -S localsend-bin
