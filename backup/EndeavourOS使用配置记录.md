@@ -129,12 +129,33 @@ sudo ufw default deny incoming
 # 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用
 sudo ufw default allow outgoing
 ```
-### 1. git拉取慢
-- 配置本地代理服务器, 我这里使用的[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
+### 1. 软件包拉取慢
+- 1. 配置git本地代理服务器, 我这里使用的[clash-verge-rev](https://www.clashverge.dev/install.html#__tabbed_2_3)
 ```bash
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
+- 2. 有时候配置完git后，paru/yay安装的时候还是很慢
+
+| 步骤                                                  | 用到的网络请求                                          | 是否走 git 代理？  |
+| --------------------------------------------------- | ------------------------------------------------ | ------------ |
+| 1. 从 AUR API 获取包信息（JSON）                            | HTTPS 请求到 `aur.archlinux.org`                    | ❌ 与 Git 无关   |
+| 2. clone AUR 仓库                                     | git clone                                        | ✔️ 会走 git 代理 |
+| 3. 下载 PKGBUILD 内的源代码（比如 GitHub、GitLab、Gitee、某些 FTP） | PKGBUILD 里的 `source=` 指定的 URL（curl/wget/makepkg） | ❌ 不会走 git 代理 |
+| 4. makepkg 自动下载依赖源文件                                | curl/wget 调用                                     | ❌ 不会走 git 代理 |
+| 5. Paru/Yay 内部 HTTP 请求                              | Paru/Yay 自己发起的请求                                 | ❌ 不会走 git 代理 |
+
+- 所以这里可以使用配置shell层面的全局代理 - 这里以bash为例子， 编辑`~/.bashrc`, 在末尾添加
+```.bashrc
+export http_proxy="http://127.0.0.1:7897"
+export https_proxy="http://127.0.0.1:7897"
+```
+- 保存后刷新即可
+```
+source ~/.bashrc
+```
+
+
 ### 2. localsend 无法被发现
 - 其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放`TCP/UDP`端口
 ```bash
