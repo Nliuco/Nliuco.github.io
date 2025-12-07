@@ -14,3 +14,8 @@
 - 在使用 KDE Plasma 且希望在桌面或任务栏上方便地看到天气 (包括未来预报 + 图形 meteogram)，Weather Widget Plus 是一个不错、轻量而且灵活的选择 —— 特别适合经常关注天气 (比如通勤、出门、户外活动) 的用户。
 ## 4. [Netspeed Widget](https://store.kde.org/p/2136505)
 - Netspeed Widget 的功能是“显示当前网络带宽 (bandwidth)／网络速度 (upload/download)”，也就是在桌面或面板 (panel) 上直观地显示你当前网络的上下行速度／带宽使用情况。
+## 5. [Modern Clock](https://store.kde.org/p/1779868)
+- Modern Clock 是一个高度可定制的时钟插件，旨在取代 KDE Plasma 中的默认时钟，提供更具现代感的视觉效果。
+- 它允许用户选择不同的时钟样式（例如：数字、模拟、文本时钟等），并提供额外的定制选项，比如时区、时间格式、日期显示等。
+- 插件可以直接集成到 KDE Plasma 面板或桌面，显示时间和日期。
+
