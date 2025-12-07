@@ -150,7 +150,7 @@ git config --global https.proxy http://127.0.0.1:7897
 export http_proxy="http://127.0.0.1:7897"
 export https_proxy="http://127.0.0.1:7897"
 ```
-- 保存后刷新即可
+- 保存后刷新配置即可
 ```
 source ~/.bashrc
 ```
