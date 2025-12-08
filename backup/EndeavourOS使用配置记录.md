@@ -80,7 +80,7 @@ Kernel driver in use: nouveau
 - 那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。需要按照下面的步骤安装、配置
 ```bash
 sudo pacman -S nvidia nvidia-utils nvidia-settings 
-sudo pacman -S nvidia-prime # 混合显卡, 即cpu集显 + gpu独集显需要
+sudo pacman -S nvidia-prime # 混合显卡, 即cpu集显 + gpu独集显需要, 下文称`Optimus`
 # 再次验证
 lspci -k | grep -A 3 -E "VGA|3D"
 nvidia-smi
@@ -88,6 +88,12 @@ prime-run glxinfo | grep "OpenGL renderer"
 prime-run firefox # 这里用firefox浏览器测试一下独显是否使用正常
 nvidia-smi # 再打开一个终端, 查看`Processes`下是否有firefox,  GPU现存占用情况等信息
 ```
+- `Optimus(Intel/nVidia)`笔电💻若有`动态切换/图形化控制`的需求, 可参考`EndeavourOS`驱动相关解决方案, 如:
+  - [optimus-switch](https://discovery.endeavouros.com/nvidia/optimus-switch-another-solution-for-optimus-laptops/2021/04/)
+  - [envy-control](https://discovery.endeavouros.com/hardware/envy-control/2023/03/)
+- 笔者未曾使用过该教程, 请做好备份后尝试
+
+
 ### 5. kde wallet service 频繁弹出
 - 编辑`~/.config/kwalletrc`文件
 ```
