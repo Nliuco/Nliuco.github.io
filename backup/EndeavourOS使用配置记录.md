@@ -110,7 +110,6 @@ sudo pacman -S deskflow
 sudo pacman -S wl-clipboard
 sudo pacman -S fuse2 # 正常运行AppImage软件所需库
 yay -S localsend-bin
-paru -S bibata-cursor-theme-bin # 光标主题
 yay -S wemeet-bin # 腾讯会议
 sudo pacman -Rns wemeet-bin # 卸载腾讯会议
 sudo pacman -Syu steam # 游戏
