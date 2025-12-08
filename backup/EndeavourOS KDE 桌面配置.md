@@ -24,4 +24,8 @@
 ```bash
 paru -S bibata-cursor-theme-bin
 ```
-
+# 输入法皮肤(Fcitx5)
+## [Ori theme](https://github.com/Reverier-Xu/Ori-fcitx5)
+```bash
+paru -S fcitx5-skin-ori-git
+```
