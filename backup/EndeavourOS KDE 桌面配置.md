@@ -19,7 +19,7 @@
 - 它允许用户选择不同的时钟样式（例如：数字、模拟、文本时钟等），并提供额外的定制选项，比如时区、时间格式、日期显示等。
 - 插件可以直接集成到 KDE Plasma 面板或桌面，显示时间和日期。
 
-# 光标主题
+# 光标皮肤
 ## [Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor)
 ```bash
 paru -S bibata-cursor-theme-bin
