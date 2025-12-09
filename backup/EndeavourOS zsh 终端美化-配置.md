@@ -17,7 +17,7 @@ yay -Ss nerd-font
 # 程序员友好字体
 sudo pacman -S ttf-jetbrains-mono-nerd
 # Powerlevel10k官方推荐
-sudo pacman -S tty-meslo-nerd-font-powerlevel10k
+sudo pacman -S ttf-meslo-nerd-font-powerlevel10k
 ```
 - 安装完任意一个 Nerd Font 字体后，打开 Konsole 的 设置 > 编辑当前方案 > 外观，把 字体 改为刚刚安装的 Nerd Font 即可。
 - 现在再打开 powerlevel10k 配置（p10k configure），就可以看到图标符号，正常配置了。
