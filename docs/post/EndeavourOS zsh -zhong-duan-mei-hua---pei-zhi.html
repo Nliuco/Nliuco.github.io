@@ -132,7 +132,7 @@ sudo pacman -S ttf-meslo-nerd-font-powerlevel10k</pre></div>
 <li>安装完任意一个 Nerd Font 字体后，打开 Konsole 的 设置 &gt; 编辑当前方案 &gt; 外观，把 字体 改为刚刚安装的 Nerd Font 即可。</li>
 <li>现在再打开 powerlevel10k 配置（p10k configure），就可以看到图标符号，正常配置了。</li>
 </ul>
-<h3>3. 安装 <code class="notranslate">zim</code> (Zimfw)</h3>
+<h2>3. 安装 <code class="notranslate">zim</code> (Zimfw)</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh <span class="pl-k">|</span> zsh</pre></div>
 <p>编辑 <code class="notranslate">zsh</code> 配置文件 <code class="notranslate">~/.zimrc</code>：</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">vim <span class="pl-k">~</span>/.zimrc</pre></div>
@@ -141,13 +141,15 @@ sudo pacman -S ttf-meslo-nerd-font-powerlevel10k</pre></div>
 </code></pre>
 <p>安装 powerlevel10k 模块，在终端输入如下命令即可。</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">zimfw install</pre></div>
-<p>其他插件</p>
+<h2>4. 其他插件</h2>
 <ul>
 <li><code class="notranslate">zoxide</code> 目录跳转增强</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S zoxide
-<span class="pl-c1">eval</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>zoxide init zsh<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span>
-zmodule ajeetdsouza/zoxide</pre></div></div>
+<span class="pl-c1">eval</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>zoxide init zsh<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span></pre></div>
+<p>编辑 <code class="notranslate">~/.zimrc</code> 配置文件, 补充以下内容：</p>
+<pre lang="zimrc" class="notranslate"><code class="notranslate">zmodule ajeetdsouza/zoxide
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

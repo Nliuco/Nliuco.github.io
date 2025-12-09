@@ -21,7 +21,7 @@ sudo pacman -S ttf-meslo-nerd-font-powerlevel10k
 ```
 - 安装完任意一个 Nerd Font 字体后，打开 Konsole 的 设置 > 编辑当前方案 > 外观，把 字体 改为刚刚安装的 Nerd Font 即可。
 - 现在再打开 powerlevel10k 配置（p10k configure），就可以看到图标符号，正常配置了。
-### 3. 安装 `zim` (Zimfw)
+## 3. 安装 `zim` (Zimfw)
 ```zsh
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 ```
@@ -37,10 +37,13 @@ zmodule romkatv/powerlevel10k
 ```zsh
 zimfw install
 ```
-其他插件
+## 4. 其他插件
 - `zoxide` 目录跳转增强
 ```zsh
 sudo pacman -S zoxide
 eval "$(zoxide init zsh)"
+```
+编辑 `~/.zimrc` 配置文件, 补充以下内容：
+```zimrc
 zmodule ajeetdsouza/zoxide
 ```
