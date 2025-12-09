@@ -1,4 +1,5 @@
-### 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
+> [!note]
+> 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
 - 参考自[archlinux 简明指南](https://arch.icekylin.online/guide/advanced/beauty-3.html)
 ## 1. 更换默认`Shell`为`zsh`
 ```bash
