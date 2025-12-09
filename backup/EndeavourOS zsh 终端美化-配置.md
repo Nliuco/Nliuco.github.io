@@ -47,3 +47,8 @@ eval "$(zoxide init zsh)"
 ```zimrc
 zmodule ajeetdsouza/zoxide
 ```
+- `fzf`终端模糊查找工具
+```zsh
+sudo pacman -S fzf
+```
+
