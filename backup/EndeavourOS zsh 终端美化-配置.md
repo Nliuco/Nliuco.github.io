@@ -33,3 +33,7 @@ vim ~/.zimrc
 ```zimrc
 zmodule romkatv/powerlevel10k
 ```
+安装 powerlevel10k 模块，在终端输入如下命令即可。
+```zsh
+zimfw install
+```
