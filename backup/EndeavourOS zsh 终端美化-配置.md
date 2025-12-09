@@ -37,3 +37,9 @@ zmodule romkatv/powerlevel10k
 ```zsh
 zimfw install
 ```
+### zoxide 目录跳转增强
+```zsh
+sudo pacman -S zoxide
+eval "$(zoxide init zsh)"
+zmodule ajeetdsouza/zoxide
+```
