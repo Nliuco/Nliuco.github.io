@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 09 Dec 2025 06:28:21 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS zsh 终端美化/配置</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20zsh%20-zhong-duan-mei-hua---pei-zhi.html</link><description># 本文采用`Konsole` + `Zsh` + `Powerlevel10k`的搭配方式优化终端使用体验
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 09 Dec 2025 06:29:23 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>EndeavourOS zsh 终端美化/配置</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20zsh%20-zhong-duan-mei-hua---pei-zhi.html</link><description># 本文采用`Konsole` + `Zsh` + `Powerlevel10k`的搭配方式优化终端使用体验
 ## 1. 更换默认`Shell`为`zsh`
 ```bash
-chsh -l # 查看安装了哪些 Shell
+# 查看安装了哪些 Shell
+chsh -l
 # 如果没有安装zsh, 这里以arch为例执行安装命令
 sudo pacman -Syu zsh
-chsh -s /usr/bin/zsh # 修改当前账户的默认 Shell
+# 修改当前账户的默认 Shell
+chsh -s /usr/bin/zsh 
 ```
 ## 2. 。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/EndeavourOS%20zsh%20-zhong-duan-mei-hua---pei-zhi.html</guid><pubDate>Tue, 09 Dec 2025 06:20:59 +0000</pubDate></item><item><title>EndeavourOS KDE 桌面配置</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20KDE%20-zhuo-mian-pei-zhi.html</link><description># 常用面板小组件
 ## 1. [Thermal Monitor](https://store.kde.org/p/998915/)
