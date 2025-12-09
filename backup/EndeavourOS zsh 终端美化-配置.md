@@ -51,4 +51,4 @@ zmodule ajeetdsouza/zoxide
 ```zsh
 sudo pacman -S fzf
 ```
-
+- 配合`z`, `zi`命令即可实现高效路径查找、转跳
