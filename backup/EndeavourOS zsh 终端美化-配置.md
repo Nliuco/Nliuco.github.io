@@ -12,8 +12,12 @@ chsh -s /usr/bin/zsh
 ## 2. 配置字体
 - 使用`Powerlevel10k`进行配置时, 很多图标符号看不到，因为 powerlevel10k 中包含许多特殊图标符号，需要与之兼容的字体。
 ```zsh
+# 搜索一下相关字体
 yay -Ss nerd-font
+# 程序员友好字体
 sudo pacman -S ttf-jetbrains-mono-nerd
+# Powerlevel10k官方推荐
+sudo pacman -S tty-meslo-nerd-font-powerlevel10k
 ```
 - 安装完任意一个 Nerd Font 字体后，打开 Konsole 的 设置 > 编辑当前方案 > 外观，把 字体 改为刚刚安装的 Nerd Font 即可。
 - 现在再打开 powerlevel10k 配置（p10k configure），就可以看到图标符号，正常配置了。
