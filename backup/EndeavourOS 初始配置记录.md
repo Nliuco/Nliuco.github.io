@@ -103,6 +103,7 @@ Enabled=false
 
 ## 常用软件包
 ```bash
+paru -S pacseek
 sudo pacman -Sy fastfetch
 sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
