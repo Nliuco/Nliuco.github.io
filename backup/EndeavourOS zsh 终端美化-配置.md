@@ -32,14 +32,4 @@ vim ~/.zimrc
 在文件最后加入下面的一行文字，以添加 `powerlevel10k` 模块，然后退出。
 ```zimrc
 zmodule romkatv/powerlevel10k
-# 其他可选模块
-zmodule completion 
-zmodule syntax-highlighting 
-zmodule history-substring-search 
-# git 快捷操作
-# zmodule git 
-# 其他
-# zmodule environment 
-# zmodule input 
-# zmodule utility 
 ```
