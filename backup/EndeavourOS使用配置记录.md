@@ -162,11 +162,18 @@ source ~/.bashrc
 
 
 ### 2. localsend 无法被发现
-- 其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放`TCP/UDP`端口
+- 其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放`TCP/UDP`端口, 根据防火墙配置即刻
+ - 使用`ufw`
 ```bash
 sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
 sudo ufw reload
+```
+ - 使用`Firewalld`
+```bash
+sudo firewall-cmd --add-port=53317/tcp --permanent
+sudo firewall-cmd --add-port=53317/udp --permanent
+sudo firewall-cmd --reload
 ```
 ### 3. SSD 启用定期 TRIM
 - 这会告诉 SSD：

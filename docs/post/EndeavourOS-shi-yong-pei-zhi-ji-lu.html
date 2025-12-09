@@ -377,11 +377,18 @@ export https_proxy="http://127.0.0.1:7897"
 </code></pre>
 <h3>2. localsend 无法被发现</h3>
 <ul>
-<li>其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口</li>
+<li>其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口, 根据防火墙配置即刻</li>
+<li>使用<code class="notranslate">ufw</code></li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
 sudo ufw reload</pre></div>
+<ul>
+<li>使用<code class="notranslate">Firewalld</code></li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo firewall-cmd --add-port=53317/tcp --permanent
+sudo firewall-cmd --add-port=53317/udp --permanent
+sudo firewall-cmd --reload</pre></div>
 <h3>3. SSD 启用定期 TRIM</h3>
 <ul>
 <li>这会告诉 SSD：
