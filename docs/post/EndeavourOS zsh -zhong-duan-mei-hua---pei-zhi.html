@@ -10,7 +10,7 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="### 本文采用`Konsole` + `Zsh` + `Powerlevel10k`的搭配方式优化终端使用体验
+<meta name="description" content="### 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
 - 参考自[archlinux 简明指南](https://arch.icekylin.online/guide/advanced/beauty-3.html)
 ## 1. 更换默认`Shell`为`zsh`
 ```bash
@@ -24,7 +24,7 @@ chsh -s /usr/bin/zsh
 ## 2. 配置字体
 - 使用`Powerlevel10k`进行配置时, 很多图标符号看不到，因为 powerlevel10k 中包含许多特殊图标符号，需要与之兼容的字体。">
 <meta property="og:title" content="EndeavourOS zsh 终端美化/配置">
-<meta property="og:description" content="### 本文采用`Konsole` + `Zsh` + `Powerlevel10k`的搭配方式优化终端使用体验
+<meta property="og:description" content="### 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
 - 参考自[archlinux 简明指南](https://arch.icekylin.online/guide/advanced/beauty-3.html)
 ## 1. 更换默认`Shell`为`zsh`
 ```bash
@@ -107,7 +107,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h3>本文采用<code class="notranslate">Konsole</code> + <code class="notranslate">Zsh</code> + <code class="notranslate">Powerlevel10k</code>的搭配方式优化终端使用体验</h3>
+<div class="markdown-body" id="postBody"><h3>本文采用<code class="notranslate">Konsole</code> + <code class="notranslate">Zsh</code> + <code class="notranslate">Zimfw</code> + <code class="notranslate">Powerlevel10k</code>的搭配方式优化终端使用体验</h3>
 <ul>
 <li>参考自<a href="https://arch.icekylin.online/guide/advanced/beauty-3.html" rel="nofollow">archlinux 简明指南</a></li>
 </ul>
@@ -131,7 +131,14 @@ sudo pacman -S ttf-meslo-nerd-font-powerlevel10k</pre></div>
 <ul>
 <li>安装完任意一个 Nerd Font 字体后，打开 Konsole 的 设置 &gt; 编辑当前方案 &gt; 外观，把 字体 改为刚刚安装的 Nerd Font 即可。</li>
 <li>现在再打开 powerlevel10k 配置（p10k configure），就可以看到图标符号，正常配置了。</li>
-</ul></div>
+</ul>
+<h3>3. 安装 <code class="notranslate">zim</code> (Zimfw)</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh <span class="pl-k">|</span> zsh</pre></div>
+<p>编辑 <code class="notranslate">zsh</code> 配置文件 <code class="notranslate">~/.zimrc</code>：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">vim <span class="pl-k">~</span>/.zimrc</pre></div>
+<p>在文件最后加入下面的一行文字，以添加 <code class="notranslate">powerlevel10k</code> 模块，然后退出。</p>
+<pre lang="zimrc" class="notranslate"><code class="notranslate">zmodule romkatv/powerlevel10k
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

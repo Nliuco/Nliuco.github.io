@@ -1,4 +1,4 @@
-### 本文采用`Konsole` + `Zsh` + `Powerlevel10k`的搭配方式优化终端使用体验
+### 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
 - 参考自[archlinux 简明指南](https://arch.icekylin.online/guide/advanced/beauty-3.html)
 ## 1. 更换默认`Shell`为`zsh`
 ```bash
@@ -21,3 +21,15 @@ sudo pacman -S ttf-meslo-nerd-font-powerlevel10k
 ```
 - 安装完任意一个 Nerd Font 字体后，打开 Konsole 的 设置 > 编辑当前方案 > 外观，把 字体 改为刚刚安装的 Nerd Font 即可。
 - 现在再打开 powerlevel10k 配置（p10k configure），就可以看到图标符号，正常配置了。
+### 3. 安装 `zim` (Zimfw)
+```zsh
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+```
+编辑 `zsh` 配置文件 `~/.zimrc`：
+```zsh
+vim ~/.zimrc
+```
+在文件最后加入下面的一行文字，以添加 `powerlevel10k` 模块，然后退出。
+```zimrc
+zmodule romkatv/powerlevel10k
+```
