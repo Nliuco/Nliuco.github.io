@@ -3,11 +3,13 @@
 ```bash
 paru -S bibata-cursor-theme-bin
 ```
+
 # 2. 输入法皮肤(Fcitx5)
 ## [Ori theme](https://github.com/Reverier-Xu/Ori-fcitx5)
 ```bash
 paru -S fcitx5-skin-ori-git
 ```
+
 # 3. Kvantum安装
 Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 - 它的特点包括：
@@ -21,6 +23,7 @@ Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 ```zsh
 sudo pacman -S kvantum
 ```
+
 # 4. [全局主题](https://github.com/Rudraksh88/zephyr-kvantum)
 ## 1. 克隆仓库
 ```zsh
@@ -33,6 +36,7 @@ git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zep
   - 在 Kvantum 管理器中，单击 “更改/删除主题” 选项卡。
   - 从可用主题列表中选择 Zephyr 。
   - 点击 “应用” 以设置主题。
+
 # 5. [窗口装饰栏](https://github.com/paulmcauley/klassy)
 ## 步骤 1：安装依赖项
 ```zsh
@@ -51,7 +55,14 @@ cd klassy
 git checkout plasma6.3
 ./install.sh
 ```
-# 6. 常用面板小组件
+## 步骤 3: 设置窗口装饰栏为`klassy`
+
+# 6. [图标包](https://store.kde.org/p/1279924)
+```zsh
+yay -S tela-icon-theme
+```
+
+# 7. 常用面板小组件
 ## 1. [Thermal Monitor](https://store.kde.org/p/998915/)
 - Thermal Monitor 用于监控计算机的多个温度传感器，比如 CPU、GPU、硬盘 (HDD) 等 — 如果系统支持这些传感器。 
 - 可以将它添加到 KDE 的面板 (panel) 或桌面上，从而实时显示温度数据。
