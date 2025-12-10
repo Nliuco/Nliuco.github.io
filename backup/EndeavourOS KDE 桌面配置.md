@@ -43,31 +43,31 @@ Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 sudo pacman -S kvantum
 ```
 # 5. [全局主题](https://github.com/Rudraksh88/zephyr-kvantum)
-- 1. 将仓库克隆到 ~/.config/Kvantum 目录
+## 1. 将仓库克隆到 ~/.config/Kvantum 目录
 ```zsh
 # Create if it doesn't exist else skip
 mkdir -p ~/.config/Kvantum
 git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zephyr
 ```
-- 2. 使用 Kvantum 管理器设置主题：
+## 2. 使用 Kvantum 管理器设置主题：
   - 打开 Kvantum 管理器 。
   - 在 Kvantum 管理器中，单击 “更改/删除主题” 选项卡。
   - 从可用主题列表中选择 Zephyr 。
   - 点击 “应用” 以设置主题。
 # 6. [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
-- 步骤 1：安装依赖项
+## 步骤 1：安装依赖项
 ```zsh
 sudo pacman -S base-devel
 sudo pacman -S kdecoration qt6-declarative
 sudo pacman -S cmake extra-cmake-modules
 ```
-- 步骤 2：编译和安装
-  - 简易模式™ – 带脚本
+## 步骤 2：编译和安装
+  ### 简易模式™ – 带脚本
   ```zsh
   chmod +x install.sh
   ./install.sh
   ```
-  - 手动模式
+  ### 手动模式
   ```zsh
   mkdir build && cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
