@@ -55,8 +55,9 @@ cd klassy
 git checkout plasma6.3
 ./install.sh
 ```
-## 步骤 3: 设置窗口装饰栏为`klassy`
-
+## 步骤 3：配置
+- 系统设置>设置窗口装饰栏为`klassy`
+- 在`klassy setting`微调样式即可
 # 6. [图标包](https://store.kde.org/p/1279924)
 ```zsh
 yay -S tela-icon-theme
