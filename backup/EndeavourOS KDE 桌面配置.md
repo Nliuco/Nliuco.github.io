@@ -29,7 +29,7 @@ paru -S bibata-cursor-theme-bin
 ```bash
 paru -S fcitx5-skin-ori-git
 ```
-# Kvantum
+# Kvantum安装
 Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 - 它的特点包括：
   - 使用 SVG 绘制界面组件 → 能实现精致的透明、模糊、圆角
@@ -39,5 +39,7 @@ Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 - 简而言之：
   - 系统外观靠 Plasma 主题；应用界面外观靠 Kvantum。
   - 想要透明 / 毛玻璃，就必须 Kvantum 出手。
-
+```zsh
+sudo pacman -S kvantum
+```
 # 全局主题 + 
