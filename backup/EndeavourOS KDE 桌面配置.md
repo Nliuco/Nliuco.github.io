@@ -33,31 +33,19 @@ git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zep
   - 在 Kvantum 管理器中，单击 “更改/删除主题” 选项卡。
   - 从可用主题列表中选择 Zephyr 。
   - 点击 “应用” 以设置主题。
-# 5. [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
-## 步骤 1：克隆仓库
+# 5. [窗口装饰栏](https://github.com/paulmcauley/klassy)
+## 步骤 1：安装依赖项
 ```zsh
-# 在你本地的某个目录下执行
-git clone https://github.com/Rudraksh88/KustomBreezeEnhanced.git
+sudo pacman -S git frameworkintegration gcc-libs glibc kcmutils kcolorscheme kconfig kcoreaddons kdecoration kguiaddons ki18n kiconthemes kirigami kwidgetsaddons kwindowsystem qt6-base qt6-declarative qt6-svg xdg-utils extra-cmake-modules kcmutils5 frameworkintegration5 kconfigwidgets5 kiconthemes5 kirigami2 kwindowsystem5
 ```
-## 步骤 2：安装依赖项
+## 步骤 2：编译和安装
+从源代码脚本下载、构建和安装：
 ```zsh
-sudo pacman -S base-devel
-sudo pacman -S kdecoration qt6-declarative
-sudo pacman -S cmake extra-cmake-modules
+git clone https://github.com/paulmcauley/klassy
+cd klassy
+git checkout plasma6.3
+./install.sh
 ```
-## 步骤 3：编译和安装
-  ### 简易模式™ – 带脚本
-  ```zsh
-  chmod +x install.sh
-  ./install.sh
-  ```
-  ### 手动模式
-  ```zsh
-  mkdir build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
-  sudo make install
-  ```
 # 6. 常用面板小组件
 ## 1. [Thermal Monitor](https://store.kde.org/p/998915/)
 - Thermal Monitor 用于监控计算机的多个温度传感器，比如 CPU、GPU、硬盘 (HDD) 等 — 如果系统支持这些传感器。 
