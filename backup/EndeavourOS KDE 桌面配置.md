@@ -1,4 +1,4 @@
-# 常用面板小组件
+# 1. 常用面板小组件
 ## 1. [Thermal Monitor](https://store.kde.org/p/998915/)
 - Thermal Monitor 用于监控计算机的多个温度传感器，比如 CPU、GPU、硬盘 (HDD) 等 — 如果系统支持这些传感器。 
 - 可以将它添加到 KDE 的面板 (panel) 或桌面上，从而实时显示温度数据。
@@ -19,17 +19,17 @@
 - 它允许用户选择不同的时钟样式（例如：数字、模拟、文本时钟等），并提供额外的定制选项，比如时区、时间格式、日期显示等。
 - 插件可以直接集成到 KDE Plasma 面板或桌面，显示时间和日期。
 
-# 光标皮肤
+# 2. 光标皮肤
 ## [Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor)
 ```bash
 paru -S bibata-cursor-theme-bin
 ```
-# 输入法皮肤(Fcitx5)
+# 3. 输入法皮肤(Fcitx5)
 ## [Ori theme](https://github.com/Reverier-Xu/Ori-fcitx5)
 ```bash
 paru -S fcitx5-skin-ori-git
 ```
-# Kvantum安装
+# 4. Kvantum安装
 Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 - 它的特点包括：
   - 使用 SVG 绘制界面组件 → 能实现精致的透明、模糊、圆角
@@ -42,13 +42,13 @@ Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
 ```zsh
 sudo pacman -S kvantum
 ```
-# [全局主题](https://github.com/Rudraksh88/zephyr-kvantum)
+# 5. [全局主题](https://github.com/Rudraksh88/zephyr-kvantum)
 ```zsh
 # Create if it doesn't exist else skip
 mkdir -p ~/.config/Kvantum
 git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zephyr
 ```
-# [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
+# 6. [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
 - 步骤 1：安装依赖项
 ```zsh
 sudo pacman -S base-devel
