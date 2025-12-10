@@ -34,13 +34,18 @@ git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zep
   - 从可用主题列表中选择 Zephyr 。
   - 点击 “应用” 以设置主题。
 # 5. [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
-## 步骤 1：安装依赖项
+## 步骤 1：克隆仓库
+```zsh
+# 在你本地的某个目录下执行
+git clone https://github.com/Rudraksh88/KustomBreezeEnhanced.git
+```
+## 步骤 2：安装依赖项
 ```zsh
 sudo pacman -S base-devel
 sudo pacman -S kdecoration qt6-declarative
 sudo pacman -S cmake extra-cmake-modules
 ```
-## 步骤 2：编译和安装
+## 步骤 3：编译和安装
   ### 简易模式™ – 带脚本
   ```zsh
   chmod +x install.sh
