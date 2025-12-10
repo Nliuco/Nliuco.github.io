@@ -1,4 +1,59 @@
-# 1. 常用面板小组件
+# 1. 光标皮肤
+## [Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor)
+```bash
+paru -S bibata-cursor-theme-bin
+```
+# 2. 输入法皮肤(Fcitx5)
+## [Ori theme](https://github.com/Reverier-Xu/Ori-fcitx5)
+```bash
+paru -S fcitx5-skin-ori-git
+```
+# 3. Kvantum安装
+Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
+- 它的特点包括：
+  - 使用 SVG 绘制界面组件 → 能实现精致的透明、模糊、圆角
+  - 可加载第三方主题 → Kvantum 生态极其丰富（Catppuccin、Fluent、Nordic 等）
+  - 不依赖 KDE Plasma → 所有 Qt 应用界面均生效
+  - 能实现 GTK 样式做不到的毛玻璃效果
+- 简而言之：
+  - 系统外观靠 Plasma 主题；应用界面外观靠 Kvantum。
+  - 想要透明 / 毛玻璃，就必须 Kvantum 出手。
+```zsh
+sudo pacman -S kvantum
+```
+# 4. [全局主题](https://github.com/Rudraksh88/zephyr-kvantum)
+## 1. 克隆仓库
+```zsh
+# Create if it doesn't exist else skip
+mkdir -p ~/.config/Kvantum
+git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zephyr
+```
+## 2. 设置主题
+  - 打开 Kvantum 管理器 。
+  - 在 Kvantum 管理器中，单击 “更改/删除主题” 选项卡。
+  - 从可用主题列表中选择 Zephyr 。
+  - 点击 “应用” 以设置主题。
+# 5. [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
+## 步骤 1：安装依赖项
+```zsh
+sudo pacman -S base-devel
+sudo pacman -S kdecoration qt6-declarative
+sudo pacman -S cmake extra-cmake-modules
+```
+## 步骤 2：编译和安装
+  ### 简易模式™ – 带脚本
+  ```zsh
+  chmod +x install.sh
+  ./install.sh
+  ```
+  ### 手动模式
+  ```zsh
+  mkdir build && cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
+  sudo make install
+  ```
+# 6. 常用面板小组件
 ## 1. [Thermal Monitor](https://store.kde.org/p/998915/)
 - Thermal Monitor 用于监控计算机的多个温度传感器，比如 CPU、GPU、硬盘 (HDD) 等 — 如果系统支持这些传感器。 
 - 可以将它添加到 KDE 的面板 (panel) 或桌面上，从而实时显示温度数据。
@@ -19,59 +74,3 @@
 - 它允许用户选择不同的时钟样式（例如：数字、模拟、文本时钟等），并提供额外的定制选项，比如时区、时间格式、日期显示等。
 - 插件可以直接集成到 KDE Plasma 面板或桌面，显示时间和日期。
 
-# 2. 光标皮肤
-## [Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor)
-```bash
-paru -S bibata-cursor-theme-bin
-```
-# 3. 输入法皮肤(Fcitx5)
-## [Ori theme](https://github.com/Reverier-Xu/Ori-fcitx5)
-```bash
-paru -S fcitx5-skin-ori-git
-```
-# 4. Kvantum安装
-Kvantum 是一个基于 SVG 的 Qt 风格主题引擎（Qt Theme Engine）。
-- 它的特点包括：
-  - 使用 SVG 绘制界面组件 → 能实现精致的透明、模糊、圆角
-  - 可加载第三方主题 → Kvantum 生态极其丰富（Catppuccin、Fluent、Nordic 等）
-  - 不依赖 KDE Plasma → 所有 Qt 应用界面均生效
-  - 能实现 GTK 样式做不到的毛玻璃效果
-- 简而言之：
-  - 系统外观靠 Plasma 主题；应用界面外观靠 Kvantum。
-  - 想要透明 / 毛玻璃，就必须 Kvantum 出手。
-```zsh
-sudo pacman -S kvantum
-```
-# 5. [全局主题](https://github.com/Rudraksh88/zephyr-kvantum)
-## 1. 将仓库克隆到 ~/.config/Kvantum 目录
-```zsh
-# Create if it doesn't exist else skip
-mkdir -p ~/.config/Kvantum
-git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zephyr
-```
-## 2. 使用 Kvantum 管理器设置主题：
-  - 打开 Kvantum 管理器 。
-  - 在 Kvantum 管理器中，单击 “更改/删除主题” 选项卡。
-  - 从可用主题列表中选择 Zephyr 。
-  - 点击 “应用” 以设置主题。
-# 6. [窗口装饰栏](https://github.com/Rudraksh88/KustomBreezeEnhanced)
-## 步骤 1：安装依赖项
-```zsh
-sudo pacman -S base-devel
-sudo pacman -S kdecoration qt6-declarative
-sudo pacman -S cmake extra-cmake-modules
-```
-## 步骤 2：编译和安装
-  ### 简易模式™ – 带脚本
-  ```zsh
-  chmod +x install.sh
-  ./install.sh
-  ```
-  ### 手动模式
-  ```zsh
-  mkdir build && cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
-  sudo make install
-  ```
-  
