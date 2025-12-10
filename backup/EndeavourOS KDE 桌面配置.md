@@ -38,7 +38,7 @@ git clone https://github.com/Rudraksh88/zephyr-kvantum.git ~/.config/Kvantum/Zep
 ```zsh
 sudo pacman -S git frameworkintegration gcc-libs glibc kcmutils kcolorscheme kconfig kcoreaddons kdecoration kguiaddons ki18n kiconthemes kirigami kwidgetsaddons kwindowsystem qt6-base qt6-declarative qt6-svg xdg-utils extra-cmake-modules kcmutils5 frameworkintegration5 kconfigwidgets5 kiconthemes5 kirigami2 kwindowsystem5
 ```
-> [!note]
+> [!tip]
 > 这里我只缺几个依赖, 安装对应的就可以
 > ```zsh
 > sudo pacman -S extra-cmake-modules kcmutils5 frameworkintegration5 kconfigwidgets5 kiconthemes5 kirigami2
