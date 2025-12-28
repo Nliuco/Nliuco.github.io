@@ -492,7 +492,23 @@ sudo nano /etc/fstab</pre></div>
 <li>客户端</li>
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 24800/udp
-sudo ufw allow 24801/udp</pre></div></div>
+sudo ufw allow 24801/udp</pre></div>
+<ul>
+<li>如果对防火墙不在意, 可以禁止防火墙启动</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl status firewalld <span class="pl-c"><span class="pl-c">#</span> 或ufw</span>
+sudo systemctl stop firewalld <span class="pl-c"><span class="pl-c">#</span> 本次开机禁用</span>
+sudo systemctl start firewalld <span class="pl-c"><span class="pl-c">#</span> 本次开机禁用</span>
+sudo systemctl disable --now firewalld <span class="pl-c"><span class="pl-c">#</span> 禁用开机自启</span>
+sudo systemctl <span class="pl-c1">enable</span>  --now firewalld <span class="pl-c"><span class="pl-c">#</span> 恢复开机自启</span></pre></div>
+<h3>6. Timeshift排除目录</h3>
+<ul>
+<li>Timeshift对于home目录备份注意,` 如果对于home目录备份有需求, 一定要过滤掉几个目录, 避免备份文件过大</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">/home/<span class="pl-k">*</span>/.steam/<span class="pl-k">**</span>
+/home/<span class="pl-k">*</span>/.local/share/Steam/<span class="pl-k">**</span>
+/home/<span class="pl-k">*</span>/.cache/<span class="pl-k">**</span>
+/home/<span class="pl-k">*</span>/Downloads/<span class="pl-k">**</span></pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

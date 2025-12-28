@@ -239,3 +239,21 @@ sudo ufw allow 24800/tcp
 sudo ufw allow 24800/udp
 sudo ufw allow 24801/udp
 ```
+- 如果对防火墙不在意, 可以禁止防火墙启动
+```bash
+sudo systemctl status firewalld # 或ufw
+sudo systemctl stop firewalld # 本次开机禁用
+sudo systemctl start firewalld # 本次开机禁用
+sudo systemctl disable --now firewalld # 禁用开机自启
+sudo systemctl enable  --now firewalld # 恢复开机自启
+```
+
+### 6. Timeshift排除目录
+
+- Timeshift对于home目录备份注意,` 如果对于home目录备份有需求, 一定要过滤掉几个目录, 避免备份文件过大
+```bash
+/home/*/.steam/**
+/home/*/.local/share/Steam/**
+/home/*/.cache/**
+/home/*/Downloads/**
+```
