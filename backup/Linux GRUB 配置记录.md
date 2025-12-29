@@ -101,5 +101,5 @@ ls -ll /etc/grub.d/
 > ├─nvme1n1p3 ntfs                     C05884BF5884B5A6                                    
 > └─nvme1n1p4 ntfs                     F29CA6EF9CA6AD93           
 
-
+### 3.3 时钟问题
 
