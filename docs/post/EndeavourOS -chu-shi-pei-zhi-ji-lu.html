@@ -121,7 +121,7 @@ patch:
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/EndeavourOS%20-chu-shi-pei-zhi-ji-lu.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
 <title>EndeavourOS 初始配置记录</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -190,29 +190,25 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="markdown-body" id="postBody"><p>下文中涉及到的部分文档: <a href="https://wiki.archlinux.org/title/Fcitx5" rel="nofollow">Arch Wiki Fcitx5</a>、<a href="https://wiki.archlinux.org/title/Rime" rel="nofollow">Arch Wiki Rime</a>、<a href="https://wiki.archlinux.org/title/Zram" rel="nofollow">Arch Wiki Zram</a>、<a href="https://wiki.archlinux.org/title/KDE_Wallet#Disable_KWallet" rel="nofollow">Arch Wiki KDE_Wallet</a>、<a href="https://www.clashverge.dev/install.html#__tabbed_2_3" rel="nofollow">clash-verge-rev</a></p>
 <h2>服务不可用</h2>
 <h3>1. paru: 未找到命令</h3>
-<pre lang="bash" class="notranslate"><code class="notranslate">yay -S paru
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">yay -S paru</pre></div>
 <h3>2. 蓝牙无法正常打开</h3>
 <ul>
 <li>先查看蓝牙服务是否正常启用, 尝试使用<code class="notranslate">systemctl</code>重新启用, 亦或是需要安装额外包</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">systemctl status bluetooth.service # 状态
+<div class="highlight highlight-source-shell"><pre class="notranslate">systemctl status bluetooth.service <span class="pl-c"><span class="pl-c">#</span> 状态</span>
 sudo pacman -S bluez bluez-utils
-sudo systemctl enable --now bluetooth.service
-systemctl status bluetooth
-</code></pre>
+sudo systemctl <span class="pl-c1">enable</span> --now bluetooth.service
+systemctl status bluetooth</pre></div>
 <h3>3. 输入法不自带中文输入</h3>
 <ul>
 <li>使用<code class="notranslate">Fcitx5</code>输入框架</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo pacman -S fcitx5-im fcitx5-chinese-addons
-paru -S fcitx5-skin-ori-git # 安装皮肤-可选
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S fcitx5-im fcitx5-chinese-addons
+paru -S fcitx5-skin-ori-git <span class="pl-c"><span class="pl-c">#</span> 安装皮肤-可选</span></pre></div>
 <ul>
 <li>为了使其他应用内部正确使用<code class="notranslate">Fcitx5</code>, 需要配置一下<code class="notranslate">/etc/environment</code></li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo nano /etc/environment
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nano /etc/environment</pre></div>
 <ul>
 <li>添加以下内容</li>
 </ul>
@@ -222,63 +218,55 @@ XMODIFIERS=@im=fcitx
 </code></pre>
 <div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>可选: 安装<code class="notranslate">Rime</code>, 根据个人使用习惯,  配置<code class="notranslate">小鹤双拼</code>输入. 这里采用<a href="https://github.com/iDvel/rime-ice">雾凇拼音</a></p>
 </div>
-<pre lang="bash" class="notranslate"><code class="notranslate"># 安装rime
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装rime</span>
 sudo pacman -S fcitx5-rime
-# 雾凇拼音方案
-paru -S rime-ice-git
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 雾凇拼音方案</span>
+paru -S rime-ice-git</pre></div>
 <ul>
 <li>进入<code class="notranslate">~/.local/share/fcitx5/rime/</code>目录，创建配置<code class="notranslate">default.custom.yaml</code>，配置输入方案</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">cd ~/.local/share/fcitx5/rime/
-nano default.custom.yaml
-</code></pre>
-<pre lang="yaml" class="notranslate"><code class="notranslate">patch:
-  # 仅使用「雾凇拼音」的默认配置，配置此行即可
-  __include: rime_ice_suggestion:/
-  # 以下根据自己所需自行定义，仅做参考。
-  # 针对对应处方的定制条目，请使用 &lt;recipe&gt;.custom.yaml 中配置，例如 rime_ice.custom.yaml
-  __patch:
-    key_binder/bindings/+:
-      # 开启逗号句号翻页
-      - { when: paging, accept: comma, send: Page_Up }
-      - { when: has_menu, accept: period, send: Page_Down }
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-k">~</span>/.local/share/fcitx5/rime/
+nano default.custom.yaml</pre></div>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">patch</span>:
+  <span class="pl-c"><span class="pl-c">#</span> 仅使用「雾凇拼音」的默认配置，配置此行即可</span>
+  <span class="pl-ent">__include</span>: <span class="pl-s">rime_ice_suggestion:/</span>
+  <span class="pl-c"><span class="pl-c">#</span> 以下根据自己所需自行定义，仅做参考。</span>
+  <span class="pl-c"><span class="pl-c">#</span> 针对对应处方的定制条目，请使用 &lt;recipe&gt;.custom.yaml 中配置，例如 rime_ice.custom.yaml</span>
+  <span class="pl-ent">__patch</span>:
+    <span class="pl-ent">key_binder/bindings/+</span>:
+      <span class="pl-c"><span class="pl-c">#</span> 开启逗号句号翻页</span>
+      - <span class="pl-s">{ when: paging, accept: comma, send: Page_Up }</span>
+      - <span class="pl-s">{ when: has_menu, accept: period, send: Page_Down }</span></pre></div>
 <ul>
 <li>重启后刷新配置</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">fcitx5-remote -r
-reboot # 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">fcitx5-remote -r
+reboot <span class="pl-c"><span class="pl-c">#</span> 没生效就重启一下系统, 或者点击一些托盘应用的重新启动Fcitx5.</span></pre></div>
 <h3>4. 检查<code class="notranslate">NVIDIA</code>显卡驱动</h3>
 <ul>
 <li>查看是否检测到 NVIDIA 显卡</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">lspci -k | grep -A 3 -E "VGA|3D"
-lspci | grep "NVIDIA"
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span>
+lspci <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>NVIDIA<span class="pl-pds">"</span></span></pre></div>
 <ul>
 <li>输出中如果看到：</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">Kernel driver in use: nvidia
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">Kernel driver <span class="pl-k">in</span> use: nvidia</pre></div>
 <ul>
 <li>说明驱动 已加载成功。如果显示：</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">Kernel driver in use: nouveau
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">Kernel driver <span class="pl-k">in</span> use: nouveau</pre></div>
 <ul>
 <li>那就是 开源驱动（nouveau）被启用 → NVIDIA 专有驱动没正常加载。需要按照下面的步骤安装、配置</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo pacman -S nvidia nvidia-utils nvidia-settings 
-sudo pacman -S nvidia-prime # 混合显卡, 即cpu集显 + gpu独集显需要, 下文称`Optimus`
-# 再次验证
-lspci -k | grep -A 3 -E "VGA|3D"
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -S nvidia nvidia-utils nvidia-settings 
+sudo pacman -S nvidia-prime <span class="pl-c"><span class="pl-c">#</span> 混合显卡, 即cpu集显 + gpu独集显需要, 下文称`Optimus`</span>
+<span class="pl-c"><span class="pl-c">#</span> 再次验证</span>
+lspci -k <span class="pl-k">|</span> grep -A 3 -E <span class="pl-s"><span class="pl-pds">"</span>VGA|3D<span class="pl-pds">"</span></span>
 nvidia-smi
-prime-run glxinfo | grep "OpenGL renderer" 
-prime-run firefox # 这里用firefox浏览器测试一下独显是否使用正常
-nvidia-smi # 再打开一个终端, 查看`Processes`下是否有firefox,  GPU现存占用情况等信息
-</code></pre>
+prime-run glxinfo <span class="pl-k">|</span> grep <span class="pl-s"><span class="pl-pds">"</span>OpenGL renderer<span class="pl-pds">"</span></span> 
+prime-run firefox <span class="pl-c"><span class="pl-c">#</span> 这里用firefox浏览器测试一下独显是否使用正常</span>
+nvidia-smi <span class="pl-c"><span class="pl-c">#</span> 再打开一个终端, 查看`Processes`下是否有firefox,  GPU现存占用情况等信息</span></pre></div>
 <ul>
 <li><code class="notranslate">Optimus(Intel/nVidia)</code>笔电💻若有<code class="notranslate">动态切换/图形化控制</code>的需求, 可参考<code class="notranslate">EndeavourOS</code>驱动相关解决方案, 如:
 <ul>
@@ -296,36 +284,34 @@ nvidia-smi # 再打开一个终端, 查看`Processes`下是否有firefox,  GPU�
 Enabled=false
 </code></pre>
 <h2>常用软件包</h2>
-<pre lang="bash" class="notranslate"><code class="notranslate">paru -S pacseek
+<div class="highlight highlight-source-shell"><pre class="notranslate">paru -S pacseek
 sudo pacman -Sy fastfetch
 sudo pacman -S timeshift
 sudo pacman -S clash-verge-rev
 sudo pacman -S deskflow
 sudo pacman -S wl-clipboard
-sudo pacman -S fuse2 # 正常运行AppImage软件所需库
+sudo pacman -S fuse2 <span class="pl-c"><span class="pl-c">#</span> 正常运行AppImage软件所需库</span>
 yay -S localsend-bin
-yay -S wemeet-bin # 腾讯会议
-sudo pacman -Rns wemeet-bin # 卸载腾讯会议
-sudo pacman -Syu steam # 游戏
+yay -S wemeet-bin <span class="pl-c"><span class="pl-c">#</span> 腾讯会议</span>
+sudo pacman -Rns wemeet-bin <span class="pl-c"><span class="pl-c">#</span> 卸载腾讯会议</span>
+sudo pacman -Syu steam <span class="pl-c"><span class="pl-c">#</span> 游戏</span>
 ---
-# 字体
-sudo pacman -Sy noto-fonts-cjk noto-fonts-emoji tty-dejavu tty-jetbrains-mono-nerd
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 字体</span>
+sudo pacman -Sy noto-fonts-cjk noto-fonts-emoji tty-dejavu tty-jetbrains-mono-nerd</pre></div>
 <h2>其他</h2>
 <h3>0. 启用<code class="notranslate">ufw</code>防火墙</h3>
-<pre lang="bash" class="notranslate"><code class="notranslate"># 查看 UFW 当前状态（是否启用、默认策略、已开放端口等详细信息）
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看 UFW 当前状态（是否启用、默认策略、已开放端口等详细信息）</span>
 sudo ufw status verbose
-# 没有安装的话就去安装 UFW
+<span class="pl-c"><span class="pl-c">#</span> 没有安装的话就去安装 UFW</span>
 sudo pacman -S ufw
-# 启用 UFW，并加载默认规则（防火墙开始生效）
-sudo ufw enable
-# 启动 ufw systemd 服务，并设置开机自动启动
-sudo systemctl enable ufw --now
-# 将默认入站策略设置为 "拒绝所有外部进入连接"，提高安全性
+<span class="pl-c"><span class="pl-c">#</span> 启用 UFW，并加载默认规则（防火墙开始生效）</span>
+sudo ufw <span class="pl-c1">enable</span>
+<span class="pl-c"><span class="pl-c">#</span> 启动 ufw systemd 服务，并设置开机自动启动</span>
+sudo systemctl <span class="pl-c1">enable</span> ufw --now
+<span class="pl-c"><span class="pl-c">#</span> 将默认入站策略设置为 "拒绝所有外部进入连接"，提高安全性</span>
 sudo ufw default deny incoming
-# 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用
-sudo ufw default allow outgoing
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 默认允许所有出站流量（如浏览器上网、软件更新）避免影响正常使用</span>
+sudo ufw default allow outgoing</pre></div>
 <h3>1. 软件包拉取慢</h3>
 <ul>
 <li>
@@ -334,9 +320,8 @@ sudo ufw default allow outgoing
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">git config --global http.proxy http://127.0.0.1:7897
-git config --global https.proxy http://127.0.0.1:7897
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897</pre></div>
 <ul>
 <li>
 <ol start="2">
@@ -396,17 +381,15 @@ export https_proxy="http://127.0.0.1:7897"
 <li>其他设备无法检测到本机的localsend服务, 需要配置本地防火墙，开放<code class="notranslate">TCP/UDP</code>端口, 根据防火墙配置即刻</li>
 <li>使用<code class="notranslate">ufw</code></li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo ufw allow 53317/tcp
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 53317/tcp
 sudo ufw allow 53317/udp
-sudo ufw reload
-</code></pre>
+sudo ufw reload</pre></div>
 <ul>
 <li>使用<code class="notranslate">Firewalld</code></li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo firewall-cmd --add-port=53317/tcp --permanent
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo firewall-cmd --add-port=53317/tcp --permanent
 sudo firewall-cmd --add-port=53317/udp --permanent
-sudo firewall-cmd --reload
-</code></pre>
+sudo firewall-cmd --reload</pre></div>
 <h3>3. SSD 启用定期 TRIM</h3>
 <ul>
 <li>这会告诉 SSD：
@@ -424,9 +407,8 @@ sudo firewall-cmd --reload
 </li>
 <li>每周自动执行一次 TRIM（对 SSD 清理无效块）</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">systemctl status fstrim.timer
-sudo systemctl enable fstrim.timer --now
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">systemctl status fstrim.timer
+sudo systemctl <span class="pl-c1">enable</span> fstrim.timer --now</pre></div>
 <h3>4. 使用 Zram</h3>
 <ul>
 <li>Zram 是把内存的一部分压缩起来，当作“压缩内存交换区”来使用，提高系统的流畅性。</li>
@@ -437,8 +419,7 @@ sudo systemctl enable fstrim.timer --now
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo pacman -Sy zram-generator
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo pacman -Sy zram-generator</pre></div>
 <ul>
 <li>
 <ol start="2">
@@ -446,8 +427,7 @@ sudo systemctl enable fstrim.timer --now
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo nano /etc/systemd/zram-generator.conf
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nano /etc/systemd/zram-generator.conf</pre></div>
 <ul>
 <li>
 <ol start="3">
@@ -466,9 +446,8 @@ compression-algorithm = zstd
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo systemctl daemon-reload
-sudo reboot
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl daemon-reload
+sudo reboot</pre></div>
 <ul>
 <li>
 <ol start="5">
@@ -476,9 +455,8 @@ sudo reboot
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">lsblk # 输出类似zram0   253:0   0   12G   0 disk [SWAP]
-swapon --show # 输出类似 /dev/zram0 partition 12G    0B  100
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lsblk <span class="pl-c"><span class="pl-c">#</span> 输出类似zram0   253:0   0   12G   0 disk [SWAP]</span>
+swapon --show <span class="pl-c"><span class="pl-c">#</span> 输出类似 /dev/zram0 partition 12G    0B  100</span></pre></div>
 <ul>
 <li>
 <ol start="6">
@@ -486,9 +464,8 @@ swapon --show # 输出类似 /dev/zram0 partition 12G    0B  100
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo swapoff /swapfile
-sudo nano /etc/fstab
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo swapoff /swapfile
+sudo nano /etc/fstab</pre></div>
 <ul>
 <li>
 <ol start="7">
@@ -505,38 +482,33 @@ sudo nano /etc/fstab
 </ol>
 </li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">swapon --show
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">swapon --show</pre></div>
 <h3>5. Deskflow防火墙放行</h3>
 <ul>
 <li>服务器端（作为控制端/键鼠共享源头的那台机器）执行：</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo ufw allow 24800/tcp
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 24800/tcp</pre></div>
 <ul>
 <li>客户端</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo ufw allow 24800/udp
-sudo ufw allow 24801/udp
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo ufw allow 24800/udp
+sudo ufw allow 24801/udp</pre></div>
 <ul>
 <li>如果对防火墙不在意, 可以禁止防火墙启动</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo systemctl status firewalld # 或ufw
-sudo systemctl stop firewalld # 本次开机禁用
-sudo systemctl start firewalld # 本次开机禁用
-sudo systemctl disable --now firewalld # 禁用开机自启
-sudo systemctl enable  --now firewalld # 恢复开机自启
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl status firewalld <span class="pl-c"><span class="pl-c">#</span> 或ufw</span>
+sudo systemctl stop firewalld <span class="pl-c"><span class="pl-c">#</span> 本次开机禁用</span>
+sudo systemctl start firewalld <span class="pl-c"><span class="pl-c">#</span> 本次开机禁用</span>
+sudo systemctl disable --now firewalld <span class="pl-c"><span class="pl-c">#</span> 禁用开机自启</span>
+sudo systemctl <span class="pl-c1">enable</span>  --now firewalld <span class="pl-c"><span class="pl-c">#</span> 恢复开机自启</span></pre></div>
 <h3>6. Timeshift排除目录</h3>
 <ul>
 <li>Timeshift对于home目录备份注意,` 如果对于home目录备份有需求, 一定要过滤掉几个目录, 避免备份文件过大</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">/home/*/.steam/**
-/home/*/.local/share/Steam/**
-/home/*/.cache/**
-/home/*/Downloads/**
-</code></pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate">/home/<span class="pl-k">*</span>/.steam/<span class="pl-k">**</span>
+/home/<span class="pl-k">*</span>/.local/share/Steam/<span class="pl-k">**</span>
+/home/<span class="pl-k">*</span>/.cache/<span class="pl-k">**</span>
+/home/<span class="pl-k">*</span>/Downloads/<span class="pl-k">**</span></pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
