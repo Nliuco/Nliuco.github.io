@@ -1,5 +1,66 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Wed, 25 Feb 2026 06:53:00 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>欢迎来到我的blog~</title><link>http://blog.pianone.dpdns.org/post/huan-ying-lai-dao-wo-de-blog~.html</link><description># 这里是Pianone的博客
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Wed, 25 Feb 2026 09:50:19 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>年度计划-2026</title><link>http://blog.pianone.dpdns.org/post/nian-du-ji-hua--2026.html</link><description>**下面做一些今年的年度计划吧~**
+
+我感觉我是J型（判断Judging）人, 至少这几年是这样, 凡事都喜欢列TODO, 然后逐条一个一个解决
+
+其实我挺喜欢做计划的, 然后看着计划一个一个被删除线划掉的感觉很好
+
+每年都会做一些年度目标, 虽然不一定每一项都能完成, 但有目标总是好的 
+
+去年我打算学日语(当时还说JLPT对标N2来着哈哈), 学钢琴, 玩linux...还有几个乱七八糟的什么. 结果就是 9月份才买了人生中第一架电子琴, 到了今年1月份(今天7号), 只会简单的一首无黑键, 无踏板的简易call of slience, linux倒是玩了很多, arch系 玩的最多, fedora mint等其他红帽、乌班图也玩过俩, 但是还是喜欢arch-虽然到现在还有些不满意自己的配置哈哈
+
+但是日语是一点都没行动, 五十音都没看过...
+
+今年2026, 我还想定一些目标, 还是那句话, 虽然不一定每一项都能完成, 但有目标总是好的 
+
+我想了想, 大目标应该就几个
+
+学日语, 每天都应该学一些内容, 每日时间可以不用太长, 但应该每日都坚持做些什么(甚至可以同步对比英语练习一下)
+
+学电子琴, 多弹一些入门的钢琴曲(如果要定量的话, 我希望能会至少10首, 双手+踏板), 也是每日都需要做些什么小事, 积少成多, 乐理知识都要跟上才行啊~
+
+换一份工作: 这份工作是我第一份程序员工作, 最开始的员工现在只剩我和另一名同事了, 那名同事今年估计也有离开的动作了, 物是人非, 公司走了很多人, 很多我喜欢的人, 也来了很多人, 很多我不喜欢的人, 工龄在增加的同时(虽然只有两年), 没想到领导数量增加的更多, 很多人都只是喜欢说空话废话, 真正做一些实际贡献的人没有多少, 我越来越讨厌现在的工作氛围, 不过说多了也没必要, 毕竟过完春节我就要开始准备离职, 寻找新的橄榄枝了, 我还是喜欢程序员工作, 不过前端、后端都做过了, 渐渐的很多东西都没有那么让我感兴趣了, 但是我依然喜欢计算机, 在考虑要不要尝试一下其他的了领域.游戏什么也没了解过(也可以考虑考虑找个外企, WLB一些哈哈)...总之有个目标就是26年开春辞职, 然后找个其他工作, 钱多钱少, 够用就行, 关键是我做着喜欢, 做着开心
+
+剩下的杂项, 算是写小目标或者零零碎碎的东西吧
+linux用了也有一阵子, 今年算不上大目标了, 就是偶尔看看新的发行版, 再就是多用用多熟悉生态、软件之类的吧
+
+做一个简单的摸鱼app, 闲着没事打发时间哈哈
+
+多逛逛开源软件, 我还是喜欢开源社区的生态氛围感
+
+持续写博客吧, 可以是学习生活、日常杂碎、配置记录等等, 写够10篇左右吧, 不能让自建好的博客一直空荡荡的, 写的时候多思考些
+
+系统性的学一些计算机相关的, 前后端之外的什么东西之类的, 没涉及过的领域, 什么计算机视觉、算法、图形相关的挺好玩, 游戏什么的也想了解, 这里说的不是那种看两天就会的简单的东西, 是需要系统整体性学习的庞大知识内容, 也并不要学习多深多精, 就是想多了解, 多知道为什么就可以, 一定要系统一些, 并非草草了事
+
+一直想和家里人旅游, 其实不旅游也没什么, 就是一家人在一起, 看看电影逛逛街什么的, 感觉就挺好, 现在都没计划, 今年估计也没啥计划, 都在工作... 工作的忘记了工作的目的其实是要热爱生活...
+
+工作了两年, 我感觉我越来越偏离当初上学时理想的自己了(当前换工作就是打算尽量回归正轨的方式之一), 除了上面的year plan, 我总是感觉少了点什么
+
+这些plan其实全都是对自己的, 还记得上学的时候总是对一些做了能够真正帮助到他人的事情念念不忘, 就好像我在互联网不停的翻找某些问题答案, 或者是什么解决方案, 有些网友贴出的文字正是我迫切需要的, 那种救赎感真的让我着迷, 我感觉那就是互联网精神吧, 共享, 共同进步, 互相帮助
+
+所以我想列一个plan, 是帮助他人的, 并不一定是要在网上(知乎之类的)写什么解答, 也可以是现实生活中的一些事情(比如去一些赡养机构看看老人孩子之类的, 我小时候确实想过做慈善, 但现在可能没什么‘实力’-就是没钱, 但至少也能帮助一些他们吧), 让自己有那种贡献感, 帮到人的获得感. 
+
+我把这个想法也加上 plan吧, 也不用是大目标, 但是还是稍微考虑下吧
+
+差不多就这么多吧, 说了这些, 我大体罗列整理了一些, 就是上面那些东西, 为了后续更好‘追债’, 我把目标放在下面哈哈~ 希望我尽量按照计划走, 毕竟我是J人嘛~
+
+-----
+-----
+-----
+
+嘛... 隔(tūo)了这么久, 一直也没格式化一些最终的计划产物, 现在终于是敲定了.... 不过还是先说些感触吧
+
+春节期间发生了很多事情, 真的有些难以意料, 甚至对我以前的很多观念都有很大的冲击, 我越来越觉得自己真的需要好好了解一下自己, 了解一些这个世界, 人与人之间的感情真的很复杂. 从毕业后就更少相信别人了, 至少以现状看来, 我的想法是越来越正确了.
+
+春节通关了 `底特律` , 大概是18还是19年的游戏? 很震撼, 每一个选项都让我难以抉择, 但我大致是偏向仿生人阵营的, 在我眼里那称得上是一种新的生命, 新的物种, 或者说新的人类, 本质没有不同, 但是我选择了和平线, 伤亡惨重解决也很悲凉...(其实想革命来着,  实在决策有问题冲锋死了一堆人无奈回档......) 现在回头看看, 感觉这个时代就要到来了. 那时候人类会怎么选呢? 不过我只是一个观测者罢了.
+
+还有就是 `卡拉` 的角色曲 `Opening Theme` 真的好好听, 很有阴郁忧伤的美, 感觉也挺好弹的, 就定为今年学的第一首了哈哈(绝对不是因为 `Flower Dance` 太难😞)
+
+再就是通关了 `魔女的夜宴` 真是没想到我能这么大方的说自己玩 `galgame` haha. 通关了宁宁线后想收集一下图鉴感觉自己好罪恶😢, 也是又了解了一些名梗吧, 什么`0d000721`, `𝑪𝒊𝒂𝒍𝒍𝒐～(∠・ω&lt; )⌒★`, 就是不知道为什么会有人说  `柚子➗蒸鹅❤️` , 可能也是自嘲吧. 
+
+15年的游戏,, 那么好的游戏, 角色心理, 剧情都做的很不错, 一口气通宵了两天宁宁线过关, 全称几乎没有快进, , 我本来玩gal说实话不多, 如果要玩的话, 目的性也很强😊. 不过学生时代的情感嘛, 确实很纯粹很美好, 不过时空不同造成了不同的我们吧, 如果让我重来一次, 我应该不会有什么变化(除非撞大运穿越到异世界...) 嘛..现在估计也不会对其他人又什么期待就是了. 二次元的美好啊, 我从来不奢求现实的复刻, 只盼望能有这么一个心灵归宿就好了. 毕竟无论程序还是二次元, 都不太会莫名其妙故障或者角色 `ooc`, 这种确定感是现实中谁都给不了的安稳...
+
+多说无益了, 下面还是主要说年度计划吧, 目标让 `ChatGPT` 整理规划了一下, 毕竟 AI 这么强, 确实规范又合理. 综上(当前还有下), 祝君步履坚定，所行皆为风景。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/nian-du-ji-hua--2026.html</guid><pubDate>Wed, 07 Jan 2026 07:02:54 +0000</pubDate></item><item><title>欢迎来到我的blog~</title><link>http://blog.pianone.dpdns.org/post/huan-ying-lai-dao-wo-de-blog~.html</link><description># 这里是Pianone的博客
 
 一个热爱生活(大概🤔), 喜欢音乐🎵, 游戏🎮的技术宅~。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/huan-ying-lai-dao-wo-de-blog~.html</guid><pubDate>Wed, 07 Jan 2026 06:57:18 +0000</pubDate></item><item><title>EndeavourOS zsh 终端美化/配置</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20zsh%20-zhong-duan-mei-hua---pei-zhi.html</link><description>&gt; [!note]
 &gt; 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
