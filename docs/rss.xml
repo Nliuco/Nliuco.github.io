@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 06 Mar 2026 02:22:53 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>闲言碎语</title><link>http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html</link><description>程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html</guid><pubDate>Fri, 06 Mar 2026 02:18:50 +0000</pubDate></item><item><title>欢迎来到我的blog~</title><link>http://blog.pianone.dpdns.org/post/huan-ying-lai-dao-wo-de-blog~.html</link><description># 这里是Pianone的博客
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 06 Mar 2026 02:30:25 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>闲言碎语</title><link>http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html</link><description>```txt
+程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
+
+AI写的越多, 人类就越不具备审查它的能力.
+
+初级工程师会花很多年写出在代码审查中被拒绝的代码, 不是因为不认真, 而是因为经验不足. 正是这些经历, 构建了判断力——区分“能写函数的人”和“能设计系统的人”. 你不可能一夜之间成为高级工程师.
+
+除非你用AI.
+```。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html</guid><pubDate>Fri, 06 Mar 2026 02:18:50 +0000</pubDate></item><item><title>欢迎来到我的blog~</title><link>http://blog.pianone.dpdns.org/post/huan-ying-lai-dao-wo-de-blog~.html</link><description># 这里是Pianone的博客
 
 一个热爱生活(大概🤔), 喜欢音乐🎵, 游戏🎮的技术宅~。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/huan-ying-lai-dao-wo-de-blog~.html</guid><pubDate>Wed, 07 Jan 2026 06:57:18 +0000</pubDate></item><item><title>EndeavourOS zsh 终端美化/配置</title><link>http://blog.pianone.dpdns.org/post/EndeavourOS%20zsh%20-zhong-duan-mei-hua---pei-zhi.html</link><description>&gt; [!note]
 &gt; 本文采用`Konsole` + `Zsh` + `Zimfw` + `Powerlevel10k`的搭配方式优化终端使用体验
