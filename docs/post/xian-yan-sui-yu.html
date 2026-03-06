@@ -10,30 +10,32 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="```txt
-程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
+<meta name="description" content="程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
 
 AI写的越多, 人类就越不具备审查它的能力.
 
 初级工程师会花很多年写出在代码审查中被拒绝的代码, 不是因为不认真, 而是因为经验不足. 正是这些经历, 构建了判断力——区分“能写函数的人”和“能设计系统的人”. 你不可能一夜之间成为高级工程师.
 
 除非你用AI.
-```。">
+
+> Goodhart's Law states that 'when a measure becomes a target, it ceases to be a good measure'
+> 当一个衡量指标变成目标时，它就不再是一个好的衡量指标。">
 <meta property="og:title" content="闲言碎语">
-<meta property="og:description" content="```txt
-程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
+<meta property="og:description" content="程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
 
 AI写的越多, 人类就越不具备审查它的能力.
 
 初级工程师会花很多年写出在代码审查中被拒绝的代码, 不是因为不认真, 而是因为经验不足. 正是这些经历, 构建了判断力——区分“能写函数的人”和“能设计系统的人”. 你不可能一夜之间成为高级工程师.
 
 除非你用AI.
-```。">
+
+> Goodhart's Law states that 'when a measure becomes a target, it ceases to be a good measure'
+> 当一个衡量指标变成目标时，它就不再是一个好的衡量指标。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
 <title>闲言碎语</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -99,13 +101,47 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><div class="highlight highlight-text-adblock"><pre class="notranslate">程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
-
-AI写的越多, 人类就越不具备审查它的能力.
-
-初级工程师会花很多年写出在代码审查中被拒绝的代码, 不是因为不认真, 而是因为经验不足. 正是这些经历, 构建了判断力——区分“能写函数的人”和“能设计系统的人”. 你不可能一夜之间成为高级工程师.
-
-除非你用AI.</pre></div></div>
+<div class="markdown-body" id="postBody"><p>程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化.</p>
+<p>AI写的越多, 人类就越不具备审查它的能力.</p>
+<p>初级工程师会花很多年写出在代码审查中被拒绝的代码, 不是因为不认真, 而是因为经验不足. 正是这些经历, 构建了判断力——区分“能写函数的人”和“能设计系统的人”. 你不可能一夜之间成为高级工程师.</p>
+<p>除非你用AI.</p>
+<blockquote>
+<p>Goodhart's Law states that "when a measure becomes a target, it ceases to be a good measure"<br>
+当一个衡量指标变成目标时，它就不再是一个好的衡量指标。</p>
+</blockquote>
+<h2>指标 vs 目标</h2>
+<p><strong>Measure（指标）</strong>：用来判断事情好坏的 <em>观测工具</em></p>
+<p><strong>Target（目标）</strong>：人们 <em>刻意去追求</em> 的结果</p>
+<p>正常情况：</p>
+<p><code class="notranslate">目标 → 产生结果 → 用指标去衡量</code></p>
+<p>但一旦指标被当作目标：</p>
+<p><code class="notranslate">目标 = 指标</code></p>
+<p>人们就会 <strong>想办法操纵指标，而不是改善真实情况。</strong></p>
+<hr>
+<h2>2. 一个简单例子</h2>
+<p>假设公司用 <strong>代码行数</strong> 衡量程序员效率。</p>
+<p>最初：</p>
+<pre class="notranslate"><code class="notranslate">代码行数 ↑  ≈  产出 ↑
+</code></pre>
+<p>所以这是一个还不错的 <strong>measure</strong>。</p>
+<p>但如果公司规定：</p>
+<blockquote>
+<p>每周必须写 2000 行代码。</p>
+</blockquote>
+<p>这时程序员可能会：</p>
+<ul>
+<li>故意拆代码</li>
+<li>写冗余逻辑</li>
+<li>不做重构</li>
+</ul>
+<p>结果：</p>
+<pre class="notranslate"><code class="notranslate">代码行数 ↑
+代码质量 ↓
+系统复杂度 ↑
+</code></pre>
+<p>于是 <strong>代码行数不再能反映真实生产力</strong>。</p>
+<p>这就是 <strong>Goodhart's Law</strong>。</p>
+<hr></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
