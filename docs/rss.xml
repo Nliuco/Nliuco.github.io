@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 28 Apr 2026 17:26:31 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>支付功能0-1</title><link>http://blog.pianone.dpdns.org/post/zhi-fu-gong-neng-0-1.html</link><description># 支付宝支付流程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Thu, 14 May 2026 16:54:35 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>从0到1集成支付功能-多渠道通用支付系统的架构设计与回顾</title><link>http://blog.pianone.dpdns.org/post/cong-0-dao-1-ji-cheng-zhi-fu-gong-neng---duo-qu-dao-tong-yong-zhi-fu-xi-tong-de-jia-gou-she-ji-yu-hui-gu.html</link><description># 支付宝支付流程
 ```md
 用户点击'去支付'
     ↓
@@ -47,7 +47,7 @@ App 拿着 orderStr 调用支付宝客户端 SDK → 弹出支付宝收银台
 3. 封装进 AppPayResult 丢给 App
     ↓
 App 拿到这 7 个字段 (含 prepayid 和 sign) 调起微信原生 SDK
-```。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/zhi-fu-gong-neng-0-1.html</guid><pubDate>Tue, 10 Mar 2026 09:10:11 +0000</pubDate></item><item><title>闲言碎语</title><link>http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html</link><description>程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
+```。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/cong-0-dao-1-ji-cheng-zhi-fu-gong-neng---duo-qu-dao-tong-yong-zhi-fu-xi-tong-de-jia-gou-she-ji-yu-hui-gu.html</guid><pubDate>Tue, 10 Mar 2026 09:10:11 +0000</pubDate></item><item><title>闲言碎语</title><link>http://blog.pianone.dpdns.org/post/xian-yan-sui-yu.html</link><description>程序本质上是一种存在于开发者心中的“理论”, 它包含程序做什么、设计意图如何映射到现实, 以及未来如何演化. 
 
 AI写的越多, 人类就越不具备审查它的能力.
 
