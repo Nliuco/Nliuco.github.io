@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 18 Aug 2026 10:11:36 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>又来折腾Arch了~</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</link><description># Arch 安装命令执行记录
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 18 Aug 2026 10:13:44 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>又来折腾Arch了~</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</link><description># Arch 安装命令执行记录
 
 ```bash
 setfont ter-v32n
@@ -75,7 +75,11 @@ genfstab -U /mnt &gt; /mnt/etc/fstab
 # 切换用户
 arch-chroot /mnt 
 
+# 设置时区软连接
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+# 切换用户后, 在系统里面再次安装yazi
+pacman -S yazi
 
 
 

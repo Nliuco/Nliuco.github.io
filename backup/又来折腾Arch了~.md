@@ -74,7 +74,11 @@ genfstab -U /mnt > /mnt/etc/fstab
 # 切换用户
 arch-chroot /mnt 
 
+# 设置时区软连接
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+# 切换用户后, 在系统里面再次安装yazi
+pacman -S yazi
 
 
 
