@@ -155,4 +155,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 exit
 reboot
 
+# 进入UEFI/BIOS
+# 设置启动首选项为arch
+
 ```

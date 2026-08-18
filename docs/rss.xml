@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 18 Aug 2026 10:38:11 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>又来折腾Arch了~</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</link><description># Arch 安装命令执行记录
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 18 Aug 2026 10:38:49 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>又来折腾Arch了~</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</link><description># Arch 安装命令执行记录
 
 ```bash
 setfont ter-v32n
@@ -155,6 +155,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # 退出并重启
 exit
 reboot
+
+# 进入UEFI/BIOS
+# 设置启动首选项为arch
 
 ```。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</guid><pubDate>Tue, 18 Aug 2026 09:45:16 +0000</pubDate></item><item><title>从0到1集成支付功能-多渠道通用支付系统的架构设计与回顾</title><link>http://blog.pianone.dpdns.org/post/cong-0-dao-1-ji-cheng-zhi-fu-gong-neng---duo-qu-dao-tong-yong-zhi-fu-xi-tong-de-jia-gou-she-ji-yu-hui-gu.html</link><description># 支付宝支付流程
 ```md
