@@ -33,6 +33,19 @@ pacman -S yazi
 # ======== 进行硬盘分区 ========
 # 列出当前分区情况
 lsblk -pf
+# fdisk -l /dev/{nvmexnx}
+
+# 查看目标分区情况
+cfdisk /dev/{nvmexnx}
+# 首次使用硬盘, 选择gpt分区进入
+# 创建一个分区 new > 500MB 类型选择 EFI system
+# 单硬盘剩余空间全部分给系统 new > 剩余空间 类型默认 Linux filesystem
+
+
+
+
+
+
 
 
 ```
