@@ -111,4 +111,18 @@ pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
 # 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
 # grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
+
+# 创建 boot grub -> efi grub 的连接
+ln -s /efi/grub /boot/grub
+
+# 生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+# 如果没有 /efi/grub，创建它：
+# mkdir -p /efi/grub
+
+# 多操作系统识别
+pacman -S os-prober exfat-utils
+
+
+
 ```

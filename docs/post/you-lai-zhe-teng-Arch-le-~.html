@@ -123,6 +123,20 @@ pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
 # 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
 # grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
+
+# 创建 boot grub -> efi grub 的连接
+ln -s /efi/grub /boot/grub
+
+# 生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+# 如果没有 /efi/grub，创建它：
+# mkdir -p /efi/grub
+
+# 多操作系统识别
+pacman -S os-prober exfat-utils
+
+
+
 ```。">
 <meta property="og:title" content="又来折腾Arch了~">
 <meta property="og:description" content="# Arch 安装命令执行记录
@@ -238,6 +252,20 @@ pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
 # 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
 # grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
+
+# 创建 boot grub -> efi grub 的连接
+ln -s /efi/grub /boot/grub
+
+# 生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+# 如果没有 /efi/grub，创建它：
+# mkdir -p /efi/grub
+
+# 多操作系统识别
+pacman -S os-prober exfat-utils
+
+
+
 ```。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html">
@@ -419,7 +447,21 @@ pacman -S grub efibootmgr
 <span class="pl-c"><span class="pl-c">#</span> 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的</span>
 grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
 <span class="pl-c"><span class="pl-c">#</span> 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决</span>
-<span class="pl-c"><span class="pl-c">#</span> grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable</span></pre></div></div>
+<span class="pl-c"><span class="pl-c">#</span> grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 创建 boot grub -&gt; efi grub 的连接</span>
+ln -s /efi/grub /boot/grub
+
+<span class="pl-c"><span class="pl-c">#</span> 生成grub配置文件</span>
+grub-mkconfig -o /boot/grub/grub.cfg
+<span class="pl-c"><span class="pl-c">#</span> 如果没有 /efi/grub，创建它：</span>
+<span class="pl-c"><span class="pl-c">#</span> mkdir -p /efi/grub</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 多操作系统识别</span>
+pacman -S os-prober exfat-utils
+
+
+</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
