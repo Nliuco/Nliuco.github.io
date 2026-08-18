@@ -74,11 +74,27 @@ genfstab -U /mnt > /mnt/etc/fstab
 # 切换用户
 arch-chroot /mnt 
 
-# 设置时区软连接
-ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# 设置时区软连接, 也可以用下面的设置时区的方式
+# ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # 切换用户后, 在系统里面再次安装yazi
 pacman -S yazi
+
+# 设置时区
+timedatectl set-timezone Asia/Shanghai
+# 查看时间是否正确
+timedatectl
+# 调整时间误差
+hwclock --systohc
+
+# 本地化语言设置
+
+
+
+
+
+
+
 
 
 
