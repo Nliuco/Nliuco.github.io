@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 18 Aug 2026 09:56:34 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>又来折腾Arch了~</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</link><description># Arch 安装命令执行记录
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 18 Aug 2026 10:03:55 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>又来折腾Arch了~</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html</link><description># Arch 安装命令执行记录
 
 ```bash
 setfont ter-v32n
@@ -41,10 +41,20 @@ cfdisk /dev/{nvmexnx}
 # 首次使用硬盘, 选择gpt分区进入
 # 创建一个分区 new &gt; 500MB 类型选择 EFI system
 # 单硬盘剩余空间全部分给系统 new &gt; 剩余空间 类型默认 Linux filesystem
+# 退出cfdisk 并保存分区表
 
+# 列出当前分区情况
+lsblk -pf
+# 格式化分区
+# efi分区格式成fat -- 下面用{nvmexn1}代指efi分区
+mkfs.fat -F 32 /dev/{nvmexn1}
+# 系统格式成btrfs -- 下面用{nvmexn2}代指系统分区
+mkfs.btrfs /dev/{nvmexn2}
 
-
-
+# 创建子卷 (防止快照备份用户文件)
+mount -t btrfs /dev/{nvmexn2} /mnt
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
 
 
 

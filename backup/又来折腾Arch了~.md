@@ -40,10 +40,20 @@ cfdisk /dev/{nvmexnx}
 # 首次使用硬盘, 选择gpt分区进入
 # 创建一个分区 new > 500MB 类型选择 EFI system
 # 单硬盘剩余空间全部分给系统 new > 剩余空间 类型默认 Linux filesystem
+# 退出cfdisk 并保存分区表
 
+# 列出当前分区情况
+lsblk -pf
+# 格式化分区
+# efi分区格式成fat -- 下面用{nvmexn1}代指efi分区
+mkfs.fat -F 32 /dev/{nvmexn1}
+# 系统格式成btrfs -- 下面用{nvmexn2}代指系统分区
+mkfs.btrfs /dev/{nvmexn2}
 
-
-
+# 创建子卷 (防止快照备份用户文件)
+mount -t btrfs /dev/{nvmexn2} /mnt
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
 
 
 
