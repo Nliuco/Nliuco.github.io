@@ -29,7 +29,22 @@ ping bilibili.com
 
 # 同步网络时间 查看并确保NTP service: actice
 timedatectl
+# 若未开启, 则执行下面的命令
+# timedatectl set-ntp true
 
+# 配置镜像源
+# reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist
+reflector -a 12 -c cn -f 10 --sort rate --v --save /etc/pacman.d/mirrorlist
+
+# 更新数据库并安装密钥
+pacman -Sy archlinux-keyring
+
+# 安装 yazi 方便浏览文件
+pacman -S yazi
+
+# ======== 进行硬盘分区 ========
+# 列出当前分区情况
+lsblk -pf
 
 
 ```。">
@@ -53,7 +68,22 @@ ping bilibili.com
 
 # 同步网络时间 查看并确保NTP service: actice
 timedatectl
+# 若未开启, 则执行下面的命令
+# timedatectl set-ntp true
 
+# 配置镜像源
+# reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist
+reflector -a 12 -c cn -f 10 --sort rate --v --save /etc/pacman.d/mirrorlist
+
+# 更新数据库并安装密钥
+pacman -Sy archlinux-keyring
+
+# 安装 yazi 方便浏览文件
+pacman -S yazi
+
+# ======== 进行硬盘分区 ========
+# 列出当前分区情况
+lsblk -pf
 
 
 ```。">
@@ -144,7 +174,22 @@ ping bilibili.com
 
 <span class="pl-c"><span class="pl-c">#</span> 同步网络时间 查看并确保NTP service: actice</span>
 timedatectl
+<span class="pl-c"><span class="pl-c">#</span> 若未开启, 则执行下面的命令</span>
+<span class="pl-c"><span class="pl-c">#</span> timedatectl set-ntp true</span>
 
+<span class="pl-c"><span class="pl-c">#</span> 配置镜像源</span>
+<span class="pl-c"><span class="pl-c">#</span> reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist</span>
+reflector -a 12 -c cn -f 10 --sort rate --v --save /etc/pacman.d/mirrorlist
+
+<span class="pl-c"><span class="pl-c">#</span> 更新数据库并安装密钥</span>
+pacman -Sy archlinux-keyring
+
+<span class="pl-c"><span class="pl-c">#</span> 安装 yazi 方便浏览文件</span>
+pacman -S yazi
+
+<span class="pl-c"><span class="pl-c">#</span> ======== 进行硬盘分区 ========</span>
+<span class="pl-c"><span class="pl-c">#</span> 列出当前分区情况</span>
+lsblk -pf
 
 </pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
