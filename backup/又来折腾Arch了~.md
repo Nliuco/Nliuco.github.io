@@ -88,7 +88,8 @@ timedatectl
 hwclock --systohc
 
 # 本地化语言设置
-
+vim /etc/locale.gen
+# 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
 
 
 
