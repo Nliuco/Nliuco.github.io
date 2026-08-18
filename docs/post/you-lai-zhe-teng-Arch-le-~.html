@@ -102,12 +102,17 @@ hwclock --systohc
 # 本地化语言设置
 vim /etc/locale.gen
 # 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
+# 生成本地化文件
+locale-gen
+# 编辑conf文件设置本地化
+vim /etc/locale.conf
+# 写入 LANG=en_US.UTF-8
 
+# 设置主机名
+vim /etc/hostname
+# 可以写自己喜欢的名字, 这里我写了 pianone
 
-
-
-
-
+# 设置root账户密码
 
 
 
@@ -205,12 +210,17 @@ hwclock --systohc
 # 本地化语言设置
 vim /etc/locale.gen
 # 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
+# 生成本地化文件
+locale-gen
+# 编辑conf文件设置本地化
+vim /etc/locale.conf
+# 写入 LANG=en_US.UTF-8
 
+# 设置主机名
+vim /etc/hostname
+# 可以写自己喜欢的名字, 这里我写了 pianone
 
-
-
-
-
+# 设置root账户密码
 
 
 
@@ -375,12 +385,17 @@ hwclock --systohc
 <span class="pl-c"><span class="pl-c">#</span> 本地化语言设置</span>
 vim /etc/locale.gen
 <span class="pl-c"><span class="pl-c">#</span> 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释</span>
+<span class="pl-c"><span class="pl-c">#</span> 生成本地化文件</span>
+locale-gen
+<span class="pl-c"><span class="pl-c">#</span> 编辑conf文件设置本地化</span>
+vim /etc/locale.conf
+<span class="pl-c"><span class="pl-c">#</span> 写入 LANG=en_US.UTF-8</span>
 
+<span class="pl-c"><span class="pl-c">#</span> 设置主机名</span>
+vim /etc/hostname
+<span class="pl-c"><span class="pl-c">#</span> 可以写自己喜欢的名字, 这里我写了 pianone</span>
 
-
-
-
-
+<span class="pl-c"><span class="pl-c">#</span> 设置root账户密码</span>
 
 
 </pre></div></div>

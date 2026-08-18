@@ -90,12 +90,17 @@ hwclock --systohc
 # 本地化语言设置
 vim /etc/locale.gen
 # 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
+# 生成本地化文件
+locale-gen
+# 编辑conf文件设置本地化
+vim /etc/locale.conf
+# 写入 LANG=en_US.UTF-8
 
+# 设置主机名
+vim /etc/hostname
+# 可以写自己喜欢的名字, 这里我写了 pianone
 
-
-
-
-
+# 设置root账户密码
 
 
 
