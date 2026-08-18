@@ -55,6 +55,26 @@ mount -t btrfs /dev/{nvmexn2} /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 
+# 列出当前分区情况
+lsblk -pf
+# 取消当前挂载
+umount /mnt
+# 挂载子卷
+mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvmexn2} /mnt
+mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvmexn2} /mnt/home
+mount --mkdir /dev/{nvmexn2} /mnt/efi
+
+# 正式安装系统
+pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
+pacstrap /mnt networkmanager vim sudo intel-ucode iwd
+
+# 生成fstab文件 用于系统启动时挂载
+genfstab -U /mnt > /mnt/etc/fstab
+
+# 切换用户
+arch-chroot /mnt 
+
+
 
 
 
