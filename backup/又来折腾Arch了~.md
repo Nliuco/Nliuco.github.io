@@ -101,7 +101,14 @@ vim /etc/hostname
 # 可以写自己喜欢的名字, 这里我写了 pianone
 
 # 设置root账户密码
+passwd
+# 重复输入两遍密码
 
+# 安装 Bootloader 引导加载程序
+pacman -S grub efibootmgr
 
-
+# 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
+# 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
+# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
 ```

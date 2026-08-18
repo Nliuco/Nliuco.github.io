@@ -113,9 +113,16 @@ vim /etc/hostname
 # 可以写自己喜欢的名字, 这里我写了 pianone
 
 # 设置root账户密码
+passwd
+# 重复输入两遍密码
 
+# 安装 Bootloader 引导加载程序
+pacman -S grub efibootmgr
 
-
+# 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
+# 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
+# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
 ```。">
 <meta property="og:title" content="又来折腾Arch了~">
 <meta property="og:description" content="# Arch 安装命令执行记录
@@ -221,9 +228,16 @@ vim /etc/hostname
 # 可以写自己喜欢的名字, 这里我写了 pianone
 
 # 设置root账户密码
+passwd
+# 重复输入两遍密码
 
+# 安装 Bootloader 引导加载程序
+pacman -S grub efibootmgr
 
-
+# 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
+# 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
+# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
 ```。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html">
@@ -396,9 +410,16 @@ vim /etc/hostname
 <span class="pl-c"><span class="pl-c">#</span> 可以写自己喜欢的名字, 这里我写了 pianone</span>
 
 <span class="pl-c"><span class="pl-c">#</span> 设置root账户密码</span>
+passwd
+<span class="pl-c"><span class="pl-c">#</span> 重复输入两遍密码</span>
 
+<span class="pl-c"><span class="pl-c">#</span> 安装 Bootloader 引导加载程序</span>
+pacman -S grub efibootmgr
 
-</pre></div></div>
+<span class="pl-c"><span class="pl-c">#</span> 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的</span>
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
+<span class="pl-c"><span class="pl-c">#</span> 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决</span>
+<span class="pl-c"><span class="pl-c">#</span> grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable</span></pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
