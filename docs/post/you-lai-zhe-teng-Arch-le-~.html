@@ -134,8 +134,38 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # 多操作系统识别
 pacman -S os-prober exfat-utils
+os-prober 
 
+# 编辑grub文件
+vim /etc/default/grub
+# 配置以下条目
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=3
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_OS_PROBER=false
 
+# 再生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 配置zram
+pacman -S zram-generator
+# 配置zram
+vim /etc/systemd/zram-generator.conf
+# 配置信息如下
+[zram0]
+zram-size = ram 
+compression-algorithm = zstd
+# 编辑grub文件
+vim /etc/default/grub
+# 配置以下条目
+GRUB_CMDLINE_LINUX_DEFAUTL='loglevel=3 quite zswap.enabled=0'
+
+# 再生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 退出并重启
+exit
+reboot
 
 ```。">
 <meta property="og:title" content="又来折腾Arch了~">
@@ -263,8 +293,38 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # 多操作系统识别
 pacman -S os-prober exfat-utils
+os-prober 
 
+# 编辑grub文件
+vim /etc/default/grub
+# 配置以下条目
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=3
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_OS_PROBER=false
 
+# 再生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 配置zram
+pacman -S zram-generator
+# 配置zram
+vim /etc/systemd/zram-generator.conf
+# 配置信息如下
+[zram0]
+zram-size = ram 
+compression-algorithm = zstd
+# 编辑grub文件
+vim /etc/default/grub
+# 配置以下条目
+GRUB_CMDLINE_LINUX_DEFAUTL='loglevel=3 quite zswap.enabled=0'
+
+# 再生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 退出并重启
+exit
+reboot
 
 ```。">
 <meta property="og:type" content="article">
@@ -459,8 +519,38 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 <span class="pl-c"><span class="pl-c">#</span> 多操作系统识别</span>
 pacman -S os-prober exfat-utils
+os-prober 
 
+<span class="pl-c"><span class="pl-c">#</span> 编辑grub文件</span>
+vim /etc/default/grub
+<span class="pl-c"><span class="pl-c">#</span> 配置以下条目</span>
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=3
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_OS_PROBER=false
 
+<span class="pl-c"><span class="pl-c">#</span> 再生成grub配置文件</span>
+grub-mkconfig -o /boot/grub/grub.cfg
+
+<span class="pl-c"><span class="pl-c">#</span> 配置zram</span>
+pacman -S zram-generator
+<span class="pl-c"><span class="pl-c">#</span> 配置zram</span>
+vim /etc/systemd/zram-generator.conf
+<span class="pl-c"><span class="pl-c">#</span> 配置信息如下</span>
+[zram0]
+zram-size = ram 
+compression-algorithm = zstd
+<span class="pl-c"><span class="pl-c">#</span> 编辑grub文件</span>
+vim /etc/default/grub
+<span class="pl-c"><span class="pl-c">#</span> 配置以下条目</span>
+GRUB_CMDLINE_LINUX_DEFAUTL=<span class="pl-s"><span class="pl-pds">"</span>loglevel=3 quite zswap.enabled=0<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> 再生成grub配置文件</span>
+grub-mkconfig -o /boot/grub/grub.cfg
+
+<span class="pl-c"><span class="pl-c">#</span> 退出并重启</span>
+<span class="pl-c1">exit</span>
+reboot
 </pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 

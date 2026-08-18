@@ -122,7 +122,37 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # 多操作系统识别
 pacman -S os-prober exfat-utils
+os-prober 
 
+# 编辑grub文件
+vim /etc/default/grub
+# 配置以下条目
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=3
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_OS_PROBER=false
 
+# 再生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 配置zram
+pacman -S zram-generator
+# 配置zram
+vim /etc/systemd/zram-generator.conf
+# 配置信息如下
+[zram0]
+zram-size = ram 
+compression-algorithm = zstd
+# 编辑grub文件
+vim /etc/default/grub
+# 配置以下条目
+GRUB_CMDLINE_LINUX_DEFAUTL="loglevel=3 quite zswap.enabled=0"
+
+# 再生成grub配置文件
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 退出并重启
+exit
+reboot
 
 ```
