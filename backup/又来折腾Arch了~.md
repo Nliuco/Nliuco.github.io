@@ -62,7 +62,7 @@ umount /mnt
 # 挂载子卷
 mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvmexn2} /mnt
 mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvmexn2} /mnt/home
-mount --mkdir /dev/{nvmexn2} /mnt/efi
+mount --mkdir /dev/{nvmexn1} /mnt/efi
 
 # 正式安装系统
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
