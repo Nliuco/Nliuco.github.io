@@ -108,8 +108,7 @@ passwd
 pacman -S grub efibootmgr
 
 # 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
-grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
-
+# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch 错误
 ====================================================================================
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=arch
 ====================================================================================
@@ -162,4 +161,5 @@ reboot
 
 # 进入UEFI/BIOS
 # 设置启动首选项为arch
+
 ```
