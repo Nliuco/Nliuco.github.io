@@ -109,6 +109,11 @@ pacman -S grub efibootmgr
 
 # 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
 grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
+
+====================================================================================
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=arch
+====================================================================================
+
 # 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
 # grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
 
@@ -146,7 +151,7 @@ compression-algorithm = zstd
 # 编辑grub文件
 vim /etc/default/grub
 # 配置以下条目
-GRUB_CMDLINE_LINUX_DEFAUTL="loglevel=3 quite zswap.enabled=0"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet zswap.enabled=0"
 
 # 再生成grub配置文件
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -157,5 +162,4 @@ reboot
 
 # 进入UEFI/BIOS
 # 设置启动首选项为arch
-
 ```
