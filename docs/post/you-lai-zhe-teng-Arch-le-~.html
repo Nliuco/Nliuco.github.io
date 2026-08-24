@@ -10,339 +10,17 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# Arch 安装命令执行记录
+<meta name="description" content="#  Arch Linux 安装实战记录 (Btrfs + Zram)
 
-```bash
-setfont ter-v32n
-
-# 连接网络
-ip a
-iwctl
-device list
-station wlan0 scan
-station wlan0 get-networks
-station wlan0 connect WIFI-Name
-exit
-
-# 测试网络
-ping bilibili.com
-
-# 同步网络时间 查看并确保NTP service: actice
-timedatectl
-# 若未开启, 则执行下面的命令
-# timedatectl set-ntp true
-
-# 配置镜像源
-# reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist
-reflector -a 12 -c cn -f 10 --sort rate --v --save /etc/pacman.d/mirrorlist
-
-# 更新数据库并安装密钥
-pacman -Sy archlinux-keyring
-
-# 安装 yazi 方便浏览文件
-pacman -S yazi
-
-# ======== 进行硬盘分区 ========
-# 列出当前分区情况
-lsblk -pf
-# fdisk -l /dev/{nvmexnx}
-
-# 查看目标分区情况
-cfdisk /dev/{nvmexnx}
-# 首次使用硬盘, 选择gpt分区进入
-# 创建一个分区 new > 500MB 类型选择 EFI system
-# 单硬盘剩余空间全部分给系统 new > 剩余空间 类型默认 Linux filesystem
-# 退出cfdisk 并保存分区表
-
-# 列出当前分区情况
-lsblk -pf
-# 格式化分区
-# efi分区格式成fat -- 下面用{nvme0n1p1}代指efi分区
-mkfs.fat -F 32 /dev/{nvme0n1p1}
-# 系统格式成btrfs -- 下面用{nvme0n1p2}代指系统分区
-mkfs.btrfs /dev/{nvme0n1p2}
-
-# 创建子卷 (防止快照备份用户文件)
-mount -t btrfs /dev/{nvme0n1p2} /mnt
-btrfs subvolume create /mnt/@
-btrfs subvolume create /mnt/@home
-
-# 列出当前分区情况
-lsblk -pf
-# 取消当前挂载
-umount /mnt
-# 挂载子卷
-mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvme0n1p2} /mnt
-mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvme0n1p2} /mnt/home
-mount --mkdir /dev/{nvme0n1p1} /mnt/efi
-
-# 正式安装系统
-pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
-# pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell
-pacstrap /mnt networkmanager vim sudo intel-ucode iwd
-
-# 生成fstab文件 用于系统启动时挂载
-genfstab -U /mnt > /mnt/etc/fstab
-
-# 切换用户
-arch-chroot /mnt 
-
-# 设置时区软连接, 也可以用下面的设置时区的方式
-# ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-# 切换用户后, 在系统里面再次安装yazi
-pacman -S yazi
-
-# 设置时区
-timedatectl set-timezone Asia/Shanghai
-# 查看时间是否正确
-timedatectl
-# 调整时间误差
-hwclock --systohc
-
-# 本地化语言设置
-vim /etc/locale.gen
-# 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
-# 生成本地化文件
-locale-gen
-# 编辑conf文件设置本地化
-vim /etc/locale.conf
-# 写入 LANG=en_US.UTF-8
-
-# 设置主机名
-vim /etc/hostname
-# 可以写自己喜欢的名字, 这里我写了 pianone-arch
-
-# 设置root账户密码
-passwd
-# 重复输入两遍密码
-
-# 安装 Bootloader 引导加载程序
-pacman -S grub efibootmgr
-
-# 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
-grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
-
-# 用yazi看一眼/efi目录, 正常会有EFI和grub两个文件夹, 都正常有文件
-# 且EFI/arch(上面配置的bootloader-id名称)下生成了grubx64.efi文件
-yazi /efi
-# 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
-# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
-
-# 创建 boot grub -> efi grub 的连接
-ln -s /efi/grub /boot/grub
-
-# 生成grub配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
-# 如果没有 /efi/grub，创建它：
-# mkdir -p /efi/grub
-
-# 多操作系统识别
-pacman -S os-prober exfat-utils
-os-prober 
-
-# 编辑grub文件
-vim /etc/default/grub
-# 配置以下条目
-GRUB_DEFAULT=saved
-GRUB_TIMEOUT=3
-GRUB_SAVEDEFAULT=true
-GRUB_DISABLE_OS_PROBER=false
-
-# 再生成grub配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# 配置zram
-pacman -S zram-generator
-# 配置zram
-vim /etc/systemd/zram-generator.conf
-# 配置信息如下
-[zram0]
-zram-size = ram 
-compression-algorithm = zstd
-# 编辑grub文件
-vim /etc/default/grub
-# 配置以下条目
-GRUB_CMDLINE_LINUX_DEFAULT='loglevel=3 quiet zswap.enabled=0'
-
-# 再生成grub配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# 退出并重启
-exit
-reboot
-
-# 进入UEFI/BIOS
-# 设置启动首选项为arch
-
-```。">
+> [!WARNING]
+> **免责声明 (Disclaimer)**  
+> 本文仅记录个人折腾 Arch Linux 的安装过程，供学习与交流使用。">
 <meta property="og:title" content="又来折腾Arch了~">
-<meta property="og:description" content="# Arch 安装命令执行记录
+<meta property="og:description" content="#  Arch Linux 安装实战记录 (Btrfs + Zram)
 
-```bash
-setfont ter-v32n
-
-# 连接网络
-ip a
-iwctl
-device list
-station wlan0 scan
-station wlan0 get-networks
-station wlan0 connect WIFI-Name
-exit
-
-# 测试网络
-ping bilibili.com
-
-# 同步网络时间 查看并确保NTP service: actice
-timedatectl
-# 若未开启, 则执行下面的命令
-# timedatectl set-ntp true
-
-# 配置镜像源
-# reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist
-reflector -a 12 -c cn -f 10 --sort rate --v --save /etc/pacman.d/mirrorlist
-
-# 更新数据库并安装密钥
-pacman -Sy archlinux-keyring
-
-# 安装 yazi 方便浏览文件
-pacman -S yazi
-
-# ======== 进行硬盘分区 ========
-# 列出当前分区情况
-lsblk -pf
-# fdisk -l /dev/{nvmexnx}
-
-# 查看目标分区情况
-cfdisk /dev/{nvmexnx}
-# 首次使用硬盘, 选择gpt分区进入
-# 创建一个分区 new > 500MB 类型选择 EFI system
-# 单硬盘剩余空间全部分给系统 new > 剩余空间 类型默认 Linux filesystem
-# 退出cfdisk 并保存分区表
-
-# 列出当前分区情况
-lsblk -pf
-# 格式化分区
-# efi分区格式成fat -- 下面用{nvme0n1p1}代指efi分区
-mkfs.fat -F 32 /dev/{nvme0n1p1}
-# 系统格式成btrfs -- 下面用{nvme0n1p2}代指系统分区
-mkfs.btrfs /dev/{nvme0n1p2}
-
-# 创建子卷 (防止快照备份用户文件)
-mount -t btrfs /dev/{nvme0n1p2} /mnt
-btrfs subvolume create /mnt/@
-btrfs subvolume create /mnt/@home
-
-# 列出当前分区情况
-lsblk -pf
-# 取消当前挂载
-umount /mnt
-# 挂载子卷
-mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvme0n1p2} /mnt
-mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvme0n1p2} /mnt/home
-mount --mkdir /dev/{nvme0n1p1} /mnt/efi
-
-# 正式安装系统
-pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
-# pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell
-pacstrap /mnt networkmanager vim sudo intel-ucode iwd
-
-# 生成fstab文件 用于系统启动时挂载
-genfstab -U /mnt > /mnt/etc/fstab
-
-# 切换用户
-arch-chroot /mnt 
-
-# 设置时区软连接, 也可以用下面的设置时区的方式
-# ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-# 切换用户后, 在系统里面再次安装yazi
-pacman -S yazi
-
-# 设置时区
-timedatectl set-timezone Asia/Shanghai
-# 查看时间是否正确
-timedatectl
-# 调整时间误差
-hwclock --systohc
-
-# 本地化语言设置
-vim /etc/locale.gen
-# 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
-# 生成本地化文件
-locale-gen
-# 编辑conf文件设置本地化
-vim /etc/locale.conf
-# 写入 LANG=en_US.UTF-8
-
-# 设置主机名
-vim /etc/hostname
-# 可以写自己喜欢的名字, 这里我写了 pianone-arch
-
-# 设置root账户密码
-passwd
-# 重复输入两遍密码
-
-# 安装 Bootloader 引导加载程序
-pacman -S grub efibootmgr
-
-# 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
-grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
-
-# 用yazi看一眼/efi目录, 正常会有EFI和grub两个文件夹, 都正常有文件
-# 且EFI/arch(上面配置的bootloader-id名称)下生成了grubx64.efi文件
-yazi /efi
-# 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
-# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
-
-# 创建 boot grub -> efi grub 的连接
-ln -s /efi/grub /boot/grub
-
-# 生成grub配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
-# 如果没有 /efi/grub，创建它：
-# mkdir -p /efi/grub
-
-# 多操作系统识别
-pacman -S os-prober exfat-utils
-os-prober 
-
-# 编辑grub文件
-vim /etc/default/grub
-# 配置以下条目
-GRUB_DEFAULT=saved
-GRUB_TIMEOUT=3
-GRUB_SAVEDEFAULT=true
-GRUB_DISABLE_OS_PROBER=false
-
-# 再生成grub配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# 配置zram
-pacman -S zram-generator
-# 配置zram
-vim /etc/systemd/zram-generator.conf
-# 配置信息如下
-[zram0]
-zram-size = ram 
-compression-algorithm = zstd
-# 编辑grub文件
-vim /etc/default/grub
-# 配置以下条目
-GRUB_CMDLINE_LINUX_DEFAULT='loglevel=3 quiet zswap.enabled=0'
-
-# 再生成grub配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# 退出并重启
-exit
-reboot
-
-# 进入UEFI/BIOS
-# 设置启动首选项为arch
-
-```。">
+> [!WARNING]
+> **免责声明 (Disclaimer)**  
+> 本文仅记录个人折腾 Arch Linux 的安装过程，供学习与交流使用。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
@@ -383,7 +61,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     font-size: 12px;
 }
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style><style>.markdown-alert.markdown-alert-caution {border-left-color:var(--borderColor-danger-emphasis, var(--color-danger-emphasis));background-color:var(--color-danger-subtle);}.markdown-alert.markdown-alert-caution .markdown-alert-title {color: var(--fgColor-danger,var(--color-danger-fg));}</style>
 
 
 
@@ -413,10 +91,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>Arch 安装命令执行记录</h1>
-<div class="highlight highlight-source-shell"><pre class="notranslate">setfont ter-v32n
+<div class="markdown-body" id="postBody"><h1>Arch Linux 安装实战记录 (Btrfs + Zram)</h1>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p><strong>免责声明 (Disclaimer)</strong><br>
+本文仅记录个人折腾 Arch Linux 的安装过程，供学习与交流使用。受硬件差异、软件版本迭代等因素影响，不同设备的执行结果可能会有出入。<strong>折腾有风险，操作需谨慎！</strong> 请务必在开始前<strong>备份好重要数据</strong>。如果跟着教程操作不慎导致数据丢失、把其他系统扬了或者硬件损坏，本人不仅概不负责, 还会狠狠地嘲笑你~</p>
+</div>
+<p>本文记录了个人安装 Arch Linux 的完整命令流程，采用了 <code class="notranslate">Btrfs</code> 文件系统并配置了子卷，最后启用了 <code class="notranslate">Zram</code> 优化。</p>
+<h2>1. 前置准备</h2>
+<h3>1.1 终端显示与网络连接</h3>
+<p>安装初始阶段，建议调整字体大小以便于查看，并连接上 Wi-Fi 网络。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 调整终端字体大小</span>
+setfont ter-v32n
 
-<span class="pl-c"><span class="pl-c">#</span> 连接网络</span>
+<span class="pl-c"><span class="pl-c">#</span> 使用 iwctl 连接 Wi-Fi</span>
 ip a
 iwctl
 device list
@@ -425,157 +111,168 @@ station wlan0 get-networks
 station wlan0 connect WIFI-Name
 <span class="pl-c1">exit</span>
 
-<span class="pl-c"><span class="pl-c">#</span> 测试网络</span>
-ping bilibili.com
-
-<span class="pl-c"><span class="pl-c">#</span> 同步网络时间 查看并确保NTP service: actice</span>
-timedatectl
-<span class="pl-c"><span class="pl-c">#</span> 若未开启, 则执行下面的命令</span>
+<span class="pl-c"><span class="pl-c">#</span> 测试网络连通性</span>
+ping bilibili.com</pre></div>
+<h3>1.2 时间同步与镜像源配置</h3>
+<p>确保系统时间准确，并使用 <code class="notranslate">reflector</code> 挑选国内最快的镜像源，这能大幅缩短下载时间。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 同步网络时间 (查看并确保 NTP service: active)</span>
+timedatectl 
+<span class="pl-c"><span class="pl-c">#</span> 若未开启, 可执行以下命令开启</span>
 <span class="pl-c"><span class="pl-c">#</span> timedatectl set-ntp true</span>
 
-<span class="pl-c"><span class="pl-c">#</span> 配置镜像源</span>
-<span class="pl-c"><span class="pl-c">#</span> reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist</span>
+<span class="pl-c"><span class="pl-c">#</span> 配置镜像源 (按速率排序，保留10个国内源)</span>
 reflector -a 12 -c cn -f 10 --sort rate --v --save /etc/pacman.d/mirrorlist
+<span class="pl-c"><span class="pl-c">#</span> 下面是的按照score排序</span>
+<span class="pl-c"><span class="pl-c">#</span> reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist </span>
 
-<span class="pl-c"><span class="pl-c">#</span> 更新数据库并安装密钥</span>
+<span class="pl-c"><span class="pl-c">#</span> 更新数据库并安装 Arch Linux 密钥环</span>
 pacman -Sy archlinux-keyring
 
-<span class="pl-c"><span class="pl-c">#</span> 安装 yazi 方便浏览文件</span>
-pacman -S yazi
-
-<span class="pl-c"><span class="pl-c">#</span> ======== 进行硬盘分区 ========</span>
-<span class="pl-c"><span class="pl-c">#</span> 列出当前分区情况</span>
+<span class="pl-c"><span class="pl-c">#</span> 安装 yazi 方便在终端中浏览文件</span>
+pacman -S yazi</pre></div>
+<hr>
+<h2>2. 磁盘分区与文件系统</h2>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p><strong>注意</strong>：分区操作会清空数据，请仔细确认目标磁盘（以下使用 <code class="notranslate">/dev/{nvmexnx}</code> 代指目标盘）。</p>
+</div>
+<h3>2.1 硬盘分区</h3>
+<p>首次使用硬盘，建议选择 <code class="notranslate">gpt</code> 分区表。</p>
+<ul>
+<li>创建一个分区 <code class="notranslate">new</code> &gt; <code class="notranslate">500MB</code>，类型选择 <strong>EFI system</strong></li>
+<li>剩余空间全部分给系统 <code class="notranslate">new</code> &gt; 剩余空间，类型默认 <strong>Linux filesystem</strong></li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看当前分区情况</span>
 lsblk -pf
-<span class="pl-c"><span class="pl-c">#</span> fdisk -l /dev/{nvmexnx}</span>
 
-<span class="pl-c"><span class="pl-c">#</span> 查看目标分区情况</span>
-cfdisk /dev/{nvmexnx}
-<span class="pl-c"><span class="pl-c">#</span> 首次使用硬盘, 选择gpt分区进入</span>
-<span class="pl-c"><span class="pl-c">#</span> 创建一个分区 new &gt; 500MB 类型选择 EFI system</span>
-<span class="pl-c"><span class="pl-c">#</span> 单硬盘剩余空间全部分给系统 new &gt; 剩余空间 类型默认 Linux filesystem</span>
-<span class="pl-c"><span class="pl-c">#</span> 退出cfdisk 并保存分区表</span>
-
-<span class="pl-c"><span class="pl-c">#</span> 列出当前分区情况</span>
-lsblk -pf
-<span class="pl-c"><span class="pl-c">#</span> 格式化分区</span>
-<span class="pl-c"><span class="pl-c">#</span> efi分区格式成fat -- 下面用{nvme0n1p1}代指efi分区</span>
+<span class="pl-c"><span class="pl-c">#</span> 进入 cfdisk 进行可视化分区</span>
+cfdisk /dev/{nvmexnx}</pre></div>
+<h3>2.2 格式化与 Btrfs 子卷创建</h3>
+<p>分区完成后，对 EFI 和系统分区进行格式化。为了方便后期快照管理，我们为根目录和 home 目录创建了独立的 Btrfs 子卷。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 格式化 EFI 分区 (假设为 nvme0n1p1)</span>
 mkfs.fat -F 32 /dev/{nvme0n1p1}
-<span class="pl-c"><span class="pl-c">#</span> 系统格式成btrfs -- 下面用{nvme0n1p2}代指系统分区</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 格式化系统分区为 btrfs (假设为 nvme0n1p2)</span>
 mkfs.btrfs /dev/{nvme0n1p2}
 
-<span class="pl-c"><span class="pl-c">#</span> 创建子卷 (防止快照备份用户文件)</span>
+<span class="pl-c"><span class="pl-c">#</span> 临时挂载以创建子卷 (防止快照备份用户文件)</span>
 mount -t btrfs /dev/{nvme0n1p2} /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 
-<span class="pl-c"><span class="pl-c">#</span> 列出当前分区情况</span>
-lsblk -pf
-<span class="pl-c"><span class="pl-c">#</span> 取消当前挂载</span>
-umount /mnt
-<span class="pl-c"><span class="pl-c">#</span> 挂载子卷</span>
+<span class="pl-c"><span class="pl-c">#</span> 取消临时挂载</span>
+umount /mnt</pre></div>
+<h3>2.3 挂载正式分区</h3>
+<p>开启 <code class="notranslate">zstd</code> 压缩以提升性能和节省空间。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 挂载根目录子卷</span>
 mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvme0n1p2} /mnt
+
+<span class="pl-c"><span class="pl-c">#</span> 挂载 home 目录子卷</span>
 mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvme0n1p2} /mnt/home
-mount --mkdir /dev/{nvme0n1p1} /mnt/efi
 
-<span class="pl-c"><span class="pl-c">#</span> 正式安装系统</span>
-pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
-<span class="pl-c"><span class="pl-c">#</span> pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell</span>
-pacstrap /mnt networkmanager vim sudo intel-ucode iwd
+<span class="pl-c"><span class="pl-c">#</span> 挂载 EFI 分区</span>
+mount --mkdir /dev/{nvme0n1p1} /mnt/efi</pre></div>
+<hr>
+<h2>3. 安装基础系统</h2>
+<p>使用 <code class="notranslate">pacstrap</code> 将基本系统和常用软件包安装到 <code class="notranslate">/mnt</code> 中。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装基础系统、内核、微码、网络管理器及常用工具</span>
+pacstrap -K /mnt base base-devel linux-zen linux-firmware btrfs-progs networkmanager vim sudo intel-ucode
 
-<span class="pl-c"><span class="pl-c">#</span> 生成fstab文件 用于系统启动时挂载</span>
-genfstab -U /mnt <span class="pl-k">&gt;</span> /mnt/etc/fstab
-
-<span class="pl-c"><span class="pl-c">#</span> 切换用户</span>
-arch-chroot /mnt 
-
-<span class="pl-c"><span class="pl-c">#</span> 设置时区软连接, 也可以用下面的设置时区的方式</span>
-<span class="pl-c"><span class="pl-c">#</span> ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span>
-
-<span class="pl-c"><span class="pl-c">#</span> 切换用户后, 在系统里面再次安装yazi</span>
-pacman -S yazi
-
-<span class="pl-c"><span class="pl-c">#</span> 设置时区</span>
+<span class="pl-c"><span class="pl-c">#</span> 生成 fstab 文件，用于系统启动时自动挂载磁盘</span>
+genfstab -U /mnt <span class="pl-k">&gt;</span> /mnt/etc/fstab</pre></div>
+<hr>
+<h2>4. 系统基础配置</h2>
+<p>环境已经搭建好，现在切换到新系统中进行本地化和用户配置。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> chroot 切换进入新系统</span>
+arch-chroot /mnt </pre></div>
+<h3>4.1 时区与时间</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 设置时区为上海</span>
 timedatectl set-timezone Asia/Shanghai
-<span class="pl-c"><span class="pl-c">#</span> 查看时间是否正确</span>
-timedatectl
-<span class="pl-c"><span class="pl-c">#</span> 调整时间误差</span>
-hwclock --systohc
 
-<span class="pl-c"><span class="pl-c">#</span> 本地化语言设置</span>
+<span class="pl-c"><span class="pl-c">#</span> 将系统时间写入硬件时钟</span>
+hwclock --systohc</pre></div>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p><em>(注：在 chroot 环境下也可以用 <code class="notranslate">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code> 软链接的方式设置, 不过还是推荐使用set-timezone方式)</em></p>
+</div>
+<h3>4.2 本地化设置</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1. 编辑 locale.gen</span>
 vim /etc/locale.gen
 <span class="pl-c"><span class="pl-c">#</span> 解除 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释</span>
-<span class="pl-c"><span class="pl-c">#</span> 生成本地化文件</span>
+<span class="pl-c"><span class="pl-c">#</span> 如果是vim操作的话, 输入'/'进行搜索查找, 回车后光标定位, 按'x'剪切掉'#'即可</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 2. 生成本地化文件</span>
 locale-gen
-<span class="pl-c"><span class="pl-c">#</span> 编辑conf文件设置本地化</span>
-vim /etc/locale.conf
-<span class="pl-c"><span class="pl-c">#</span> 写入 LANG=en_US.UTF-8</span>
 
-<span class="pl-c"><span class="pl-c">#</span> 设置主机名</span>
-vim /etc/hostname
-<span class="pl-c"><span class="pl-c">#</span> 可以写自己喜欢的名字, 这里我写了 pianone-arch</span>
+<span class="pl-c"><span class="pl-c">#</span> 3. 设置默认语言为英文（避免 tty 中文字符显示为方块）</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>LANG=en_US.UTF-8<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> /etc/locale.conf</pre></div>
+<h3>4.3 主机名与 Root 密码</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 设置主机名 - 换成自己喜欢的名字即可, 终端的提示符会显示这个名称(user@hostname)</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>pianone-arch<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> /etc/hostname
 
-<span class="pl-c"><span class="pl-c">#</span> 设置root账户密码</span>
-passwd
-<span class="pl-c"><span class="pl-c">#</span> 重复输入两遍密码</span>
-
-<span class="pl-c"><span class="pl-c">#</span> 安装 Bootloader 引导加载程序</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置 root 账户密码 (按提示输入两遍)</span>
+passwd</pre></div>
+<hr>
+<h2>5. Bootloader (GRUB) 安装</h2>
+<p>我们使用 GRUB 来引导系统，并开启 <code class="notranslate">os-prober</code> 以支持多操作系统引导。</p>
+<h3>5.1 安装 GRUB 到 EFI</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装必要的软件包</span>
 pacman -S grub efibootmgr
 
-<span class="pl-c"><span class="pl-c">#</span> 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的</span>
-grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
+<span class="pl-c"><span class="pl-c">#</span> 安装 GRUB 引导程序 - bootloader-id默认为arch, 可以自定义, 作为grub启动选项的名称</span>
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=Arch
 
-<span class="pl-c"><span class="pl-c">#</span> 用yazi看一眼/efi目录, 正常会有EFI和grub两个文件夹, 都正常有文件</span>
-<span class="pl-c"><span class="pl-c">#</span> 且EFI/arch(上面配置的bootloader-id名称)下生成了grubx64.efi文件</span>
-yazi /efi
-<span class="pl-c"><span class="pl-c">#</span> 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决</span>
+<span class="pl-c"><span class="pl-c">#</span> (可选) 如果没找到启动项，可尝试追加 --removable 参数</span>
 <span class="pl-c"><span class="pl-c">#</span> grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable</span>
 
-<span class="pl-c"><span class="pl-c">#</span> 创建 boot grub -&gt; efi grub 的连接</span>
-ln -s /efi/grub /boot/grub
-
-<span class="pl-c"><span class="pl-c">#</span> 生成grub配置文件</span>
-grub-mkconfig -o /boot/grub/grub.cfg
-<span class="pl-c"><span class="pl-c">#</span> 如果没有 /efi/grub，创建它：</span>
-<span class="pl-c"><span class="pl-c">#</span> mkdir -p /efi/grub</span>
-
-<span class="pl-c"><span class="pl-c">#</span> 多操作系统识别</span>
+<span class="pl-c"><span class="pl-c">#</span> 创建 boot 到 efi 的连接，方便后续生成配置</span>
+ln -s /efi/grub /boot/grub</pre></div>
+<h3>5.2 多系统支持配置</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装多系统检测工具</span>
 pacman -S os-prober exfat-utils
-os-prober 
 
-<span class="pl-c"><span class="pl-c">#</span> 编辑grub文件</span>
-vim /etc/default/grub
-<span class="pl-c"><span class="pl-c">#</span> 配置以下条目</span>
-GRUB_DEFAULT=saved
-GRUB_TIMEOUT=3
-GRUB_SAVEDEFAULT=true
-GRUB_DISABLE_OS_PROBER=false
-
-<span class="pl-c"><span class="pl-c">#</span> 再生成grub配置文件</span>
-grub-mkconfig -o /boot/grub/grub.cfg
-
-<span class="pl-c"><span class="pl-c">#</span> 配置zram</span>
+<span class="pl-c"><span class="pl-c">#</span> 编辑 GRUB 配置文件</span>
+vim /etc/default/grub</pre></div>
+<p>在 <code class="notranslate">/etc/default/grub</code> 中修改/添加以下配置：</p>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-k">GRUB_DEFAULT</span>=saved
+<span class="pl-k">GRUB_TIMEOUT</span>=3
+<span class="pl-k">GRUB_SAVEDEFAULT</span>=true
+<span class="pl-k">GRUB_DISABLE_OS_PROBER</span>=false</pre></div>
+<hr>
+<h2>6. Zram 内存压缩优化</h2>
+<p>为了提升系统响应速度并减少磁盘 Swap 的磨损，配置 Zram。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装 zram 生成器</span>
 pacman -S zram-generator
-<span class="pl-c"><span class="pl-c">#</span> 配置zram</span>
-vim /etc/systemd/zram-generator.conf
-<span class="pl-c"><span class="pl-c">#</span> 配置信息如下</span>
-[zram0]
-zram-size = ram 
-compression-algorithm = zstd
-<span class="pl-c"><span class="pl-c">#</span> 编辑grub文件</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 配置 zram 参数</span>
+vim /etc/systemd/zram-generator.conf</pre></div>
+<p>写入以下配置：</p>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[zram0]</span>
+<span class="pl-k">zram-size</span> = ram 
+<span class="pl-k">compression-algorithm</span> = zstd</pre></div>
+<p>为了防止 zram 和内核自带的 zswap 冲突，我们需要在 GRUB 启动参数中禁用 zswap：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 编辑 GRUB 配置文件</span>
 vim /etc/default/grub
-<span class="pl-c"><span class="pl-c">#</span> 配置以下条目</span>
-GRUB_CMDLINE_LINUX_DEFAULT=<span class="pl-s"><span class="pl-pds">"</span>loglevel=3 quiet zswap.enabled=0<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> 修改 GRUB_CMDLINE_LINUX_DEFAULT，追加 zswap.enabled=0</span>
+<span class="pl-c"><span class="pl-c">#</span> 例如：GRUB_CMDLINE_LINUX_DEFAULT='loglevel=5 zswap.enabled=0'</span>
 
-<span class="pl-c"><span class="pl-c">#</span> 再生成grub配置文件</span>
-grub-mkconfig -o /boot/grub/grub.cfg
+<span class="pl-c"><span class="pl-c">#</span> 重新生成 GRUB 配置文件，使所有更改生效</span>
+grub-mkconfig -o /boot/grub/grub.cfg</pre></div>
+<hr>
+<h2>7. 收尾工作</h2>
+<p>安装和配置已全部完成，退出 chroot 环境并重启！</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 切换用户后，可以在新系统中也装上 yazi</span>
+pacman -S yazi
 
-<span class="pl-c"><span class="pl-c">#</span> 退出并重启</span>
+<span class="pl-c"><span class="pl-c">#</span> 退出 chroot</span>
 <span class="pl-c1">exit</span>
-reboot
 
-<span class="pl-c"><span class="pl-c">#</span> 进入UEFI/BIOS</span>
-<span class="pl-c"><span class="pl-c">#</span> 设置启动首选项为arch</span>
-</pre></div></div>
+<span class="pl-c"><span class="pl-c">#</span> 重启系统</span>
+reboot</pre></div>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>重启后进入 UEFI/BIOS，将启动首选项设置为 <code class="notranslate">Arch</code> 即可体验你的新系统啦！</p>
+</div>
+<hr>
+<h2>8. 参考鸣谢</h2>
+<p>本文的安装流程主要参考了哔哩哔哩 <a href="https://space.bilibili.com/9202840?spm_id_from=333.337" rel="nofollow"><strong>林长枫Shorin709</strong></a> UP 主的优秀视频教程。如果你在操作过程中对某些细节仍有疑问，非常推荐配合原视频一起食用：</p>
+<ul>
+<li>📺 <strong>B站视频教程</strong>：<a href="https://www.bilibili.com/video/BV19DBqB4EY4/" rel="nofollow">【从LinuxMint入门到ArchLinux安装详解】(BV19DBqB4EY4)</a></li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
