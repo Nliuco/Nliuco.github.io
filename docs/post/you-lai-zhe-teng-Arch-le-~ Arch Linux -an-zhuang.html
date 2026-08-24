@@ -10,15 +10,11 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="#  Arch Linux 安装实战记录 (Btrfs + Zram)
-
-> [!WARNING]
+<meta name="description" content="> [!WARNING]
 > **免责声明 (Disclaimer)**  
 > 本文仅记录个人折腾 Arch Linux 的安装过程，供学习与交流使用。">
 <meta property="og:title" content="又来折腾Arch了~ Arch Linux 安装">
-<meta property="og:description" content="#  Arch Linux 安装实战记录 (Btrfs + Zram)
-
-> [!WARNING]
+<meta property="og:description" content="> [!WARNING]
 > **免责声明 (Disclaimer)**  
 > 本文仅记录个人折腾 Arch Linux 的安装过程，供学习与交流使用。">
 <meta property="og:type" content="article">
@@ -91,11 +87,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>Arch Linux 安装实战记录 (Btrfs + Zram)</h1>
-<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p><strong>免责声明 (Disclaimer)</strong><br>
+<div class="markdown-body" id="postBody"><div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p><strong>免责声明 (Disclaimer)</strong><br>
 本文仅记录个人折腾 Arch Linux 的安装过程，供学习与交流使用。受硬件差异、软件版本迭代等因素影响，不同设备的执行结果可能会有出入。<strong>折腾有风险，操作需谨慎！</strong> 请务必在开始前<strong>备份好重要数据</strong>。如果跟着教程操作不慎导致数据丢失、把其他系统扬了或者硬件损坏，本人不仅概不负责, 还会狠狠地嘲笑你~</p>
 </div>
-<p>本文记录了个人安装 Arch Linux 的完整命令流程，采用了 <code class="notranslate">Btrfs</code> 文件系统并配置了子卷，最后启用了 <code class="notranslate">Zram</code> 优化。</p>
+<p>Arch Linux 安装实战记录 (Btrfs + Zram)<br>
+本文记录了个人安装 Arch Linux 的完整命令流程，采用了 <code class="notranslate">Btrfs</code> 文件系统并配置了子卷，最后启用了 <code class="notranslate">Zram</code> 优化。</p>
 <h2>1. 前置准备</h2>
 <h3>1.1 终端显示与网络连接</h3>
 <p>安装初始阶段，建议调整字体大小以便于查看，并连接上 Wi-Fi 网络。</p>
