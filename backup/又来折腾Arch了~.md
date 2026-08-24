@@ -60,9 +60,9 @@ lsblk -pf
 # 取消当前挂载
 umount /mnt
 # 挂载子卷
-mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvmexn2} /mnt
-mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvmexn2} /mnt/home
-mount --mkdir /dev/{nvmexn1p1} /mnt/efi
+mount -t btrfs -o subvol=/@,compress=zstd /dev/{nvme0n1p2} /mnt
+mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/{nvme0n1p2} /mnt/home
+mount --mkdir /dev/{nvme0n1p1} /mnt/efi
 
 # 正式安装系统
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
