@@ -99,7 +99,7 @@ vim /etc/locale.conf
 
 # 设置主机名
 vim /etc/hostname
-# 可以写自己喜欢的名字, 这里我写了 pianone
+# 可以写自己喜欢的名字, 这里我写了 pianone-arch
 
 # 设置root账户密码
 passwd
@@ -109,11 +109,11 @@ passwd
 pacman -S grub efibootmgr
 
 # 使用 grub-install 命令安装引导 - bootloader-id可以不指定, 默认是arch, 也可以换成别的
-# grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch 错误
-# ====================================================================================
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=arch
-# ====================================================================================
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch
 
+# 用yazi看一眼/efi目录, 正常会有EFI和grub两个文件夹, 都正常有文件
+# 且EFI/arch(上面配置的bootloader-id名称)下生成了grubx64.efi文件
+yazi /efi
 # 如果没找到arch的启动项, 可以通过追加下面的参数尝试解决
 # grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=arch --removable
 
