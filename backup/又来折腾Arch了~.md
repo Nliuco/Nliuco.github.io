@@ -45,10 +45,10 @@ cfdisk /dev/{nvmexnx}
 # 列出当前分区情况
 lsblk -pf
 # 格式化分区
-# efi分区格式成fat -- 下面用{nvmexn1}代指efi分区
-mkfs.fat -F 32 /dev/{nvmexn1}
-# 系统格式成btrfs -- 下面用{nvmexn2}代指系统分区
-mkfs.btrfs /dev/{nvmexn2}
+# efi分区格式成fat -- 下面用{nvme0n1p1}代指efi分区
+mkfs.fat -F 32 /dev/{nvme0n1p1}
+# 系统格式成btrfs -- 下面用{nvme0n1p2}代指系统分区
+mkfs.btrfs /dev/{nvme0n1p2}
 
 # 创建子卷 (防止快照备份用户文件)
 mount -t btrfs /dev/{nvmexn2} /mnt
