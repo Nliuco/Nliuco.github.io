@@ -66,6 +66,7 @@ mount --mkdir /dev/{nvme0n1p1} /mnt/efi
 
 # 正式安装系统
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
+# pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell
 pacstrap /mnt networkmanager vim sudo intel-ucode iwd
 
 # 生成fstab文件 用于系统启动时挂载

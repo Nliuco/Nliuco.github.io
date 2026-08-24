@@ -78,6 +78,7 @@ mount --mkdir /dev/{nvme0n1p1} /mnt/efi
 
 # 正式安装系统
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
+# pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell
 pacstrap /mnt networkmanager vim sudo intel-ucode iwd
 
 # 生成fstab文件 用于系统启动时挂载
@@ -244,6 +245,7 @@ mount --mkdir /dev/{nvme0n1p1} /mnt/efi
 
 # 正式安装系统
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
+# pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell
 pacstrap /mnt networkmanager vim sudo intel-ucode iwd
 
 # 生成fstab文件 用于系统启动时挂载
@@ -477,6 +479,7 @@ mount --mkdir /dev/{nvme0n1p1} /mnt/efi
 
 <span class="pl-c"><span class="pl-c">#</span> 正式安装系统</span>
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
+<span class="pl-c"><span class="pl-c">#</span> pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs linux-firmware-marvell</span>
 pacstrap /mnt networkmanager vim sudo intel-ucode iwd
 
 <span class="pl-c"><span class="pl-c">#</span> 生成fstab文件 用于系统启动时挂载</span>
