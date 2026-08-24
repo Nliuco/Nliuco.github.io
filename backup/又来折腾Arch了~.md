@@ -51,7 +51,7 @@ mkfs.fat -F 32 /dev/{nvme0n1p1}
 mkfs.btrfs /dev/{nvme0n1p2}
 
 # 创建子卷 (防止快照备份用户文件)
-mount -t btrfs /dev/{nvmexn2} /mnt
+mount -t btrfs /dev/{nvme0n1p2} /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 
