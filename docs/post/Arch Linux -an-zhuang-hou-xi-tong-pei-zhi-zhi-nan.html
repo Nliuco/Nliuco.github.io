@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/56815403?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+> [!NOTE]
+> **免责声明 (Disclaimer)**  
+> 本文仅为个人 Arch Linux 基础配置记录，供学习参考。">
+<meta property="og:title" content="Arch Linux 安装后系统配置指南">
+<meta property="og:description" content="
+> [!NOTE]
+> **免责声明 (Disclaimer)**  
+> 本文仅为个人 Arch Linux 基础配置记录，供学习参考。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.pianone.dpdns.org/post/Arch%20Linux%20-an-zhuang-hou-xi-tong-pei-zhi-zhi-nan.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
+<title>Arch Linux 安装后系统配置指南</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Arch Linux 安装后系统配置指南</h1>
+<div class="title-right">
+    <a href="http://blog.pianone.dpdns.org" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Nliuco/Nliuco.github.io/issues/17" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p><strong>免责声明 (Disclaimer)</strong><br>
+本文仅为个人 Arch Linux 基础配置记录，供学习参考。受软件迭代影响，部分操作可能随时间变化。<strong>折腾有风险，回车需谨慎！</strong> 若因盲目复制粘贴导致系统“滚挂”或配置错乱，本人不仅概不负责，还会狠狠地嘲笑你。</p>
+</div>
+<p>本文记录了 Arch Linux 基础安装完成后的系统配置流程，包含网络设置、用户管理、软件源添加以及非常关键的 Btrfs 快照（Snapper）配置。</p>
+<h2>1. 基础网络与系统更新</h2>
+<p>刚安装好的新系统，需要先配置网络并进行全系统升级。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 开启 NetworkManager 开机自启服务</span>
+systemctl <span class="pl-c1">enable</span> --now NetworkManager
+
+<span class="pl-c"><span class="pl-c">#</span> 运行 nmtui 打开终端网络配置界面</span>
+nmtui
+
+<span class="pl-c"><span class="pl-c">#</span> 连接网络后退出，测试连接情况</span>
+ping bilibili.com
+
+<span class="pl-c"><span class="pl-c">#</span> 安装 fastfetch 用于查看系统信息</span>
+pacman -S fastfetch
+
+<span class="pl-c"><span class="pl-c">#</span> 更新系统 (小写 u 代表升级所有软件)</span>
+pacman -Syu</pre></div>
+<h2>2. 环境变量与系统默认设置</h2>
+<p>将默认编辑器设置为 <code class="notranslate">vim</code>。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 将 EDITOR=vim 追加写入到环境变量文件中</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>EDITOR=vim<span class="pl-pds">"</span></span> <span class="pl-k">&gt;&gt;</span> /etc/environment
+<span class="pl-c1">exit</span></pre></div>
+<p>完成后执行 <code class="notranslate">exit</code> 退出并重新登录 root 账户使环境变量生效。</p>
+<h2>3. 用户与权限管理</h2>
+<p>日常使用不建议直接使用 root 账户，我们需要创建一个拥有管理员权限的普通用户。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建普通用户 </span>
+<span class="pl-c"><span class="pl-c">#</span> -m: 创建用户时同时创建 home 目录</span>
+<span class="pl-c"><span class="pl-c">#</span> -G wheel: 添加到管理员权限组(wheel)</span>
+useradd -mG wheel pianone
+
+<span class="pl-c"><span class="pl-c">#</span> 设置用户密码</span>
+passwd pianone
+
+<span class="pl-c"><span class="pl-c">#</span> 运行 visudo 设置管理员权限</span>
+visudo</pre></div>
+<p>在 <code class="notranslate">visudo</code> 编辑界面中，使用 <code class="notranslate">/wheel</code> 搜索，找到如下行，按 <code class="notranslate">x</code> 删除开头的 <code class="notranslate">#</code> 号取消注释：</p>
+<div class="highlight highlight-source-ini"><pre class="notranslate">%wheel <span class="pl-k">ALL</span>=(ALL:ALL) ALL</pre></div>
+<h2>4. ArchlinuxCN 源与 AUR 助手</h2>
+<p>为了更方便地安装软件，我们需要开启 32 位软件源并添加国内著名的 ArchlinuxCN 源。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 编辑 pacman 配置文件</span>
+vim /etc/pacman.conf</pre></div>
+<p>在文件中进行以下两步操作：</p>
+<ol>
+<li>找到 <code class="notranslate">[multilib]</code>，取消它和下一行 <code class="notranslate">Include</code> 的注释。</li>
+<li>在文件末尾追加 ArchlinuxCN 源配置：</li>
+</ol>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[multilib]</span>
+<span class="pl-k">Include</span> = /etc/pacman.d/mirrorlist
+
+<span class="pl-c"><span class="pl-c">#</span> 在文件末尾添加以下内容</span>
+<span class="pl-en">[archlinuxcn]</span>
+<span class="pl-k">Server</span> = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</pre></div>
+<p>保存退出后，同步数据并安装密钥环和 AUR 助手：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 同步数据并安装 ArchlinuxCN 的密钥环</span>
+pacman -Sy archlinuxcn-keyring
+
+<span class="pl-c"><span class="pl-c">#</span> 配置好后，安装 AUR 助手</span>
+pacman -S yay paru</pre></div>
+<h2>5. Btrfs 快照管理 (Snapper)</h2>
+<p>为了防止系统被“滚挂”，配置 Snapper 快照是 Arch 用户的必备技能。</p>
+<h3>5.1 安装依赖与初始化快照</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装 snapper 及相关辅助工具</span>
+pacman -S snapper snap-pac btrfs-assistant grub-btrfs inotify-tools
+
+<span class="pl-c"><span class="pl-c">#</span> 开启 grub-btrfs 服务开机自启</span>
+systemctl <span class="pl-c1">enable</span> --now grub-btrfsd
+
+<span class="pl-c"><span class="pl-c">#</span> 重启电脑，让 pacman 自动创建快照功能生效</span>
+reboot</pre></div>
+<p>重启并重新登录 root 账户后，初始化 Snapper 配置文件：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 为 root 和 home 目录创建配置文件</span>
+snapper -c root create-config /
+snapper -c home create-config /home
+
+<span class="pl-c"><span class="pl-c">#</span> 创建“初始纯净快照” (快照 #1)</span>
+snapper -c root create --description <span class="pl-s"><span class="pl-pds">"</span>init arch snapshot<span class="pl-pds">"</span></span>
+snapper -c home create --description <span class="pl-s"><span class="pl-pds">"</span>init arch snapshot<span class="pl-pds">"</span></span></pre></div>
+<h3>5.2 LTS 内核与快照更新</h3>
+<p>安装 LTS 内核作为备用，并更新 GRUB 启动项，这样可以在 GRUB 菜单中直接选择进入快照。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装 LTS 内核以备不时之需</span>
+pacman -S linux-lts
+
+<span class="pl-c"><span class="pl-c">#</span> 更新 GRUB 配置文件，生成 LTS 内核启动项和快照启动项</span>
+grub-mkconfig -o /boot/grub/grub.cfg
+
+<span class="pl-c"><span class="pl-c">#</span> 为“安装了 LTS 内核”的状态再创建一个快照 (快照 #2)</span>
+snapper -c root create --description <span class="pl-s"><span class="pl-pds">"</span>with lts kernel and grub updated<span class="pl-pds">"</span></span></pre></div>
+<h2>6. 快照恢复操作指南</h2>
+<p>当系统出现问题时，你可以使用命令行或图形化工具进行回档。</p>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p><strong>注意</strong>：处理快照时最好以 <code class="notranslate">root</code> 身份执行。Snapper官方文档强烈建议：<strong>请不要在使用 root 文件系统时使用 Snapper <code class="notranslate">undochange</code> 命令</strong>，因为这样做可能会导致系统故障。推荐使用 Btrfs 助手或在 Live CD 中进行恢复。</p>
+</div>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 命令行列出所有可用快照</span>
+snapper -c root list
+
+<span class="pl-c"><span class="pl-c">#</span> 使用 btrfs 助手命令行工具查看</span>
+btrfs-assistant -l
+
+<span class="pl-c"><span class="pl-c">#</span> 使用助手进行快照恢复 (用数字序号 n 指定要使用的快照)</span>
+btrfs-assistant -r n
+
+<span class="pl-c"><span class="pl-c">#</span> 删除快照</span>
+<span class="pl-c"><span class="pl-c">#</span> snapper -c root delete n</span></pre></div>
+<hr>
+<h2>7. 拓展知识：Snapper undochange 高级用法</h2>
+<p>虽然不建议在活动的根目录使用 <code class="notranslate">undochange</code>，但了解它的逻辑非常有用。<code class="notranslate">undochange n1..n2</code> 代表<strong>选择性撤销</strong>，而不是“一刀切”地恢复整个系统。</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p><strong>假设场景：</strong></p>
+<ul>
+<li><strong>快照1</strong>（昨天上午）：系统正常。</li>
+<li><strong>快照2</strong>（昨天下午）：误删文件 <code class="notranslate">A</code>。</li>
+<li><strong>快照3</strong>（今天上午）：创建新文件 <code class="notranslate">B</code>，修改文件 <code class="notranslate">C</code>。</li>
+</ul>
+<p>此时你只想找回文件 <code class="notranslate">A</code>，但要保留今天的文件 <code class="notranslate">B</code> 和 <code class="notranslate">C</code>。</p>
+<ul>
+<li>❌ <code class="notranslate">undochange 1..0</code>：撤销从快照1至今的所有变动，今天的文件 <code class="notranslate">B</code> 也会丢失。</li>
+<li>✅ <code class="notranslate">undochange 1..2</code>：仅计算快照1和快照2之间的变化（即文件 <code class="notranslate">A</code> 被删），并<strong>仅撤销这部分变化</strong>。快照3之后创建的 <code class="notranslate">B</code> 和 <code class="notranslate">C</code> 纹丝不动。</li>
+</ul>
+</div>
+<p><code class="notranslate">undochange</code> 的执行逻辑是：</p>
+<ol>
+<li>查看<strong>起点编号</strong>的文件状态。</li>
+<li>查看<strong>终点编号</strong>的文件状态。</li>
+<li>计算从起点到终点<strong>发生了哪些具体的增删改</strong>。</li>
+<li>在当前系统中，把这些变化<strong>反过来执行一遍</strong>。</li>
+</ol>
+<p>因此，<code class="notranslate">n1..n2</code> 指代的是 <strong>“从第一个快照到第二个快照之间的那个时间段”</strong>，而不是两个“目标位置”。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="http://blog.pianone.dpdns.org">Pianone</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Nliuco/Nliuco.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
