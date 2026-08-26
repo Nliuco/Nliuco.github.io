@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Mon, 24 Aug 2026 09:51:58 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>Arch Linux 安装后系统配置指南</title><link>http://blog.pianone.dpdns.org/post/Arch%20Linux%20-an-zhuang-hou-xi-tong-pei-zhi-zhi-nan.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Wed, 26 Aug 2026 01:49:32 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>Arch Linux 安装后系统配置指南</title><link>http://blog.pianone.dpdns.org/post/Arch%20Linux%20-an-zhuang-hou-xi-tong-pei-zhi-zhi-nan.html</link><description>
 &gt; [!NOTE]
 &gt; **免责声明 (Disclaimer)**  
 &gt; 本文仅为个人 Arch Linux 基础配置记录，供学习参考。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Arch%20Linux%20-an-zhuang-hou-xi-tong-pei-zhi-zhi-nan.html</guid><pubDate>Mon, 24 Aug 2026 09:36:18 +0000</pubDate></item><item><title>又来折腾Arch了~ Arch Linux 安装</title><link>http://blog.pianone.dpdns.org/post/you-lai-zhe-teng-Arch-le-~%20Arch%20Linux%20-an-zhuang.html</link><description>&gt; [!WARNING]
@@ -270,7 +270,11 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 
 # GitHub Commit Snack
 
-[项目地址](https://github.com/Platane/snk?tab=readme-ov-file) 、[配置方式](https://palp1tate.github.io/2024/04/21/snake/index.html)。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/bie-ren-de-bo-ke-hao-wen---xiang-mu-shou-lu.html</guid><pubDate>Thu, 02 Oct 2025 14:32:06 +0000</pubDate></item><item><title>Vim光标操作与快捷键的终极指南</title><link>http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</link><description>`Gmeek-html&lt;img src='https://nliuco.github.io/1.vim.png'&gt;`
+[项目地址](https://github.com/Platane/snk?tab=readme-ov-file) 、[配置方式](https://palp1tate.github.io/2024/04/21/snake/index.html)
+
+# 小黑盒机器人
+
+[部署文档](https://blog.sakurasen.cn/post/1778819699353/)、[项目地址](https://github.com/SomeOvO/xhhRobot)。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/bie-ren-de-bo-ke-hao-wen---xiang-mu-shou-lu.html</guid><pubDate>Thu, 02 Oct 2025 14:32:06 +0000</pubDate></item><item><title>Vim光标操作与快捷键的终极指南</title><link>http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</link><description>`Gmeek-html&lt;img src='https://nliuco.github.io/1.vim.png'&gt;`
 
 ## 写在前面
 &gt; 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. 
