@@ -196,13 +196,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </table></markdown-accessiblity-table>
 <h3>1.3 插件配置</h3>
 <p>MarkdownPreview：</p>
-<div class="highlight highlight-source-json"><pre class="notranslate">{
+<div class="highlight highlight-source-json-comments"><pre class="notranslate">{
 	<span class="pl-ent">"enable_autoreload"</span>: <span class="pl-c1">true</span>
 }</pre></div>
 <p>作用：保存 Markdown 后浏览器预览自动刷新。</p>
 <h3>1.4 配置快捷键</h3>
-<div class="highlight highlight-source-json"><pre class="notranslate">[
-    <span class="pl-ii">// Markdown Preview</span>
+<div class="highlight highlight-source-json-comments"><pre class="notranslate">[
+    <span class="pl-c"><span class="pl-c">//</span> Markdown Preview</span>
 	{   
         <span class="pl-ent">"keys"</span>: [<span class="pl-s"><span class="pl-pds">"</span>alt+m<span class="pl-pds">"</span></span>], 
         <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>markdown_preview<span class="pl-pds">"</span></span>, 
@@ -211,7 +211,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
             <span class="pl-ent">"parser"</span>:<span class="pl-s"><span class="pl-pds">"</span>markdown<span class="pl-pds">"</span></span>
         }
 	},
-    <span class="pl-ii">// 打开终端</span>
+    <span class="pl-c"><span class="pl-c">//</span> 打开终端</span>
     {
         <span class="pl-ent">"keys"</span>: [<span class="pl-s"><span class="pl-pds">"</span>alt+f12<span class="pl-pds">"</span></span>],
         <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>toggle_terminus_panel<span class="pl-pds">"</span></span>,
@@ -219,7 +219,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
             <span class="pl-ent">"cmd"</span>: <span class="pl-s"><span class="pl-pds">"</span>pwsh.exe<span class="pl-pds">"</span></span>
         }
     },
-    <span class="pl-ii">// 格式化</span>
+    <span class="pl-c"><span class="pl-c">//</span> 格式化</span>
     {
         <span class="pl-ent">"keys"</span>: [<span class="pl-s"><span class="pl-pds">"</span>ctrl+alt+l<span class="pl-pds">"</span></span>],
         <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>reindent<span class="pl-pds">"</span></span>,
@@ -229,55 +229,55 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     },
 ]</pre></div>
 <h2>2. 设置选项</h2>
-<div class="highlight highlight-source-json"><pre class="notranslate">{
+<div class="highlight highlight-source-json-comments"><pre class="notranslate">{
 
-	<span class="pl-ii">// ---- 禁用的内置功能 ----</span>
-	<span class="pl-ii">// 忽略 Vintage 包，禁用 Vim 模式</span>
+	<span class="pl-c"><span class="pl-c">//</span> ---- 禁用的内置功能 ----</span>
+	<span class="pl-c"><span class="pl-c">//</span> 忽略 Vintage 包，禁用 Vim 模式</span>
 	<span class="pl-ent">"ignored_packages"</span>:
 	[
 		<span class="pl-s"><span class="pl-pds">"</span>Vintage<span class="pl-pds">"</span></span>,
 	],
-	<span class="pl-ii">// 不索引文件</span>
+	<span class="pl-c"><span class="pl-c">//</span> 不索引文件</span>
 	<span class="pl-ent">"index_files"</span>: <span class="pl-c1">false</span>,
 
-	<span class="pl-ii">// ---- 界面外观 ----</span>
-	<span class="pl-ii">// 字体</span>
+	<span class="pl-c"><span class="pl-c">//</span> ---- 界面外观 ----</span>
+	<span class="pl-c"><span class="pl-c">//</span> 字体</span>
 	<span class="pl-ent">"font_face"</span>: <span class="pl-s"><span class="pl-pds">"</span>JetBrains Mono<span class="pl-pds">"</span></span>,
-	<span class="pl-ii">// 字体大小</span>
+	<span class="pl-c"><span class="pl-c">//</span> 字体大小</span>
 	<span class="pl-ent">"font_size"</span>: <span class="pl-c1">16</span>,
-	<span class="pl-ii">// 设置光标闪动方式 smooth, phase, blink, solid</span>
+	<span class="pl-c"><span class="pl-c">//</span> 设置光标闪动方式 smooth, phase, blink, solid</span>
 	<span class="pl-ent">"caret_style"</span>: <span class="pl-s"><span class="pl-pds">"</span>smooth<span class="pl-pds">"</span></span>,
-	<span class="pl-ii">// 滚动条自动隐藏显示</span>
+	<span class="pl-c"><span class="pl-c">//</span> 滚动条自动隐藏显示</span>
 	<span class="pl-ent">"overlay_scroll_bars"</span>: <span class="pl-s"><span class="pl-pds">"</span>enabled<span class="pl-pds">"</span></span>,
-	<span class="pl-ii">// 突出显示当前光标所在的行</span>
+	<span class="pl-c"><span class="pl-c">//</span> 突出显示当前光标所在的行</span>
 	<span class="pl-ent">"highlight_line"</span>: <span class="pl-c1">false</span>,
-	<span class="pl-ii">// 宽度指导线</span>
-    <span class="pl-ii">// "rulers": [80, [100, "dotted", 1]],</span>
-    <span class="pl-ii">// 配色</span>
+	<span class="pl-c"><span class="pl-c">//</span> 宽度指导线</span>
+    <span class="pl-c"><span class="pl-c">//</span> "rulers": [80, [100, "dotted", 1]],</span>
+    <span class="pl-c"><span class="pl-c">//</span> 配色</span>
 	<span class="pl-ent">"color_scheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>Mariana.sublime-color-scheme<span class="pl-pds">"</span></span>,
-	<span class="pl-ii">// 主题</span>
+	<span class="pl-c"><span class="pl-c">//</span> 主题</span>
 	<span class="pl-ent">"theme"</span>: <span class="pl-s"><span class="pl-pds">"</span>Material-Theme-Palenight.sublime-theme<span class="pl-pds">"</span></span>,
 	
-	<span class="pl-ii">// ---- 编辑行为 ----</span>
-	<span class="pl-ii">// Tab 宽度为 4 个空格</span>
+	<span class="pl-c"><span class="pl-c">//</span> ---- 编辑行为 ----</span>
+	<span class="pl-c"><span class="pl-c">//</span> Tab 宽度为 4 个空格</span>
 	<span class="pl-ent">"tab_size"</span>: <span class="pl-c1">4</span>,
-	<span class="pl-ii">// 自动缩进大小为 4</span>
+	<span class="pl-c"><span class="pl-c">//</span> 自动缩进大小为 4</span>
 	<span class="pl-ent">"indent_size"</span>: <span class="pl-c1">4</span>,
-	<span class="pl-ii">// 将Tab转换为空格</span>
+	<span class="pl-c"><span class="pl-c">//</span> 将Tab转换为空格</span>
 	<span class="pl-ent">"translate_tabs_to_spaces"</span>: <span class="pl-c1">true</span>,
-	<span class="pl-ii">// 自动换行</span>
+	<span class="pl-c"><span class="pl-c">//</span> 自动换行</span>
 	<span class="pl-ent">"word_wrap"</span>: <span class="pl-c1">false</span>,
-	<span class="pl-ii">// 自动补全</span>
+	<span class="pl-c"><span class="pl-c">//</span> 自动补全</span>
 	<span class="pl-ent">"auto_complete"</span>: <span class="pl-c1">true</span>,
-	<span class="pl-ii">// 自动匹配括号、引号</span>
+	<span class="pl-c"><span class="pl-c">//</span> 自动匹配括号、引号</span>
 	<span class="pl-ent">"auto_match_enabled"</span>: <span class="pl-c1">true</span>,
 	
-	<span class="pl-ii">// ---- 文件与存档 ----</span>
-	<span class="pl-ii">// 失去焦点自动保存</span>
+	<span class="pl-c"><span class="pl-c">//</span> ---- 文件与存档 ----</span>
+	<span class="pl-c"><span class="pl-c">//</span> 失去焦点自动保存</span>
 	<span class="pl-ent">"save_on_focus_lost"</span>: <span class="pl-c1">true</span>,
-	<span class="pl-ii">// 退出时保留未保存内容，下次启动恢复</span>
+	<span class="pl-c"><span class="pl-c">//</span> 退出时保留未保存内容，下次启动恢复</span>
 	<span class="pl-ent">"hot_exit"</span>: <span class="pl-c1">true</span>,
-	<span class="pl-ii">// 窗口右下角显示打开文件的编码</span>
+	<span class="pl-c"><span class="pl-c">//</span> 窗口右下角显示打开文件的编码</span>
 	<span class="pl-ent">"show_encoding"</span>: <span class="pl-c1">true</span>,
 }</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>

@@ -34,7 +34,7 @@
 
 ### 1.3 插件配置
 MarkdownPreview：
-```json
+```sublime-settings
 {
 	"enable_autoreload": true
 }
@@ -42,7 +42,7 @@ MarkdownPreview：
 作用：保存 Markdown 后浏览器预览自动刷新。
 
 ### 1.4 配置快捷键
-```json
+```sublime-keymap
 [
     // Markdown Preview
 	{   
@@ -73,7 +73,7 @@ MarkdownPreview：
 ```
 
 ## 2. 设置选项
-```json
+```sublime-settings
 {
 
 	// ---- 禁用的内置功能 ----
