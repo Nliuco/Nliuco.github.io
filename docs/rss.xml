@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Mon, 14 Sep 2026 06:35:50 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>Arch 上的 Niri 之旅</title><link>http://blog.pianone.dpdns.org/post/Arch%20-shang-de-%20Niri%20-zhi-lv.html</link><description># Arch 上的 Niri 之旅
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Mon, 28 Sep 2026 04:29:45 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>Sublime Text 个人配置</title><link>http://blog.pianone.dpdns.org/post/Sublime%20Text%20-ge-ren-pei-zhi.html</link><description>## 1. 插件
+
+### 1.1 安装插件
+
+1. 打开命令面板：`Ctrl+Shift+P`
+2. 输入并选择 `Package Control: Install Package`，回车
+3. 在弹出输入框里输入插件名（如 `MarkdownPreview`）
+4. 从结果中选中对应插件，回车即开始安装
+5. 装完即自动启用，多数插件无需重启
+
+&gt; 如果还没装 Package Control：先到官网复制安装命令，打开 `View &gt; Show Console`，把命令黏贴进去回车即可。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Sublime%20Text%20-ge-ren-pei-zhi.html</guid><pubDate>Mon, 28 Sep 2026 04:29:06 +0000</pubDate></item><item><title>Arch 上的 Niri 之旅</title><link>http://blog.pianone.dpdns.org/post/Arch%20-shang-de-%20Niri%20-zhi-lv.html</link><description># Arch 上的 Niri 之旅
 
 &gt; [!NOTE]
 &gt; 记录我用 Shorin-ArchLinux-Guide 一键脚本装好的 Shorin-Niri 桌面用法。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Arch%20-shang-de-%20Niri%20-zhi-lv.html</guid><pubDate>Mon, 14 Sep 2026 06:35:16 +0000</pubDate></item><item><title>Arch Linux 安装显卡驱动和视频编解码</title><link>http://blog.pianone.dpdns.org/post/Arch%20Linux%20-an-zhuang-xian-qia-qu-dong-he-shi-pin-bian-jie-ma.html</link><description>
