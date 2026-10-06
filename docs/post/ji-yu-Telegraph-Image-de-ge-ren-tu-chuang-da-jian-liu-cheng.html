@@ -307,10 +307,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<blockquote>
-<p>[!NOTE] 此外, 还有很多其他设置, 例如白名单/防盗链等功能<br>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>此外, 还有很多其他设置, 例如白名单/防盗链等功能<br>
 不过我并没有全部使用过, 这里只列出一些自己用过的功能.</p>
-</blockquote>
+</div>
 <h2>三、踩坑记录</h2>
 <p><strong>Q:</strong> 在 <a href="#6.-%E9%85%8D%E7%BD%AE%E9%A6%96%E9%A1%B5%E8%83%8C%E6%99%AF%E5%9B%BE">6. 配置首页背景图</a> 的时候, 遇到了配置不生效的问题?</p>
 <p><strong>A:</strong> 当前版本的 <code class="notranslate">index.html</code> 中存在 <code class="notranslate">loadWallpapers</code> 逻辑，即使配置了 <code class="notranslate">SITE_BACKGROUND</code>，首页仍然会加载 Bing 壁纸。(编写本文时, 最新分支是 ef69018df1967708ec026a671e3976f5524ff490, Commits on Jul 25, 2026)</p>
