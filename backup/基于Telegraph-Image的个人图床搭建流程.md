@@ -10,6 +10,7 @@
 ### 1. 在Github中Fork 仓库
 
 打开 [Telegraph-Image](https://github.com/cf-pages/Telegraph-Image) 项目主页，点击 **Fork** 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。
+可以顺手点个Star :stuck_out_tongue_winking_eye: , 主要是后续可以方便找README看文档~
 
 ### 2. Cloudflare 部署
 
@@ -94,8 +95,8 @@
 
 | 环境变量     | 示例值             | 说明                                                          |
 | ---          | ---                | ---                                                           |
-| `SITE_NAME`  | `My Images`        | 首页顶部显示的站点名称（通过 `GET /api/config` 下发给前端）。 |
-| `SITE_TITLE` | `My Images \| Home` | 首页的浏览器标签页标题。                                      |
+| `SITE_NAME`  | `Pianone Images`        | 首页顶部显示的站点名称（通过 `GET /api/config` 下发给前端）。 |
+| `SITE_TITLE` | `Pianone Images \| Home` | 首页的浏览器标签页标题。                                      |
 
 ### 6. 配置首页背景图
 
