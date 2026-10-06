@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/56815403?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 个人图床搭建流程
+
+> [!WARNING] 前提
+> 必需: GitHub账户; Cloudflare账户
+> 可选: 域名
+
+## 一、部署流程
+
+### 1. Fork 仓库
+
+打开 [Telegraph-Image](https://github.com/cf-pages/Telegraph-Image) 项目主页，点击 **Fork** 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。">
+<meta property="og:title" content="基于Telegraph-Image的个人图床搭建流程">
+<meta property="og:description" content="# 个人图床搭建流程
+
+> [!WARNING] 前提
+> 必需: GitHub账户; Cloudflare账户
+> 可选: 域名
+
+## 一、部署流程
+
+### 1. Fork 仓库
+
+打开 [Telegraph-Image](https://github.com/cf-pages/Telegraph-Image) 项目主页，点击 **Fork** 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.pianone.dpdns.org/post/ji-yu-Telegraph-Image-de-ge-ren-tu-chuang-da-jian-liu-cheng.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
+<title>基于Telegraph-Image的个人图床搭建流程</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">基于Telegraph-Image的个人图床搭建流程</h1>
+<div class="title-right">
+    <a href="http://blog.pianone.dpdns.org" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Nliuco/Nliuco.github.io/issues/22" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>个人图床搭建流程</h1>
+<blockquote>
+<p>[!WARNING] 前提<br>
+必需: GitHub账户; Cloudflare账户<br>
+可选: 域名</p>
+</blockquote>
+<h2>一、部署流程</h2>
+<h3>1. Fork 仓库</h3>
+<p>打开 <a href="https://github.com/cf-pages/Telegraph-Image">Telegraph-Image</a> 项目主页，点击 <strong>Fork</strong> 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。</p>
+<h3>2. Cloudflare 部署</h3>
+<ol>
+<li>打开 <a href="https://dash.cloudflare.com/" rel="nofollow">Cloudflare</a> 主页，进入 <strong>Workers 和 Pages</strong></li>
+<li>进入 <strong>Pages</strong>，先连接到 Git</li>
+<li>选择刚刚 fork 的仓库，点击部署，稍等片刻即可部署成功</li>
+</ol>
+<h3>3. 获取 Telegram 密钥</h3>
+<ol>
+<li>打开 Telegram，搜索 <code class="notranslate">@BotFather</code>，或者用中文的 <code class="notranslate">@机器人之父</code></li>
+<li>发送 <code class="notranslate">/newbot</code>，创建新的机器人，会自动获取 <strong>TG_Bot_Token</strong></li>
+<li>将上述值先保存好，稍后配置到 Cloudflare 中</li>
+<li>创建一个新的频道，并设置机器人为频道管理员</li>
+<li>搜索 <code class="notranslate">@VersaToolsBot</code> 来获取频道 ID（<strong>TG_Chat_ID</strong>）
+<ul>
+<li>转发新创建频道的一条消息即可（<code class="notranslate">@GetTheirIDBot</code> 亦可）</li>
+</ul>
+</li>
+</ol>
+<h3>4. 回到 Cloudflare 完成配置</h3>
+<ol>
+<li>首先是去设置页面，配置 <code class="notranslate">TG_Bot_Token</code> 和 <code class="notranslate">TG_Chat_ID</code></li>
+<li>现在可以先去重新部署一下，测试图片上传功能是否已经正常可以使用了</li>
+<li>如果正常，为了使用管理后台的功能，就进行接下来的工作，创建 KV 命名空间
+<ul>
+<li>鉴于 Cloudflare 偶尔改版，菜单位置可能变动，更推荐搜索 KV 打开页面</li>
+<li>创建一个 KV 命名空间，比如说名字叫 <code class="notranslate">telegraph-image</code></li>
+</ul>
+</li>
+<li>回到项目设置页，在【绑定】下添加【KV 命名空间】，名称为 <code class="notranslate">img_url</code>，值选择刚刚创建的 KV</li>
+</ol>
+<p>到目前为止，图床和管理后台就已经是可用的了。</p>
+<h3>5. 配置自定义域名（可选）</h3>
+<p>前提是有一个托管在 Cloudflare 上的域名。部署成功后，Pages 的部署页面会直接出现「添加自定义子域」的下一步提示：</p>
+<ol>
+<li>点击进入「添加自定义子域」</li>
+<li>因为域名和项目都在 Cloudflare 上，CNAME 记录的名称和值会自动填好，小橙云（代理）也会自动开启，点两下确认即可完成</li>
+</ol>
+<p>配置完成后，DNS 记录里会多出这样一条(备注是我自己后加的)：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>内容</th>
+<th>代理状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assert.your.domain.com</td>
+<td>CNAME</td>
+<td>your.cf.example.pages.dev</td>
+<td>已代理（小橙云）</td>
+<td>基于Telegraph-Image的个人图床的自定义域名</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>对图床来说，小橙云（代理）建议保持开启。<br>
+如果域名没有托管在 Cloudflare，则需要自己手动添加上面这条 CNAME 记录。</p>
+</div>
+<p>子域按喜好起名即可，这里用的是 <code class="notranslate">assert</code>, 最终图床地址为 <code class="notranslate">https://assert.your.domain.com</code>。</p>
+<h2>二、可选配置</h2>
+<blockquote>
+<p>查看 Telegraph-Image 项目的 <a href="https://github.com/cf-pages/Telegraph-Image/blob/main/README-zh.md">README.md</a><br>
+有很多可选参数，我们可以灵活配置一些额外的功能</p>
+</blockquote>
+<h3>1. 后台管理页面的账户密码配置</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">BASIC_USER</code></td>
+<td><code class="notranslate">admin</code></td>
+<td>后台管理页面（/admin）的登录用户名。不设置则后台无需登录。</td>
+</tr>
+<tr>
+<td><code class="notranslate">BASIC_PASS</code></td>
+<td><code class="notranslate">admin-password</code></td>
+<td>后台管理页面的登录密码，需要和 <code class="notranslate">BASIC_USER</code> 同时设置。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>2. 上传入口的账户密码配置</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">UPLOAD_BASIC_USER</code></td>
+<td><code class="notranslate">uploader</code></td>
+<td>上传入口的 Basic Auth 用户名。不设置则保持公开上传。</td>
+</tr>
+<tr>
+<td><code class="notranslate">UPLOAD_BASIC_PASS</code></td>
+<td><code class="notranslate">strong-password</code></td>
+<td>上传入口的 Basic Auth 密码，需要和 <code class="notranslate">UPLOAD_BASIC_USER</code> 同时设置。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>3. 开启短链接</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">ENABLE_SHORT_URLS</code></td>
+<td><code class="notranslate">true</code></td>
+<td>开启后（需绑定 KV）上传将返回形如 <code class="notranslate">/file/AbC123</code> 的短链接，原有长链接依然有效。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>4. 开启图片审查服务</h3>
+<blockquote>
+<p>该项不在全局设置里, 在 <code class="notranslate">设置</code>-&gt;<code class="notranslate">函数</code>-&gt;<code class="notranslate">Workers AI 绑定</code>, 添加一个变量名称为 <code class="notranslate">AI</code> 的绑定</p>
+</blockquote>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">MODERATION_PROVIDER</code></td>
+<td><code class="notranslate">cloudflare-ai</code></td>
+<td>图片审查服务：<code class="notranslate">cloudflare-ai</code>（Workers AI，推荐）、<code class="notranslate">moderatecontent</code>（旧版）或 <code class="notranslate">none</code>。不设置时自动检测：有 <code class="notranslate">ModerateContentApiKey</code> 用 moderatecontent，有 <code class="notranslate">AI</code> 绑定用 Workers AI。详见<a href="https://github.com/cf-pages/Telegraph-Image/blob/main/README-zh.md#%E5%BC%80%E5%90%AF%E5%9B%BE%E7%89%87%E5%AE%A1%E6%9F%A5">开启图片审查</a>。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>5. 配置站点名称和首页浏览器标签页标题</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">SITE_NAME</code></td>
+<td><code class="notranslate">My Images</code></td>
+<td>首页顶部显示的站点名称（通过 <code class="notranslate">GET /api/config</code> 下发给前端）。</td>
+</tr>
+<tr>
+<td><code class="notranslate">SITE_TITLE</code></td>
+<td><code class="notranslate">My Images | Home</code></td>
+<td>首页的浏览器标签页标题。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>6. 配置首页背景图</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">SITE_BACKGROUND</code></td>
+<td><code class="notranslate">https://.../bg.jpg</code></td>
+<td>首页背景图 URL。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>7. 隐藏首页上的后台入口链接</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>环境变量</th>
+<th>示例值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">HIDE_ADMIN_ENTRY</code></td>
+<td><code class="notranslate">true</code></td>
+<td>隐藏首页上的后台入口链接（/admin 页面本身仍可访问）。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>[!NOTE] 此外, 还有很多其他设置, 例如白名单/防盗链等功能<br>
+不过我并没有全部使用过, 这里只列出一些自己用过的功能.</p>
+</blockquote>
+<h2>三、踩坑记录</h2>
+<p><strong>Q:</strong> 在 <a href="#6-%E9%85%8D%E7%BD%AE%E9%A6%96%E9%A1%B5%E8%83%8C%E6%99%AF%E5%9B%BE">6. 配置首页背景图</a> 的时候, 遇到了配置不生效的问题?</p>
+<p><strong>A:</strong> 当前版本的 <code class="notranslate">index.html</code> 中存在 <code class="notranslate">loadWallpapers</code> 逻辑，即使配置了 <code class="notranslate">SITE_BACKGROUND</code>，首页仍然会加载 Bing 壁纸。(最新分支是 ef69018df1967708ec026a671e3976f5524ff490, Commits on Jul 25, 2026)</p>
+<p>我的解决方式是：</p>
+<ol>
+<li>为了避免影响 <code class="notranslate">main</code> 分支后续与上游仓库同步，单独创建 <code class="notranslate">deploy</code> 分支。</li>
+<li>修改 <code class="notranslate">index.html</code>，注释掉 <code class="notranslate">loadWallpapers</code> 相关代码，只保留 <code class="notranslate">api/config</code> 的背景图配置。</li>
+<li>将修改后的代码保留在 <code class="notranslate">deploy</code> 分支。</li>
+<li>在 Cloudflare Pages 中将生产部署分支修改为 <code class="notranslate">deploy</code>。</li>
+</ol>
+<p>最终：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">main    → 保持与上游仓库同步
+deploy  → 保存个人定制修改，并用于 Cloudflare Pages 部署
+</code></pre>
+<p>这样既可以使用自己的首页背景图，又不会直接修改 <code class="notranslate">main</code> 分支，后续同步上游仓库时也更加方便。</p>
+<p>现在你可以好好享受自己的图床了~</p>
+<h2>参考鸣谢</h2>
+<ul>
+<li><a href="https://github.com/cf-pages/Telegraph-Image">Telegraph-Image</a></li>
+<li><a href="https://hali.life/?p=59" rel="nofollow">程序员哈利的博客</a></li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="http://blog.pianone.dpdns.org">Pianone</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Nliuco/Nliuco.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
