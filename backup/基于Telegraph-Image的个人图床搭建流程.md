@@ -7,7 +7,7 @@
 
 ## 一、部署流程
 
-### 1. Fork 仓库
+### 1. 在Github中Fork 仓库
 
 打开 [Telegraph-Image](https://github.com/cf-pages/Telegraph-Image) 项目主页，点击 **Fork** 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。
 
