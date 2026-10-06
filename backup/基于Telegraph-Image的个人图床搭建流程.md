@@ -1,6 +1,7 @@
 # 个人图床搭建流程
 
-> [!WARNING] 前提
+> [!WARNING]
+> 前提提醒
 > 必需: GitHub账户; Cloudflare账户
 > 可选: 域名
 

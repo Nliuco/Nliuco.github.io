@@ -12,7 +12,8 @@
     </script>
 <meta name="description" content="# 个人图床搭建流程
 
-> [!WARNING] 前提
+> [!WARNING]
+> 前提提醒
 > 必需: GitHub账户; Cloudflare账户
 > 可选: 域名
 
@@ -24,7 +25,8 @@
 <meta property="og:title" content="基于Telegraph-Image的个人图床搭建流程">
 <meta property="og:description" content="# 个人图床搭建流程
 
-> [!WARNING] 前提
+> [!WARNING]
+> 前提提醒
 > 必需: GitHub账户; Cloudflare账户
 > 可选: 域名
 
@@ -63,7 +65,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 }
 
 </style>
-<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style>
 
 
 
@@ -94,11 +96,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>个人图床搭建流程</h1>
-<blockquote>
-<p>[!WARNING] 前提<br>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>前提提醒<br>
 必需: GitHub账户; Cloudflare账户<br>
 可选: 域名</p>
-</blockquote>
+</div>
 <h2>一、部署流程</h2>
 <h3>1. Fork 仓库</h3>
 <p>打开 <a href="https://github.com/cf-pages/Telegraph-Image">Telegraph-Image</a> 项目主页，点击 <strong>Fork</strong> 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。</p>
