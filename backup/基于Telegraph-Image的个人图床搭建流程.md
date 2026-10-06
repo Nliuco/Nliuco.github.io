@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > 搭建前提醒
-> 必需: GitHub账户; Cloudflare账户
+> 必需: GitHub账户; Cloudflare账户; Telegram账号
 > 可选: 域名
 
 ## 一、部署流程

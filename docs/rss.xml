@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 06 Oct 2026 12:05:40 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>基于Telegraph-Image的个人图床搭建流程</title><link>http://blog.pianone.dpdns.org/post/ji-yu-Telegraph-Image-de-ge-ren-tu-chuang-da-jian-liu-cheng.html</link><description># 个人图床搭建流程
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Tue, 06 Oct 2026 12:09:21 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>基于Telegraph-Image的个人图床搭建流程</title><link>http://blog.pianone.dpdns.org/post/ji-yu-Telegraph-Image-de-ge-ren-tu-chuang-da-jian-liu-cheng.html</link><description># 个人图床搭建流程
 
 &gt; [!WARNING]
 &gt; 搭建前提醒
-&gt; 必需: GitHub账户; Cloudflare账户
+&gt; 必需: GitHub账户; Cloudflare账户; Telegram账号
 &gt; 可选: 域名
 
 ## 一、部署流程
