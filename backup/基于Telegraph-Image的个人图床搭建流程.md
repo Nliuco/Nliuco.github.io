@@ -116,7 +116,7 @@
 
 **Q:** 在 [6. 配置首页背景图](#6.-配置首页背景图) 的时候, 遇到了配置不生效的问题?
 
-**A:** 当前版本的 `index.html` 中存在 `loadWallpapers` 逻辑，即使配置了 `SITE_BACKGROUND`，首页仍然会加载 Bing 壁纸。(最新分支是 ef69018df1967708ec026a671e3976f5524ff490, Commits on Jul 25, 2026)
+**A:** 当前版本的 `index.html` 中存在 `loadWallpapers` 逻辑，即使配置了 `SITE_BACKGROUND`，首页仍然会加载 Bing 壁纸。(编写本文时, 最新分支是 ef69018df1967708ec026a671e3976f5524ff490, Commits on Jul 25, 2026)
 
 我的解决方式是：
 

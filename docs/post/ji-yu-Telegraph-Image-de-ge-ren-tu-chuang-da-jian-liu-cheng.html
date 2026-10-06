@@ -312,7 +312,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 <h2>三、踩坑记录</h2>
 <p><strong>Q:</strong> 在 <a href="#6.-%E9%85%8D%E7%BD%AE%E9%A6%96%E9%A1%B5%E8%83%8C%E6%99%AF%E5%9B%BE">6. 配置首页背景图</a> 的时候, 遇到了配置不生效的问题?</p>
-<p><strong>A:</strong> 当前版本的 <code class="notranslate">index.html</code> 中存在 <code class="notranslate">loadWallpapers</code> 逻辑，即使配置了 <code class="notranslate">SITE_BACKGROUND</code>，首页仍然会加载 Bing 壁纸。(最新分支是 ef69018df1967708ec026a671e3976f5524ff490, Commits on Jul 25, 2026)</p>
+<p><strong>A:</strong> 当前版本的 <code class="notranslate">index.html</code> 中存在 <code class="notranslate">loadWallpapers</code> 逻辑，即使配置了 <code class="notranslate">SITE_BACKGROUND</code>，首页仍然会加载 Bing 壁纸。(编写本文时, 最新分支是 ef69018df1967708ec026a671e3976f5524ff490, Commits on Jul 25, 2026)</p>
 <p>我的解决方式是：</p>
 <ol>
 <li>为了避免影响 <code class="notranslate">main</code> 分支后续与上游仓库同步，单独创建 <code class="notranslate">deploy</code> 分支。</li>
