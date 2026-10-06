@@ -10,7 +10,7 @@
 ### 1. 在Github中Fork 仓库
 
 打开 [Telegraph-Image](https://github.com/cf-pages/Telegraph-Image) 项目主页，点击 **Fork** 将仓库复制到自己的 GitHub 账号下，后续部署都基于这份 fork 进行。
-可以顺手点个Star :stuck_out_tongue_winking_eye: , 主要是后续可以方便找README看文档~
+可以顺手点个Star :stuck_out_tongue_winking_eye: ~
 
 ### 2. Cloudflare 部署
 
