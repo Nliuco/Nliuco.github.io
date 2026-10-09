@@ -7,7 +7,7 @@
 > >如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.
 > >强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.
 
-`Gmeek-html<img src="https://nliuco.github.io/2.WhyVim.png">`
+<img src="https://img.pianone.dpdns.org/file/itv8Il" width="200" alt="WhyVim.png">
 
 > 首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, ~~(用了很久的Sublime text也是出于这个原因)~~, 
 >
