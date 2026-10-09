@@ -53,8 +53,13 @@
 |  移动到文件顶部  |              `gg`              |        `Ctrl` + `Home`        |
 |  移动到文件底部  |              `G`               |        `Ctrl` + `End`         |
 
-值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
+以下是一些使用场景：
 
+- **跳到行首和行尾**：当你需要修改当前行的开头或结尾时,使用 `0` 和 `$` 会比用 `Home` 和 `End` 更加高效.
+- **快速浏览文件顶部和底部**：当你需要查看文件的开头或结尾时,`gg` 和 `G` 是非常便捷的命令.
+
+> 值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
+> 
 > 将光标移到当前行`第一个`/`最后一个`**非空白字符**上:  在一行文本中,光标会移动到这一行中`行首`/`行尾`不是空格、制表符或其他空白字符的地方.
 > 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
 >
@@ -118,8 +123,13 @@
 |  移动到文件顶部  |              `gg`              |        `Ctrl` + `Home`        |
 |  移动到文件底部  |              `G`               |        `Ctrl` + `End`         |
 
-值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
+以下是一些使用场景：
 
+- **跳到行首和行尾**：当你需要修改当前行的开头或结尾时,使用 `0` 和 `$` 会比用 `Home` 和 `End` 更加高效.
+- **快速浏览文件顶部和底部**：当你需要查看文件的开头或结尾时,`gg` 和 `G` 是非常便捷的命令.
+
+> 值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
+> 
 > 将光标移到当前行`第一个`/`最后一个`**非空白字符**上:  在一行文本中,光标会移动到这一行中`行首`/`行尾`不是空格、制表符或其他空白字符的地方.
 > 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
 >
@@ -265,8 +275,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p>值得注意的是光标移动到<strong>行首尾</strong>的快捷键有很多, <code class="notranslate">Home</code>/<code class="notranslate">End</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>效果是一样的, 不多赘述, 具体说一下<code class="notranslate">^</code>/<code class="notranslate">g_</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>的区别:</p>
+<p>以下是一些使用场景：</p>
+<ul>
+<li><strong>跳到行首和行尾</strong>：当你需要修改当前行的开头或结尾时,使用 <code class="notranslate">0</code> 和 <code class="notranslate">$</code> 会比用 <code class="notranslate">Home</code> 和 <code class="notranslate">End</code> 更加高效.</li>
+<li><strong>快速浏览文件顶部和底部</strong>：当你需要查看文件的开头或结尾时,<code class="notranslate">gg</code> 和 <code class="notranslate">G</code> 是非常便捷的命令.</li>
+</ul>
 <blockquote>
+<p>值得注意的是光标移动到<strong>行首尾</strong>的快捷键有很多, <code class="notranslate">Home</code>/<code class="notranslate">End</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>效果是一样的, 不多赘述, 具体说一下<code class="notranslate">^</code>/<code class="notranslate">g_</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>的区别:</p>
 <p>将光标移到当前行<code class="notranslate">第一个</code>/<code class="notranslate">最后一个</code><strong>非空白字符</strong>上:  在一行文本中,光标会移动到这一行中<code class="notranslate">行首</code>/<code class="notranslate">行尾</code>不是空格、制表符或其他空白字符的地方.<br>
 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用<code class="notranslate">^</code>/ <code class="notranslate">g_</code> 会将光标移动到<code class="notranslate">H</code>/<code class="notranslate">!</code><strong>非空白字符</strong>上, 使用<code class="notranslate">0</code>/<code class="notranslate">$</code>会将光标移动<code class="notranslate">第一个</code>/<code class="notranslate">最后一个</code><strong>空格</strong>上.</p>
 <p>相比于<code class="notranslate">Home</code> / <code class="notranslate">End</code> + <code class="notranslate">ctrl + →</code> /  <code class="notranslate">ctrl + ←</code>的组合操作,  短而快的<code class="notranslate">^</code> / <code class="notranslate">g_</code>的优势就体现出来了🐶.</p>
