@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/56815403?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# Ping 通了 GitHub，不代表你走了代理
+
+> 平时在终端里拉取 GitHub 仓库或者下载 release 资产时，时不时就会遇到速度慢如蜗牛甚至直接连接超时的情况。">
+<meta property="og:title" content="开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？">
+<meta property="og:description" content="# Ping 通了 GitHub，不代表你走了代理
+
+> 平时在终端里拉取 GitHub 仓库或者下载 release 资产时，时不时就会遇到速度慢如蜗牛甚至直接连接超时的情况。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
+<title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</h1>
+<div class="title-right">
+    <a href="http://blog.pianone.dpdns.org" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Nliuco/Nliuco.github.io/issues/23" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>Ping 通了 GitHub，不代表你走了代理</h1>
+<blockquote>
+<p>平时在终端里拉取 GitHub 仓库或者下载 release 资产时，时不时就会遇到速度慢如蜗牛甚至直接连接超时的情况。今天在 Windows 的 PowerShell 终端里给它配上了本地代理，本以为只是个几分钟搞定的顺手小事，没想到在这个过程中接二连三地踩进了自己的“认知盲区”。</p>
+</blockquote>
+<hr>
+<h2>1. 起因：一个理所当然的“顺手测试”</h2>
+<p>在终端里开启代理配置之后，我下意识地在命令行敲了一句：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">ping <span class="pl-c1">github.com</span></pre></div>
+<p>终端很快就返回了结果：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">来自 20.205.243.166 的回复: 字节=32 时间=105ms TTL=111
+来自 20.205.243.166 的回复: 字节=32 时间=106ms TTL=111
+...
+数据包: 已发送 = 4，已接收 = 4，丢失 = 0 (0% 丢失)
+</code></pre>
+<p>看到 105ms 的延迟而且 0 丢包，我理所当然地认为之前开启的代理软件生效了。</p>
+<p>不过我又随手测了一句：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">ping <span class="pl-c1">google.com</span></pre></div>
+<p>结果屏幕直接卡住，十几秒后, 等待我的结果是，蹦出来一行行的 <code class="notranslate">请求超时</code>，100% 丢包。</p>
+<p>这时候我有点疑惑：如果代理真的开了，为什么 Google 通不了？而如果代理没开，为什么平时连接费劲的 GitHub 却能 ping 通？</p>
+<hr>
+<h2>2. 探究：原来我搞混了协议层级</h2>
+<p>带着这个困惑去梳理网络底层原理，才发现自己犯了一个常识错误：<strong><code class="notranslate">ping</code> 根本不会走常规的本地代理。</strong></p>
+<p>这里先附上张网络分层与代理工作机制的对照图：</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f04c8206297bb6005dd122cb39abeb4345eda1f04a4d88f8f483adf3e0aac822/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f49724577316d"><img src="https://camo.githubusercontent.com/f04c8206297bb6005dd122cb39abeb4345eda1f04a4d88f8f483adf3e0aac822/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f49724577316d" alt="ISO7层网络模型.png|150" data-canonical-src="https://img.pianone.dpdns.org/file/IrEw1m" style="max-width: 100%;"></a> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0594d7502cb15bf44c44ace130098195d3def8a4a1f38bd258a6e1d25333960c/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f465972375354"><img src="https://camo.githubusercontent.com/0594d7502cb15bf44c44ace130098195d3def8a4a1f38bd258a6e1d25333960c/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f465972375354" alt="代理工作机制.png|150" data-canonical-src="https://img.pianone.dpdns.org/file/FYr7ST" style="max-width: 100%;"></a></p>
+<p>平时我在终端配置的环境变量：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate"><span class="pl-smi">$<span class="pl-c1">env:</span>HTTP_PROXY</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://127.0.0.1:7890<span class="pl-pds">"</span></span>; <span class="pl-smi">$<span class="pl-c1">env:</span>HTTPS_PROXY</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://127.0.0.1:7890<span class="pl-pds">"</span></span></pre></div>
+<p>这类代理服务（比如 Clash、v2rayN 等常见的本地 7890 端口）工作在<strong>传输层 / 应用层（TCP/UDP）</strong>。只有那些支持 HTTP 代理协议、并主动去读取环境变量的软件（例如 <code class="notranslate">curl</code>、<code class="notranslate">git</code>、浏览器、各种包管理器），才会把数据包打包发给 <code class="notranslate">127.0.0.1:7890</code> 进行中转。</p>
+<p>而 <code class="notranslate">ping</code> 命令使用的是网络层的 <strong>ICMP 协议</strong>。<br>
+它在操作系统底层工作，既不走 TCP，也不走 HTTP，在发包时会彻底无视我设置的任何代理环境变量，<strong>数据包依然是从物理网卡直连发出的。</strong></p>
+<h3>那么，为什么平时打不开 GitHub，直连 ping 却能通？</h3>
+<p>我依然保留的这个疑问：平时我不开代理连 GitHub 都卡死，现在 ping 通了，难道不是代理把它加速了吗？</p>
+<p>其实并不是：</p>
+<ol>
+<li><strong>平时 GitHub 打不开，卡在“应用层”</strong></li>
+</ol>
+<blockquote>
+<p>GitHub 的服务器归微软所有，国内访问它困难，主要原因是 DNS 污染、HTTPS 握手时的 SNI 域名阻断，或者是 TCP 传输被间歇性干扰限速。也就是说，拦截和干扰主要发生在应用层与传输层。</p>
+</blockquote>
+<ol start="2">
+<li><strong>底层物理网络其实并没有被完全掐断</strong></li>
+</ol>
+<blockquote>
+<p><code class="notranslate">ping</code> 发出的是最基础的 ICMP 探测包，里面没有域名，也没有 HTTP 数据。国内运营商骨干网可能并没有在 IP 层面完全拉黑 GitHub 的亚太机房 IP（比如上面日志里的 <code class="notranslate">20.205.243.166</code> 微软新加坡节点）。</p>
+</blockquote>
+<ol start="3">
+<li><strong>AI推测的可能情况</strong></li>
+</ol>
+<blockquote>
+<p>那个 ping 通了的响应，<strong>本身就是本地宽带直接顺着海底光缆打到微软新加坡节点返回的物理延迟</strong>。就算把代理软件彻底关掉，在终端里敲 <code class="notranslate">ping github.com</code>，只要当时本地链路没发生严重丢包，它大概率依然是直连通的。</p>
+</blockquote>
+<p>因此，<code class="notranslate">ping google.com</code> 超时是因为它的 IP 被直接拦截，而 <code class="notranslate">ping github.com</code> 通了只是普通的直连物理网络没被阻断。拿 ping 去判断代理有没有生效，从一开始就找错了参照物。</p>
+<p><em>(注：除非代理软件开启了基于<code class="notranslate">虚拟网卡的 TUN 全局模式</code>接管整张网卡，否则常规代理下 ping 永远是本地直连)</em></p>
+<hr>
+<h2>3. 正确姿势：如何验证终端代理</h2>
+<p>搞清楚不能用 <code class="notranslate">ping</code> 之后，我们可以用 <code class="notranslate">curl -I</code> 验证应用层连通性。</p>
+<p>既然代理工作在应用层，就应该用应用层的工具来测试。<code class="notranslate">curl</code> 原生支持读取代理环境变量，配合 <code class="notranslate">-I</code> 参数（只获取响应头，不下载网页内容），响应非常迅速：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">curl <span class="pl-k">-</span>I https:<span class="pl-k">//</span><span class="pl-c1">www.google.com</span></pre></div>
+<ul>
+<li><strong>判断标准</strong>：在国内网络下，只要能正常拿到 <code class="notranslate">HTTP/1.1 200 OK</code>（并且看到响应头里带类似 <code class="notranslate">Proxy-Connection: keep-alive</code> 或目标服务的特征头），就完全足以证明当前终端走代理的链路已经通了，日常验证到这一步就足够了。</li>
+</ul>
+<hr>
+<h2>4. 补充：如何查看出网 IP 及归属地？</h2>
+<p>虽然用 <code class="notranslate">curl -I</code> 已经能够确认代理可用，但如果想“眼见为实”，看一眼当前终端到底是从哪个海外节点的 IP 出去的，还可以进一步通过命令行查询出网 IP 与归属地。</p>
+<ol>
+<li>
+<p><strong>海外接口查出网 IP</strong>：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">curl https:<span class="pl-k">//</span>ifconfig.me <span class="pl-c"><span class="pl-c">#</span>或 curl https://checkip.amazonaws.com</span>
+<span class="pl-c"><span class="pl-c">#</span> 返回示例：</span>
+<span class="pl-c1">66.90</span>.xxx.xxx</pre></div>
+</li>
+<li>
+<p><strong>国内接口查 IP 归属地</strong>：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">curl cip.cc<span class="pl-k">/</span><span class="pl-c1">66.90</span>.xxx.xxx
+<span class="pl-c"><span class="pl-c">#</span> 返回示例：</span>
+IP      : <span class="pl-c1">66.90</span>.xxx.xxx
+地址    : 美国
+运营商  : FDC芝加哥机房
+数据二  : 美国 <span class="pl-k">|</span> FDC芝加哥机房
+数据三  : Singapore Singapore Singapore <span class="pl-k">|</span> FDCservers.net  
+URL     : http:<span class="pl-k">//</span>www.cip.cc<span class="pl-k">/</span><span class="pl-c1">66.90</span>.xxx.xxx</pre></div>
+</li>
+</ol>
+<blockquote>
+<p>说明:</p>
+<p>在代理软件默认的**规则分流模式（Rule 模式）**下，直接用国内网站（如 <code class="notranslate">curl cip.cc</code>）查是没有用的，因为国内域名会自动触发直连放行。<br>
+所以这里的方法是：<strong>用海外接口查出网 IP，再用国内接口反查归属地</strong>。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>小贴士：</strong></p>
+<ul>
+<li><strong>关于 Git 定向代理</strong>：如果开启代理主要为了加速 GitHub，也可以不配全局环境变量，直接给 Git 配置针对域名的定向代理，省心且不影响国内代码平台(不过我一般不配置~)：
+<div class="highlight highlight-source-shell"><pre class="notranslate">git config --global http.https://github.com.proxy http://127.0.0.1:7890
+git config --global https.https://github.com.proxy http://127.0.0.1:7890</pre></div>
+</li>
+<li><strong>关于 PowerShell 里的 curl</strong>：在现代 PowerShell（如 PS 7+）中敲 <code class="notranslate">curl</code> 就是真实的 curl 命令；如果在老旧的 Windows PowerShell 5.1 环境中遇到 <code class="notranslate">curl</code> 被解析成 <code class="notranslate">Invoke-WebRequest</code> 别名导致报错，显式敲 <code class="notranslate">curl.exe</code> 即可。</li>
+</ul>
+</blockquote></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="http://blog.pianone.dpdns.org">Pianone</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/01/2024"!=""){
+    var startSite=new Date("07/01/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Nliuco/Nliuco.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
