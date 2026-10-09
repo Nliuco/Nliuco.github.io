@@ -105,13 +105,44 @@
 
 后面还要写的内容
 
-在打开文件的时候, 执行终端命令
+:! 用法
 
-粘贴内容进入vim
+:r 用法, 配合 :r !
+
+结合 | 用法
+
+'+p
+'+P
+
+查看寄存器
+:reg
 
 可视块儿操作
+ctrl+v
+
+选中后的常用操作
+
+I | A | 在多行末尾追加，输入后按 Esc
+d | 删除块
+y | 复制块
+p | 粘贴块
+> / < | 缩进 / 反缩进
+U / u / ~ | 大写 / 小写 / 反转大小写
+
 
 批量替换命令
+
+基本格式：
+:s/old/new/        ' 当前行第一个 old
+:s/old/new/g       ' 当前行所有 old
+:%s/old/new/g      ' 整个文件所有 old
+:%s/old/new/gc     ' 整个文件替换，但逐个确认
+
+指定范围:
+...
+
+替换时行首/行位追加
+
 。">
 <meta property="og:title" content="Vim光标操作与快捷键的终极指南">
 <meta property="og:description" content="`Gmeek-html<img src='https://nliuco.github.io/1.vim.png'>`
@@ -209,13 +240,44 @@
 
 后面还要写的内容
 
-在打开文件的时候, 执行终端命令
+:! 用法
 
-粘贴内容进入vim
+:r 用法, 配合 :r !
+
+结合 | 用法
+
+'+p
+'+P
+
+查看寄存器
+:reg
 
 可视块儿操作
+ctrl+v
+
+选中后的常用操作
+
+I | A | 在多行末尾追加，输入后按 Esc
+d | 删除块
+y | 复制块
+p | 粘贴块
+> / < | 缩进 / 反缩进
+U / u / ~ | 大写 / 小写 / 反转大小写
+
 
 批量替换命令
+
+基本格式：
+:s/old/new/        ' 当前行第一个 old
+:s/old/new/g       ' 当前行所有 old
+:%s/old/new/g      ' 整个文件所有 old
+:%s/old/new/gc     ' 整个文件替换，但逐个确认
+
+指定范围:
+...
+
+替换时行首/行位追加
+
 。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html">
@@ -477,10 +539,33 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tbody>
 </table></markdown-accessiblity-table>
 <p>后面还要写的内容</p>
-<p>在打开文件的时候, 执行终端命令</p>
-<p>粘贴内容进入vim</p>
-<p>可视块儿操作</p>
-<p>批量替换命令</p></div>
+<p>:! 用法</p>
+<p>:r 用法, 配合 :r !</p>
+<p>结合 | 用法</p>
+<p>"+p<br>
+"+P</p>
+<p>查看寄存器<br>
+:reg</p>
+<p>可视块儿操作<br>
+ctrl+v</p>
+<p>选中后的常用操作</p>
+<p>I | A | 在多行末尾追加，输入后按 Esc<br>
+d | 删除块<br>
+y | 复制块<br>
+p | 粘贴块</p>
+<blockquote>
+<p>/ &lt; | 缩进 / 反缩进<br>
+U / u / ~ | 大写 / 小写 / 反转大小写</p>
+</blockquote>
+<p>批量替换命令</p>
+<p>基本格式：<br>
+:s/old/new/        " 当前行第一个 old<br>
+:s/old/new/g       " 当前行所有 old<br>
+:%s/old/new/g      " 整个文件所有 old<br>
+:%s/old/new/gc     " 整个文件替换，但逐个确认</p>
+<p>指定范围:<br>
+...</p>
+<p>替换时行首/行位追加</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

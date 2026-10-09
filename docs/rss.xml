@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 09 Oct 2026 08:32:48 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title><link>http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</link><description># Ping 通了 GitHub，不代表你走了代理
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 09 Oct 2026 09:08:15 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title><link>http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</link><description># Ping 通了 GitHub，不代表你走了代理
 
 &gt; 平时在终端里拉取 GitHub 仓库或者下载 release 资产时，时不时就会遇到速度慢如蜗牛甚至直接连接超时的情况。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</guid><pubDate>Fri, 09 Oct 2026 07:36:32 +0000</pubDate></item><item><title>基于Telegraph-Image的个人图床搭建流程</title><link>http://blog.pianone.dpdns.org/post/ji-yu-Telegraph-Image-de-ge-ren-tu-chuang-da-jian-liu-cheng.html</link><description># 个人图床搭建流程
 
@@ -349,11 +349,42 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 
 后面还要写的内容
 
-在打开文件的时候, 执行终端命令
+:! 用法
 
-粘贴内容进入vim
+:r 用法, 配合 :r !
+
+结合 | 用法
+
+'+p
+'+P
+
+查看寄存器
+:reg
 
 可视块儿操作
+ctrl+v
+
+选中后的常用操作
+
+I | A | 在多行末尾追加，输入后按 Esc
+d | 删除块
+y | 复制块
+p | 粘贴块
+&gt; / &lt; | 缩进 / 反缩进
+U / u / ~ | 大写 / 小写 / 反转大小写
+
 
 批量替换命令
+
+基本格式：
+:s/old/new/        ' 当前行第一个 old
+:s/old/new/g       ' 当前行所有 old
+:%s/old/new/g      ' 整个文件所有 old
+:%s/old/new/gc     ' 整个文件替换，但逐个确认
+
+指定范围:
+...
+
+替换时行首/行位追加
+
 。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html</guid><pubDate>Mon, 01 Jul 2024 09:37:44 +0000</pubDate></item></channel></rss>
