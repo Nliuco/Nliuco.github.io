@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 09 Oct 2026 07:57:22 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title><link>http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</link><description># Ping 通了 GitHub，不代表你走了代理
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Fri, 09 Oct 2026 07:58:40 +0000</lastBuildDate><managingEditor>Pianone</managingEditor><ttl>60</ttl><webMaster>Pianone</webMaster><item><title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title><link>http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</link><description># Ping 通了 GitHub，不代表你走了代理
 
 &gt; 平时在终端里拉取 GitHub 仓库或者下载 release 资产时，时不时就会遇到速度慢如蜗牛甚至直接连接超时的情况。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</guid><pubDate>Fri, 09 Oct 2026 07:36:32 +0000</pubDate></item><item><title>基于Telegraph-Image的个人图床搭建流程</title><link>http://blog.pianone.dpdns.org/post/ji-yu-Telegraph-Image-de-ge-ren-tu-chuang-da-jian-liu-cheng.html</link><description># 个人图床搭建流程
 
@@ -286,8 +286,6 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 也有人说, `vim`编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )
 总之, `vim`的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 **`h` `j` `k` `l`** 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.
 
-`Gmeek-html&lt;img src='https://nliuco.github.io/1.jhkl.gif'&gt;`
-
 上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换. 
 
 |       操作       |           Vim 快捷键           | Windows 普通文本编辑器 快捷键 |
@@ -305,8 +303,6 @@ sudo pacman -S waybar foot xdg-desktop-portal-wlr wl-clipboard mako \
 &gt; 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
 &gt;
 &gt; 相比于`Home` / `End` + `ctrl + →` /  `ctrl + ←`的组合操作,  短而快的`^` / `g_`的优势就体现出来了🐶.
-
-`Gmeek-html&lt;img src='https://nliuco.github.io/1.^/g_&amp;&amp;0/$.gif'&gt;`
 
 接下来是一些快速翻页、转跳行的操作
 
