@@ -103,47 +103,9 @@
 | 保存文件 | `Ctrl + S` | `:w`            |
 | 退出文件 | `Ctrl + Q` | `:q`            |
 
-后面还要写的内容
+### 1.4 系统剪贴板与寄存器操作
 
-:! 用法
-
-:r 用法, 配合 :r !
-
-结合 | 用法
-
-'+p
-'+P
-
-查看寄存器
-:reg
-
-可视块儿操作
-ctrl+v
-
-选中后的常用操作
-
-I | A | 在多行末尾追加，输入后按 Esc
-d | 删除块
-y | 复制块
-p | 粘贴块
-> / < | 缩进 / 反缩进
-U / u / ~ | 大写 / 小写 / 反转大小写
-
-
-批量替换命令
-
-基本格式：
-:s/old/new/        ' 当前行第一个 old
-:s/old/new/g       ' 当前行所有 old
-:%s/old/new/g      ' 整个文件所有 old
-:%s/old/new/gc     ' 整个文件替换，但逐个确认
-
-指定范围:
-...
-
-替换时行首/行位追加
-
-。">
+很多初学者在 Vim 里经常会遇到一个痛点：在 Vim 里复制的文本无法粘贴到系统其他软件（如浏览器、微信、VSCode）中，或者外部复制的代码用 `p` 粘贴不进 Vim。">
 <meta property="og:title" content="Vim光标操作与快捷键的终极指南">
 <meta property="og:description" content="`Gmeek-html<img src='https://nliuco.github.io/1.vim.png'>`
 
@@ -238,47 +200,9 @@ U / u / ~ | 大写 / 小写 / 反转大小写
 | 保存文件 | `Ctrl + S` | `:w`            |
 | 退出文件 | `Ctrl + Q` | `:q`            |
 
-后面还要写的内容
+### 1.4 系统剪贴板与寄存器操作
 
-:! 用法
-
-:r 用法, 配合 :r !
-
-结合 | 用法
-
-'+p
-'+P
-
-查看寄存器
-:reg
-
-可视块儿操作
-ctrl+v
-
-选中后的常用操作
-
-I | A | 在多行末尾追加，输入后按 Esc
-d | 删除块
-y | 复制块
-p | 粘贴块
-> / < | 缩进 / 反缩进
-U / u / ~ | 大写 / 小写 / 反转大小写
-
-
-批量替换命令
-
-基本格式：
-:s/old/new/        ' 当前行第一个 old
-:s/old/new/g       ' 当前行所有 old
-:%s/old/new/g      ' 整个文件所有 old
-:%s/old/new/gc     ' 整个文件替换，但逐个确认
-
-指定范围:
-...
-
-替换时行首/行位追加
-
-。">
+很多初学者在 Vim 里经常会遇到一个痛点：在 Vim 里复制的文本无法粘贴到系统其他软件（如浏览器、微信、VSCode）中，或者外部复制的代码用 `p` 粘贴不进 Vim。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
@@ -538,34 +462,179 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p>后面还要写的内容</p>
-<p>:! 用法</p>
-<p>:r 用法, 配合 :r !</p>
-<p>结合 | 用法</p>
-<p>"+p<br>
-"+P</p>
-<p>查看寄存器<br>
-:reg</p>
-<p>可视块儿操作<br>
-ctrl+v</p>
-<p>选中后的常用操作</p>
-<p>I | A | 在多行末尾追加，输入后按 Esc<br>
-d | 删除块<br>
-y | 复制块<br>
-p | 粘贴块</p>
+<h3>1.4 系统剪贴板与寄存器操作</h3>
+<p>很多初学者在 Vim 里经常会遇到一个痛点：在 Vim 里复制的文本无法粘贴到系统其他软件（如浏览器、微信、VSCode）中，或者外部复制的代码用 <code class="notranslate">p</code> 粘贴不进 Vim。这是因为 Vim 默认使用的是内部寄存器（无名寄存器 <code class="notranslate">"</code>）。</p>
+<p>要在 Vim 与操作系统剪贴板之间无缝流转，或者管理多份剪贴内容，就需要用到<strong>系统剪贴板寄存器</strong>与<strong>寄存器查看命令</strong>。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 命令 / 快捷键</th>
+<th align="left">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">查看所有寄存器</td>
+<td align="left"><code class="notranslate">:reg</code></td>
+<td align="left">查看当前所有寄存器中缓存的内容（包括历史复制、删除的内容）</td>
+</tr>
+<tr>
+<td align="left">查看指定寄存器</td>
+<td align="left"><code class="notranslate">:reg +</code> 或 <code class="notranslate">:reg "</code></td>
+<td align="left">查看系统剪贴板或默认寄存器的内容</td>
+</tr>
+<tr>
+<td align="left">粘贴系统剪贴板内容（光标后）</td>
+<td align="left"><code class="notranslate">"+p</code></td>
+<td align="left">将系统剪贴板中的内容粘贴到光标之后</td>
+</tr>
+<tr>
+<td align="left">粘贴系统剪贴板内容（光标前）</td>
+<td align="left"><code class="notranslate">"+P</code></td>
+<td align="left">将系统剪贴板中的内容粘贴到光标之前</td>
+</tr>
+<tr>
+<td align="left">复制选中文本到系统剪贴板</td>
+<td align="left"><code class="notranslate">"+y</code>（可视模式下）</td>
+<td align="left">将当前选中的内容写入操作系统的系统剪贴板</td>
+</tr>
+<tr>
+<td align="left">复制整行到系统剪贴板</td>
+<td align="left"><code class="notranslate">"+yy</code></td>
+<td align="left">将当前整行内容写入系统剪贴板</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
 <blockquote>
-<p>/ &lt; | 缩进 / 反缩进<br>
-U / u / ~ | 大写 / 小写 / 反转大小写</p>
+<p><strong>提示</strong>：</p>
+<ol>
+<li><code class="notranslate">"+</code> 指的是系统的“剪贴板寄存器”（Clipboard Register）。在 Linux X11 环境下，<code class="notranslate">"*</code> 通常指鼠标选区选择缓冲区，而 <code class="notranslate">"+</code> 指全局剪切板（<code class="notranslate">Ctrl+C / Ctrl+V</code>）。</li>
+<li>如果执行 <code class="notranslate">"+y</code> 或 <code class="notranslate">"+p</code> 没反应，可在终端通过 <code class="notranslate">vim --version | grep clipboard</code> 检查 Vim 是否支持剪贴板特性（如果有 <code class="notranslate">+clipboard</code> 则支持，若为 <code class="notranslate">-clipboard</code> 则需安装支持特性的版本，如 Linux 上的 <code class="notranslate">vim-gtk</code> / <code class="notranslate">vim-gnome</code>）。</li>
+</ol>
 </blockquote>
-<p>批量替换命令</p>
-<p>基本格式：<br>
-:s/old/new/        " 当前行第一个 old<br>
-:s/old/new/g       " 当前行所有 old<br>
-:%s/old/new/g      " 整个文件所有 old<br>
-:%s/old/new/gc     " 整个文件替换，但逐个确认</p>
-<p>指定范围:<br>
-...</p>
-<p>替换时行首/行位追加</p></div>
+<p>使用场景：</p>
+<ul>
+<li><strong>跨软件复制代码</strong>：在网页或文档复制了配置，进 Vim 按 <code class="notranslate">"+p</code> 粘贴；在 Vim 选中代码按 <code class="notranslate">"+y</code>，直接去浏览器发帖提问。</li>
+<li><strong>找回刚才误删/覆盖的文本</strong>：当多次删除操作覆盖了默认剪贴板时，输入 <code class="notranslate">:reg</code> 可以查看编号寄存器 <code class="notranslate">0~9</code> 中保留的历史删除与复制记录，通过 <code class="notranslate">"3p</code> 即可按需找回。</li>
+</ul>
+<h3>1.5 可视块模式（强大的列编辑）</h3>
+<p>在日常写代码或处理配置文件时，经常遇到“多行批量加注释”、“多行对齐”、“批量删除某一列字符”的需求。普通文本编辑器可能需要配合鼠标多光标选择，而在 Vim 中，只需要 <strong>可视块模式（Visual Block）</strong> 即可轻松完成。</p>
+<p>通过按快捷键 <code class="notranslate">Ctrl</code> + <code class="notranslate">v</code> 进入可视块模式后，使用方向键（<code class="notranslate">h/j/k/l</code>）框选出一块矩形区域，随后可以执行以下常用操作：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作分类</th>
+<th align="left">快捷键 / 命令</th>
+<th align="left">操作效果说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>多行行首插入</strong></td>
+<td align="left"><code class="notranslate">I</code>（大写）</td>
+<td align="left">在选中块的最左侧进入插入模式，输入内容后按 <code class="notranslate">Esc</code>，选中的所有行都会生效</td>
+</tr>
+<tr>
+<td align="left"><strong>多行末尾追加</strong></td>
+<td align="left"><code class="notranslate">A</code>（大写）</td>
+<td align="left">在选中块的最右侧追加内容，输入后按 <code class="notranslate">Esc</code> 批量生效</td>
+</tr>
+<tr>
+<td align="left"><strong>删除块</strong></td>
+<td align="left"><code class="notranslate">d</code> 或 <code class="notranslate">x</code></td>
+<td align="left">快速剪切/删除选中的矩形块区域</td>
+</tr>
+<tr>
+<td align="left"><strong>复制与粘贴块</strong></td>
+<td align="left"><code class="notranslate">y</code> / <code class="notranslate">p</code></td>
+<td align="left">复制整块矩形文本，并在目标光标处按列粘贴</td>
+</tr>
+<tr>
+<td align="left"><strong>缩进与反缩进</strong></td>
+<td align="left"><code class="notranslate">&gt;</code> / <code class="notranslate">&lt;</code></td>
+<td align="left">将选中块对应的行整体向右缩进或向左缩进</td>
+</tr>
+<tr>
+<td align="left"><strong>大小写转换</strong></td>
+<td align="left"><code class="notranslate">U</code> / <code class="notranslate">u</code> / <code class="notranslate">~</code></td>
+<td align="left">将选区内容批量转换为：全大写 / 全小写 / 大小写反转</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>使用场景：</p>
+<ul>
+<li><strong>批量多行注释</strong>：<code class="notranslate">Ctrl+v</code> 垂直选中多行行首 -&gt; 按大写 <code class="notranslate">I</code> -&gt; 输入注释符号（如 <code class="notranslate">// </code> 或 <code class="notranslate"># </code>） -&gt; 按两次 <code class="notranslate">Esc</code>，所选行的行首瞬间全部加上注释！</li>
+<li><strong>批量取消注释</strong>：<code class="notranslate">Ctrl+v</code> 框选注释符号所在列 -&gt; 按 <code class="notranslate">d</code> 即可瞬间删除多行注释。</li>
+</ul>
+<h3>1.6 外部 Shell 命令交互与内容读写</h3>
+<p>Vim 并非一座与世隔绝的孤岛。你可以不退出 Vim 直接调用外部终端命令，甚至将外部命令的输出直接“导入”到当前编辑的文档中。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">核心命令</th>
+<th align="left">语法示例</th>
+<th align="left">实际用途与场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>执行外部命令</strong></td>
+<td align="left"><code class="notranslate">:!&lt;command&gt;</code></td>
+<td align="left">如 <code class="notranslate">:!ls -lh</code> 或 <code class="notranslate">:!python %</code>，临时执行 shell 命令，按回车返回 Vim</td>
+</tr>
+<tr>
+<td align="left"><strong>读入外部文件</strong></td>
+<td align="left"><code class="notranslate">:r &lt;filename&gt;</code></td>
+<td align="left">如 <code class="notranslate">:r header.txt</code>，将外部文件的内容直接插入到当前光标所在行的下方</td>
+</tr>
+<tr>
+<td align="left"><strong>读入命令输出</strong></td>
+<td align="left"><code class="notranslate">:r !&lt;command&gt;</code></td>
+<td align="left">如 <code class="notranslate">:r !date</code>，执行外部命令并将终端输出文本直接插入到当前行下方</td>
+</tr>
+<tr>
+<td align="left"><strong>多命令串联执行</strong></td>
+<td align="left"><code class="notranslate">:&lt;cmd1&gt; | &lt;cmd2&gt;</code></td>
+<td align="left">使用 <code class="notranslate">|</code> 管道分隔符，一次性在 Vim 命令行顺序执行多条命令（例如 <code class="notranslate">:w | !python %</code>）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p><strong>提示</strong>：在 Vim 命令行中，<code class="notranslate">%</code> 符号代表“当前正在编辑的文件名”。</p>
+</blockquote>
+<p>使用场景：</p>
+<ul>
+<li><strong>代码快速运行</strong>：写完脚本直接在 Vim 输入 <code class="notranslate">:!python %</code>，原地查看输出结果，无需另开窗口。</li>
+<li><strong>生成时间戳/机器信息</strong>：在写文档或博客头信息时，输入 <code class="notranslate">:r !date "+%Y-%m-%d %H:%M:%S"</code>，即可直接将当前时间自动打在文档中。</li>
+<li><strong>一键保存并运行</strong>：使用 <code class="notranslate">:w | !python %</code>，保存的同时立即运行当前代码。</li>
+</ul>
+<h3>1.7 查找与批量替换命令</h3>
+<p>Vim 的替换功能极其强大，核心命令是 <code class="notranslate">:s</code>（substitute）。通过配合正则表达式、作用范围和确认参数，可以高效地完成复杂的全局重构。</p>
+<p><strong>1. 基本替换格式</strong>：</p>
+<ul>
+<li><code class="notranslate">:s/old/new/</code>：仅替换当前行【第一个】匹配的 old</li>
+<li><code class="notranslate">:s/old/new/g</code>：替换当前行【所有】匹配的 old（g 表示 global 全行）</li>
+<li><code class="notranslate">:%s/old/new/g</code>：替换【整个文件】所有匹配的 old（% 表示整篇文档）</li>
+<li><code class="notranslate">:%s/old/new/gc</code>：整个文件替换，但每次替换前提示确认（c 表示 confirm，按 <code class="notranslate">y</code> 确认、<code class="notranslate">n</code> 跳过、<code class="notranslate">a</code> 全部替换、<code class="notranslate">q</code> 退出）</li>
+</ul>
+<p><strong>2. 指定范围替换</strong>：</p>
+<ul>
+<li><code class="notranslate">:10,20s/old/new/g</code>：仅在第 10 行到第 20 行之间执行替换</li>
+<li><code class="notranslate">:.,$s/old/new/g</code>：从当前光标行（<code class="notranslate">.</code>）一直替换到文件末尾（<code class="notranslate">$</code>）</li>
+<li><code class="notranslate">:'&lt;,'&gt;s/old/new/g</code>：对可视模式选中的行范围执行替换（在可视模式下按 <code class="notranslate">:</code> 会自动带出 <code class="notranslate">'&lt;,'&gt;</code>）</li>
+</ul>
+<p><strong>3. 实用技巧：批量行首 / 行尾追加</strong>：</p>
+<ul>
+<li><code class="notranslate">:%s/^/prefix_/g</code>：在每一行的【行首】追加前缀 <code class="notranslate">prefix_</code></li>
+<li><code class="notranslate">:%s/$/;/g</code>：在每一行的【行尾】追加分号 <code class="notranslate">;</code></li>
+<li><code class="notranslate">:5,15s/^/# /g</code>：给第 5 到 15 行批量在行首添加注释符 <code class="notranslate">#</code></li>
+</ul>
+<p>使用场景：</p>
+<ul>
+<li><strong>批量构造 SQL/列表</strong>：有一批导出的纯 ID 列表，想加上单引号和逗号，只需 <code class="notranslate">:%s/^/'/g</code> 配合 <code class="notranslate">:%s/$/',/g</code>，秒级搞定。</li>
+<li><strong>代码重构重命名</strong>：全局替换方法名但担心误伤时，使用 <code class="notranslate">:%s/oldMethod/newMethod/gc</code> 逐个审核确认，既安全又高效。</li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
