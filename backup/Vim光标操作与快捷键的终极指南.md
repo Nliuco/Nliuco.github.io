@@ -21,9 +21,7 @@
 ## 一、快捷键操作
 ### 1.1 使用键盘移动光标
 
-<!-- 这里显示vim上下左右的图片 -->
-
-`Gmeek-html<img src="https://nliuco.github.io/1.jhkl.png">`
+<img src="https://img.pianone.dpdns.org/file/FOPHT4" width="200" alt="vim上下左右.png">
 
 在Windows中, 常用快捷键对光标快速定位的人都应该离不开 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键/组合键.  但在vim中会发现**移动光标(左,下,上,右)**的按键分别是**`h` `j` `k` `l`**. 
 
