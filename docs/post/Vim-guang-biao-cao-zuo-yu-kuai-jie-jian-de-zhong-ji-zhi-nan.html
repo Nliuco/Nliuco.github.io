@@ -12,202 +12,24 @@
     </script>
 <meta name="description" content="`Gmeek-html<img src='https://nliuco.github.io/1.vim.png'>`
 
+# Vim 光标操作与常用快捷键速查笔记
+
 ## 写在前面
-> 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. 
->
-> 每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 [采访Snipaste开发者](https://sspai.com/post/35097) 的文章, 其中有句话我很认同:
-> >如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.
-> >强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.
 
-<img src='https://img.pianone.dpdns.org/file/itv8Il' width='200' alt='WhyVim.png'>
-
-> 首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, ~~(用了很久的Sublime text也是出于这个原因)~~, 
->
-> 其次是普及广, 除了windows系统, 几乎所有主流系统都预装, 甚至安卓也能用, 加上主流编辑器也支持vim, 完美做到一次学习, 到处使用!. 
->
-> 最后就是最重要的生态, Vim的生态极其丰富,拥有大量的插件和社区支持,可以满足各种不同的编辑需求.无论是编程开发、文本处理、还是系统运维,Vim都能提供强大的工具和高效的编辑体验.
->
-> 唯一的成本, 就是学习vim需要一些时间, 而且使用习惯需要适应, 毕竟可能程序员都会提出 “如何退出vim?” 这种世纪难题......
-
-
-## 一、快捷键操作
-### 1.1 使用键盘移动光标
-
-<img src='https://img.pianone.dpdns.org/file/FOPHT4' width='200' alt='vim上下左右.png'>
-
-在Windows中, 常用快捷键对光标快速定位的人都应该离不开 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键/组合键.  但在vim中会发现**移动光标(左,下,上,右)**的按键分别是**`h` `j` `k` `l`**. 
-
-有人说是因为 `Bill Joy`  在创建 `vi` 文本编辑器时, 用的机器机器是 [`ADM-3A`](http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/)  终端机,这台机器就是把 `h` `j` `k` `l` 键作为方向键. ( `vim`编辑器就是后来`Bram Moolenaar`基于`vi`开发的). 对于一个没有方向键的终端, 把手从键盘拿开去够鼠标, 当然没有直接按下键盘移动更加高效. 
-
-也有人说, `vim`编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )
-总之, `vim`的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 **`h` `j` `k` `l`** 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.
-
-上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换. 
-
-|       操作       |           Vim 快捷键           | Windows 普通文本编辑器 快捷键 |
-| :--------------: | :----------------------------: | :---------------------------: |
-| 移动到上一个单词 |              `b`               |         `Ctrl` + `←`          |
-| 移动到下一个单词 |              `w`               |         `Ctrl` + `→`          |
-|    移动到行首    | `0`/`^` |            `Home`             |
-|    移动到行尾    | `$`/`g_` |             `End`             |
-|  移动到文件顶部  |              `gg`              |        `Ctrl` + `Home`        |
-|  移动到文件底部  |              `G`               |        `Ctrl` + `End`         |
-
-使用场景：
-
-- **跳到行首和行尾**：当你需要修改当前行的开头或结尾时, 可以使用 `0` 和 `$`.
-- **快速浏览文件顶部和底部**：当你需要查看文件的开头或结尾时,`gg` 和 `G` 是非常便捷的命令.
-
-> 值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
-> 
-> 将光标移到当前行`第一个`/`最后一个`**非空白字符**上:  在一行文本中,光标会移动到这一行中`行首`/`行尾`不是空格、制表符或其他空白字符的地方.
-> 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
->
-> 相比于`Home` / `End` + `ctrl + →` /  `ctrl + ←`的组合操作,  短而快的`^` / `g_`的优势就体现出来了🐶.
-
-接下来是一些快速翻页、转跳行的操作
-
-|          操作          |  Vim 快捷键  | Windows 普通文本编辑器 快捷键  |
-| :--------------------: | :----------: | :----------------------------: |
-|        向前一页        | `Ctrl` + `b` |           `Page Up`            |
-|        向后一页        | `Ctrl` + `f` |          `Page Down`           |
-|        向前半页        | `Ctrl` + `u` |       --        |
-|        向后半页        | `Ctrl` + `d` |       --        |
-|      跳转到任意行      |  `:[行号]`   | `Ctrl` + `G`（在一些编辑器中） |
-|     跳转到下一段落     |     `}`      |        --        |
-|     跳转到上一段落     |     `{`      |        --        |
-| 跳转到上一次编辑的位置 |     ```      |        --        |
-
-### 1.2 高效编辑命令
-
-| 操作     | 常见组合键                 | Vim快捷键 |
-| -------- | -------------------------- | --------- |
-| 复制单词 | `Ctrl + C`                 | `yiw`     |
-| 删除单词 | `Ctrl + X`                 | `diw`     |
-| 更改单词 | `Ctrl + X` 然后 `Ctrl + V` | `ciw`     |
-| 复制整行 | `Shift + Ctrl + C`         | `yy`      |
-| 删除整行 | `Shift + Ctrl + X`         | `dd`      |
-
-使用场景：
-
-- **修改单词**：当你需要修改一个单词时,`ciw` 可以让你进入插入模式并替换掉当前光标所在的单词,比用鼠标选中再删除高效许多.
-- **删除和复制行**：`dd` 和 `yy` 是非常常用的命令,特别适用于重构代码时,需要频繁删除或复制整行内容.
-
-### 1.3 文件操作
-
-一些常用的文件操作命令：
-
-| 操作     | 常见组合键 | Vim快捷键       |
-| -------- | ---------- | --------------- |
-| 打开文件 | `Ctrl + O` | `:e <filename>` |
-| 保存文件 | `Ctrl + S` | `:w`            |
-| 退出文件 | `Ctrl + Q` | `:q`            |
-
-### 1.4 系统剪贴板与寄存器操作
-
-很多初学者在 Vim 里经常会遇到一个痛点：在 Vim 里复制的文本无法粘贴到系统其他软件（如浏览器、微信、VSCode）中，或者外部复制的代码用 `p` 粘贴不进 Vim。">
+> 最近在学习 Python，环境用的是云端 Linux 服务器，跟着 oeasy 老师用 Vim 编辑器。">
 <meta property="og:title" content="Vim光标操作与快捷键的终极指南">
 <meta property="og:description" content="`Gmeek-html<img src='https://nliuco.github.io/1.vim.png'>`
 
+# Vim 光标操作与常用快捷键速查笔记
+
 ## 写在前面
-> 最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会`:q`的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦. 
->
-> 每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 [采访Snipaste开发者](https://sspai.com/post/35097) 的文章, 其中有句话我很认同:
-> >如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.
-> >强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.
 
-<img src='https://img.pianone.dpdns.org/file/itv8Il' width='200' alt='WhyVim.png'>
-
-> 首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, ~~(用了很久的Sublime text也是出于这个原因)~~, 
->
-> 其次是普及广, 除了windows系统, 几乎所有主流系统都预装, 甚至安卓也能用, 加上主流编辑器也支持vim, 完美做到一次学习, 到处使用!. 
->
-> 最后就是最重要的生态, Vim的生态极其丰富,拥有大量的插件和社区支持,可以满足各种不同的编辑需求.无论是编程开发、文本处理、还是系统运维,Vim都能提供强大的工具和高效的编辑体验.
->
-> 唯一的成本, 就是学习vim需要一些时间, 而且使用习惯需要适应, 毕竟可能程序员都会提出 “如何退出vim?” 这种世纪难题......
-
-
-## 一、快捷键操作
-### 1.1 使用键盘移动光标
-
-<img src='https://img.pianone.dpdns.org/file/FOPHT4' width='200' alt='vim上下左右.png'>
-
-在Windows中, 常用快捷键对光标快速定位的人都应该离不开 `ctrl` `shift` `home/end` `↑/↓/←/→` 这些按键/组合键.  但在vim中会发现**移动光标(左,下,上,右)**的按键分别是**`h` `j` `k` `l`**. 
-
-有人说是因为 `Bill Joy`  在创建 `vi` 文本编辑器时, 用的机器机器是 [`ADM-3A`](http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/)  终端机,这台机器就是把 `h` `j` `k` `l` 键作为方向键. ( `vim`编辑器就是后来`Bram Moolenaar`基于`vi`开发的). 对于一个没有方向键的终端, 把手从键盘拿开去够鼠标, 当然没有直接按下键盘移动更加高效. 
-
-也有人说, `vim`编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )
-总之, `vim`的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 **`h` `j` `k` `l`** 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.
-
-上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换. 
-
-|       操作       |           Vim 快捷键           | Windows 普通文本编辑器 快捷键 |
-| :--------------: | :----------------------------: | :---------------------------: |
-| 移动到上一个单词 |              `b`               |         `Ctrl` + `←`          |
-| 移动到下一个单词 |              `w`               |         `Ctrl` + `→`          |
-|    移动到行首    | `0`/`^` |            `Home`             |
-|    移动到行尾    | `$`/`g_` |             `End`             |
-|  移动到文件顶部  |              `gg`              |        `Ctrl` + `Home`        |
-|  移动到文件底部  |              `G`               |        `Ctrl` + `End`         |
-
-使用场景：
-
-- **跳到行首和行尾**：当你需要修改当前行的开头或结尾时, 可以使用 `0` 和 `$`.
-- **快速浏览文件顶部和底部**：当你需要查看文件的开头或结尾时,`gg` 和 `G` 是非常便捷的命令.
-
-> 值得注意的是光标移动到**行首尾**的快捷键有很多, `Home`/`End`和`0`/`$`效果是一样的, 不多赘述, 具体说一下`^`/`g_`和`0`/`$`的区别: 
-> 
-> 将光标移到当前行`第一个`/`最后一个`**非空白字符**上:  在一行文本中,光标会移动到这一行中`行首`/`行尾`不是空格、制表符或其他空白字符的地方.
-> 举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用`^`/ `g_` 会将光标移动到`H`/`!`**非空白字符**上, 使用`0`/`$`会将光标移动`第一个`/`最后一个`**空格**上. 
->
-> 相比于`Home` / `End` + `ctrl + →` /  `ctrl + ←`的组合操作,  短而快的`^` / `g_`的优势就体现出来了🐶.
-
-接下来是一些快速翻页、转跳行的操作
-
-|          操作          |  Vim 快捷键  | Windows 普通文本编辑器 快捷键  |
-| :--------------------: | :----------: | :----------------------------: |
-|        向前一页        | `Ctrl` + `b` |           `Page Up`            |
-|        向后一页        | `Ctrl` + `f` |          `Page Down`           |
-|        向前半页        | `Ctrl` + `u` |       --        |
-|        向后半页        | `Ctrl` + `d` |       --        |
-|      跳转到任意行      |  `:[行号]`   | `Ctrl` + `G`（在一些编辑器中） |
-|     跳转到下一段落     |     `}`      |        --        |
-|     跳转到上一段落     |     `{`      |        --        |
-| 跳转到上一次编辑的位置 |     ```      |        --        |
-
-### 1.2 高效编辑命令
-
-| 操作     | 常见组合键                 | Vim快捷键 |
-| -------- | -------------------------- | --------- |
-| 复制单词 | `Ctrl + C`                 | `yiw`     |
-| 删除单词 | `Ctrl + X`                 | `diw`     |
-| 更改单词 | `Ctrl + X` 然后 `Ctrl + V` | `ciw`     |
-| 复制整行 | `Shift + Ctrl + C`         | `yy`      |
-| 删除整行 | `Shift + Ctrl + X`         | `dd`      |
-
-使用场景：
-
-- **修改单词**：当你需要修改一个单词时,`ciw` 可以让你进入插入模式并替换掉当前光标所在的单词,比用鼠标选中再删除高效许多.
-- **删除和复制行**：`dd` 和 `yy` 是非常常用的命令,特别适用于重构代码时,需要频繁删除或复制整行内容.
-
-### 1.3 文件操作
-
-一些常用的文件操作命令：
-
-| 操作     | 常见组合键 | Vim快捷键       |
-| -------- | ---------- | --------------- |
-| 打开文件 | `Ctrl + O` | `:e <filename>` |
-| 保存文件 | `Ctrl + S` | `:w`            |
-| 退出文件 | `Ctrl + Q` | `:q`            |
-
-### 1.4 系统剪贴板与寄存器操作
-
-很多初学者在 Vim 里经常会遇到一个痛点：在 Vim 里复制的文本无法粘贴到系统其他软件（如浏览器、微信、VSCode）中，或者外部复制的代码用 `p` 粘贴不进 Vim。">
+> 最近在学习 Python，环境用的是云端 Linux 服务器，跟着 oeasy 老师用 Vim 编辑器。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://blog.pianone.dpdns.org/post/Vim-guang-biao-cao-zuo-yu-kuai-jie-jian-de-zhong-ji-zhi-nan.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/56815403?v=4">
 <title>Vim光标操作与快捷键的终极指南</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -231,7 +53,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     body {padding: 8px;}
     .postTitle{font-size:24px;}
 }
-
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 </style>
 
 
@@ -264,377 +96,959 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><p><img src="https://nliuco.github.io/1.vim.png"></p>
+<h1>Vim 光标操作与常用快捷键速查笔记</h1>
 <h2>写在前面</h2>
 <blockquote>
-<p>最近在学习python, 环境用的是云端linux服务器, 跟着oeasy老师用vim编辑器, 碍于之前用git合并时,命令行总是弹出的提示输入merge信息, 默认也是vim的文本编辑器, 导致只会<code class="notranslate">:q</code>的我每次都不写merge info, 因为一旦进入了vim的insert模式, 我就不能通过 <code class="notranslate">ctrl</code> <code class="notranslate">shift</code> <code class="notranslate">home/end</code> <code class="notranslate">↑/↓/←/→</code> 这些按键的组合键方式移动光标了, 一旦写错, 编辑起来十分痛苦.</p>
-<p>每次看到有大佬用vim写代码都有一种敬畏感, 之前读过一篇 <a href="https://sspai.com/post/35097" rel="nofollow">采访Snipaste开发者</a> 的文章, 其中有句话我很认同:</p>
+<p>最近在学习 Python，环境用的是云端 Linux 服务器，跟着 oeasy 老师用 Vim 编辑器。碍于之前用 Git 合并时，命令行总是弹出提示输入 merge 信息，默认也是 Vim 文本编辑器，导致只会 <code class="notranslate">:q</code> 的我每次都不写 merge info。因为一旦进入了 Vim 的 insert 模式，我就不能通过 <code class="notranslate">Ctrl</code>、<code class="notranslate">Shift</code>、<code class="notranslate">Home/End</code>、<code class="notranslate">↑/↓/←/→</code> 这些按键组合方式移动光标了，一旦写错，编辑起来十分痛苦。</p>
+<p>每次看到有大佬用 Vim 健步如飞地写代码，都有一种敬畏感。之前读过一篇 <a href="https://sspai.com/post/35097" rel="nofollow">采访Snipaste开发者</a> 的文章，其中有句话我很认同：</p>
 <blockquote>
-<p>如果想要学会一个高级工具,那学习成本自然也是要的,世界上并不存在不需要学习成本但却很强大的工具.<br>
-强大的工具通常还有一个共性,就是一旦你掌握了它,它带给你的回报远远超过你当时付出的时间和精力成本.</p>
+<p>如果想要学会一个高级工具，那学习成本自然也是要的，世界上并不存在不需要学习成本但却很强大的工具。<br>
+强大的工具通常还有一个共性，就是一旦你掌握了它，它带给你的回报远远超过你当时付出的时间和精力成本。</p>
 </blockquote>
 </blockquote>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d16892f329d35165c9aa11e464703c49cf3c18e508b1d065b29522219df8ea45/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f69747638496c"><img src="https://camo.githubusercontent.com/d16892f329d35165c9aa11e464703c49cf3c18e508b1d065b29522219df8ea45/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f69747638496c" width="200" alt="WhyVim.png" data-canonical-src="https://img.pianone.dpdns.org/file/itv8Il" style="max-width: 100%;"></a></p>
+<p>我花时间去适应 Vim，主要看中这几点：</p>
+<ol>
+<li><strong>轻量快速</strong>：打开和关闭大文件几乎瞬间完成，没有多余的卡顿。</li>
+<li><strong>到处都有</strong>：Linux 和 macOS 默认自带，远程连服务器不需要配图形界面就能改配置；另外 VSCode、Obsidian 也都有 Vim 插件，学会一套按键习惯，在各个工具里都能用上。</li>
+<li><strong>生态成熟</strong>：需要轻量编辑时它是个利索的终端编辑器，真要深度折腾，配上插件也能当完整的 IDE 用。</li>
+</ol>
 <blockquote>
-<p>首先是由于Vim极其轻量, 启动或退出都十分迅速, 对于仅仅编辑文本而言, Vim完美契合“小而美”的特点, <del>(用了很久的Sublime text也是出于这个原因)</del>,</p>
-<p>其次是普及广, 除了windows系统, 几乎所有主流系统都预装, 甚至安卓也能用, 加上主流编辑器也支持vim, 完美做到一次学习, 到处使用!.</p>
-<p>最后就是最重要的生态, Vim的生态极其丰富,拥有大量的插件和社区支持,可以满足各种不同的编辑需求.无论是编程开发、文本处理、还是系统运维,Vim都能提供强大的工具和高效的编辑体验.</p>
-<p>唯一的成本, 就是学习vim需要一些时间, 而且使用习惯需要适应, 毕竟可能程序员都会提出 “如何退出vim?” 这种世纪难题......</p>
+<p>[!NOTE] 门槛在哪里？<br>
+最大的成本就是刚上手时的习惯冲突。以前在普通编辑器里习惯了用鼠标点、用方向键挪光标，到 Vim 里容易发懵。整理这篇笔记，主要是梳理清楚它的核心操作逻辑，平时遇到忘了的按键也可以随时翻翻表格速查。</p>
 </blockquote>
-<h2>一、快捷键操作</h2>
-<h3>1.1 使用键盘移动光标</h3>
+<hr>
+<h2>1. 搞懂 Vim 的基本逻辑：模式与操作语法</h2>
+<p>刚开始用 Vim 很容易觉得快捷键多且杂，其实只要摸清它的<strong>四种模式</strong>和<strong>组合规律</strong>，绝大部分按键就不用死记硬背了。</p>
+<h3>1.1 四种常用模式</h3>
+<p>Vim 把日常编辑拆分成了不同的状态，最核心的是以下四种：</p>
+<div class="highlight highlight-source-mermaid"><pre class="notranslate"><span class="pl-k">flowchart</span> <span class="pl-c1">TD</span>
+    <span class="pl-ent">Normal</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>普通模式 (Normal Mode) - 核心枢纽<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">Insert</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>插入模式 (Insert Mode) - 打字输入<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">Visual</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>可视模式 (Visual Mode) - 选中文本<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+    <span class="pl-ent">Command</span><span class="pl-s"><span class="pl-pds"><span class="pl-sg">[</span></span><span class="pl-s"><span class="pl-pds">"</span>命令行模式 (Command Mode) - 存盘与执行<span class="pl-pds">"</span></span><span class="pl-pds"><span class="pl-sg">]</span></span></span>
+
+    <span class="pl-ent">Normal</span> <span class="pl-k">--</span> <span class="pl-s">"i / a / o / I / A / O"</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Insert</span>
+    <span class="pl-ent">Insert</span> <span class="pl-k">--</span> <span class="pl-s">"Esc 或 Ctrl+["</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Normal</span>
+
+    <span class="pl-ent">Normal</span> <span class="pl-k">--</span> <span class="pl-s">"v / V / Ctrl+v"</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Visual</span>
+    <span class="pl-ent">Visual</span> <span class="pl-k">--</span> <span class="pl-s">"Esc"</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Normal</span>
+
+    <span class="pl-ent">Normal</span> <span class="pl-k">--</span> <span class="pl-s">": 或 /"</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Command</span>
+    <span class="pl-ent">Command</span> <span class="pl-k">--</span> <span class="pl-s">"Enter 或 Esc"</span> <span class="pl-k">--&gt;</span> <span class="pl-ent">Normal</span></pre></div>
+<ul>
+<li><strong>普通模式（Normal Mode）</strong>：打开文件后的默认状态。这个模式下按键不是在打字，而是在发号施令（移动光标、复制、删除）。</li>
+<li><strong>插入模式（Insert Mode）</strong>：像普通记事本一样正常打字的模式，按 <code class="notranslate">i</code>、<code class="notranslate">a</code>、<code class="notranslate">o</code> 进入，按 <code class="notranslate">Esc</code> 或 <code class="notranslate">Ctrl + [</code> 回到普通模式。</li>
+<li><strong>可视模式（Visual Mode）</strong>：用来高亮选中文本（选字符、选整行或框选列块）。</li>
+<li><strong>命令行模式（Command-line Mode）</strong>：在普通模式输入 <code class="notranslate">:</code>、<code class="notranslate">/</code> 进入，用于存盘、退出、查找和正则批量替换。</li>
+</ul>
+<h3>1.2 组合语法：动词 + 名词</h3>
+<p>Vim 的很多操作其实是类似英语语法的拼接：</p>
+<p>$$\text{操作指令} = [\text{执行次数}] + \text{动词（操作符）} + \text{名词（移动范围 / 文本对象）}$$</p>
+<ul>
+<li><strong>常见动词</strong>：
+<ul>
+<li><code class="notranslate">d</code>：Delete（删除 / 剪切）</li>
+<li><code class="notranslate">c</code>：Change（修改：删掉并立刻进入打字模式）</li>
+<li><code class="notranslate">y</code>：Yank（复制）</li>
+<li><code class="notranslate">v</code>：Visual（选区高亮）</li>
+</ul>
+</li>
+<li><strong>常见名词</strong>：
+<ul>
+<li><code class="notranslate">w</code>：Word（单词）</li>
+<li><code class="notranslate">$</code>：行尾</li>
+<li><code class="notranslate">iw</code>：Inner Word（当前单词内部）</li>
+<li><code class="notranslate">i"</code>：引号内部的内容</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!TIP] 实际组合看看</p>
+<ul>
+<li><code class="notranslate">d</code> + <code class="notranslate">w</code> = 删到下一个单词开头</li>
+<li><code class="notranslate">c</code> + <code class="notranslate">i</code> + <code class="notranslate">w</code> = 把当前光标所在的单词删掉并开始打字</li>
+<li><code class="notranslate">y</code> + <code class="notranslate">$</code> = 复制从光标到行尾的内容</li>
+<li><code class="notranslate">3</code> + <code class="notranslate">d</code> + <code class="notranslate">d</code> = 连续删 3 行</li>
+</ul>
+<p>按照这种规律，想做什么操作自己拼出来即可，不需要把每一种排列组合当成单独的快捷键去背。</p>
+</blockquote>
+<hr>
+<h2>2. 最基础的操作：输入、保存与退出</h2>
+<h3>2.1 进入与退出输入模式</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">记忆提示</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>光标前打字</strong></td>
+<td align="left"><code class="notranslate">i</code></td>
+<td align="left"><strong>I</strong>nsert</td>
+<td align="left">在当前光标字符前面开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong>光标后追加</strong></td>
+<td align="left"><code class="notranslate">a</code></td>
+<td align="left"><strong>A</strong>ppend</td>
+<td align="left">在当前光标字符后面开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong>下方新建一行</strong></td>
+<td align="left"><code class="notranslate">o</code></td>
+<td align="left"><strong>O</strong>pen line below</td>
+<td align="left">在当前行下面另起一行并开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到行首打字</strong></td>
+<td align="left"><code class="notranslate">I</code></td>
+<td align="left">大写 Insert</td>
+<td align="left">光标直接跳到本行第一个有效字符前开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到行尾追加</strong></td>
+<td align="left"><code class="notranslate">A</code></td>
+<td align="left">大写 Append</td>
+<td align="left">光标直接跳到本行末尾开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong>上方新建一行</strong></td>
+<td align="left"><code class="notranslate">O</code></td>
+<td align="left">大写 Open line</td>
+<td align="left">在当前行上面插入新行并开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong>回到普通模式</strong></td>
+<td align="left"><code class="notranslate">Esc</code> 或 <code class="notranslate">Ctrl+[</code></td>
+<td align="left">Escape</td>
+<td align="left">退出打字或选中状态，回到普通模式（最常用的键）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>2.2 保存文件与退出</h3>
+<p>在普通模式下输入 <code class="notranslate">:</code> 进入命令行执行：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>保存文件</strong></td>
+<td align="left"><code class="notranslate">:w</code></td>
+<td align="left">把当前修改写入文件</td>
+</tr>
+<tr>
+<td align="left"><strong>退出 Vim</strong></td>
+<td align="left"><code class="notranslate">:q</code></td>
+<td align="left">没有未保存修改时安全退出</td>
+</tr>
+<tr>
+<td align="left"><strong>保存并退出</strong></td>
+<td align="left"><code class="notranslate">:wq</code> 或 <code class="notranslate">ZZ</code></td>
+<td align="left">写入并退出；普通模式下直接按大写 <code class="notranslate">ZZ</code> 更快</td>
+</tr>
+<tr>
+<td align="left"><strong>不保存强制退出</strong></td>
+<td align="left"><code class="notranslate">:q!</code></td>
+<td align="left">彻底放弃刚才所有改动直接退出（改乱了重来时用）</td>
+</tr>
+<tr>
+<td align="left"><strong>打开/新建文件</strong></td>
+<td align="left"><code class="notranslate">:e &lt;文件名&gt;</code></td>
+<td align="left">打开指定路径的文件进行编辑</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>2.3 撤销与重做</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">记忆提示</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>撤销上一步</strong></td>
+<td align="left"><code class="notranslate">u</code></td>
+<td align="left"><strong>U</strong>ndo</td>
+<td align="left">撤销刚才的修改（按一次退一步）</td>
+</tr>
+<tr>
+<td align="left"><strong>重做（反撤销）</strong></td>
+<td align="left"><code class="notranslate">Ctrl + r</code></td>
+<td align="left"><strong>R</strong>edo</td>
+<td align="left">恢复刚才被撤销的操作</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>3. 光标移动：别再用方向键了</h2>
+<p>双手不离开主键盘区是 Vim 效率高的核心原因。</p>
+<h3>3.1 为什么用 hjkl 移动？</h3>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/36c0cb1dd4f9831c35c98ce529f76b24037d5016353633b8577be7f2e2ac3f10/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f464f50485434"><img src="https://camo.githubusercontent.com/36c0cb1dd4f9831c35c98ce529f76b24037d5016353633b8577be7f2e2ac3f10/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f464f50485434" width="200" alt="vim上下左右.png" data-canonical-src="https://img.pianone.dpdns.org/file/FOPHT4" style="max-width: 100%;"></a></p>
-<p>在Windows中, 常用快捷键对光标快速定位的人都应该离不开 <code class="notranslate">ctrl</code> <code class="notranslate">shift</code> <code class="notranslate">home/end</code> <code class="notranslate">↑/↓/←/→</code> 这些按键/组合键.  但在vim中会发现<strong>移动光标(左,下,上,右)的按键分别是<code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code></strong>.</p>
-<p>有人说是因为 <code class="notranslate">Bill Joy</code>  在创建 <code class="notranslate">vi</code> 文本编辑器时, 用的机器机器是 <a href="http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/" rel="nofollow"><code class="notranslate">ADM-3A</code></a>  终端机,这台机器就是把 <code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code> 键作为方向键. ( <code class="notranslate">vim</code>编辑器就是后来<code class="notranslate">Bram Moolenaar</code>基于<code class="notranslate">vi</code>开发的). 对于一个没有方向键的终端, 把手从键盘拿开去够鼠标, 当然没有直接按下键盘移动更加高效.</p>
-<p>也有人说, <code class="notranslate">vim</code>编辑器出现以前, 各类键盘有所不同, 以前的键盘是不含如今多个工作区的键盘, 即: (含数字区、上下左右键区),  故含数字区、上下左右键区可能在某些情况下不生效! (如: 插入模式下, 数字区不生效! )<br>
-总之, <code class="notranslate">vim</code>的设计初衷可能是为了在各种终端和键盘布局下提供一致的操作体验, 掌握 <strong><code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code></strong> 这些键的使用, 对于提高编辑效率和适应各种终端环境是非常重要的, 毕竟什么键盘也不太可能少了这几个键.</p>
-<p>上下左右仅仅是光标移动的开始, 下列快速移动转跳都可以使用对应vim快捷键进行替换.</p>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th align="center">操作</th>
-<th align="center">Vim 快捷键</th>
-<th align="center">Windows 普通文本编辑器 快捷键</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">移动到上一个单词</td>
-<td align="center"><code class="notranslate">b</code></td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">←</code></td>
-</tr>
-<tr>
-<td align="center">移动到下一个单词</td>
-<td align="center"><code class="notranslate">w</code></td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">→</code></td>
-</tr>
-<tr>
-<td align="center">移动到行首</td>
-<td align="center"><code class="notranslate">0</code>/<code class="notranslate">^</code></td>
-<td align="center"><code class="notranslate">Home</code></td>
-</tr>
-<tr>
-<td align="center">移动到行尾</td>
-<td align="center"><code class="notranslate">$</code>/<code class="notranslate">g_</code></td>
-<td align="center"><code class="notranslate">End</code></td>
-</tr>
-<tr>
-<td align="center">移动到文件顶部</td>
-<td align="center"><code class="notranslate">gg</code></td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">Home</code></td>
-</tr>
-<tr>
-<td align="center">移动到文件底部</td>
-<td align="center"><code class="notranslate">G</code></td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">End</code></td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<p>使用场景：</p>
+<p>在普通模式下移动光标主要靠 <strong><code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code></strong>：</p>
 <ul>
-<li><strong>跳到行首和行尾</strong>：当你需要修改当前行的开头或结尾时, 可以使用 <code class="notranslate">0</code> 和 <code class="notranslate">$</code>.</li>
-<li><strong>快速浏览文件顶部和底部</strong>：当你需要查看文件的开头或结尾时,<code class="notranslate">gg</code> 和 <code class="notranslate">G</code> 是非常便捷的命令.</li>
+<li><strong><code class="notranslate">h</code></strong>：向左</li>
+<li><strong><code class="notranslate">j</code></strong>：向下（长得像向下的箭头，食指自然放的位置）</li>
+<li><strong><code class="notranslate">k</code></strong>：向上</li>
+<li><strong><code class="notranslate">l</code></strong>：向右</li>
 </ul>
 <blockquote>
-<p>值得注意的是光标移动到<strong>行首尾</strong>的快捷键有很多, <code class="notranslate">Home</code>/<code class="notranslate">End</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>效果是一样的, 不多赘述, 具体说一下<code class="notranslate">^</code>/<code class="notranslate">g_</code>和<code class="notranslate">0</code>/<code class="notranslate">$</code>的区别:</p>
-<p>将光标移到当前行<code class="notranslate">第一个</code>/<code class="notranslate">最后一个</code><strong>非空白字符</strong>上:  在一行文本中,光标会移动到这一行中<code class="notranslate">行首</code>/<code class="notranslate">行尾</code>不是空格、制表符或其他空白字符的地方.<br>
-举个例子: 如果一行文本是     Hello, World!      , 其中文本前后都有空格(空白字符), 使用<code class="notranslate">^</code>/ <code class="notranslate">g_</code> 会将光标移动到<code class="notranslate">H</code>/<code class="notranslate">!</code><strong>非空白字符</strong>上, 使用<code class="notranslate">0</code>/<code class="notranslate">$</code>会将光标移动<code class="notranslate">第一个</code>/<code class="notranslate">最后一个</code><strong>空格</strong>上.</p>
-<p>相比于<code class="notranslate">Home</code> / <code class="notranslate">End</code> + <code class="notranslate">ctrl + →</code> /  <code class="notranslate">ctrl + ←</code>的组合操作,  短而快的<code class="notranslate">^</code> / <code class="notranslate">g_</code>的优势就体现出来了🐶.</p>
+<p>[!NOTE] 为什么不是方向键？<br>
+当年 Bill Joy 写 <code class="notranslate">vi</code> 时用的 <a href="http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/" rel="nofollow">ADM-3A</a> 终端键盘上根本没有独立的方向键，<code class="notranslate">h/j/k/l</code> 键帽上本身就印着箭头。而且这四个键正好在右手默认放的地方，打字写代码时不需要抬手去够方向键或鼠标，不会打断思路。</p>
 </blockquote>
-<p>接下来是一些快速翻页、转跳行的操作</p>
+<h3>3.2 按单词移动</h3>
+<p>跨单词跳比一个一个字符按 <code class="notranslate">h</code> 或 <code class="notranslate">l</code> 快得多：</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
-<th align="center">操作</th>
-<th align="center">Vim 快捷键</th>
-<th align="center">Windows 普通文本编辑器 快捷键</th>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">向前一页</td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">b</code></td>
-<td align="center"><code class="notranslate">Page Up</code></td>
+<td align="left"><strong>跳到下个词首</strong></td>
+<td align="left"><code class="notranslate">w</code></td>
+<td align="left"><code class="notranslate">Ctrl + →</code></td>
+<td align="left"><strong>W</strong>ord：跳到下一个单词开头</td>
 </tr>
 <tr>
-<td align="center">向后一页</td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">f</code></td>
-<td align="center"><code class="notranslate">Page Down</code></td>
+<td align="left"><strong>跳到上个词首</strong></td>
+<td align="left"><code class="notranslate">b</code></td>
+<td align="left"><code class="notranslate">Ctrl + ←</code></td>
+<td align="left"><strong>B</strong>ack：跳到上一个单词开头</td>
 </tr>
 <tr>
-<td align="center">向前半页</td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">u</code></td>
-<td align="center">--</td>
+<td align="left"><strong>跳到词尾</strong></td>
+<td align="left"><code class="notranslate">e</code></td>
+<td align="left">--</td>
+<td align="left"><strong>E</strong>nd：跳到当前或下一个单词结尾</td>
 </tr>
 <tr>
-<td align="center">向后半页</td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">d</code></td>
-<td align="center">--</td>
-</tr>
-<tr>
-<td align="center">跳转到任意行</td>
-<td align="center"><code class="notranslate">:[行号]</code></td>
-<td align="center"><code class="notranslate">Ctrl</code> + <code class="notranslate">G</code>（在一些编辑器中）</td>
-</tr>
-<tr>
-<td align="center">跳转到下一段落</td>
-<td align="center"><code class="notranslate">}</code></td>
-<td align="center">--</td>
-</tr>
-<tr>
-<td align="center">跳转到上一段落</td>
-<td align="center"><code class="notranslate">{</code></td>
-<td align="center">--</td>
-</tr>
-<tr>
-<td align="center">跳转到上一次编辑的位置</td>
-<td align="center">```</td>
-<td align="center">--</td>
+<td align="left"><strong>反向跳到词尾</strong></td>
+<td align="left"><code class="notranslate">ge</code></td>
+<td align="left">--</td>
+<td align="left">反向跳到上一个单词结尾</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h3>1.2 高效编辑命令</h3>
+<blockquote>
+<p>[!TIP] 大写按键的跨度更大<br>
+如果遇到类似 <code class="notranslate">user.login_name[0]</code> 这种带标点的变量名，小写 <code class="notranslate">w/b/e</code> 会把点和括号都当成独立的词停顿；换成大写的 <strong><code class="notranslate">W</code> / <code class="notranslate">B</code> / <code class="notranslate">E</code></strong>，就会把整串连着的非空字符当成一个大单词跳过（只以空格为间隔）。</p>
+</blockquote>
+<h3>3.3 行内移动</h3>
+<h4>① 行首与行尾的选择</h4>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
-<th>操作</th>
-<th>常见组合键</th>
-<th>Vim快捷键</th>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>复制单词</td>
-<td><code class="notranslate">Ctrl + C</code></td>
-<td><code class="notranslate">yiw</code></td>
+<td align="left"><strong>跳到绝对行首</strong></td>
+<td align="left"><code class="notranslate">0</code></td>
+<td align="left"><code class="notranslate">Home</code></td>
+<td align="left">回到本行第 1 列（即使前面有缩进空格）</td>
 </tr>
 <tr>
-<td>删除单词</td>
-<td><code class="notranslate">Ctrl + X</code></td>
-<td><code class="notranslate">diw</code></td>
+<td align="left"><strong>跳到首个有效文字</strong></td>
+<td align="left"><code class="notranslate">^</code></td>
+<td align="left"><code class="notranslate">Home</code> + <code class="notranslate">Ctrl+→</code></td>
+<td align="left">跳过开头的缩进空格，停在第一个实际字符上</td>
 </tr>
 <tr>
-<td>更改单词</td>
-<td><code class="notranslate">Ctrl + X</code> 然后 <code class="notranslate">Ctrl + V</code></td>
-<td><code class="notranslate">ciw</code></td>
+<td align="left"><strong>跳到绝对行尾</strong></td>
+<td align="left"><code class="notranslate">$</code></td>
+<td align="left"><code class="notranslate">End</code></td>
+<td align="left">跳到本行最后一个字符（包括尾随空格）</td>
 </tr>
 <tr>
-<td>复制整行</td>
-<td><code class="notranslate">Shift + Ctrl + C</code></td>
-<td><code class="notranslate">yy</code></td>
-</tr>
-<tr>
-<td>删除整行</td>
-<td><code class="notranslate">Shift + Ctrl + X</code></td>
-<td><code class="notranslate">dd</code></td>
+<td align="left"><strong>跳到末尾有效文字</strong></td>
+<td align="left"><code class="notranslate">g_</code></td>
+<td align="left">--</td>
+<td align="left">忽略末尾空格，停在最后一个有效字符上</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p>使用场景：</p>
+<blockquote>
+<p>[!EXAMPLE] <code class="notranslate">0</code> / <code class="notranslate">$</code> 与 <code class="notranslate">^</code> / <code class="notranslate">g_</code> 的对比<br>
+比如有一行带缩进的代码：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">    print("Hello")  
+</code></pre>
 <ul>
-<li><strong>修改单词</strong>：当你需要修改一个单词时,<code class="notranslate">ciw</code> 可以让你进入插入模式并替换掉当前光标所在的单词,比用鼠标选中再删除高效许多.</li>
-<li><strong>删除和复制行</strong>：<code class="notranslate">dd</code> 和 <code class="notranslate">yy</code> 是非常常用的命令,特别适用于重构代码时,需要频繁删除或复制整行内容.</li>
+<li>按 <strong><code class="notranslate">0</code></strong>：光标停在最前面的缩进空格上；</li>
+<li>按 <strong><code class="notranslate">^</code></strong>：光标直接落在字母 <strong><code class="notranslate">p</code></strong> 上（写代码日常基本都用 <code class="notranslate">^</code>）；</li>
+<li>按 <strong><code class="notranslate">$</code></strong>：光标停在行尾后面的空格上；</li>
+<li>按 <strong><code class="notranslate">g_</code></strong>：光标直接落在末尾的括号 <strong><code class="notranslate">)</code></strong> 上。</li>
 </ul>
-<h3>1.3 文件操作</h3>
-<p>一些常用的文件操作命令：</p>
+</blockquote>
+<h4>② 行内单字符定位（f 和 t）</h4>
+<p>如果一行比较长，想迅速跳到某个符号上：</p>
+<ul>
+<li><strong><code class="notranslate">f{字符}</code></strong>：向后找到目标字符并停在上面（<strong>F</strong>ind）。比如光标在行首，按 <code class="notranslate">f"</code> 可以直接瞬移到本行下一个双引号处。</li>
+<li><strong><code class="notranslate">F{字符}</code></strong>：向前反向查找字符。</li>
+<li><strong><code class="notranslate">t{字符}</code></strong>：跳到目标字符的前一个位置（<strong>T</strong>ill，常配合删除使用，比如 <code class="notranslate">dt;</code> 删到分号前）。</li>
+<li><strong><code class="notranslate">;</code></strong>：重复刚才的 <code class="notranslate">f</code> 或 <code class="notranslate">t</code> 查找。</li>
+<li><strong><code class="notranslate">,</code></strong>：反向重复刚才的查找。</li>
+</ul>
+<h3>3.4 跨行与翻页</h3>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
-<th>操作</th>
-<th>常见组合键</th>
-<th>Vim快捷键</th>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>打开文件</td>
-<td><code class="notranslate">Ctrl + O</code></td>
-<td><code class="notranslate">:e &lt;filename&gt;</code></td>
+<td align="left"><strong>跳到文件开头</strong></td>
+<td align="left"><code class="notranslate">gg</code></td>
+<td align="left"><code class="notranslate">Ctrl + Home</code></td>
+<td align="left">跳到第 1 行</td>
 </tr>
 <tr>
-<td>保存文件</td>
-<td><code class="notranslate">Ctrl + S</code></td>
-<td><code class="notranslate">:w</code></td>
+<td align="left"><strong>跳到文件末尾</strong></td>
+<td align="left"><code class="notranslate">G</code></td>
+<td align="left"><code class="notranslate">Ctrl + End</code></td>
+<td align="left">跳到最后一行</td>
 </tr>
 <tr>
-<td>退出文件</td>
-<td><code class="notranslate">Ctrl + Q</code></td>
-<td><code class="notranslate">:q</code></td>
+<td align="left"><strong>跳到指定行</strong></td>
+<td align="left"><code class="notranslate">:[行号]</code> 或 <code class="notranslate">[行号]G</code></td>
+<td align="left"><code class="notranslate">Ctrl + G</code></td>
+<td align="left">比如 <code class="notranslate">:50</code> 或 <code class="notranslate">50G</code> 直接跳到第 50 行</td>
+</tr>
+<tr>
+<td align="left"><strong>向下滚动半屏</strong></td>
+<td align="left"><code class="notranslate">Ctrl + d</code></td>
+<td align="left">--</td>
+<td align="left"><strong>D</strong>own：向下滚半页（看代码最常用）</td>
+</tr>
+<tr>
+<td align="left"><strong>向上滚动半屏</strong></td>
+<td align="left"><code class="notranslate">Ctrl + u</code></td>
+<td align="left">--</td>
+<td align="left"><strong>U</strong>p：向上滚半页</td>
+</tr>
+<tr>
+<td align="left"><strong>向下翻整页</strong></td>
+<td align="left"><code class="notranslate">Ctrl + f</code></td>
+<td align="left"><code class="notranslate">Page Down</code></td>
+<td align="left"><strong>F</strong>orward：向下翻一页</td>
+</tr>
+<tr>
+<td align="left"><strong>向上翻整页</strong></td>
+<td align="left"><code class="notranslate">Ctrl + b</code></td>
+<td align="left"><code class="notranslate">Page Up</code></td>
+<td align="left"><strong>B</strong>ackward：向上翻一页</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到下一段/空行</strong></td>
+<td align="left"><code class="notranslate">}</code></td>
+<td align="left">--</td>
+<td align="left">快速跳过一个函数块或空行</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到上一段/空行</strong></td>
+<td align="left"><code class="notranslate">{</code></td>
+<td align="left">--</td>
+<td align="left">快速往上跳过一个段落</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到上次修改所在行</strong></td>
+<td align="left"><code class="notranslate">'.</code></td>
+<td align="left">--</td>
+<td align="left">回到上次修改所在行的开头有效字符</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到上次修改精确点</strong></td>
+<td align="left"><code class="notranslate">`.</code></td>
+<td align="left">--</td>
+<td align="left">精确回到上次修改时的具体光标位置</td>
+</tr>
+<tr>
+<td align="left"><strong>跳回上次修改并继续打字</strong></td>
+<td align="left"><code class="notranslate">gi</code></td>
+<td align="left">--</td>
+<td align="left">直接回到最后编辑的地方并自动进入插入模式</td>
+</tr>
+<tr>
+<td align="left"><strong>跳回前一个位置</strong></td>
+<td align="left"><code class="notranslate">''</code> 或 <code class="notranslate"> </code> ``</td>
+<td align="left">--</td>
+<td align="left">比如用 <code class="notranslate">gg</code> 跳去开头看完后，连按两次单引号跳回刚才的位置</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<h3>1.4 系统剪贴板与寄存器操作</h3>
-<p>很多初学者在 Vim 里经常会遇到一个痛点：在 Vim 里复制的文本无法粘贴到系统其他软件（如浏览器、微信、VSCode）中，或者外部复制的代码用 <code class="notranslate">p</code> 粘贴不进 Vim。这是因为 Vim 默认使用的是内部寄存器（无名寄存器 <code class="notranslate">"</code>）。</p>
-<p>要在 Vim 与操作系统剪贴板之间无缝流转，或者管理多份剪贴内容，就需要用到<strong>系统剪贴板寄存器</strong>与<strong>寄存器查看命令</strong>。</p>
+<hr>
+<h2>4. 文本编辑与文本对象（Text Objects）</h2>
+<h3>4.1 常用编辑操作</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">助记与说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>删除单个字符</strong></td>
+<td align="left"><code class="notranslate">x</code></td>
+<td align="left"><code class="notranslate">Delete</code></td>
+<td align="left">删掉光标下的单个字符</td>
+</tr>
+<tr>
+<td align="left"><strong>复制整行</strong></td>
+<td align="left"><code class="notranslate">yy</code></td>
+<td align="left">
+<code class="notranslate">Ctrl + C</code>（未选中文本时）</td>
+<td align="left">
+<strong>Y</strong>ank line</td>
+</tr>
+<tr>
+<td align="left"><strong>删除/剪切整行</strong></td>
+<td align="left"><code class="notranslate">dd</code></td>
+<td align="left">
+<code class="notranslate">Ctrl + X</code> 或 <code class="notranslate">Ctrl+Shift+K</code>
+</td>
+<td align="left">
+<strong>D</strong>elete line</td>
+</tr>
+<tr>
+<td align="left"><strong>清空整行重写</strong></td>
+<td align="left"><code class="notranslate">cc</code></td>
+<td align="left">--</td>
+<td align="left">删掉整行并直接进入打字模式</td>
+</tr>
+<tr>
+<td align="left"><strong>删到行尾</strong></td>
+<td align="left">
+<code class="notranslate">D</code> 或 <code class="notranslate">d$</code>
+</td>
+<td align="left">--</td>
+<td align="left">删掉从当前光标到行末的所有内容</td>
+</tr>
+<tr>
+<td align="left"><strong>改到行尾</strong></td>
+<td align="left">
+<code class="notranslate">C</code> 或 <code class="notranslate">c$</code>
+</td>
+<td align="left">--</td>
+<td align="left">删到行末并直接进入打字模式</td>
+</tr>
+<tr>
+<td align="left"><strong>粘贴到后面/下方</strong></td>
+<td align="left"><code class="notranslate">p</code></td>
+<td align="left"><code class="notranslate">Ctrl + V</code></td>
+<td align="left">
+<strong>P</strong>ut after</td>
+</tr>
+<tr>
+<td align="left"><strong>粘贴到前面/上方</strong></td>
+<td align="left"><code class="notranslate">P</code></td>
+<td align="left">--</td>
+<td align="left">
+<strong>P</strong>ut before</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>4.2 文本对象（Text Objects）</h3>
+<p>日常改代码经常要修改括号里、引号里的内容。传统编辑器要用鼠标拖选或者按着退格键慢慢删，而在 Vim 里可以通过“文本对象”一键操作。</p>
+<p><strong>基本格式</strong>：<code class="notranslate">[操作符]</code> + <code class="notranslate">[i 或 a]</code> + <code class="notranslate">[对象]</code></p>
+<ul>
+<li><strong><code class="notranslate">i</code>（inner）</strong>：只修改里面的内容，不包含外面的括号或引号。</li>
+<li><strong><code class="notranslate">a</code>（around）</strong>：连同外面的括号、引号或空格一起处理。</li>
+</ul>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">组合命令</th>
+<th align="left">含义</th>
+<th align="left">实际效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code class="notranslate">ciw</code></strong></td>
+<td align="left">Change Inner Word</td>
+<td align="left">无论光标在这个词的哪个字母上，直接清空该词并开始打字</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">diw</code></strong></td>
+<td align="left">Delete Inner Word</td>
+<td align="left">删掉光标所在的整个词</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">yiw</code></strong></td>
+<td align="left">Yank Inner Word</td>
+<td align="left">复制光标所在的整个词</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">ci"</code></strong></td>
+<td align="left">Change Inner <code class="notranslate">"</code></td>
+<td align="left">清空双引号里的文字并开始输入，保留双引号</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">ca"</code></strong></td>
+<td align="left">Change Around <code class="notranslate">"</code></td>
+<td align="left">连同外层双引号一起删掉并开始输入</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">di(</code></strong> 或 <strong><code class="notranslate">dib</code></strong></td>
+<td align="left">Delete Inner <code class="notranslate">(</code></td>
+<td align="left">清空小括号里的参数或表达式</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">da{</code></strong> 或 <strong><code class="notranslate">daB</code></strong></td>
+<td align="left">Delete Around <code class="notranslate">{</code></td>
+<td align="left">把整个大括号连同里面的代码块一起删掉</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">ci&lt;</code></strong> 或 <strong><code class="notranslate">ci&gt;</code></strong></td>
+<td align="left">Change Inner <code class="notranslate">&lt;</code></td>
+<td align="left">清空尖括号 <code class="notranslate">&lt;...&gt;</code> 里的内容（常规代码建议优先用它）</td>
+</tr>
+<tr>
+<td align="left"><strong><code class="notranslate">cit</code></strong></td>
+<td align="left">Change Inner Tag</td>
+<td align="left">修改成对 HTML 标签（如 <code class="notranslate">&lt;div&gt;内容&lt;/div&gt;</code>）里的文字</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p>[!TIP] 为什么有时候按 <code class="notranslate">cit</code> 没反应？</p>
+<ul>
+<li><code class="notranslate">cit</code> 里的 <code class="notranslate">t</code> 是指 <strong>Tag（标签对）</strong>，它必须能在上下文里找到配套的闭合标签（比如 <code class="notranslate">&lt;p&gt;...&lt;/p&gt;</code>）。如果是在 Markdown、Python 代码中，或者遇到了单闭合标签 <code class="notranslate">&lt;img src="..." /&gt;</code>、泛型 <code class="notranslate">vector&lt;int&gt;</code>，因为没有对应的结束标签，<code class="notranslate">cit</code> 就会找不到对象。</li>
+<li>日常代码里遇到尖括号 <code class="notranslate">&lt;...&gt;</code>，直接用 <strong><code class="notranslate">ci&lt;</code></strong> 更加通用可靠，不受语言和是否闭合的限制。</li>
+</ul>
+</blockquote>
+<hr>
+<h2>5. 几个很实用的进阶功能</h2>
+<h3>5.1 系统剪贴板与寄存器</h3>
+<p>经常有人遇到这个问题：在 Vim 里用 <code class="notranslate">yy</code> 复制的代码，没办法在浏览器里 <code class="notranslate">Ctrl+V</code> 贴出来；在外部网页复制的配置，进 Vim 按 <code class="notranslate">p</code> 也贴不进去。</p>
+<p><strong>原因</strong>：Vim 默认有一套自己独立的内部剪贴板（叫无名寄存器 <code class="notranslate">"</code>），它和操作系统的全局剪贴板默认是不相通的。</p>
+<h4>怎么打通系统剪贴板？</h4>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th align="left">操作</th>
 <th align="left">Vim 命令 / 快捷键</th>
-<th align="left">功能说明</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">查看所有寄存器</td>
-<td align="left"><code class="notranslate">:reg</code></td>
-<td align="left">查看当前所有寄存器中缓存的内容（包括历史复制、删除的内容）</td>
-</tr>
-<tr>
-<td align="left">查看指定寄存器</td>
-<td align="left"><code class="notranslate">:reg +</code> 或 <code class="notranslate">:reg "</code></td>
-<td align="left">查看系统剪贴板或默认寄存器的内容</td>
-</tr>
-<tr>
-<td align="left">粘贴系统剪贴板内容（光标后）</td>
-<td align="left"><code class="notranslate">"+p</code></td>
-<td align="left">将系统剪贴板中的内容粘贴到光标之后</td>
-</tr>
-<tr>
-<td align="left">粘贴系统剪贴板内容（光标前）</td>
-<td align="left"><code class="notranslate">"+P</code></td>
-<td align="left">将系统剪贴板中的内容粘贴到光标之前</td>
-</tr>
-<tr>
-<td align="left">复制选中文本到系统剪贴板</td>
+<td align="left"><strong>复制选中文本到系统剪贴板</strong></td>
 <td align="left"><code class="notranslate">"+y</code>（可视模式下）</td>
-<td align="left">将当前选中的内容写入操作系统的系统剪贴板</td>
+<td align="left">把选中的内容写入系统剪贴板，外面可以随便贴</td>
 </tr>
 <tr>
-<td align="left">复制整行到系统剪贴板</td>
+<td align="left"><strong>复制整行到系统剪贴板</strong></td>
 <td align="left"><code class="notranslate">"+yy</code></td>
-<td align="left">将当前整行内容写入系统剪贴板</td>
+<td align="left">把当前整行写入系统剪贴板</td>
+</tr>
+<tr>
+<td align="left"><strong>从系统剪贴板贴进 Vim</strong></td>
+<td align="left"><code class="notranslate">"+p</code></td>
+<td align="left">把外面复制的内容贴进光标后</td>
+</tr>
+<tr>
+<td align="left"><strong>免粘贴查看历史缓存</strong></td>
+<td align="left"><code class="notranslate">:reg 123456789</code></td>
+<td align="left">弹窗直接看 1~9 号历史删除内容，不用盲目粘贴</td>
+</tr>
+<tr>
+<td align="left"><strong>查看指定寄存器</strong></td>
+<td align="left"><code class="notranslate">:reg +</code> 或 <code class="notranslate">:reg "</code></td>
+<td align="left">查看系统剪贴板或默认剪贴板当前存了啥</td>
+</tr>
+<tr>
+<td align="left"><strong>查看所有寄存器列表</strong></td>
+<td align="left"><code class="notranslate">:reg</code></td>
+<td align="left">查看所有寄存器的内容快照</td>
+</tr>
+<tr>
+<td align="left"><strong>找回历史删除的内容</strong></td>
+<td align="left"><code class="notranslate">"1p</code> 到 <code class="notranslate">"9p</code></td>
+<td align="left">按历史序号把刚才删掉的文字粘回来</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <blockquote>
-<p><strong>提示</strong>：</p>
+<p>[!NOTE] 检查 Vim 是否支持系统剪贴板<br>
+在终端输入 <code class="notranslate">vim --version | grep clipboard</code>。如果显示 <code class="notranslate">+clipboard</code> 说明支持；如果是 <code class="notranslate">-clipboard</code>，在 Linux 下一般装一个 <code class="notranslate">vim-gtk3</code> 或者直接换用 <code class="notranslate">neovim</code> 就能搞定。</p>
+</blockquote>
+<h3>5.2 可视块模式（批量加注释和对齐）</h3>
+<p>想给连续多行代码批量加注释或缩进时，不用装插件，Vim 自带的**可视块模式（Visual Block）**就能搞定。</p>
+<h4>批量加注释三步走：</h4>
 <ol>
-<li><code class="notranslate">"+</code> 指的是系统的“剪贴板寄存器”（Clipboard Register）。在 Linux X11 环境下，<code class="notranslate">"*</code> 通常指鼠标选区选择缓冲区，而 <code class="notranslate">"+</code> 指全局剪切板（<code class="notranslate">Ctrl+C / Ctrl+V</code>）。</li>
-<li>如果执行 <code class="notranslate">"+y</code> 或 <code class="notranslate">"+p</code> 没反应，可在终端通过 <code class="notranslate">vim --version | grep clipboard</code> 检查 Vim 是否支持剪贴板特性（如果有 <code class="notranslate">+clipboard</code> 则支持，若为 <code class="notranslate">-clipboard</code> 则需安装支持特性的版本，如 Linux 上的 <code class="notranslate">vim-gtk</code> / <code class="notranslate">vim-gnome</code>）。</li>
+<li>光标放到第一行的开头，按 <strong><code class="notranslate">Ctrl + v</code></strong> 进入块选择；</li>
+<li>按 <strong><code class="notranslate">j</code></strong> 往下选，框住需要注释的行；</li>
+<li>按大写的 <strong><code class="notranslate">I</code></strong>，输入注释符号（比如 <code class="notranslate"># </code> 或 <code class="notranslate">// </code>）；</li>
+<li>按一下 <strong><code class="notranslate">Esc</code></strong>（稍等半秒），刚才选中的每一行开头就全加上注释了。</li>
 </ol>
-</blockquote>
-<p>使用场景：</p>
-<ul>
-<li><strong>跨软件复制代码</strong>：在网页或文档复制了配置，进 Vim 按 <code class="notranslate">"+p</code> 粘贴；在 Vim 选中代码按 <code class="notranslate">"+y</code>，直接去浏览器发帖提问。</li>
-<li><strong>找回刚才误删/覆盖的文本</strong>：当多次删除操作覆盖了默认剪贴板时，输入 <code class="notranslate">:reg</code> 可以查看编号寄存器 <code class="notranslate">0~9</code> 中保留的历史删除与复制记录，通过 <code class="notranslate">"3p</code> 即可按需找回。</li>
-</ul>
-<h3>1.5 可视块模式（强大的列编辑）</h3>
-<p>在日常写代码或处理配置文件时，经常遇到“多行批量加注释”、“多行对齐”、“批量删除某一列字符”的需求。普通文本编辑器可能需要配合鼠标多光标选择，而在 Vim 中，只需要 <strong>可视块模式（Visual Block）</strong> 即可轻松完成。</p>
-<p>通过按快捷键 <code class="notranslate">Ctrl</code> + <code class="notranslate">v</code> 进入可视块模式后，使用方向键（<code class="notranslate">h/j/k/l</code>）框选出一块矩形区域，随后可以执行以下常用操作：</p>
+<h4>批量删注释：</h4>
+<ol>
+<li>光标移到首行的注释符上，按 <strong><code class="notranslate">Ctrl + v</code></strong>；</li>
+<li>框选住多行开头的 <code class="notranslate">#</code> 或 <code class="notranslate">//</code>；</li>
+<li>按 <strong><code class="notranslate">d</code></strong> 即可全部删掉。</li>
+</ol>
+<h3>5.3 外部 Shell 联动</h3>
+<p>在编辑过程中临时想看个目录或者运行一下脚本，不需要退出 Vim 再进来：</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
-<th align="left">操作分类</th>
-<th align="left">快捷键 / 命令</th>
-<th align="left">操作效果说明</th>
+<th align="left">命令</th>
+<th align="left">示例</th>
+<th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><strong>多行行首插入</strong></td>
-<td align="left"><code class="notranslate">I</code>（大写）</td>
-<td align="left">在选中块的最左侧进入插入模式，输入内容后按 <code class="notranslate">Esc</code>，选中的所有行都会生效</td>
+<td align="left"><strong>临时跑一条终端命令</strong></td>
+<td align="left"><code class="notranslate">:!&lt;命令&gt;</code></td>
+<td align="left">如 <code class="notranslate">:!ls -l</code>，跑完按回车回到 Vim</td>
 </tr>
 <tr>
-<td align="left"><strong>多行末尾追加</strong></td>
-<td align="left"><code class="notranslate">A</code>（大写）</td>
-<td align="left">在选中块的最右侧追加内容，输入后按 <code class="notranslate">Esc</code> 批量生效</td>
+<td align="left"><strong>把外部文件内容读进来</strong></td>
+<td align="left"><code class="notranslate">:r &lt;文件名&gt;</code></td>
+<td align="left">如 <code class="notranslate">:r snippet.txt</code>，把该文件直接插入光标下方</td>
 </tr>
 <tr>
-<td align="left"><strong>删除块</strong></td>
-<td align="left"><code class="notranslate">d</code> 或 <code class="notranslate">x</code></td>
-<td align="left">快速剪切/删除选中的矩形块区域</td>
+<td align="left"><strong>把命令输出直接贴到文档</strong></td>
+<td align="left"><code class="notranslate">:r !&lt;命令&gt;</code></td>
+<td align="left">如 <code class="notranslate">:r !date "+%Y-%m-%d %H:%M:%S"</code>，自动打入时间戳</td>
 </tr>
 <tr>
-<td align="left"><strong>复制与粘贴块</strong></td>
-<td align="left"><code class="notranslate">y</code> / <code class="notranslate">p</code></td>
-<td align="left">复制整块矩形文本，并在目标光标处按列粘贴</td>
-</tr>
-<tr>
-<td align="left"><strong>缩进与反缩进</strong></td>
-<td align="left"><code class="notranslate">&gt;</code> / <code class="notranslate">&lt;</code></td>
-<td align="left">将选中块对应的行整体向右缩进或向左缩进</td>
-</tr>
-<tr>
-<td align="left"><strong>大小写转换</strong></td>
-<td align="left"><code class="notranslate">U</code> / <code class="notranslate">u</code> / <code class="notranslate">~</code></td>
-<td align="left">将选区内容批量转换为：全大写 / 全小写 / 大小写反转</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<p>使用场景：</p>
-<ul>
-<li><strong>批量多行注释</strong>：<code class="notranslate">Ctrl+v</code> 垂直选中多行行首 -&gt; 按大写 <code class="notranslate">I</code> -&gt; 输入注释符号（如 <code class="notranslate">// </code> 或 <code class="notranslate"># </code>） -&gt; 按两次 <code class="notranslate">Esc</code>，所选行的行首瞬间全部加上注释！</li>
-<li><strong>批量取消注释</strong>：<code class="notranslate">Ctrl+v</code> 框选注释符号所在列 -&gt; 按 <code class="notranslate">d</code> 即可瞬间删除多行注释。</li>
-</ul>
-<h3>1.6 外部 Shell 命令交互与内容读写</h3>
-<p>Vim 并非一座与世隔绝的孤岛。你可以不退出 Vim 直接调用外部终端命令，甚至将外部命令的输出直接“导入”到当前编辑的文档中。</p>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th align="left">核心命令</th>
-<th align="left">语法示例</th>
-<th align="left">实际用途与场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><strong>执行外部命令</strong></td>
-<td align="left"><code class="notranslate">:!&lt;command&gt;</code></td>
-<td align="left">如 <code class="notranslate">:!ls -lh</code> 或 <code class="notranslate">:!python %</code>，临时执行 shell 命令，按回车返回 Vim</td>
-</tr>
-<tr>
-<td align="left"><strong>读入外部文件</strong></td>
-<td align="left"><code class="notranslate">:r &lt;filename&gt;</code></td>
-<td align="left">如 <code class="notranslate">:r header.txt</code>，将外部文件的内容直接插入到当前光标所在行的下方</td>
-</tr>
-<tr>
-<td align="left"><strong>读入命令输出</strong></td>
-<td align="left"><code class="notranslate">:r !&lt;command&gt;</code></td>
-<td align="left">如 <code class="notranslate">:r !date</code>，执行外部命令并将终端输出文本直接插入到当前行下方</td>
-</tr>
-<tr>
-<td align="left"><strong>多命令串联执行</strong></td>
-<td align="left"><code class="notranslate">:&lt;cmd1&gt; | &lt;cmd2&gt;</code></td>
-<td align="left">使用 <code class="notranslate">|</code> 管道分隔符，一次性在 Vim 命令行顺序执行多条命令（例如 <code class="notranslate">:w | !python %</code>）</td>
+<td align="left"><strong>保存并立刻执行</strong></td>
+<td align="left"><code class="notranslate">:w | !python %</code></td>
+<td align="left">保存后马上用 Python 跑当前脚本</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <blockquote>
-<p><strong>提示</strong>：在 Vim 命令行中，<code class="notranslate">%</code> 符号代表“当前正在编辑的文件名”。</p>
+<p>[!TIP] 占位符 <code class="notranslate">%</code><br>
+在 Vim 的命令行里，<strong><code class="notranslate">%</code></strong> 代表“当前正在编辑的文件名”。比如正在编辑 <code class="notranslate">test.py</code>，那么 <code class="notranslate">:!python %</code> 实际执行的就是 <code class="notranslate">python test.py</code>。</p>
 </blockquote>
-<p>使用场景：</p>
+<h3>5.4 快速搜索与批量替换</h3>
+<h4>① 查找文本</h4>
 <ul>
-<li><strong>代码快速运行</strong>：写完脚本直接在 Vim 输入 <code class="notranslate">:!python %</code>，原地查看输出结果，无需另开窗口。</li>
-<li><strong>生成时间戳/机器信息</strong>：在写文档或博客头信息时，输入 <code class="notranslate">:r !date "+%Y-%m-%d %H:%M:%S"</code>，即可直接将当前时间自动打在文档中。</li>
-<li><strong>一键保存并运行</strong>：使用 <code class="notranslate">:w | !python %</code>，保存的同时立即运行当前代码。</li>
+<li><strong><code class="notranslate">/关键词</code></strong>：按下回车向下搜索；</li>
+<li><strong><code class="notranslate">?关键词</code></strong>：向上搜索；</li>
+<li><strong><code class="notranslate">n</code></strong>：跳到下一个匹配项；</li>
+<li><strong><code class="notranslate">N</code></strong>：跳回上一个匹配项；</li>
+<li><strong><code class="notranslate">*</code></strong>：直接把光标所在的单词作为关键词向下搜索（查变量在哪些地方用过时很省事）。</li>
 </ul>
-<h3>1.7 查找与批量替换命令</h3>
-<p>Vim 的替换功能极其强大，核心命令是 <code class="notranslate">:s</code>（substitute）。通过配合正则表达式、作用范围和确认参数，可以高效地完成复杂的全局重构。</p>
-<p><strong>1. 基本替换格式</strong>：</p>
-<ul>
-<li><code class="notranslate">:s/old/new/</code>：仅替换当前行【第一个】匹配的 old</li>
-<li><code class="notranslate">:s/old/new/g</code>：替换当前行【所有】匹配的 old（g 表示 global 全行）</li>
-<li><code class="notranslate">:%s/old/new/g</code>：替换【整个文件】所有匹配的 old（% 表示整篇文档）</li>
-<li><code class="notranslate">:%s/old/new/gc</code>：整个文件替换，但每次替换前提示确认（c 表示 confirm，按 <code class="notranslate">y</code> 确认、<code class="notranslate">n</code> 跳过、<code class="notranslate">a</code> 全部替换、<code class="notranslate">q</code> 退出）</li>
-</ul>
-<p><strong>2. 指定范围替换</strong>：</p>
-<ul>
-<li><code class="notranslate">:10,20s/old/new/g</code>：仅在第 10 行到第 20 行之间执行替换</li>
-<li><code class="notranslate">:.,$s/old/new/g</code>：从当前光标行（<code class="notranslate">.</code>）一直替换到文件末尾（<code class="notranslate">$</code>）</li>
-<li><code class="notranslate">:'&lt;,'&gt;s/old/new/g</code>：对可视模式选中的行范围执行替换（在可视模式下按 <code class="notranslate">:</code> 会自动带出 <code class="notranslate">'&lt;,'&gt;</code>）</li>
-</ul>
-<p><strong>3. 实用技巧：批量行首 / 行尾追加</strong>：</p>
-<ul>
-<li><code class="notranslate">:%s/^/prefix_/g</code>：在每一行的【行首】追加前缀 <code class="notranslate">prefix_</code></li>
-<li><code class="notranslate">:%s/$/;/g</code>：在每一行的【行尾】追加分号 <code class="notranslate">;</code></li>
-<li><code class="notranslate">:5,15s/^/# /g</code>：给第 5 到 15 行批量在行首添加注释符 <code class="notranslate">#</code></li>
-</ul>
-<p>使用场景：</p>
-<ul>
-<li><strong>批量构造 SQL/列表</strong>：有一批导出的纯 ID 列表，想加上单引号和逗号，只需 <code class="notranslate">:%s/^/'/g</code> 配合 <code class="notranslate">:%s/$/',/g</code>，秒级搞定。</li>
-<li><strong>代码重构重命名</strong>：全局替换方法名但担心误伤时，使用 <code class="notranslate">:%s/oldMethod/newMethod/gc</code> 逐个审核确认，既安全又高效。</li>
-</ul></div>
+<h4>② 批量替换（Substitute）</h4>
+<p>基本语法：<code class="notranslate">:[范围]s/[旧文字]/[新文字]/[标志]</code></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">需求</th>
+<th align="left">命令写法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>当前行全部替换</strong></td>
+<td align="left"><code class="notranslate">:s/old/new/g</code></td>
+<td align="left">替换当前行里的每一个 old（<code class="notranslate">g</code> 代表 global）</td>
+</tr>
+<tr>
+<td align="left"><strong>整篇文档全局替换</strong></td>
+<td align="left"><code class="notranslate">:%s/old/new/g</code></td>
+<td align="left">替换全文所有匹配项（<code class="notranslate">%</code> 代表整篇文件）</td>
+</tr>
+<tr>
+<td align="left"><strong>逐个确认再替换</strong></td>
+<td align="left"><code class="notranslate">:%s/old/new/gc</code></td>
+<td align="left">每次替换前停下来问你，按 <code class="notranslate">y</code> 换，按 <code class="notranslate">n</code> 跳过</td>
+</tr>
+<tr>
+<td align="left"><strong>指定行号范围替换</strong></td>
+<td align="left"><code class="notranslate">:10,30s/old/new/g</code></td>
+<td align="left">仅在第 10 到 30 行之间替换</td>
+</tr>
+<tr>
+<td align="left"><strong>给每行开头加文字</strong></td>
+<td align="left"><code class="notranslate">:%s/^/# /g</code></td>
+<td align="left">
+<code class="notranslate">^</code> 表示行首，相当于全文批量加注释</td>
+</tr>
+<tr>
+<td align="left"><strong>给每行末尾加分号</strong></td>
+<td align="left"><code class="notranslate">:%s/$/;/g</code></td>
+<td align="left">
+<code class="notranslate">$</code> 表示行尾，批量在行末追加分号</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>6. 快捷键速查表（备查）</h2>
+<blockquote>
+<p>[!SUMMARY] 常用速查清单<br>
+按类别整理如下，方便平时按 <code class="notranslate">Ctrl + F</code> 快速检索。</p>
+</blockquote>
+<h3>1. 基础操作与文件</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>进入输入模式</strong></td>
+<td align="left"><code class="notranslate">i</code> / <code class="notranslate">a</code> / <code class="notranslate">o</code></td>
+<td align="left">--</td>
+<td align="left">光标前输入 / 光标后追加 / 下方另起新行</td>
+</tr>
+<tr>
+<td align="left"><strong>行首尾输入</strong></td>
+<td align="left"><code class="notranslate">I</code> / <code class="notranslate">A</code> / <code class="notranslate">O</code></td>
+<td align="left">--</td>
+<td align="left">跳行首输入 / 跳行尾追加 / 上方另起新行</td>
+</tr>
+<tr>
+<td align="left"><strong>退出到普通模式</strong></td>
+<td align="left"><code class="notranslate">Esc</code> 或 <code class="notranslate">Ctrl+[</code></td>
+<td align="left"><code class="notranslate">Esc</code></td>
+<td align="left">回到普通模式（最核心的状态切换）</td>
+</tr>
+<tr>
+<td align="left"><strong>存盘 / 退出</strong></td>
+<td align="left"><code class="notranslate">:w</code> / <code class="notranslate">:q</code> / <code class="notranslate">:wq</code></td>
+<td align="left"><code class="notranslate">Ctrl+S</code> / --</td>
+<td align="left">保存 / 退出 / 保存并退出</td>
+</tr>
+<tr>
+<td align="left"><strong>强制放弃退出</strong></td>
+<td align="left"><code class="notranslate">:q!</code></td>
+<td align="left">--</td>
+<td align="left">放弃修改强行退出</td>
+</tr>
+<tr>
+<td align="left"><strong>撤销 / 重做</strong></td>
+<td align="left"><code class="notranslate">u</code> / <code class="notranslate">Ctrl + r</code></td>
+<td align="left"><code class="notranslate">Ctrl+Z</code> / <code class="notranslate">Ctrl+Y</code></td>
+<td align="left">撤销上步改动 / 恢复改动</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>2. 光标移动</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>基础方向</strong></td>
+<td align="left"><code class="notranslate">h</code> / <code class="notranslate">j</code> / <code class="notranslate">k</code> / <code class="notranslate">l</code></td>
+<td align="left"><code class="notranslate">←</code> / <code class="notranslate">↓</code> / <code class="notranslate">↑</code> / <code class="notranslate">→</code></td>
+<td align="left">左 / 下 / 上 / 右</td>
+</tr>
+<tr>
+<td align="left"><strong>跨单词移动</strong></td>
+<td align="left"><code class="notranslate">w</code> / <code class="notranslate">b</code></td>
+<td align="left"><code class="notranslate">Ctrl+→</code> / <code class="notranslate">Ctrl+←</code></td>
+<td align="left">跳到下个词首 / 跳到上个词首</td>
+</tr>
+<tr>
+<td align="left"><strong>行内极值</strong></td>
+<td align="left"><code class="notranslate">0</code> / <code class="notranslate">$</code></td>
+<td align="left"><code class="notranslate">Home</code> / <code class="notranslate">End</code></td>
+<td align="left">跳到绝对行首 / 绝对行尾</td>
+</tr>
+<tr>
+<td align="left"><strong>行内有效文字</strong></td>
+<td align="left"><code class="notranslate">^</code> / <code class="notranslate">g_</code></td>
+<td align="left">--</td>
+<td align="left">跳到首个有效文字 / 最后一个有效文字</td>
+</tr>
+<tr>
+<td align="left"><strong>行内找字符</strong></td>
+<td align="left"><code class="notranslate">f{字符}</code> / <code class="notranslate">;</code></td>
+<td align="left">--</td>
+<td align="left">直达目标字符 / 重复查找</td>
+</tr>
+<tr>
+<td align="left"><strong>文件首尾</strong></td>
+<td align="left"><code class="notranslate">gg</code> / <code class="notranslate">G</code></td>
+<td align="left"><code class="notranslate">Ctrl+Home</code> / <code class="notranslate">Ctrl+End</code></td>
+<td align="left">跳到文件第 1 行 / 跳到最后一行</td>
+</tr>
+<tr>
+<td align="left"><strong>跳到指定行</strong></td>
+<td align="left"><code class="notranslate">:[行号]</code> 或 <code class="notranslate">[行号]G</code></td>
+<td align="left"><code class="notranslate">Ctrl+G</code></td>
+<td align="left">如 <code class="notranslate">:42</code> 跳到第 42 行</td>
+</tr>
+<tr>
+<td align="left"><strong>半屏滚动</strong></td>
+<td align="left"><code class="notranslate">Ctrl + d</code> / <code class="notranslate">Ctrl + u</code></td>
+<td align="left">--</td>
+<td align="left">向下滚半屏 / 向上滚半屏</td>
+</tr>
+<tr>
+<td align="left"><strong>回到编辑处</strong></td>
+<td align="left"><code class="notranslate">'.</code> / <code class="notranslate">`.</code> / <code class="notranslate">gi</code></td>
+<td align="left">--</td>
+<td align="left">回到上次修改所在行 / 精确点 / 回到修改处打字</td>
+</tr>
+<tr>
+<td align="left"><strong>跳转前后往返</strong></td>
+<td align="left"><code class="notranslate">''</code> 或 <code class="notranslate"> </code> ``</td>
+<td align="left">--</td>
+<td align="left">在大跳跃前后原路返回</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>3. 编辑与文本对象</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键</th>
+<th align="left">Windows / 常见编辑器按键</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>删字符 / 替换</strong></td>
+<td align="left"><code class="notranslate">x</code> / <code class="notranslate">r{字符}</code></td>
+<td align="left"><code class="notranslate">Delete</code> / --</td>
+<td align="left">删掉当前字符 / 单字符替换</td>
+</tr>
+<tr>
+<td align="left"><strong>整行剪切 / 复制</strong></td>
+<td align="left"><code class="notranslate">dd</code> / <code class="notranslate">yy</code></td>
+<td align="left"><code class="notranslate">Ctrl+X</code> / <code class="notranslate">Ctrl+C</code></td>
+<td align="left">剪切整行 / 复制整行</td>
+</tr>
+<tr>
+<td align="left"><strong>删到行尾</strong></td>
+<td align="left"><code class="notranslate">D</code> 或 <code class="notranslate">d$</code></td>
+<td align="left">--</td>
+<td align="left">删掉光标到行末的所有内容</td>
+</tr>
+<tr>
+<td align="left"><strong>粘贴</strong></td>
+<td align="left"><code class="notranslate">p</code> / <code class="notranslate">P</code></td>
+<td align="left"><code class="notranslate">Ctrl+V</code></td>
+<td align="left">贴到光标后（或下方） / 贴到光标前（或上方）</td>
+</tr>
+<tr>
+<td align="left"><strong>改单词</strong></td>
+<td align="left"><code class="notranslate">ciw</code> / <code class="notranslate">diw</code></td>
+<td align="left">双击 + 改/删</td>
+<td align="left">清空当前单词并打字 / 删掉当前单词</td>
+</tr>
+<tr>
+<td align="left"><strong>改引号内内容</strong></td>
+<td align="left"><code class="notranslate">ci"</code> / <code class="notranslate">ca"</code></td>
+<td align="left">--</td>
+<td align="left">清空引号内文字 / 连同引号一起删掉重写</td>
+</tr>
+<tr>
+<td align="left"><strong>改括号内内容</strong></td>
+<td align="left"><code class="notranslate">ci(</code> / <code class="notranslate">da{</code></td>
+<td align="left">--</td>
+<td align="left">清空小括号内参数 / 删掉整个大括号代码块</td>
+</tr>
+<tr>
+<td align="left"><strong>改尖括号内容</strong></td>
+<td align="left"><code class="notranslate">ci&lt;</code> / <code class="notranslate">ca&lt;</code></td>
+<td align="left">--</td>
+<td align="left">清空尖括号 <code class="notranslate">&lt;...&gt;</code> 内容 / 连同尖括号一起删</td>
+</tr>
+<tr>
+<td align="left"><strong>改 HTML 标签</strong></td>
+<td align="left"><code class="notranslate">cit</code> / <code class="notranslate">cat</code></td>
+<td align="left">--</td>
+<td align="left">清空成对标签内部内容 / 删掉整对标签</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>4. 进阶功能与批量替换</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">Vim 快捷键 / 命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>列块选择</strong></td>
+<td align="left"><code class="notranslate">Ctrl + v</code></td>
+<td align="left">进入块选择，配合 <code class="notranslate">I</code> 批量加注释，配合 <code class="notranslate">d</code> 批量删</td>
+</tr>
+<tr>
+<td align="left"><strong>系统剪贴板</strong></td>
+<td align="left"><code class="notranslate">"+y</code> / <code class="notranslate">"+p</code></td>
+<td align="left">复制到系统剪贴板 / 从系统剪贴板粘贴</td>
+</tr>
+<tr>
+<td align="left"><strong>预览寄存器</strong></td>
+<td align="left"><code class="notranslate">:reg 123456789</code></td>
+<td align="left">弹窗直接看 1~9 号历史删除内容，免粘贴查看</td>
+</tr>
+<tr>
+<td align="left"><strong>调终端命令</strong></td>
+<td align="left"><code class="notranslate">:!cmd</code> / <code class="notranslate">:r !cmd</code></td>
+<td align="left">执行外部终端命令 / 把命令输出插入到文档</td>
+</tr>
+<tr>
+<td align="left"><strong>全文批量替换</strong></td>
+<td align="left"><code class="notranslate">:%s/old/new/g</code></td>
+<td align="left">把整篇文档里的所有 old 替换为 new</td>
+</tr>
+<tr>
+<td align="left"><strong>带确认的替换</strong></td>
+<td align="left"><code class="notranslate">:%s/old/new/gc</code></td>
+<td align="left">每次替换前提示确认（按 <code class="notranslate">y</code> 换，按 <code class="notranslate">n</code> 跳过）</td>
+</tr>
+<tr>
+<td align="left"><strong>批量加行首尾</strong></td>
+<td align="left"><code class="notranslate">:%s/^/# /g</code> / <code class="notranslate">:%s/$/;/g</code></td>
+<td align="left">批量在每行开头加 <code class="notranslate"># </code> / 批量在每行末尾加 <code class="notranslate">;</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
@@ -659,7 +1073,7 @@ if("07/01/2024"!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -737,9 +1151,72 @@ function iFrameLoading(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
 
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
 </script>
-<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>MathJax = {tex: {inlineMath: [["$", "$"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </html>
