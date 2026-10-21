@@ -65,7 +65,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     font-size: 12px;
 }
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style>
 
 
 
@@ -107,16 +107,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </blockquote>
 </blockquote>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d16892f329d35165c9aa11e464703c49cf3c18e508b1d065b29522219df8ea45/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f69747638496c"><img src="https://camo.githubusercontent.com/d16892f329d35165c9aa11e464703c49cf3c18e508b1d065b29522219df8ea45/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f69747638496c" width="200" alt="WhyVim.png" data-canonical-src="https://img.pianone.dpdns.org/file/itv8Il" style="max-width: 100%;"></a></p>
-<p>我花时间去适应 Vim，主要看中这几点：</p>
+<p>我愿意花时间适应 Vim，主要是图这几点：</p>
 <ol>
 <li><strong>轻量快速</strong>：打开和关闭大文件几乎瞬间完成，没有多余的卡顿。</li>
 <li><strong>到处都有</strong>：Linux 和 macOS 默认自带，远程连服务器不需要配图形界面就能改配置；另外 VSCode、Obsidian 也都有 Vim 插件，学会一套按键习惯，在各个工具里都能用上。</li>
 <li><strong>生态成熟</strong>：需要轻量编辑时它是个利索的终端编辑器，真要深度折腾，配上插件也能当完整的 IDE 用。</li>
 </ol>
-<blockquote>
-<p>[!NOTE] 门槛在哪里？<br>
-最大的成本就是刚上手时的习惯冲突。以前在普通编辑器里习惯了用鼠标点、用方向键挪光标，到 Vim 里容易发懵。整理这篇笔记，主要是梳理清楚它的核心操作逻辑，平时遇到忘了的按键也可以随时翻翻表格速查。</p>
-</blockquote>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>最大的成本就是刚上手时的习惯冲突。以前在普通编辑器里习惯了用鼠标点、用方向键挪光标，到 Vim 里容易发懵。整理这篇笔记，主要是梳理清楚它的核心操作逻辑，平时遇到忘了的按键也可以随时翻翻表格速查。</p>
+</div>
 <hr>
 <h2>1. 搞懂 Vim 的基本逻辑：模式与操作语法</h2>
 <p>刚开始用 Vim 很容易觉得快捷键多且杂，其实只要摸清它的<strong>四种模式</strong>和<strong>组合规律</strong>，绝大部分按键就不用死记硬背了。</p>
@@ -163,8 +161,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>[!TIP] 实际组合看看</p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <ul>
 <li><code class="notranslate">d</code> + <code class="notranslate">w</code> = 删到下一个单词开头</li>
 <li><code class="notranslate">c</code> + <code class="notranslate">i</code> + <code class="notranslate">w</code> = 把当前光标所在的单词删掉并开始打字</li>
@@ -172,7 +169,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li><code class="notranslate">3</code> + <code class="notranslate">d</code> + <code class="notranslate">d</code> = 连续删 3 行</li>
 </ul>
 <p>按照这种规律，想做什么操作自己拼出来即可，不需要把每一种排列组合当成单独的快捷键去背。</p>
-</blockquote>
+</div>
 <hr>
 <h2>2. 最基础的操作：输入、保存与退出</h2>
 <h3>2.1 进入与退出输入模式</h3>
@@ -295,7 +292,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </table></markdown-accessiblity-table>
 <hr>
 <h2>3. 光标移动：别再用方向键了</h2>
-<p>双手不离开主键盘区是 Vim 效率高的核心原因。</p>
+<p>Vim 快就快在手不用离开主键盘区。</p>
 <h3>3.1 为什么用 hjkl 移动？</h3>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/36c0cb1dd4f9831c35c98ce529f76b24037d5016353633b8577be7f2e2ac3f10/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f464f50485434"><img src="https://camo.githubusercontent.com/36c0cb1dd4f9831c35c98ce529f76b24037d5016353633b8577be7f2e2ac3f10/68747470733a2f2f696d672e7069616e6f6e652e6470646e732e6f72672f66696c652f464f50485434" width="200" alt="vim上下左右.png" data-canonical-src="https://img.pianone.dpdns.org/file/FOPHT4" style="max-width: 100%;"></a></p>
 <p>在普通模式下移动光标主要靠 <strong><code class="notranslate">h</code> <code class="notranslate">j</code> <code class="notranslate">k</code> <code class="notranslate">l</code></strong>：</p>
@@ -305,10 +302,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li><strong><code class="notranslate">k</code></strong>：向上</li>
 <li><strong><code class="notranslate">l</code></strong>：向右</li>
 </ul>
-<blockquote>
-<p>[!NOTE] 为什么不是方向键？<br>
-当年 Bill Joy 写 <code class="notranslate">vi</code> 时用的 <a href="http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/" rel="nofollow">ADM-3A</a> 终端键盘上根本没有独立的方向键，<code class="notranslate">h/j/k/l</code> 键帽上本身就印着箭头。而且这四个键正好在右手默认放的地方，打字写代码时不需要抬手去够方向键或鼠标，不会打断思路。</p>
-</blockquote>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>当年 Bill Joy 写 <code class="notranslate">vi</code> 时用的 <a href="http://www.aeagean.com/2019/04/13/unix/unix_why_vim_uses_hjkl_to_move_cursors/" rel="nofollow">ADM-3A</a> 终端键盘上根本没有独立的方向键，<code class="notranslate">h/j/k/l</code> 键帽上本身就印着箭头。而且这四个键正好在右手默认放的地方，打字写代码时不需要抬手去够方向键或鼠标，不会打断思路。</p>
+</div>
 <h3>3.2 按单词移动</h3>
 <p>跨单词跳比一个一个字符按 <code class="notranslate">h</code> 或 <code class="notranslate">l</code> 快得多：</p>
 <markdown-accessiblity-table><table role="table">
@@ -347,10 +342,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<blockquote>
-<p>[!TIP] 大写按键的跨度更大<br>
-如果遇到类似 <code class="notranslate">user.login_name[0]</code> 这种带标点的变量名，小写 <code class="notranslate">w/b/e</code> 会把点和括号都当成独立的词停顿；换成大写的 <strong><code class="notranslate">W</code> / <code class="notranslate">B</code> / <code class="notranslate">E</code></strong>，就会把整串连着的非空字符当成一个大单词跳过（只以空格为间隔）。</p>
-</blockquote>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>如果遇到类似 <code class="notranslate">user.login_name[0]</code> 这种带标点的变量名，小写 <code class="notranslate">w/b/e</code> 会把点和括号都当成独立的词停顿；换成大写的 <strong><code class="notranslate">W</code> / <code class="notranslate">B</code> / <code class="notranslate">E</code></strong>，就会把整串连着的非空字符当成一个大单词跳过（只以空格为间隔）。</p>
+</div>
 <h3>3.3 行内移动</h3>
 <h4>① 行首与行尾的选择</h4>
 <markdown-accessiblity-table><table role="table">
@@ -389,9 +382,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<blockquote>
-<p>[!EXAMPLE] <code class="notranslate">0</code> / <code class="notranslate">$</code> 与 <code class="notranslate">^</code> / <code class="notranslate">g_</code> 的对比<br>
-比如有一行带缩进的代码：</p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>比如有一行带缩进的代码：</p>
 <pre lang="text" class="notranslate"><code class="notranslate">    print("Hello")  
 </code></pre>
 <ul>
@@ -400,7 +391,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>按 <strong><code class="notranslate">$</code></strong>：光标停在行尾后面的空格上；</li>
 <li>按 <strong><code class="notranslate">g_</code></strong>：光标直接落在末尾的括号 <strong><code class="notranslate">)</code></strong> 上。</li>
 </ul>
-</blockquote>
+</div>
 <h4>② 行内单字符定位（f 和 t）</h4>
 <p>如果一行比较长，想迅速跳到某个符号上：</p>
 <ul>
@@ -501,6 +492,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<ul>
+<li><code class="notranslate">:set nu</code> 显示行号（<code class="notranslate">:set nonu</code> 关闭，写进 <code class="notranslate">~/.vimrc</code> 里的 <code class="notranslate">set number</code> 可永久生效）；</li>
+<li><code class="notranslate">100G</code> 跳到第 100 行确认位置；</li>
+<li><code class="notranslate">:100,150y</code> 复制 100~150 行，<code class="notranslate">:100,150w ~/part.txt</code> 则把这段导出成单独小文件。</li>
+</ul>
+</div>
 <hr>
 <h2>4. 文本编辑与文本对象（Text Objects）</h2>
 <h3>4.1 常用编辑操作</h3>
@@ -638,19 +636,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<blockquote>
-<p>[!TIP] 为什么有时候按 <code class="notranslate">cit</code> 没反应？</p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <ul>
-<li><code class="notranslate">cit</code> 里的 <code class="notranslate">t</code> 是指 <strong>Tag（标签对）</strong>，它必须能在上下文里找到配套的闭合标签（比如 <code class="notranslate">&lt;p&gt;...&lt;/p&gt;</code>）。如果是在 Markdown、Python 代码中，或者遇到了单闭合标签 <code class="notranslate">&lt;img src="..." /&gt;</code>、泛型 <code class="notranslate">vector&lt;int&gt;</code>，因为没有对应的结束标签，<code class="notranslate">cit</code> 就会找不到对象。</li>
+<li>按 <code class="notranslate">cit</code> 没反应，一般是它在上下文里找不到成对的闭合标签：<code class="notranslate">cit</code> 里的 <code class="notranslate">t</code> 是指 <strong>Tag（标签对）</strong>，比如 <code class="notranslate">&lt;p&gt;...&lt;/p&gt;</code> 这种。如果是在 Markdown、Python 代码中，或者遇到了单闭合标签 <code class="notranslate">&lt;img src="..." /&gt;</code>、泛型 <code class="notranslate">vector&lt;int&gt;</code>，<code class="notranslate">cit</code> 就会找不到对象。</li>
 <li>日常代码里遇到尖括号 <code class="notranslate">&lt;...&gt;</code>，直接用 <strong><code class="notranslate">ci&lt;</code></strong> 更加通用可靠，不受语言和是否闭合的限制。</li>
 </ul>
-</blockquote>
+</div>
 <hr>
-<h2>5. 几个很实用的进阶功能</h2>
+<h2>5. 进阶功能</h2>
 <h3>5.1 系统剪贴板与寄存器</h3>
 <p>经常有人遇到这个问题：在 Vim 里用 <code class="notranslate">yy</code> 复制的代码，没办法在浏览器里 <code class="notranslate">Ctrl+V</code> 贴出来；在外部网页复制的配置，进 Vim 按 <code class="notranslate">p</code> 也贴不进去。</p>
 <p><strong>原因</strong>：Vim 默认有一套自己独立的内部剪贴板（叫无名寄存器 <code class="notranslate">"</code>），它和操作系统的全局剪贴板默认是不相通的。</p>
-<h4>怎么打通系统剪贴板？</h4>
+<h4>系统剪贴板怎么用？</h4>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -676,7 +673,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td align="left">把外面复制的内容贴进光标后</td>
 </tr>
 <tr>
-<td align="left"><strong>免粘贴查看历史缓存</strong></td>
+<td align="left"><strong>查看历史删除内容</strong></td>
 <td align="left"><code class="notranslate">:reg 123456789</code></td>
 <td align="left">弹窗直接看 1~9 号历史删除内容，不用盲目粘贴</td>
 </tr>
@@ -697,13 +694,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<blockquote>
-<p>[!NOTE] 检查 Vim 是否支持系统剪贴板<br>
-在终端输入 <code class="notranslate">vim --version | grep clipboard</code>。如果显示 <code class="notranslate">+clipboard</code> 说明支持；如果是 <code class="notranslate">-clipboard</code>，在 Linux 下一般装一个 <code class="notranslate">vim-gtk3</code> 或者直接换用 <code class="notranslate">neovim</code> 就能搞定。</p>
-</blockquote>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>在终端输入 <code class="notranslate">vim --version | grep clipboard</code>。如果显示 <code class="notranslate">+clipboard</code> 说明支持；如果是 <code class="notranslate">-clipboard</code>，在 Linux 下一般装一个 <code class="notranslate">vim-gtk3</code> 或者直接换用 <code class="notranslate">neovim</code> 就能搞定。</p>
+</div>
 <h3>5.2 可视块模式（批量加注释和对齐）</h3>
-<p>想给连续多行代码批量加注释或缩进时，不用装插件，Vim 自带的**可视块模式（Visual Block）**就能搞定。</p>
-<h4>批量加注释三步走：</h4>
+<p>想给连续多行代码批量加注释或缩进时，不用装插件，Vim 自带的<strong>可视块模式（Visual Block）</strong> 就能搞定。</p>
+<h4>批量加注释：</h4>
 <ol>
 <li>光标放到第一行的开头，按 <strong><code class="notranslate">Ctrl + v</code></strong> 进入块选择；</li>
 <li>按 <strong><code class="notranslate">j</code></strong> 往下选，框住需要注释的行；</li>
@@ -716,7 +711,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>框选住多行开头的 <code class="notranslate">#</code> 或 <code class="notranslate">//</code>；</li>
 <li>按 <strong><code class="notranslate">d</code></strong> 即可全部删掉。</li>
 </ol>
-<h3>5.3 外部 Shell 联动</h3>
+<h3>5.3 调用外部命令</h3>
 <p>在编辑过程中临时想看个目录或者运行一下脚本，不需要退出 Vim 再进来：</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -749,10 +744,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<blockquote>
-<p>[!TIP] 占位符 <code class="notranslate">%</code><br>
-在 Vim 的命令行里，<strong><code class="notranslate">%</code></strong> 代表“当前正在编辑的文件名”。比如正在编辑 <code class="notranslate">test.py</code>，那么 <code class="notranslate">:!python %</code> 实际执行的就是 <code class="notranslate">python test.py</code>。</p>
-</blockquote>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>在 Vim 的命令行里，<strong><code class="notranslate">%</code></strong> 代表“当前正在编辑的文件名”。比如正在编辑 <code class="notranslate">test.py</code>，那么 <code class="notranslate">:!python %</code> 实际执行的就是 <code class="notranslate">python test.py</code>。</p>
+</div>
 <h3>5.4 快速搜索与批量替换</h3>
 <h4>① 查找文本</h4>
 <ul>
@@ -809,10 +802,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </table></markdown-accessiblity-table>
 <hr>
 <h2>6. 快捷键速查表（备查）</h2>
-<blockquote>
-<p>[!SUMMARY] 常用速查清单<br>
-按类别整理如下，方便平时按 <code class="notranslate">Ctrl + F</code> 快速检索。</p>
-</blockquote>
+<p>按类别整理如下，方便平时按 <code class="notranslate">Ctrl + F</code> 快速检索。</p>
 <h3>1. 基础操作与文件</h3>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -1018,6 +1008,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <td align="left">进入块选择，配合 <code class="notranslate">I</code> 批量加注释，配合 <code class="notranslate">d</code> 批量删</td>
 </tr>
 <tr>
+<td align="left"><strong>显示 / 隐藏行号</strong></td>
+<td align="left"><code class="notranslate">:set nu</code> / <code class="notranslate">:set nonu</code></td>
+<td align="left">打开 / 关闭行号（写进 <code class="notranslate">~/.vimrc</code> 的 <code class="notranslate">set number</code> 可永久生效）</td>
+</tr>
+<tr>
+<td align="left"><strong>按行号提取片段</strong></td>
+<td align="left"><code class="notranslate">:100,150y</code> / <code class="notranslate">:100,150w f</code></td>
+<td align="left">把 100~150 行复制进寄存器 / 写入独立小文件方便下载</td>
+</tr>
+<tr>
 <td align="left"><strong>系统剪贴板</strong></td>
 <td align="left"><code class="notranslate">"+y</code> / <code class="notranslate">"+p</code></td>
 <td align="left">复制到系统剪贴板 / 从系统剪贴板粘贴</td>
@@ -1025,7 +1025,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <tr>
 <td align="left"><strong>预览寄存器</strong></td>
 <td align="left"><code class="notranslate">:reg 123456789</code></td>
-<td align="left">弹窗直接看 1~9 号历史删除内容，免粘贴查看</td>
+<td align="left">弹窗直接看 1~9 号历史删除了什么</td>
 </tr>
 <tr>
 <td align="left"><strong>调终端命令</strong></td>
