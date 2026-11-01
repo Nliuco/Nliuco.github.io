@@ -38,7 +38,7 @@ ping google.com
 
 这里先附上张网络分层与代理工作机制的对照图：
 
-<img src="https://img.pianone.dpdns.org/file/IrEw1m" width="150" alt="ISO7层网络模型">            <img src="https://img.pianone.dpdns.org/file/FYr7ST" width="150" alt="代理工作机制">
+<img src="https://assets.pianone.dpdns.org/file/pic/blog/1793517533271_OSI-7-Layer-Stack.webp" width="150" alt="ISO7层网络模型">            <img src="https://assets.pianone.dpdns.org/file/pic/blog/1793517350525_App-Proxy-vs-ICMP.webp" width="150" alt="代理工作机制">
 
 平时我在终端配置的环境变量：
 ```powershell
