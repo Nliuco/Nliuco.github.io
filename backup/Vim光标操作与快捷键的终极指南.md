@@ -30,22 +30,7 @@
 
 Vim 把日常编辑拆分成了不同的状态，最核心的是以下四种：
 
-```mermaid
-flowchart TD
-    Normal["普通模式 (Normal Mode) - 核心枢纽"]
-    Insert["插入模式 (Insert Mode) - 打字输入"]
-    Visual["可视模式 (Visual Mode) - 选中文本"]
-    Command["命令行模式 (Command Mode) - 存盘与执行"]
-
-    Normal -- "i / a / o / I / A / O" --> Insert
-    Insert -- "Esc 或 Ctrl+[" --> Normal
-
-    Normal -- "v / V / Ctrl+v" --> Visual
-    Visual -- "Esc" --> Normal
-
-    Normal -- ": 或 /" --> Command
-    Command -- "Enter 或 Esc" --> Normal
-```
+<img src="https://assets.pianone.dpdns.org/file/pic/blog/1793518964562_vim-modes-dark.webp" alt="vim-modes-dark.webp" width=70%>
 
 * **普通模式（Normal Mode）**：打开文件后的默认状态。这个模式下按键不是在打字，而是在发号施令（移动光标、复制、删除）。
 * **插入模式（Insert Mode）**：像普通记事本一样正常打字的模式，按 `i`、`a`、`o` 进入，按 `Esc` 或 `Ctrl + [` 回到普通模式。
