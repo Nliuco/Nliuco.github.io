@@ -10,7 +10,7 @@
 > > 如果想要学会一个高级工具，那学习成本自然也是要的，世界上并不存在不需要学习成本但却很强大的工具。
 > > 强大的工具通常还有一个共性，就是一旦你掌握了它，它带给你的回报远远超过你当时付出的时间和精力成本。
 
-<img src="https://img.pianone.dpdns.org/file/itv8Il" width="200" alt="WhyVim.png">
+<img src="https://assets.pianone.dpdns.org/file/pic/blog/1793517200876_why-vim.webp" width="200" alt="WhyVim.png">
 
 我愿意花时间适应 Vim，主要是图这几点：
 1. **轻量快速**：打开和关闭大文件几乎瞬间完成，没有多余的卡顿。
@@ -120,7 +120,7 @@ Vim 快就快在手不用离开主键盘区。
 
 ### 3.1 为什么用 hjkl 移动？
 
-<img src="https://img.pianone.dpdns.org/file/FOPHT4" width="200" alt="vim上下左右.png">
+<img src="https://assets.pianone.dpdns.org/file/pic/blog/1793517182953_vim-hjkl.webp" width="200" alt="vim上下左右.png">
 
 在普通模式下移动光标主要靠 **`h` `j` `k` `l`**：
 * **`h`**：向左
