@@ -1,5 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone Blog</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Wed, 04 Nov 2026 10:07:12 +0000</lastBuildDate><managingEditor>Pianone Blog</managingEditor><ttl>60</ttl><webMaster>Pianone Blog</webMaster><item><title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title><link>http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</link><description># Ping 通了 GitHub，不代表你走了代理
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pianone Blog</title><link>http://blog.pianone.dpdns.org</link><description>真正的大师永远都怀着一颗学徒的心。</description><copyright>Pianone Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/56815403?v=4</url><title>avatar</title><link>http://blog.pianone.dpdns.org</link></image><lastBuildDate>Wed, 25 Nov 2026 09:53:25 +0000</lastBuildDate><managingEditor>Pianone Blog</managingEditor><ttl>60</ttl><webMaster>Pianone Blog</webMaster><item><title>Obsidian Git 云同步配置(PC 端)</title><link>http://blog.pianone.dpdns.org/post/Obsidian%20Git%20-yun-tong-bu-pei-zhi-%28PC%20-duan-%29.html</link><description>&lt;p align='center'&gt;
+  &lt;img src='https://assets.pianone.dpdns.org/file/pic/blog/ptzZeMbB.svg' alt='obsidian-logo-text-white-purple.svg' width='50%'&gt;
+&lt;/p&gt;
+
+&gt; [!NOTE]
+&gt; 这里推荐国内用户使用 [Gitee](https://gitee.com/) 作为笔记(代码)托管平台
+
+## 一、准备工作
+### 1. 安装git
+略, 见: [安装Git](https://git-scm.com/install/), 本文作者使用scoop管理Git
+
+### 2. 注册Gitee
+打开 [Gitee](https://gitee.com/)官网进行注册, [配置SSH Key](https://help.gitee.com/enterprise/code-manage/%E6%9D%83%E9%99%90%E4%B8%8E%E8%AE%BE%E7%BD%AE/%E9%83%A8%E7%BD%B2%E5%85%AC%E9%92%A5%E7%AE%A1%E7%90%86/%E7%94%9F%E6%88%90%E6%88%96%E6%B7%BB%E5%8A%A0SSH%E5%85%AC%E9%92%A5)
+
+### 3. 创建 Gitee 仓库
+进入：[Gitee新建仓库](https://gitee.com/projects/new)
+创建：
+```text
+仓库名：obsidian-notes
+类型：私有仓库（推荐）
+```
+&gt; 不要初始化 README。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/Obsidian%20Git%20-yun-tong-bu-pei-zhi-%28PC%20-duan-%29.html</guid><pubDate>Wed, 25 Nov 2026 09:53:01 +0000</pubDate></item><item><title>开了代理进终端, 即使 ping 通了 GitHub，为何依然是直连？</title><link>http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</link><description># Ping 通了 GitHub，不代表你走了代理
 
 &gt; 平时在终端里拉取 GitHub 仓库或者下载 release 资产时，时不时就会遇到速度慢如蜗牛甚至直接连接超时的情况。</description><guid isPermaLink="true">http://blog.pianone.dpdns.org/post/kai-le-dai-li-jin-zhong-duan-%2C%20-ji-shi-%20ping%20-tong-le-%20GitHub%EF%BC%8C-wei-he-yi-ran-shi-zhi-lian-%EF%BC%9F.html</guid><pubDate>Fri, 09 Oct 2026 07:36:32 +0000</pubDate></item><item><title>基于Telegraph-Image的个人图床搭建流程</title><link>http://blog.pianone.dpdns.org/post/ji-yu-Telegraph-Image-de-ge-ren-tu-chuang-da-jian-liu-cheng.html</link><description># 个人图床搭建流程
 
