@@ -112,12 +112,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>将自己 Gitee 仓库的 clone 地址复制到 <code class="notranslate">Git Sync</code> 的输入栏，点击 <code class="notranslate">克隆</code> 按钮。</li>
 <li>此时会提供 <code class="notranslate">直接克隆</code> 或 <code class="notranslate">嵌套克隆</code> 两种方式（具体请查看其弹窗描述），选择其一并指定一个本地 clone 位置即可。</li>
 </ol>
-<h2>二、手机端 Obsidian 禁用 Git 插件</h2>
+<h2>二、配置仓库级提交作者信息</h2>
+<p>仓库 clone 完成后，还需要为当前仓库配置提交作者信息，否则 Git Sync 可能无法向远程推送，拉取也可能受影响。</p>
+<ol>
+<li>打开仓库页面，在屏幕中间找到「当前分支 master」下方的「上传更改」按钮。</li>
+<li>点击「上传更改」按钮右侧的齿轮按钮，设置当前项目的作者名称和作者邮箱。</li>
+<li><strong>作者名称</strong>填写 Gitee 上的用户昵称（不是手机号）；<strong>作者邮箱</strong>使用 Gitee 上开启并复制的 noreply 邮箱。</li>
+<li>输入后按回车可能会显示错误，设置后也可能需要重新生效。</li>
+</ol>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>不要在 Git Sync 首屏顶部齿轮打开的全局默认配置中填写默认作者名称和默认作者邮箱。这里的全局配置不能代替当前仓库的项目级配置。即使设置了全局默认值，如果项目级作者信息没有配置，推送时日志仍可能提示缺少提交作者名称或邮箱。</p>
+</div>
+<p>如果推送仍失败，或拉取受到影响，请检查当前项目的作者名称和作者邮箱是否已配置并生效。</p>
+<h2>三、手机端 Obsidian 禁用 Git 插件</h2>
 <p>当 clone 完毕仓库之后，<code class="notranslate">Git Sync</code> 会检测到我们使用了 Obsidian Git 插件（即之前在 PC 端下载的 Obsidian Git 同步插件）。由于在手机上我们使用 <code class="notranslate">Git Sync</code>，二者同时使用可能会有冲突，详见下方 Git Sync 官方文档链接。</p>
 <p><strong>具体操作</strong>：在手机上先打开 Obsidian 的 <code class="notranslate">Git</code> 设置，然后启用 <strong>“在此设备上禁用”</strong> 选项。</p>
 <div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg data-component="Octicon" class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>相关说明可参考 Git Sync 官方文档：<a href="https://gitsync.viscouspotenti.al/wiki/troubleshooting#concurrent-repository-access" rel="nofollow">文档地址</a></p>
 </div>
-<h2>三、启用自动同步</h2>
+<h2>四、启用自动同步</h2>
 <p><code class="notranslate">Git Sync</code> 提供了很多种自动同步的方式，这里我推荐两种：</p>
 <ol>
 <li><strong>打开或关闭应用进行同步</strong>：可以选择监听的应用 <code class="notranslate">Obsidian</code>，等我们手动打开或者关闭 Obsidian 的时候，<code class="notranslate">Git Sync</code> 就会自动帮我们拉取最新的笔记内容并提交本地的变更信息到远程。</li>
